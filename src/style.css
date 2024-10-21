@@ -7,7 +7,6 @@
 }
 
 body {
-  background-color: #f4f4f4;
 }
 
 html, body {
@@ -26,7 +25,6 @@ main {
 .footer {
   text-align: center;
   padding: 10px;
-  background-color: #f8f9fa;
   position: relative;
   width: 100%;
 }
@@ -34,13 +32,19 @@ main {
 
 /* Navbar Styles */
 .navbar {
+  display: fixed;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
   padding: 10px 20px;
   color: black;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-left: 300px;
+  margin-right: 400px;
 }
 
 .nav-left {
@@ -60,9 +64,10 @@ main {
 }
 
 .nav-right .contact-button {
-  background-color: #0073e6;
-  color: white;
+  background-color: white;
   border: none;
+  border: 1px;
+  border-style: solid;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;

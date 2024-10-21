@@ -9,7 +9,7 @@ import FDX from './components/FDX';
 import MediaConverters from './components/Media_Converters';
 import Wireless from './components/Wireless';
 import SFP from './components/SFP';
-import Copper_Line from './components/Copper_Line';
+import Copper_Line from './pages/Copper_Line';
 
 const App = () => {
   return (

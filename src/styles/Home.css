@@ -1,0 +1,8 @@
+.middle-section {
+    display: flex;
+}
+
+.image-right {
+    height: 600px;
+    width: 800px;
+}

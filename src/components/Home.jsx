@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import '../style.css';
+import '../styles/Home.css';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -18,18 +19,24 @@ const Home = () => {
       {/* Main Content */}
       <main className='main-content'>
         <h1>FAQ</h1>
-        <p>
-          Thank you for choosing ComNet by acre. We understand you may have some questions.
-        </p>
-        <p>
-          Select your product below ↓
-        </p>
 
-        <img
-          src='https://acresecurity.com/hubfs/Website/Global/Images/Dividers/divider-2.svg'
-          alt='Wave divider'
-          className='full-width-image'
-        />
+        <div className="middle-section">
+          <p>
+            Thank you for choosing ComNet by acre. We understand you may have some questions.
+          </p>
+          
+
+          <img
+            src='photos/image.jpg'
+            alt='Photo'
+            className='image-right'
+          />
+        </div>
+
+        <p>
+            Select your product below ↓
+        </p>
+        
 
         {/* Product Buttons */}
         <div className='button-container'>
@@ -52,12 +59,6 @@ const Home = () => {
             </button>
           ))}
         </div>
-
-        <img
-          src='https://acresecurity.com/hubfs/Website/Global/Images/Dividers/divider-1.svg'
-          alt='Wave divider'
-          className='full-width-image'
-        />
       </main>
 
       <Footer />
