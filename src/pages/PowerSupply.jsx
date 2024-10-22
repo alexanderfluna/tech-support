@@ -5,17 +5,14 @@ import Footer from '../components/Footer';
 import '../styles/style.css';
 import '../styles/Pages.css'; 
 
-const FDW = () => {
+const PowerSupplyPoEInjector = () => {
   // State to manage which question is open
   const [openQuestion, setOpenQuestion] = useState(null);
 
   // Dummy FAQ data (generic questions and answers)
   const faqData = [
-    { question: "Firmware", 
-      answer: `The central and remote must have the same firmware.`
-    },
-    { question: "No Communication", 
-      answer: `You must reset the central and remote. Please use the following selector tool` 
+    { question: "Selector tool", 
+      answer: `...`
     },
   ];
 
@@ -28,7 +25,7 @@ const FDW = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">FDW</h2>
+        <h2 className="faq-title">Power Supply Or PoE Injector</h2>
         <div className="faq-list">
           {faqData.map((item, index) => (
             <div key={index} className="faq-item">
@@ -55,4 +52,4 @@ const FDW = () => {
   );
 };
 
-export default FDW;
+export default PowerSupplyPoEInjector;

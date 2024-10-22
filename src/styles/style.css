@@ -22,29 +22,9 @@ main {
   flex: 1;
 }
 
-  /* Main Content Styles */
-  .main-content {
-    text-align: left;
-    padding: 50px;
-  }
   
-  .main-content h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
 
-.main-content p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 40px;
-}
 
-/* Full-Width Image Styles */
-.full-width-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
 
 
 

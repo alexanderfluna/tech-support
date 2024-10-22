@@ -1,48 +1,93 @@
 /* Navbar Styles */
 .navbar {
-    display: fixed;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  margin-left: 80px;
+  margin-right: 300px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-middle a {
+  color: #333;
+  text-decoration: none;
+  padding: 30px;
+  font-size: 18px;
+}
+
+.nav-middle a:hover {
+  color: #0073e6;
+}
+
+.nav-right .contact-button {
+  background-color: white;
+  border: none;
+  border: 1px solid #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-right .contact-button:hover {
+  background-color: #005bb5;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+}
+
+.hamburger .bar {
+  width: 30px;
+  height: 4px;
+  background-color: black;
+  margin: 3px 0;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 1500px) {
+  .nav {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .nav-middle,
+  .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-middle.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
     background-color: white;
+    width: 100%;
+    padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-  
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    color: black;
-    margin-left: 300px;
-    margin-right: 400px;
+
+  .nav-middle.open a {
+    margin: 10px 0;
   }
-  
-  .nav-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-middle a {
-    color: #333;
-    text-decoration: none;
-    margin-right: 30px;
-    font-size: 18px;
-  }
-  
-  .nav-middle a:hover {
-    color: #0073e6;
-  }
-  
-  .nav-right .contact-button {
-    background-color: white;
-    border: none;
-    border: 1px;
-    border-style: solid;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .nav-right .contact-button:hover {
-    background-color: #005bb5;
-  }
-  
+}

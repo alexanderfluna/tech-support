@@ -32,7 +32,7 @@ const Home = () => {
           <div className="middle-section-right">
             <img
               src='photos/image.jpg'
-              alt='Photo'
+              alt='People looking at a phone'
               className='image-right'
             />
           </div> 
@@ -48,6 +48,8 @@ const Home = () => {
             'FDC',
             'FDW',
             'FDX',
+            'SFP',
+            'Power Supply Or PoE Injector',
             'Razberi',
           ].map(product => (
             <button

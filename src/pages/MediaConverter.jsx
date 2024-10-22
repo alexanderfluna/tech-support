@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import '../styles/style.css';
 import '../styles/Pages.css'; 
 
-const Switch = () => {
+const MediaConverter = () => {
   // State to manage which question is open
   const [openQuestion, setOpenQuestion] = useState(null);
 
@@ -30,21 +30,9 @@ const Switch = () => {
       Use an optical time-domain reflectometer (OTRD).` 
     },
     {
-      question: "Network Issues",
-      answer: `If it is a ring or mesh topology, you should enable RSTP on every unit.
-      If it is anything other than a ring or mesh topology, you should disable RSTP on every unit.
-      Determine if the issue persists when you swap the switch with another.
-      Determine if it is a standalone issue or only when the switch is within the network.`
-    },
-    {
-      question: "Firmware",
-      answer: `The switch firmware should be the same for the same kind of switch on the network.
-      Ask the ComNet tech support team for the current firmware.`
-    },
-    {
-      question: "VLANs",
-      answer: `...`
-    },
+      question: "Selector Tool",
+      answer: "..."
+    }
   ];
 
   // Toggle function to open or close a question
@@ -56,7 +44,7 @@ const Switch = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Switch</h2>
+        <h2 className="faq-title">Media Converter</h2>
         <div className="faq-list">
           {faqData.map((item, index) => (
             <div key={index} className="faq-item">
@@ -83,4 +71,4 @@ const Switch = () => {
   );
 };
 
-export default Switch;
+export default MediaConverter;
