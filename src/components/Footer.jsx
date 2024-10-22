@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style.css';
+import '../styles/style.css';
 import '../styles/Footer.css';
 
 const Footer = () => {
@@ -100,6 +100,7 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Solutions</h3>
           <ul>
+            <li>Access Control</li>
             <li>Visitor Management</li>
             <li>Intruder Alarms</li>
             <li>Secure Communications</li>
@@ -111,10 +112,8 @@ const Footer = () => {
         <div className="footer-column">
           <h3>Resources</h3>
           <ul>
+            <li>Resources</li>
             <li>Blog</li>
-            <li>Case Studies</li>
-            <li>Guides</li>
-            <li>Datasheets</li>
           </ul>
         </div>
 

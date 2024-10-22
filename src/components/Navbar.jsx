@@ -1,5 +1,6 @@
 import React from 'react';
-import '../style.css';
+import '../styles/style.css';
+import '../styles/Navbar.css';
 
 const Navbar = () => {
   return (
@@ -15,11 +16,14 @@ const Navbar = () => {
               height='60'
             />
           </div>
-          <div className='nav-right'>
+          <div className='nav-middle'>
+            <a href='#'>comnet Solutions</a>
             <a href='#'>Resources</a>
             <a href='#'>About</a>
             <a href='#'>Partner Hub</a>
             <a href='#'>Products</a>
+          </div>
+          <div className='nav-right'>
             <button className='contact-button'>CONTACT US</button>
           </div>
         </div>

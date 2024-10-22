@@ -1,0 +1,48 @@
+/* Navbar Styles */
+.navbar {
+    display: fixed;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: black;
+    margin-left: 300px;
+    margin-right: 400px;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-middle a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 30px;
+    font-size: 18px;
+  }
+  
+  .nav-middle a:hover {
+    color: #0073e6;
+  }
+  
+  .nav-right .contact-button {
+    background-color: white;
+    border: none;
+    border: 1px;
+    border-style: solid;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-right .contact-button:hover {
+    background-color: #005bb5;
+  }
+  
