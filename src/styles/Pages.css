@@ -1,8 +1,4 @@
 /* Main FAQ container */
-h1 {
-  font-size: 80px;
-}
-
 .faq-container {
   padding: 20px;
   min-height: 80vh;
@@ -59,6 +55,7 @@ h1 {
   margin-top: 80px;
   margin-bottom: 20px;
   font-size: 2.5rem;
+  font-size: 50px;
 }
 
 /* FAQ list container */
@@ -99,24 +96,6 @@ h1 {
   padding: 10px;
 }
 
-/* Selector Tool button */
-.selector-tool {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #6a0dad;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.selector-tool:hover {
-  background-color: #4b0082;
-}
-
 /* Filter options styling */
 .filter-options {
   display: flex;
@@ -132,28 +111,6 @@ h1 {
 
 .filter-options label {
   margin: 5px;
-}
-
-/* Table container styling */
-.table-container {
-  margin-top: 20px;
-}
-
-.selector-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.selector-table th, .selector-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-.selector-table th {
-  background-color: #ece0ff;
-  color: #4b0082;
 }
 
 .filter-options h3 {
