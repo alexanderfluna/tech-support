@@ -18,12 +18,13 @@ const Home = () => {
       <Navbar />
       {/* Main Content */}
       <main className='main-content'>
-        <h1>PRE-RMA TROUBLESHOOTING</h1>
+        
 
         <div className="middle-section"> 
           <div className="middle-section-left">
+            <h1>FAQ</h1>
             <p>
-              Thank you for choosing ComNet by acre. Before sending in the device for an RMA, let's do some troubleshooting.
+              Thank you for choosing ComNet by acre.
             </p>
             <p>
               Select your product below. ↓
@@ -43,13 +44,15 @@ const Home = () => {
           {[
             'Switch',
             'Media Converter',
-            'Copper Line',
-            'Wireless',
-            'FDC',
-            'FDW',
-            'FDX',
             'SFP',
-            'Power Supply Or PoE Injector',
+            'Wireless',
+            'Copper Line',
+            'FDC',
+            'FDX',
+            'FDW',
+            'Power Supply',
+            'PoE Injector',
+            'Card Cage',
             'Razberi',
           ].map(product => (
             <button
