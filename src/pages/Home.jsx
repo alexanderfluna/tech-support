@@ -22,7 +22,7 @@ const Home = () => {
 
         <div className="middle-section"> 
           <div className="middle-section-left">
-            <h1>FAQ</h1>
+            <h1>Frequently Asked Questions</h1>
             <p>
               Thank you for choosing ComNet by acre.
             </p>
