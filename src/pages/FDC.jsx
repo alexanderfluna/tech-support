@@ -1,38 +1,96 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import '../styles/style.css';
-import '../styles/Pages.css'; 
+import '../styles/Pages.css';
 
 const FDC = () => {
-  // State to manage which question is open
-  const [openQuestion, setOpenQuestion] = useState(null);
+  const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [showTable, setShowTable] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [availableOptions, setAvailableOptions] = useState({
+    fiber: [],
+    latchingOrNonLatching: [],
+    inputContactSupervision: [],
+    summaryFaultRelay: [],
+    numberOfChannels: [],
+    bidirectional: [],
+  });
 
-  // Dummy FAQ data (generic questions and answers)
-  const faqData = [
-    { question: "No Power Light", 
-      answer: `Typically, 8 to 24VDC is required.
-      Use a voltmeter to determine if the polarity of the operating power connection is correct. Typically, a negative sign will show in the meter display if the red meter lead is connected to negative power and the black meter lead is connected to positive power.
-      Use a voltmeter to determine that the power supply is delivering the required voltage while conencted to the device.
-      Use a voltmeter to determine that the power supply is delivering the correct voltage when connected to a different device.
-      Try using a different power supply to see if the issue persists.`
-          
-    },
-    { question: "No Optical Link Light", 
-      answer: `The mode of the fiber (multimode or single mode) must be compatabile with the device.
-      The SFPs must be compatible with the unit and with the fiber. Fast Ethernet / Gigabit Ethernet, Multimode / Singlemode, 1/2 strands of fiber, LC/SC connector)
-      Try using the same strands of fiber on another device to determine if you get a link light.
-      Use a fiber optic cleaning kit.
-      Use an optical power meter.
-      Use a visual fault locator.
-      Use an optical time-domain reflectometer (OTRD).` 
-    },
+  // Product data array
+  const products = [
+    { model: "FDC80TM1 + FDC80NLRM1", fiber: "multimode", latchingOrNonLatching: "non-latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", numberOfChannels: 8, bidirectional: "no" },
+    { model: "FDC80TM1 + FDC80RM1", fiber: "multimode", latchingOrNonLatching: "latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", numberOfChannels: 8, bidirectional: "no" },
+    { model: "FDC80TS1 + FDC80NLRS1", fiber: "singlemode", latchingOrNonLatching: "non-latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", numberOfChannels: 8, bidirectional: "no" },
+    { model: "FDC80TS1 + FDC80RS1", fiber: "singlemode", latchingOrNonLatching: "latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", numberOfChannels: 8, bidirectional: "no" },
+    { model: "FDC8TM1 + FDC8NLRM1", fiber: "multimode", latchingOrNonLatching: "non-latching", inputContactSupervision: "no", summaryFaultRelay: "no", numberOfChannels: 8, bidirectional: "no" },
+    { model: "FDC8TM1 + FDC8RM1", fiber: "multimode", latchingOrNonLatching: "latching", inputContactSupervision: "no", summaryFaultRelay: "no", numberOfChannels: 8, bidirectional: "no" },
+    { model: "FDC8TS1 + FDC8NLRS1", fiber: "singlemode", latchingOrNonLatching: "non-latching", inputContactSupervision: "no", summaryFaultRelay: "no", numberOfChannels: 8, bidirectional: "no" },
+    { model: "FDC8TS1 + FDC8RS1", fiber: "singlemode", latchingOrNonLatching: "latching", inputContactSupervision: "no", summaryFaultRelay: "no", numberOfChannels: 8, bidirectional: "no" },
   ];
 
-  // Toggle function to open or close a question
-  const toggleQuestion = (index) => {
-    setOpenQuestion(openQuestion === index ? null : index); // If clicked again, it closes the question
+  // State to track selected filters
+  const [filters, setFilters] = useState({
+    fiber: null,
+    latchingOrNonLatching: null,
+    inputContactSupervision: null,
+    summaryFaultRelay: null,
+    numberOfChannels: null,
+    bidirectional: null,
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setFilteredProducts(products); // Show all products initially
+    updateAvailableOptions(products);
+  }, []);
+
+  const toggleAnswer = (questionId) => {
+    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
+  };
+
+  const toggleTable = () => {
+    setShowTable(!showTable);
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
+    setFilters({ fiber: null, latchingOrNonLatching: null, inputContactSupervision: null, summaryFaultRelay: null, numberOfChannels: null, bidirectional: null }); // Reset all filters
+  };
+
+  // Handle filter change and update displayed products
+  const handleFilterChange = (filterType, value) => {
+    const newFilters = { ...filters, [filterType]: value };
+    setFilters(newFilters);
+
+    // Filter products based on selected filters
+    const newFilteredProducts = products.filter((product) =>
+      Object.entries(newFilters).every(
+        ([key, filterValue]) => !filterValue || product[key] === filterValue
+      )
+    );
+    setFilteredProducts(newFilteredProducts);
+
+    // Update available options based on the new filtered products
+    updateAvailableOptions(newFilteredProducts);
+  };
+
+  // Function to clear a specific filter
+  const clearFilter = (filterType) => {
+    const newFilters = { ...filters, [filterType]: null };
+    setFilters(newFilters);
+    handleFilterChange(filterType, null);
+  };
+
+  // Update available options based on current filtered products
+  const updateAvailableOptions = (filteredProducts) => {
+    const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
+    const latchingOrNonLatching = [...new Set(filteredProducts.map((product) => product.latchingOrNonLatching))];
+    const inputContactSupervision = [...new Set(filteredProducts.map((product) => product.inputContactSupervision))];
+    const summaryFaultRelay = [...new Set(filteredProducts.map((product) => product.summaryFaultRelay))];
+    const numberOfChannels = [...new Set(filteredProducts.map((product) => product.numberOfChannels))];
+    const bidirectional = [...new Set(filteredProducts.map((product) => product.bidirectional))];
+
+    setAvailableOptions({ fiber, latchingOrNonLatching, inputContactSupervision, summaryFaultRelay, numberOfChannels, bidirectional });
   };
 
   return (
@@ -40,24 +98,195 @@ const FDC = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">FDC</h2>
-        <div className="faq-list">
-          {faqData.map((item, index) => (
-            <div key={index} className="faq-item">
-              <h3
-                className="faq-question"
-                onClick={() => toggleQuestion(index)}
-              >
-                {item.question}
-              </h3>
-              {openQuestion === index && (
-                <ul className="faq-answer">
-                  {item.answer.split('\n').map((line, i) => (
-                    <li key={i}>{line}</li>
-                  ))}
-                </ul>
-              )}
+        <button className="selector-tool" onClick={toggleTable}>
+          Selector Tool
+        </button>
+        {showTable && (
+          <>
+            <div className="filter-options">
+              <div>
+                <h3>
+                  Fiber
+                  {filters.fiber && (
+                    <button className="clear-filter" onClick={() => clearFilter("fiber")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.fiber.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="fiber"
+                      value={option}
+                      checked={filters.fiber === option}
+                      onChange={() => handleFilterChange("fiber", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Latching or Non-Latching
+                  {filters.latchingOrNonLatching && (
+                    <button className="clear-filter" onClick={() => clearFilter("latchingOrNonLatching")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.latchingOrNonLatching.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="latchingOrNonLatching"
+                      value={option}
+                      checked={filters.latchingOrNonLatching === option}
+                      onChange={() => handleFilterChange("latchingOrNonLatching", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Input Contact Supervision
+                  {filters.inputContactSupervision && (
+                    <button className="clear-filter" onClick={() => clearFilter("inputContactSupervision")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.inputContactSupervision.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="inputContactSupervision"
+                      value={option}
+                      checked={filters.inputContactSupervision === option}
+                      onChange={() => handleFilterChange("inputContactSupervision", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Summary Fault Relay
+                  {filters.summaryFaultRelay && (
+                    <button className="clear-filter" onClick={() => clearFilter("summaryFaultRelay")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.summaryFaultRelay.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="summaryFaultRelay"
+                      value={option}
+                      checked={filters.summaryFaultRelay === option}
+                      onChange={() => handleFilterChange("summaryFaultRelay", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Number of Channels
+                  {filters.numberOfChannels && (
+                    <button className="clear-filter" onClick={() => clearFilter("numberOfChannels")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.numberOfChannels.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="numberOfChannels"
+                      value={option}
+                      checked={filters.numberOfChannels === option}
+                      onChange={() => handleFilterChange("numberOfChannels", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Bidirectional
+                  {filters.bidirectional && (
+                    <button className="clear-filter" onClick={() => clearFilter("bidirectional")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.bidirectional.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="bidirectional"
+                      value={option}
+                      checked={filters.bidirectional === option}
+                      onChange={() => handleFilterChange("bidirectional", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
             </div>
-          ))}
+
+            <div className="table-container">
+              <table className="selector-table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Fiber</th>
+                    <th>Latching or Non-Latching</th>
+                    <th>Input Contact Supervision</th>
+                    <th>Summary Fault Relay</th>
+                    <th>Number of Channels</th>
+                    <th>Bidirectional</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProducts.map((product, index) => (
+                    <tr key={index}>
+                      <td>{product.model}</td>
+                      <td>{product.fiber}</td>
+                      <td>{product.latchingOrNonLatching}</td>
+                      <td>{product.inputContactSupervision}</td>
+                      <td>{product.summaryFaultRelay}</td>
+                      <td>{product.numberOfChannels}</td>
+                      <td>{product.bidirectional}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+
+        <h1 className="faq-title">FAQ</h1>
+
+        <div className="faq-list">
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
+              To be decided {/* Changed to a single button */}
+            </button>
+            {visibleAnswer === 'to-be-decided' && (
+              <div className="faq-answer">
+                <p>...</p> {/* Placeholder for the answer */}
+              </div>
+            )}
+          </div>
         </div>
       </main>
       <Button />
