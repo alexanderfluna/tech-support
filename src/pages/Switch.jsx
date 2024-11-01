@@ -1,80 +1,251 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import '../styles/style.css';
-import '../styles/Pages.css'; 
+import '../styles/Pages.css';
 
 const Switch = () => {
-  // State to manage which question is open
-  const [openQuestion, setOpenQuestion] = useState(null);
+  const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [showTable, setShowTable] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [availableOptions, setAvailableOptions] = useState({
+    Hardened: [],
+    Managed: [],
+    Fiber: [],
+    Copper: [],
+    Combo: [],
+    PoE: []
+  });
 
-  // Dummy FAQ data (generic questions and answers)
-  const faqData = [
-    { question: "No Power Light", 
-      answer: `Typically, 8 to 24VDC is required for non-PoE.
-      Typically, 48 to 57VDC is required for PoE.
-      Use a voltmeter to determine if the polarity of the operating power connection is correct. Typically, a negative sign will show in the meter display if the red meter lead is connected to negative power and the black meter lead is connected to positive power.
-      Use a voltmeter to determine that the power supply is delivering the required voltage while conencted to the device.
-      Use a voltmeter to determine that the power supply is delivering the correct voltage when connected to a different device.
-      Try using a different power supply to see if the issue persists.`
-          
-    },
-    { question: "No Optical Link Light", 
-      answer: `The mode of the fiber (multimode or single mode) must be compatabile with the device.
-      The SFPs must be compatible with the unit and with the fiber. Fast Ethernet / Gigabit Ethernet, Multimode / Singlemode, 1/2 strands of fiber, LC/SC connector)
-      Try using the same strands of fiber on another device to determine if you get a link light.
-      Use a fiber optic cleaning kit.
-      Use an optical power meter.
-      Use a visual fault locator.
-      Use an optical time-domain reflectometer (OTRD).` 
-    },
-    {
-      question: "Network Issues",
-      answer: `If it is a ring or mesh topology, you should enable RSTP on every unit.
-      If it is anything other than a ring or mesh topology, you should disable RSTP on every unit.
-      Determine if the issue persists when you swap the switch with another.
-      Determine if it is a standalone issue or only when the switch is within the network.`
-    },
-    {
-      question: "Firmware",
-      answer: `The switch firmware should be the same for the same kind of switch on the network.
-      Ask the ComNet tech support team for the current firmware.`
-    },
-    {
-      question: "VLANs",
-      answer: `...`
-    },
-  ];
-
-  // Toggle function to open or close a question
-  const toggleQuestion = (index) => {
-    setOpenQuestion(openQuestion === index ? null : index); // If clicked again, it closes the question
+  // Define custom sort orders for each category
+  const sortOrders = {
+    Hardened: ["No", "Yes"],
+    Managed: ["No", "Yes"],
+    Fiber: ["0", "1 FE", "2 FE", "4 FE", "1 GE", "2 GE", "3 GE", "4 GE", "8 GE", "12 GE", "24 GE", "2 10G"],
+    Copper: ["0", "2 FE", "4 FE", "5 FE", "7 FE", "8 FE", "3 GE", "4 GE", "8 GE", "12 GE", "16 GE", "22 GE", "24 GE"],
+    Combo: ["0", "1 GE", "2 GE", "4 GE", "16 GE"],
+    PoE: ["No", "PoE", "PoEHo"]
   };
+
+  const [filters, setFilters] = useState({
+    Hardened: null,
+    Managed: null,
+    Fiber: null,
+    Copper: null,
+    Combo: null,
+    PoE: null
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
+  }, []);
+
+  const toggleAnswer = (questionId) => {
+    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
+  };
+
+  const toggleTable = () => {
+    setShowTable(!showTable);
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
+    setFilters({
+      Hardened: null,
+      Managed: null,
+      Fiber: null,
+      Copper: null,
+      Combo: null,
+      PoE: null
+    });
+  };
+
+  const handleFilterChange = (filterType, value) => {
+    const newFilters = { ...filters, [filterType]: value };
+    setFilters(newFilters);
+
+    const newFilteredProducts = products.filter((product) =>
+      Object.entries(newFilters).every(
+        ([key, filterValue]) => !filterValue || product[key] === filterValue
+      )
+    );
+    setFilteredProducts(newFilteredProducts);
+    updateAvailableOptions(newFilteredProducts);
+  };
+
+  const clearFilter = (filterType) => {
+    const newFilters = { ...filters, [filterType]: null };
+    setFilters(newFilters);
+    handleFilterChange(filterType, null);
+  };
+
+  const updateAvailableOptions = (filteredProducts) => {
+    const options = {
+      Hardened: [...new Set(filteredProducts.map((product) => product.Hardened))],
+      Managed: [...new Set(filteredProducts.map((product) => product.Managed))],
+      Fiber: [...new Set(filteredProducts.map((product) => product.Fiber))],
+      Copper: [...new Set(filteredProducts.map((product) => product.Copper))],
+      Combo: [...new Set(filteredProducts.map((product) => product.Combo))],
+      PoE: [...new Set(filteredProducts.map((product) => product.PoE))]
+    };
+    setAvailableOptions(options);
+  };
+
+  // Function to sort options based on predefined order
+  const sortOptions = (filterType, options) => {
+    const orderMap = sortOrders[filterType].reduce((acc, val, idx) => {
+      acc[val] = idx;
+      return acc;
+    }, {});
+
+    return options
+      .filter(option => option !== "0" || filterType === "Fiber" || filterType === "Copper" || filterType === "Combo")
+      .sort((a, b) => {
+        const orderA = orderMap[a] ?? Infinity;
+        const orderB = orderMap[b] ?? Infinity;
+        return orderA - orderB;
+      });
+  };
+
+  const products = [
+    {Model: "CWGE10FX2TX8MS", Hardened: "No", Managed: "Yes", Fiber: "2 GE", Copper: "8 GE", Combo: "0", PoE: "No"},
+    {Model: "CWGE10FX2TX8MSPOE", Hardened: "No", Managed: "Yes", Fiber: "2 GE", Copper: "8 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CWGE26FX2TX24MS", Hardened: "No", Managed: "Yes", Fiber: "2 GE", Copper: "24 GE", Combo: "0", PoE: "No"},
+    {Model: "CWGE26FX2TX24MSPOE", Hardened: "No", Managed: "Yes", Fiber: "2 GE", Copper: "24 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CWGE26FX2TX24MSPOE+", Hardened: "No", Managed: "Yes", Fiber: "2 GE", Copper: "24 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CWGE28MS", Hardened: "No", Managed: "Yes", Fiber: "24 GE", Copper: "4 GE", Combo: "4 GE", PoE: "No"},
+    {Model: "CNXE2GE2TX8MSPOE", Hardened: "Yes", Managed: "Yes", Fiber: "2 10G", Copper: "8 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE2FE4SMS", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 FE", Combo: "0", PoE: "No"},
+    {Model: "CNGE2FE4SMSPOE", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE2FE4SMSPOEHO", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 FE", Combo: "0", PoE: "PoEHo"},
+    {Model: "CNGE2FE8MSPOE+", Hardened: "Yes", Managed: "Yes", Fiber: "2 GE", Copper: "8 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE3FE7MS3", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "7 FE", Combo: "0", PoE: "No"},
+    {Model: "CNGE3FE8MS", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 FE", Combo: "0", PoE: "No"},
+    {Model: "CNGE3FE8MSPOE", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE3FE8MSPOE/24", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE3FE8MSPOEHO", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 FE", Combo: "0", PoE: "PoEHo"},
+    {Model: "CNGE4US", Hardened: "Yes", Managed: "No", Fiber: "4 GE", Copper: "0", Combo: "0", PoE: "No"},
+    {Model: "CNGE4TX4US/M", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "4 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE4+2SMS/M", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE4+2SMSPOE/M", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE4+2SMSPOEHO/M", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 GE", Combo: "0", PoE: "PoEHo"},
+    {Model: "CNGE5MS", Hardened: "Yes", Managed: "Yes", Fiber: "0", Copper: "3 GE", Combo: "2 GE", PoE: "No"},
+    {Model: "CNGE6FX2TX4POE", Hardened: "Yes", Managed: "No", Fiber: "1 GE", Copper: "4 FE", Combo: "1 GE", PoE: "PoE"},
+    {Model: "CNGE6FX2TX4MSP", Hardened: "Yes", Managed: "Yes", Fiber: "2 GE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE8US", Hardened: "Yes", Managed: "No", Fiber: "8 GE", Copper: "0", Combo: "0", PoE: "No"},
+    {Model: "CNGE8MS", Hardened: "Yes", Managed: "Yes", Fiber: "0", Copper: "4 GE", Combo: "4 GE", PoE: "No"},
+    {Model: "CNGE8FX4TX4MS", Hardened: "Yes", Managed: "Yes", Fiber: "4 GE", Copper: "4 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE11FX3TX8MS", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE11FX3TX8MSP/24", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE11FX3TX8MSPOE", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE11FX3TX8MSPOE/24", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE11FX3TX8MSPOEHO", Hardened: "Yes", Managed: "Yes", Fiber: "3 GE", Copper: "8 GE", Combo: "0", PoE: "PoEHo"},
+    {Model: "CNGE20MS", Hardened: "Yes", Managed: "Yes", Fiber: "12 GE", Copper: "8 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE20FX4TX16MS", Hardened: "Yes", Managed: "Yes", Fiber: "4 GE", Copper: "16 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE20FX4TX16MSP", Hardened: "Yes", Managed: "Yes", Fiber: "4 GE", Copper: "16 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE24MS2", Hardened: "Yes", Managed: "Yes", Fiber: "8 GE", Copper: "0", Combo: "16 GE", PoE: "No"},
+    {Model: "CNGE24FX12TX12MS", Hardened: "Yes", Managed: "Yes", Fiber: "12 GE", Copper: "12 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE24FX12TX12MS/12", Hardened: "Yes", Managed: "Yes", Fiber: "12 GE", Copper: "12 GE", Combo: "0", PoE: "No"},
+    {Model: "CNGE24FX12TX12MSPOE", Hardened: "Yes", Managed: "Yes", Fiber: "12 GE", Copper: "12 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE24FX12TX12MSPOE/48", Hardened: "Yes", Managed: "Yes", Fiber: "12 GE", Copper: "12 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNGE26FX2TX24MSP", Hardened: "Yes", Managed: "Yes", Fiber: "2 GE", Copper: "22 GE", Combo: "2 GE", PoE: "PoE"},
+    {Model: "CNGE28FX4TX24MS2", Hardened: "Yes", Managed: "Yes", Fiber: "4 GE", Copper: "24 GE", Combo: "0", PoE: "No"},
+    {Model: "CNFE4SMS", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "4 FE", Combo: "0", PoE: "No"},
+    {Model: "CNFE4SMSPOE", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "4 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNFE4FX4US", Hardened: "Yes", Managed: "No", Fiber: "4 FE", Copper: "0", Combo: "0", PoE: "No"},
+    {Model: "CNFE4FX2TX2US", Hardened: "Yes", Managed: "No", Fiber: "2 FE", Copper: "2 FE", Combo: "0", PoE: "No"},
+    {Model: "CNFE4+1SMSM2", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "No"},
+    {Model: "CNFE4+1SMSM2POE", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNFE4+1SMSM2/SC", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "No"},
+    {Model: "CNFE4+1SMSM2POE/SC", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNFE4+1SMSS2", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "No"},
+    {Model: "CNFE4+1SMSS2POE", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNFE4+1SMSS2/SC", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "No"},
+    {Model: "CNFE4+1SMSS2POE/SC", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
+    {Model: "CNFE5SMS", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "No"},
+    {Model: "CNFE5SMSPOE", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "PoE"},
+];
 
   return (
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Switch</h2>
-        <div className="faq-list">
-          {faqData.map((item, index) => (
-            <div key={index} className="faq-item">
-              <h3
-                className="faq-question"
-                onClick={() => toggleQuestion(index)}
-              >
-                {item.question}
-              </h3>
-              {openQuestion === index && (
-                <ul className="faq-answer">
-                  {item.answer.split('\n').map((line, i) => (
-                    <li key={i}>{line}</li>
+        <h2 className="faq-title">Switches</h2>
+        <button className="selector-tool" onClick={toggleTable}>
+          Selector Tool
+        </button>
+        {showTable && (
+          <>
+            <div className="filter-options">
+              {Object.entries(availableOptions).map(([filterType, options]) => (
+                <div key={filterType}>
+                  <h3>
+                    {filterType}
+                    {filters[filterType] && (
+                      <button className="clear-filter" onClick={() => clearFilter(filterType)}>
+                        X
+                      </button>
+                    )}
+                  </h3>
+                  {sortOptions(filterType, options).map((option) => (
+                    <label key={option}>
+                      <input
+                        type="radio"
+                        name={filterType}
+                        value={option}
+                        checked={filters[filterType] === option}
+                        onChange={() => handleFilterChange(filterType, option)}
+                      />
+                      {option}
+                    </label>
                   ))}
-                </ul>
-              )}
+                </div>
+              ))}
             </div>
-          ))}
+            <div className="table-container">
+              <table className="selector-table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Hardened</th>
+                    <th>Managed</th>
+                    <th>Fiber Ports</th>
+                    <th>Copper Ports</th>
+                    <th>Combo Ports</th>
+                    <th>PoE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProducts.map((product, index) => (
+                    <tr key={index}>
+                      <td>{product.Model}</td>
+                      <td>{product.Hardened}</td>
+                      <td>{product.Managed}</td>
+                      <td>{product.Fiber === "0" ? "-" : product.Fiber}</td>
+                      <td>{product.Copper === "0" ? "-" : product.Copper}</td>
+                      <td>{product.Combo === "0" ? "-" : product.Combo}</td>
+                      <td>{product.PoE}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+
+        <h1 className="faq-title">FAQ</h1>
+        <div className="faq-list">
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
+              To be decided
+            </button>
+            {visibleAnswer === 'to-be-decided' && (
+              <div className="faq-answer">
+                <p>...</p>
+              </div>
+            )}
+          </div>
         </div>
       </main>
       <Button />
