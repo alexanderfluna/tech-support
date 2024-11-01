@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import '../styles/style.css';
 import '../styles/Pages.css'; 
 
-const PowerSupplyPoEInjector = () => {
+const PowerSupply = () => {
   // State to manage which question is open
   const [openQuestion, setOpenQuestion] = useState(null);
 
@@ -25,7 +25,7 @@ const PowerSupplyPoEInjector = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Power Supply Or PoE Injector</h2>
+        <h2 className="faq-title">Power Supply</h2>
         <div className="faq-list">
           {faqData.map((item, index) => (
             <div key={index} className="faq-item">
@@ -52,4 +52,4 @@ const PowerSupplyPoEInjector = () => {
   );
 };
 
-export default PowerSupplyPoEInjector;
+export default PowerSupply;

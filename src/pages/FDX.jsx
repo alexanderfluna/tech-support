@@ -1,38 +1,106 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import '../styles/style.css';
-import '../styles/Pages.css'; 
+import '../styles/Pages.css';
 
 const FDX = () => {
-  // State to manage which question is open
-  const [openQuestion, setOpenQuestion] = useState(null);
+  const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [showTable, setShowTable] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [availableOptions, setAvailableOptions] = useState({
+    numOfFibers: [],
+    fiber: [],
+    optics: [],
+    package: [],
+  });
 
-  // Dummy FAQ data (generic questions and answers)
-  const faqData = [
-    { question: "No Power Light", 
-      answer: `Typically, 8 to 24VDC is required.
-      Use a voltmeter to determine if the polarity of the operating power connection is correct. Typically, a negative sign will show in the meter display if the red meter lead is connected to negative power and the black meter lead is connected to positive power.
-      Use a voltmeter to determine that the power supply is delivering the required voltage while conencted to the device.
-      Use a voltmeter to determine that the power supply is delivering the correct voltage when connected to a different device.
-      Try using a different power supply to see if the issue persists.`
-          
-    },
-    { question: "No Optical Link Light", 
-      answer: `The mode of the fiber (multimode or single mode) must be compatabile with the device.
-      The SFPs must be compatible with the unit and with the fiber. Fast Ethernet / Gigabit Ethernet, Multimode / Singlemode, 1/2 strands of fiber, LC/SC connector)
-      Try using the same strands of fiber on another device to determine if you get a link light.
-      Use a fiber optic cleaning kit.
-      Use an optical power meter.
-      Use a visual fault locator.
-      Use an optical time-domain reflectometer (OTRD).` 
-    },
+  // Product data array
+  const products = [
+    { model: "FDX60M2", numOfFibers: 2, fiber: "mm", optics: "ST", package: "ComFit" },
+    { model: "FDX60M2M", numOfFibers: 2, fiber: "mm", optics: "ST", package: "Compact" },
+    { model: "FDX60M2/SC", numOfFibers: 2, fiber: "mm", optics: "SC", package: "ComFit" },
+    { model: "FDX60M2M/SC", numOfFibers: 2, fiber: "mm", optics: "SC", package: "Compact" },
+    { model: "FDX60S2", numOfFibers: 2, fiber: "sm", optics: "ST", package: "ComFit" },
+    { model: "FDX60S2M", numOfFibers: 2, fiber: "sm", optics: "ST", package: "Compact" },
+    { model: "FDX60S2/SC", numOfFibers: 2, fiber: "sm", optics: "SC", package: "ComFit" },
+    { model: "FDX60S2M/SC", numOfFibers: 2, fiber: "sm", optics: "SC", package: "Compact" },
+    { model: "FDX60M1A", numOfFibers: 1, fiber: "mm", optics: "ST", package: "ComFit" },
+    { model: "FDX60M1AM", numOfFibers: 1, fiber: "mm", optics: "ST", package: "Compact" },
+    { model: "FDX60M1A/SC", numOfFibers: 1, fiber: "mm", optics: "SC", package: "ComFit" },
+    { model: "FDX60M1AM/SC", numOfFibers: 1, fiber: "mm", optics: "SC", package: "Compact" },
+    { model: "FDX60SM1A", numOfFibers: 1, fiber: "sm", optics: "ST", package: "ComFit" },
+    { model: "FDX60S1AM", numOfFibers: 1, fiber: "sm", optics: "ST", package: "Compact" },
+    { model: "FDX60S1A/SC", numOfFibers: 1, fiber: "sm", optics: "SC", package: "ComFit" },
+    { model: "FDX60S1AM/SC", numOfFibers: 1, fiber: "sm", optics: "SC", package: "Compact" },
+    { model: "FDX60M1B", numOfFibers: 1, fiber: "mm", optics: "ST", package: "ComFit" },
+    { model: "FDX60M1BM", numOfFibers: 1, fiber: "mm", optics: "ST", package: "Compact" },
+    { model: "FDX60M1B/SC", numOfFibers: 1, fiber: "mm", optics: "SC", package: "ComFit" },
+    { model: "FDX60M1BM/SC", numOfFibers: 1, fiber: "mm", optics: "SC", package: "Compact" },
+    { model: "FDX60SM1B", numOfFibers: 1, fiber: "sm", optics: "ST", package: "ComFit" },
+    { model: "FDX60S1BM", numOfFibers: 1, fiber: "sm", optics: "ST", package: "Compact" },
+    { model: "FDX60S1B/SC", numOfFibers: 1, fiber: "sm", optics: "SC", package: "ComFit" },
+    { model: "FDX60S1BM/SC", numOfFibers: 1, fiber: "sm", optics: "SC", package: "Compact" },
   ];
 
-  // Toggle function to open or close a question
-  const toggleQuestion = (index) => {
-    setOpenQuestion(openQuestion === index ? null : index); // If clicked again, it closes the question
+  // State to track selected filters
+  const [filters, setFilters] = useState({
+    numOfFibers: null,
+    fiber: null,
+    optics: null,
+    package: null,
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setFilteredProducts(products); // Show all products initially
+    updateAvailableOptions(products);
+  }, []);
+
+  const toggleAnswer = (questionId) => {
+    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
+  };
+
+  const toggleTable = () => {
+    setShowTable(!showTable);
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
+    setFilters({ numOfFibers: null, fiber: null, optics: null, package: null }); // Reset all filters
+  };
+
+  // Handle filter change and update displayed products
+  const handleFilterChange = (filterType, value) => {
+    const newFilters = { ...filters, [filterType]: value };
+    setFilters(newFilters);
+
+    // Filter products based on selected filters
+    const newFilteredProducts = products.filter((product) =>
+      Object.entries(newFilters).every(
+        ([key, filterValue]) => !filterValue || product[key] === filterValue
+      )
+    );
+    setFilteredProducts(newFilteredProducts);
+
+    // Update available options based on the new filtered products
+    updateAvailableOptions(newFilteredProducts);
+  };
+
+  // Function to clear a specific filter
+  const clearFilter = (filterType) => {
+    const newFilters = { ...filters, [filterType]: null };
+    setFilters(newFilters);
+    handleFilterChange(filterType, null);
+  };
+
+  // Update available options based on current filtered products
+  const updateAvailableOptions = (filteredProducts) => {
+    const numOfFibers = [...new Set(filteredProducts.map((product) => product.numOfFibers))];
+    const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
+    const optics = [...new Set(filteredProducts.map((product) => product.optics))];
+    const packageOptions = [...new Set(filteredProducts.map((product) => product.package))];
+
+    setAvailableOptions({ numOfFibers, fiber, optics, package: packageOptions });
   };
 
   return (
@@ -40,24 +108,145 @@ const FDX = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">FDX</h2>
-        <div className="faq-list">
-          {faqData.map((item, index) => (
-            <div key={index} className="faq-item">
-              <h3
-                className="faq-question"
-                onClick={() => toggleQuestion(index)}
-              >
-                {item.question}
-              </h3>
-              {openQuestion === index && (
-                <ul className="faq-answer">
-                  {item.answer.split('\n').map((line, i) => (
-                    <li key={i}>{line}</li>
-                  ))}
-                </ul>
-              )}
+        <button className="selector-tool" onClick={toggleTable}>
+          Selector Tool
+        </button>
+        {showTable && (
+          <>
+            <div className="filter-options">
+              <div>
+                <h3>
+                  Number of Fibers
+                  {filters.numOfFibers && (
+                    <button className="clear-filter" onClick={() => clearFilter("numOfFibers")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.numOfFibers.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="numOfFibers"
+                      value={option}
+                      checked={filters.numOfFibers === option}
+                      onChange={() => handleFilterChange("numOfFibers", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Fiber
+                  {filters.fiber && (
+                    <button className="clear-filter" onClick={() => clearFilter("fiber")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.fiber.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="fiber"
+                      value={option}
+                      checked={filters.fiber === option}
+                      onChange={() => handleFilterChange("fiber", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Optics
+                  {filters.optics && (
+                    <button className="clear-filter" onClick={() => clearFilter("optics")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.optics.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="optics"
+                      value={option}
+                      checked={filters.optics === option}
+                      onChange={() => handleFilterChange("optics", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
+
+              <div>
+                <h3>
+                  Package
+                  {filters.package && (
+                    <button className="clear-filter" onClick={() => clearFilter("package")}>
+                      X
+                    </button>
+                  )}
+                </h3>
+                {availableOptions.package.map((option) => (
+                  <label key={option}>
+                    <input
+                      type="radio"
+                      name="package"
+                      value={option}
+                      checked={filters.package === option}
+                      onChange={() => handleFilterChange("package", option)}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </div>
             </div>
-          ))}
+
+            <div className="table-container">
+              <table className="selector-table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>NumOfFibers</th>
+                    <th>Fiber</th>
+                    <th>Optics</th>
+                    <th>Package</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProducts.map((product, index) => (
+                    <tr key={index}>
+                      <td>{product.model}</td>
+                      <td>{product.numOfFibers}</td>
+                      <td>{product.fiber}</td>
+                      <td>{product.optics}</td>
+                      <td>{product.package}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+
+        <h1 className="faq-title">FAQ</h1>
+
+        <div className="faq-list">
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
+              To be decided {/* Changed to a single button */}
+            </button>
+            {visibleAnswer === 'to-be-decided' && (
+              <div className="faq-answer">
+                <p>...</p> {/* Placeholder for the answer */}
+              </div>
+            )}
+          </div>
         </div>
       </main>
       <Button />
