@@ -1,53 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import '../styles/style.css';
-import '../styles/Pages.css'; 
+import '../styles/Pages.css';
 
 const Razberi = () => {
-  // State to manage which question is open
-  const [openQuestion, setOpenQuestion] = useState(null);
+  const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [showSelectorText, setShowSelectorText] = useState(false); // New state for showing selector text
 
-  // Dummy FAQ data (generic questions and answers)
-  const faqData = [
-    { question: "No Power", 
-      answer: `...`
-          
-    },
-    { question: "No Port/PoE Activity", 
-      answer: `...` 
-    },
-  ];
-
-  // Toggle function to open or close a question
-  const toggleQuestion = (index) => {
-    setOpenQuestion(openQuestion === index ? null : index); // If clicked again, it closes the question
+  const toggleAnswer = (questionId) => {
+    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
   };
+
+  const toggleTable = () => {
+    setShowSelectorText(!showSelectorText); // Toggle visibility of selector text
+    window.scrollTo(0, 0); // Scroll to the top of the page when the button is clicked
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top when the component mounts
+  }, []);
 
   return (
     <div>
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Razberi</h2>
+        <button className="selector-tool" onClick={toggleTable}>
+          Selector Tool
+        </button>
+        
+        {/* Show the selector tool text only when clicked */}
+        {showSelectorText && (
+          <div className="selector-placeholder">
+            <p>Selector tool functionality coming soon...</p>
+          </div>
+        )}
+
+        <h1 className="faq-title">FAQ</h1>
+
         <div className="faq-list">
-          {faqData.map((item, index) => (
-            <div key={index} className="faq-item">
-              <h3
-                className="faq-question"
-                onClick={() => toggleQuestion(index)}
-              >
-                {item.question}
-              </h3>
-              {openQuestion === index && (
-                <ul className="faq-answer">
-                  {item.answer.split('\n').map((line, i) => (
-                    <li key={i}>{line}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
+              To be decided {/* Changed to a single button */}
+            </button>
+            {visibleAnswer === 'to-be-decided' && (
+              <div className="faq-answer">
+                <p>...</p> {/* Placeholder for the answer */}
+              </div>
+            )}
+          </div>
         </div>
       </main>
       <Button />

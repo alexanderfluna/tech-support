@@ -171,7 +171,7 @@ const Switch = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Switches</h2>
+        <h2 className="faq-title">Switch</h2>
         <button className="selector-tool" onClick={toggleTable}>
           Selector Tool
         </button>
