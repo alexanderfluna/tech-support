@@ -1,8 +1,9 @@
 /* Main FAQ container */
 .faq-container {
+  width: 100%;
   padding: 20px;
   min-height: 80vh;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 30px;
   text-align: center;
@@ -10,6 +11,7 @@
 
 /* Selector Tool button */
 .selector-tool {
+  display: block;
   width: 100%;
   padding: 15px;
   margin-top: 30px;
@@ -30,6 +32,7 @@
 /* Table container styling */
 .table-container {
   margin-top: 20px;
+  overflow-x: auto;
 }
 
 .selector-table {
