@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const MediaConverter = () => {
@@ -60,11 +60,23 @@ const MediaConverter = () => {
     handleFilterChange(filterType, null);
   };
 
-  const updateAvailableOptions = (filteredProducts) => {
-    // Create a function to get unique values while preserving order
-    const getUniqueOrderedValues = (arr) => [...new Set(arr)];
+  const resetFilters = () => {
+    setFilters({ MultiRate: null,
+      DataRate: null,
+      PoE: null,
+      Fiber: null,
+      NumofFibers: null,
+      Optics: null,
+      Tx: null,
+      SingleDualQuad: null, 
+      Package: null,
+      OperatingPower: null});
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
+  };
 
-    // Update all options except Tx
+  const updateAvailableOptions = (filteredProducts) => {
+    const getUniqueOrderedValues = (arr) => [...new Set(arr)];
     const newOptions = {
       MultiRate: getUniqueOrderedValues(filteredProducts.map((product) => product.MultiRate)),
       DataRate: getUniqueOrderedValues(filteredProducts.map((product) => product.DataRate)),
@@ -77,7 +89,6 @@ const MediaConverter = () => {
       Package: getUniqueOrderedValues(filteredProducts.map((product) => product.Package)),
       OperatingPower: getUniqueOrderedValues(filteredProducts.map((product) => product.OperatingPower))
     };
-
     setAvailableOptions(newOptions);
   };
 
@@ -373,6 +384,9 @@ const MediaConverter = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               {Object.entries(availableOptions).map(([filterType, options]) => (
                 <div key={filterType} className="filter-section">

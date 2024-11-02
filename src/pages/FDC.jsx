@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const FDC = () => {
@@ -18,7 +18,6 @@ const FDC = () => {
     bidirectional: [],
   });
 
-  // Product data array
   const products = [
     { model: "FDC80TM1 + FDC80NLRM1", fiber: "multimode", latchingOrNonLatching: "non-latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", numberOfChannels: 8, bidirectional: "no" },
     { model: "FDC80TM1 + FDC80RM1", fiber: "multimode", latchingOrNonLatching: "latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", numberOfChannels: 8, bidirectional: "no" },
@@ -30,7 +29,6 @@ const FDC = () => {
     { model: "FDC8TS1 + FDC8RS1", fiber: "singlemode", latchingOrNonLatching: "latching", inputContactSupervision: "no", summaryFaultRelay: "no", numberOfChannels: 8, bidirectional: "no" },
   ];
 
-  // State to track selected filters
   const [filters, setFilters] = useState({
     fiber: null,
     latchingOrNonLatching: null,
@@ -42,7 +40,7 @@ const FDC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); // Show all products initially
+    setFilteredProducts(products); 
     updateAvailableOptions(products);
   }, []);
 
@@ -57,7 +55,6 @@ const FDC = () => {
     setFilters({ fiber: null, latchingOrNonLatching: null, inputContactSupervision: null, summaryFaultRelay: null, numberOfChannels: null, bidirectional: null }); // Reset all filters
   };
 
-  // Handle filter change and update displayed products
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
@@ -74,14 +71,18 @@ const FDC = () => {
     updateAvailableOptions(newFilteredProducts);
   };
 
-  // Function to clear a specific filter
   const clearFilter = (filterType) => {
     const newFilters = { ...filters, [filterType]: null };
     setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
-  // Update available options based on current filtered products
+  const resetFilters = () => {
+    setFilters({ fiber: null, latchingOrNonLatching: null, inputContactSupervision: null, summaryFaultRelay: null, numberOfChannels: null, bidirectional: null});
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
     const latchingOrNonLatching = [...new Set(filteredProducts.map((product) => product.latchingOrNonLatching))];
@@ -103,6 +104,9 @@ const FDC = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -279,11 +283,11 @@ const FDC = () => {
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided {/* Changed to a single button */}
+              To be decided 
             </button>
             {visibleAnswer === 'to-be-decided' && (
               <div className="faq-answer">
-                <p>...</p> {/* Placeholder for the answer */}
+                <p>...</p> 
               </div>
             )}
           </div>

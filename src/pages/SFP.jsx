@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const SFP = () => {
@@ -10,10 +10,10 @@ const SFP = () => {
   const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
-    dataRate: ['FE', 'GE', '10G'], // Updated order
-    txMedium: ['Cu', 'mm', 'sm'], // Updated order
-    fibers: ['1', '2', 'n/a'], // Updated order
-    optics: ['RJ-45', 'LC', 'SC'], // Updated order
+    dataRate: ['FE', 'GE', '10G'], 
+    txMedium: ['Cu', 'mm', 'sm'], 
+    fibers: ['1', '2', 'n/a'], 
+    optics: ['RJ-45', 'LC', 'SC'], 
   });
 
   const products = [
@@ -109,6 +109,12 @@ const SFP = () => {
     handleFilterChange(filterType, null);
   };
 
+  const resetFilters = () => {
+    setFilters({ dataRate: null, txMedium: null, fibers: null, optics: null });
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const dataRate = [...new Set(filteredProducts.map((product) => product.dataRate))];
     const txMedium = [...new Set(filteredProducts.map((product) => product.txMedium))];
@@ -127,6 +133,9 @@ const SFP = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -234,7 +243,7 @@ const SFP = () => {
                 <tbody>
                   {filteredProducts.map((product, index) => (
                     <tr key={index}>
-                      <td>{product.itemNumber}</td> {/* Changed from 'product.model' to 'product.itemNumber' */}
+                      <td>{product.itemNumber}</td> 
                       <td>{product.txMedium}</td>
                       <td>{product.dataRate}</td>
                       <td>{product.fibers}</td>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const PoEInjector = () => {
@@ -17,7 +17,6 @@ const PoEInjector = () => {
     inputVoltage: [],
   });
 
-  // Product data array for PoE Injectors
   const products = [
     { model: "CNGE1IPS", dataRate: "GE", ieee: "802.3at", power: "35W", outputVoltage: "56VDC", inputVoltage: "90-240VAC" },
     { model: "CNGE1IPS75AC", dataRate: "GE", ieee: "802.3at", power: "75W", outputVoltage: "56VDC", inputVoltage: "90-240VAC" },
@@ -30,7 +29,6 @@ const PoEInjector = () => {
     { model: "CWPOEIPS-15", dataRate: "FE", ieee: "802.3af", power: "15W", outputVoltage: "48VDC", inputVoltage: "90-240VAC" },
   ];
 
-  // State to track selected filters
   const [filters, setFilters] = useState({
     dataRate: null,
     ieee: null,
@@ -41,7 +39,7 @@ const PoEInjector = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); // Show all products initially
+    setFilteredProducts(products); 
     updateAvailableOptions(products);
   }, []);
 
@@ -53,15 +51,13 @@ const PoEInjector = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ dataRate: null, ieee: null, power: null, outputVoltage: null, inputVoltage: null }); // Reset filters
+    setFilters({ dataRate: null, ieee: null, power: null, outputVoltage: null, inputVoltage: null }); 
   };
 
-  // Handle filter change and update displayed products
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
 
-    // Filter products based on selected filters
     const newFilteredProducts = products.filter((product) =>
       Object.entries(newFilters).every(
         ([key, filterValue]) => !filterValue || product[key] === filterValue
@@ -69,18 +65,21 @@ const PoEInjector = () => {
     );
     setFilteredProducts(newFilteredProducts);
 
-    // Update available options based on the new filtered products
     updateAvailableOptions(newFilteredProducts);
   };
 
-  // Function to clear a specific filter
   const clearFilter = (filterType) => {
     const newFilters = { ...filters, [filterType]: null };
     setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
-  // Update available options based on current filtered products
+  const resetFilters = () => {
+    setFilters({ dataRate: null, ieee: null, power: null, outputVoltage: null, inputVoltage: null});
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const dataRate = [...new Set(filteredProducts.map((product) => product.dataRate))];
     const ieee = [...new Set(filteredProducts.map((product) => product.ieee))];
@@ -100,6 +99,9 @@ const PoEInjector = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -250,11 +252,11 @@ const PoEInjector = () => {
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided {/* Changed to a single button */}
+              To be decided 
             </button>
             {visibleAnswer === 'to-be-decided' && (
               <div className="faq-answer">
-                <p>...</p> {/* Placeholder for the answer */}
+                <p>...</p>
               </div>
             )}
           </div>

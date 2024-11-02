@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const FDX = () => {
@@ -16,7 +16,6 @@ const FDX = () => {
     package: [],
   });
 
-  // Product data array
   const products = [
     { model: "FDX60M2", numOfFibers: 2, fiber: "mm", optics: "ST", package: "ComFit" },
     { model: "FDX60M2M", numOfFibers: 2, fiber: "mm", optics: "ST", package: "Compact" },
@@ -44,7 +43,6 @@ const FDX = () => {
     { model: "FDX60S1BM/SC", numOfFibers: 1, fiber: "sm", optics: "SC", package: "Compact" },
   ];
 
-  // State to track selected filters
   const [filters, setFilters] = useState({
     numOfFibers: null,
     fiber: null,
@@ -54,7 +52,7 @@ const FDX = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); // Show all products initially
+    setFilteredProducts(products); 
     updateAvailableOptions(products);
   }, []);
 
@@ -66,15 +64,13 @@ const FDX = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ numOfFibers: null, fiber: null, optics: null, package: null }); // Reset all filters
+    setFilters({ numOfFibers: null, fiber: null, optics: null, package: null }); 
   };
 
-  // Handle filter change and update displayed products
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
 
-    // Filter products based on selected filters
     const newFilteredProducts = products.filter((product) =>
       Object.entries(newFilters).every(
         ([key, filterValue]) => !filterValue || product[key] === filterValue
@@ -82,18 +78,21 @@ const FDX = () => {
     );
     setFilteredProducts(newFilteredProducts);
 
-    // Update available options based on the new filtered products
     updateAvailableOptions(newFilteredProducts);
   };
 
-  // Function to clear a specific filter
   const clearFilter = (filterType) => {
     const newFilters = { ...filters, [filterType]: null };
     setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
-  // Update available options based on current filtered products
+  const resetFilters = () => {
+    setFilters({ numOfFibers: null, fiber: null, optics: null, package: null});
+    setFilteredProducts(products);
+    updateAvailableOptions(products);
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const numOfFibers = [...new Set(filteredProducts.map((product) => product.numOfFibers))];
     const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
@@ -113,6 +112,9 @@ const FDX = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -239,11 +241,11 @@ const FDX = () => {
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided {/* Changed to a single button */}
+              To be decided 
             </button>
             {visibleAnswer === 'to-be-decided' && (
               <div className="faq-answer">
-                <p>...</p> {/* Placeholder for the answer */}
+                <p>...</p> 
               </div>
             )}
           </div>

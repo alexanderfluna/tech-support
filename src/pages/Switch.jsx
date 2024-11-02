@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const Switch = () => {
@@ -18,11 +18,10 @@ const Switch = () => {
     PoE: []
   });
 
-  // Define custom sort orders for each category
   const sortOrders = {
     Hardened: ["No", "Yes"],
     Managed: ["No", "Yes"],
-    Fiber: ["0", "1 FE", "2 FE", "4 FE", "1 GE", "2 GE", "3 GE", "4 GE", "8 GE", "12 GE", "24 GE", "2 10G"],
+    Fiber: ["0", "1 FE", "2 FE", "4 FE", "1 GE", "2 GE", "3 GE", "4 GE", "8 GE", "12 GE", "24 GE", "2 2.5G + 2 10G"],
     Copper: ["0", "2 FE", "4 FE", "5 FE", "7 FE", "8 FE", "3 GE", "4 GE", "8 GE", "12 GE", "16 GE", "22 GE", "24 GE"],
     Combo: ["0", "1 GE", "2 GE", "4 GE", "16 GE"],
     PoE: ["No", "PoE", "PoEHo"]
@@ -80,6 +79,18 @@ const Switch = () => {
     handleFilterChange(filterType, null);
   };
 
+  const resetFilters = () => {
+    setFilters({ Hardened: null,
+      Managed: null,
+      Fiber: null,
+      Copper: null,
+      Combo: null,
+      PoE: null
+    });
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const options = {
       Hardened: [...new Set(filteredProducts.map((product) => product.Hardened))],
@@ -92,7 +103,6 @@ const Switch = () => {
     setAvailableOptions(options);
   };
 
-  // Function to sort options based on predefined order
   const sortOptions = (filterType, options) => {
     const orderMap = sortOrders[filterType].reduce((acc, val, idx) => {
       acc[val] = idx;
@@ -115,7 +125,7 @@ const Switch = () => {
     {Model: "CWGE26FX2TX24MSPOE", Hardened: "No", Managed: "Yes", Fiber: "2 GE", Copper: "24 GE", Combo: "0", PoE: "PoE"},
     {Model: "CWGE26FX2TX24MSPOE+", Hardened: "No", Managed: "Yes", Fiber: "2 GE", Copper: "24 GE", Combo: "0", PoE: "PoE"},
     {Model: "CWGE28MS", Hardened: "No", Managed: "Yes", Fiber: "24 GE", Copper: "4 GE", Combo: "4 GE", PoE: "No"},
-    {Model: "CNXE2GE2TX8MSPOE", Hardened: "Yes", Managed: "Yes", Fiber: "2 10G", Copper: "8 GE", Combo: "0", PoE: "PoE"},
+    {Model: "CNXE2GE2TX8MSPOE", Hardened: "Yes", Managed: "Yes", Fiber: "2 2.5G + 2 10G", Copper: "8 GE", Combo: "0", PoE: "PoE"},
     {Model: "CNGE2FE4SMS", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 FE", Combo: "0", PoE: "No"},
     {Model: "CNGE2FE4SMSPOE", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
     {Model: "CNGE2FE4SMSPOEHO", Hardened: "Yes", Managed: "No", Fiber: "2 GE", Copper: "4 FE", Combo: "0", PoE: "PoEHo"},
@@ -177,6 +187,9 @@ const Switch = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               {Object.entries(availableOptions).map(([filterType, options]) => (
                 <div key={filterType}>

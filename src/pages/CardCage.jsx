@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const CardCage = () => {
@@ -13,27 +13,25 @@ const CardCage = () => {
     slots: [],
     voltage: [],
     psu: [],
-    power: [] // Added power to available options
+    power: []
   });
 
-  // Product data array with updated voltage and added Output Voltage
   const products = [
     { model: "C1US", slots: 14, power: "70W", voltage: "90-264 VAC", psu: "1 PSU", outputVoltage: "12 VDC" },
     { model: "C2US", slots: 12, power: "70W", voltage: "90-264 VAC", psu: "2 Redundant PSU", outputVoltage: "12 VDC" },
-    { model: "C3US", slots: 3, power: "70W", voltage: "12 VDC", psu: "2 Redundant PSU", outputVoltage: "12 VDC" }, // Added outputVoltage
+    { model: "C3US", slots: 3, power: "70W", voltage: "12 VDC", psu: "2 Redundant PSU", outputVoltage: "12 VDC" },
   ];
 
-  // State to track selected filters
   const [filters, setFilters] = useState({
     slots: null,
     voltage: null,
     psu: null,
-    power: null, // Added power to filters
+    power: null,
   });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); // Show all products initially
+    setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
 
@@ -45,15 +43,13 @@ const CardCage = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ slots: null, voltage: null, psu: null, power: null }); // Reset power filter
+    setFilters({ slots: null, voltage: null, psu: null, power: null });
   };
 
-  // Handle filter change and update displayed products
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
 
-    // Filter products based on selected filters
     const newFilteredProducts = products.filter((product) =>
       Object.entries(newFilters).every(
         ([key, filterValue]) => !filterValue || product[key] === filterValue
@@ -61,36 +57,42 @@ const CardCage = () => {
     );
     setFilteredProducts(newFilteredProducts);
 
-    // Update available options based on the new filtered products
     updateAvailableOptions(newFilteredProducts);
   };
 
-  // Function to clear a specific filter
   const clearFilter = (filterType) => {
     const newFilters = { ...filters, [filterType]: null };
     setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
-  // Update available options based on current filtered products
+  const resetFilters = () => {
+    setFilters({ slots: null, voltage: null, psu: null, power: null });
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const slots = [...new Set(filteredProducts.map((product) => product.slots))];
     const voltage = [...new Set(filteredProducts.map((product) => product.voltage))];
     const psu = [...new Set(filteredProducts.map((product) => product.psu))];
-    const power = [...new Set(filteredProducts.map((product) => product.power))]; // Update power options
-    setAvailableOptions({ slots, voltage, psu, power }); // Include power in available options
+    const power = [...new Set(filteredProducts.map((product) => product.power))];
+    setAvailableOptions({ slots, voltage, psu, power });
   };
 
   return (
     <div>
       <Navbar />
       <main className="faq-container">
-      <h2 className="faq-title">Card Cage</h2>
-      <button className="selector-tool" onClick={toggleTable}>
+        <h2 className="faq-title">Card Cage</h2>
+        <button className="selector-tool" onClick={toggleTable}>
           Selector Tool
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -110,14 +112,14 @@ const CardCage = () => {
                       checked={filters.slots === option}
                       onChange={() => handleFilterChange("slots", option)}
                     />
-                    {option} {/* Display just the number */}
+                    {option}
                   </label>
                 ))}
               </div>
 
               <div>
                 <h3>
-                  Input Voltage {/* Changed from Voltage to Input Voltage */}
+                  Input Voltage
                   {filters.voltage && (
                     <button className="clear-filter" onClick={() => clearFilter("voltage")}>
                       X
@@ -140,7 +142,7 @@ const CardCage = () => {
 
               <div>
                 <h3>
-                  Output Voltage {/* New filter for Output Voltage */}
+                  Output Voltage
                   {filters.outputVoltage && (
                     <button className="clear-filter" onClick={() => clearFilter("outputVoltage")}>
                       X
@@ -151,7 +153,7 @@ const CardCage = () => {
                   <input
                     type="radio"
                     name="outputVoltage"
-                    value="12 VDC" // Fixed value for Output Voltage
+                    value="12 VDC"
                     checked={filters.outputVoltage === "12 VDC"}
                     onChange={() => handleFilterChange("outputVoltage", "12 VDC")}
                   />
@@ -161,7 +163,7 @@ const CardCage = () => {
 
               <div>
                 <h3>
-                  Output Power {/* Changed from Power to Output Power */}
+                  Output Power
                   {filters.power && (
                     <button className="clear-filter" onClick={() => clearFilter("power")}>
                       X
@@ -211,9 +213,9 @@ const CardCage = () => {
                   <tr>
                     <th>Model</th>
                     <th>Slots</th>
-                    <th>Input Voltage</th> {/* Changed from Voltage to Input Voltage */}
-                    <th>Output Voltage</th> {/* New column for Output Voltage */}
-                    <th>Output Power</th> {/* Changed from Power to Output Power */}
+                    <th>Input Voltage</th>
+                    <th>Output Voltage</th>
+                    <th>Output Power</th>
                     <th>PSU</th>
                   </tr>
                 </thead>
@@ -221,10 +223,10 @@ const CardCage = () => {
                   {filteredProducts.map((product, index) => (
                     <tr key={index}>
                       <td>{product.model}</td>
-                      <td>{product.slots}</td> {/* Display just the number */}
-                      <td>{product.voltage}</td> {/* Display updated voltage */}
-                      <td>{product.outputVoltage}</td> {/* Display Output Voltage */}
-                      <td>{product.power}</td> {/* Display Output Power */}
+                      <td>{product.slots}</td>
+                      <td>{product.voltage}</td>
+                      <td>{product.outputVoltage}</td>
+                      <td>{product.power}</td>
                       <td>{product.psu}</td>
                     </tr>
                   ))}
@@ -239,11 +241,11 @@ const CardCage = () => {
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided {/* Changed to a single button */}
+              To be decided
             </button>
             {visibleAnswer === 'to-be-decided' && (
               <div className="faq-answer">
-                <p>...</p> {/* Placeholder for the answer */}
+                <p>...</p>
               </div>
             )}
           </div>

@@ -1,101 +1,98 @@
 import React from 'react';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Footer.css';
 
 const Footer = () => {
   return (
     <footer className='footer'>
-      {/* Top Divider */}
       <img
         src='https://acresecurity.com/hubfs/Website/Global/Images/Dividers/divider-2.svg'
         alt='Wave divider'
         className='full-width-image'
       />
 
-      {/* Available Resources Section */}
-      <div className="footer-section available-resources">
-        <h2>Available Resources</h2>
+      <div className="footer-section">
+        <h2>Available resources</h2>
         <p>
           Explore our collection of thought-provoking blog articles centered around Comnet by Acre. 
           Broaden your perspective with our extensive range of case studies, guides, and datasheets!
         </p>
         <div className="footer-buttons">
-          <button className="primary-btn">Comnet by Acre Articles</button>
-          <button className="secondary-btn">Comnet by Acre Resources</button>
+          <button className="primary-btn" onClick={() => window.location.href = 'https://acresecurity.com/blog/tag/ComNet'}>
+            COMNET BY ACRE ARTICLES
+          </button>
+          <button className="secondary-btn" onClick={() => window.location.href = 'https://acresecurity.com/resources?brands=ComNet%3FhsLang%3Den%2CComNet'}>
+            COMNET BY ACRE RESOURCES
+            </button>
         </div>
       </div>
 
-      {/* Divider */}
       <img
         src='https://acresecurity.com/hubfs/Website/Global/Images/Dividers/divider-1.svg'
         alt='Wave divider'
         className='full-width-image'
       />
 
-      {/* Trust Comnet by Acre Section */}
-      <div className="footer-section trust-comnet-by-acre">
-        <h2>Trust Comnet by Acre</h2>
+      <div className="footer-section">
+        <h2>Trust comnet by acre</h2>
         <p>
           At Comnet by Acre, we understand that a secure, reliable network is more than just the sum of its parts. 
           That's why we provide a complete suite of accessories to complement our portfolio, ensuring a robust and secure network.
         </p>
       </div>
 
-      {/* Divider */}
       <img
         src='https://acresecurity.com/hubfs/Website/Global/Images/Dividers/divider-1.svg'
         alt='Wave divider'
         className='full-width-image'
       />
 
-      {/* Contact Us Section */}
-      <div className="footer-section contact-us">
+      <div className="footer-section">
         <h2>Contact Us</h2>
         <p>
-          Join the numerous businesses who trust Comnet by Acre to secure their future. 
-          Let us guide you in creating a secure tomorrow. With Comnet by Acre, you're investing in peace of mind.
+        Join the numerous businesses who have chosen to secure their future with comnet by acre. 
+        Contact us today and let us guide you in creating a more secure tomorrow. With comnet by 
+        acre you're not just investing in a product; you're investing in peace of mind. 
+        Secure your future with acre security today.
         </p>
-        <button className="primary-btn">Get in Touch Today</button>
+        <div className="footer-buttons">
+          <button className="primary-btn">GET IN TOUCH TODAY</button>
+        </div>
       </div>
 
-      {/* Divider */}
       <img
         src='https://acresecurity.com/hubfs/Website/Global/Images/Dividers/divider-1.svg'
         alt='Wave divider'
         className='full-width-image'
       />
 
-      {/* Logo */}
-      <div className="footer-logo">
-        <img
-          className='logo-img logo-light-header'
-          src='https://acresecurity.com/hubfs/Website/Global/Logos/COMNET%20by%20acre-01.svg'
-          alt='Comnet by Acre Logo'
-          loading='eager'
-          width='165'
-          height='60'
-        />
+      <img
+            className='logo-img'
+            src='https://acresecurity.com/hubfs/Website/Global/Logos/COMNET%20by%20acre-01.svg'
+            alt='COMNET by acre-01'
+            loading='eager'
+            onClick={() => window.location.href = 'https://acresecurity.com/'}
+      />
+
+      <div className="stay-in-the-know">
+        <div className="left-div">
+          <h3>Stay in the Know</h3>
+          <p>Enter your email, and we'll keep you updated with relevant Acre news and articles.</p>
+        </div>
+        <div className="right-div">
+          <h3>Email address *</h3>
+          <input
+            className="email-input"
+            type="email"
+            placeholder="Enter email address"
+          />
+          <p className="privacy-note">
+            For information on how to unsubscribe, as well as our privacy practices, 
+            check out our Privacy Policy.
+          </p>
+        </div>
       </div>
 
-      {/* Stay in the Know Section */}
-      <div className="footer-section stay-in-the-know">
-        <h2>Stay in the Know</h2>
-        <p>
-          Enter your email, and we'll keep you updated with relevant Acre news and articles.
-        </p>
-        <h3>Email Address*</h3>
-        <input
-          className="email-input"
-          type="email"
-          placeholder="Enter email address"
-        />
-        <p className="privacy-note">
-          For information on how to unsubscribe, as well as our privacy practices, 
-          check out our Privacy Policy.
-        </p>
-      </div>
-
-      {/* Footer Links */}
       <div className="real-footer">
         <div className="footer-column">
           <h3>Solutions</h3>
@@ -127,7 +124,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Footer Bottom */}
       <div className="footer-bottom">
         <p>Privacy Policy</p>
         <p>© 2024 Acre Security</p>

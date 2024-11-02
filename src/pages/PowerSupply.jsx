@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const PowerSupply = () => {
@@ -14,7 +14,6 @@ const PowerSupply = () => {
     watts: [],
   });
 
-  // Product data array for Power Supplies
   const products = [
     { model: "PS-AMR1-12", voltage: "12VDC", watts: "10W" },
     { model: "PS-AMR5-12", voltage: "12VDC", watts: "72W" },
@@ -32,7 +31,6 @@ const PowerSupply = () => {
     { model: "PS48VDC-10A", voltage: "48VDC", watts: "480W" },
   ];
 
-  // State to track selected filters
   const [filters, setFilters] = useState({
     voltage: null,
     watts: null,
@@ -40,7 +38,7 @@ const PowerSupply = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); // Show all products initially
+    setFilteredProducts(products); 
     updateAvailableOptions(products);
   }, []);
 
@@ -52,15 +50,13 @@ const PowerSupply = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ voltage: null, watts: null }); // Reset filters
+    setFilters({ voltage: null, watts: null });
   };
 
-  // Handle filter change and update displayed products
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
 
-    // Filter products based on selected filters
     const newFilteredProducts = products.filter((product) =>
       Object.entries(newFilters).every(
         ([key, filterValue]) => !filterValue || product[key] === filterValue
@@ -68,18 +64,21 @@ const PowerSupply = () => {
     );
     setFilteredProducts(newFilteredProducts);
 
-    // Update available options based on the new filtered products
     updateAvailableOptions(newFilteredProducts);
   };
 
-  // Function to clear a specific filter
   const clearFilter = (filterType) => {
     const newFilters = { ...filters, [filterType]: null };
     setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
-  // Update available options based on current filtered products
+  const resetFilters = () => {
+    setFilters({ voltage: null, watts: null});
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const voltage = [...new Set(filteredProducts.map((product) => product.voltage))].sort((a, b) => parseInt(a) - parseInt(b));
     const watts = [...new Set(filteredProducts.map((product) => product.watts))].sort((a, b) => parseInt(a) - parseInt(b));
@@ -96,6 +95,9 @@ const PowerSupply = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -171,11 +173,11 @@ const PowerSupply = () => {
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided {/* Changed to a single button */}
+              To be decided 
             </button>
             {visibleAnswer === 'to-be-decided' && (
               <div className="faq-answer">
-                <p>...</p> {/* Placeholder for the answer */}
+                <p>...</p> 
               </div>
             )}
           </div>

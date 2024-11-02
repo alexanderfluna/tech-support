@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const Wireless = () => {
@@ -16,7 +16,6 @@ const Wireless = () => {
     continent: []
   });
 
-  // Product data array based on the provided details
   const products = [
     { model: "NW1", quantity: "Single", size: "Full", beamwidth: "17°", continent: "North America" },
     { model: "NW1/M", quantity: "Single", size: "Mini", beamwidth: "30°", continent: "North America" },
@@ -33,7 +32,6 @@ const Wireless = () => {
     { model: "NWK11/M", quantity: "Kit", size: "Mini", beamwidth: "30°", continent: "North America" },
   ];
 
-  // State to track selected filters
   const [filters, setFilters] = useState({
     quantity: null,
     size: null,
@@ -43,7 +41,7 @@ const Wireless = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); // Show all products initially
+    setFilteredProducts(products); 
     updateAvailableOptions(products);
   }, []);
 
@@ -55,15 +53,13 @@ const Wireless = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ quantity: null, size: null, beamwidth: null, continent: null }); // Reset filters
+    setFilters({ quantity: null, size: null, beamwidth: null, continent: null }); 
   };
 
-  // Handle filter change and update displayed products
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
 
-    // Filter products based on selected filters
     const newFilteredProducts = products.filter((product) =>
       Object.entries(newFilters).every(
         ([key, filterValue]) => !filterValue || product[key] === filterValue
@@ -71,18 +67,21 @@ const Wireless = () => {
     );
     setFilteredProducts(newFilteredProducts);
 
-    // Update available options based on the new filtered products
     updateAvailableOptions(newFilteredProducts);
   };
 
-  // Function to clear a specific filter
   const clearFilter = (filterType) => {
     const newFilters = { ...filters, [filterType]: null };
     setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
-  // Update available options based on current filtered products
+  const resetFilters = () => {
+    setFilters({ quantity: null, size: null, beamwidth: null, continent: null });
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const quantity = [...new Set(filteredProducts.map((product) => product.quantity))];
     const size = [...new Set(filteredProducts.map((product) => product.size))];
@@ -101,6 +100,9 @@ const Wireless = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -223,7 +225,6 @@ const Wireless = () => {
 
         <h1 className="faq-title">FAQ</h1>
         <div className="faq-list">
-          {/* You can replace this section with your specific FAQ questions */}
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('no-power')}>
               No Power

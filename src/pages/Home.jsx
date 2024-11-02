@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -16,10 +16,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* Main Content */}
       <main className='main-content'>
-        
-
         <div className="middle-section"> 
           <div className="middle-section-left">
             <h1>Frequently Asked Questions</h1>
@@ -39,7 +36,6 @@ const Home = () => {
           </div> 
         </div>
 
-        {/* Product Buttons */}
         <div className='button-container'>
           {[
             'Switch',
@@ -65,7 +61,6 @@ const Home = () => {
           ))}
         </div>
       </main>
-
       <Footer />
     </div>
   );

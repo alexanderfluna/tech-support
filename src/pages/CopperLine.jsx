@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import '../styles/style.css';
+import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const CopperLine = () => {
@@ -18,7 +18,6 @@ const CopperLine = () => {
     poEInjection: []
   });
 
-  // Original product data array
   const products = [
     { partNumber: "CLFE1EOC", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "Coax", poEPassthrough: "Yes", poEInjection: "No" },
     { partNumber: "CLFE1EOU", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "UTP", poEPassthrough: "Yes", poEInjection: "No" },
@@ -28,8 +27,6 @@ const CopperLine = () => {
     { partNumber: "CLFE8EOU", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "UTP", poEPassthrough: "Yes", poEInjection: "No" },
     { partNumber: "CLFE16EOC", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "Coax", poEPassthrough: "Yes", poEInjection: "No" },
     { partNumber: "CLFE16EOU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP", poEPassthrough: "Yes", poEInjection: "No" },
-    
-    // New entries
     { partNumber: "CLLFE1POEC", position: "Local", channels: 1, formFactor: "Small Size", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
     { partNumber: "CLRFE1POEC", position: "Remote", channels: 1, formFactor: "Small Size", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
     { partNumber: "CLLFE1POEU", position: "Local", channels: 1, formFactor: "Small Size", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
@@ -44,7 +41,6 @@ const CopperLine = () => {
     { partNumber: "CLLFE16POEU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
   ];
 
-  // State to track selected filters
   const [filters, setFilters] = useState({
     position: null,
     channels: null,
@@ -56,7 +52,7 @@ const CopperLine = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredProducts(products); // Show all products initially
+    setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
 
@@ -68,15 +64,13 @@ const CopperLine = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ position: null, channels: null, formFactor: null, cable: null, poEPassthrough: null, poEInjection: null }); // Reset all filters
+    setFilters({ position: null, channels: null, formFactor: null, cable: null, poEPassthrough: null, poEInjection: null }); 
   };
 
-  // Handle filter change and update displayed products
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
 
-    // Filter products based on selected filters
     const newFilteredProducts = products.filter((product) =>
       Object.entries(newFilters).every(
         ([key, filterValue]) => !filterValue || product[key] === filterValue
@@ -84,18 +78,21 @@ const CopperLine = () => {
     );
     setFilteredProducts(newFilteredProducts);
 
-    // Update available options based on the new filtered products
     updateAvailableOptions(newFilteredProducts);
   };
 
-  // Function to clear a specific filter
   const clearFilter = (filterType) => {
     const newFilters = { ...filters, [filterType]: null };
     setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
-  // Update available options based on current filtered products
+  const resetFilters = () => {
+    setFilters({ position: null, channels: null, formFactor: null, cable: null, poEPassthrough: null, poEInjection: null});
+    setFilteredProducts(products); 
+    updateAvailableOptions(products); 
+  };
+
   const updateAvailableOptions = (filteredProducts) => {
     const position = [...new Set(filteredProducts.map((product) => product.position))];
     const channels = [...new Set(filteredProducts.map((product) => product.channels))];
@@ -117,6 +114,9 @@ const CopperLine = () => {
         </button>
         {showTable && (
           <>
+            <button className="reset-button" onClick={resetFilters}>
+              Reset
+            </button>
             <div className="filter-options">
               <div>
                 <h3>
@@ -293,11 +293,11 @@ const CopperLine = () => {
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided {/* Changed to a single button */}
+              To be decided 
             </button>
             {visibleAnswer === 'to-be-decided' && (
               <div className="faq-answer">
-                <p>...</p> {/* Placeholder for the answer */}
+                <p>...</p> 
               </div>
             )}
           </div>

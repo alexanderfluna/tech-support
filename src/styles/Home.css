@@ -1,4 +1,3 @@
-/* Main Content Styles */
 .main-content {
   padding: 50px;
 }
@@ -16,7 +15,6 @@
 
 .middle-section {
   display: flex;
-  justify-content: space-between;
 }
 
 .middle-section-left {
@@ -35,7 +33,6 @@
   max-width: 800px;
 }
 
-/* Media query for smaller screens */
 @media (max-width: 1000px) {
   .middle-section {
     flex-direction: column;
@@ -55,7 +52,6 @@
   }
 }
 
-/* Product Button Styles */
 .button-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
