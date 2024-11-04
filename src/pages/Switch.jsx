@@ -181,7 +181,7 @@ const Switch = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Switch</h2>
+        <h1 className="faq-title">Switch</h1>
         <button className="selector-tool" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -247,15 +247,15 @@ const Switch = () => {
           </>
         )}
 
-        <h1 className="faq-title">FAQ</h1>
+        <p className="faq-title">Troubleshooting Common Issues</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided
+            <button className="faq-question" onClick={() => toggleAnswer('no-power')}>
+              No Power
             </button>
-            {visibleAnswer === 'to-be-decided' && (
+            {visibleAnswer === 'no-power' && (
               <div className="faq-answer">
-                <p>...</p>
+                <li>Make sure that ...</li>
               </div>
             )}
           </div>

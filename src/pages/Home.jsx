@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -13,13 +13,17 @@ const Home = () => {
     navigate(`/${formattedText}`);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <Navbar />
       <main className='main-content'>
         <div className="middle-section"> 
           <div className="middle-section-left">
-            <h1>Frequently Asked Questions</h1>
+            <h1>ComNet Technical Support</h1>
             <p>
               Thank you for choosing ComNet by acre.
             </p>
