@@ -76,7 +76,7 @@
   margin: 3px 0;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1350px) {
   .nav-middle,
   .nav-right {
     display: none;

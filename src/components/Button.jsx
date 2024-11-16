@@ -6,7 +6,7 @@ const Button = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/');
+    navigate('/tech-support');
   };
 
   return (
