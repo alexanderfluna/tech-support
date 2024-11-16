@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
+import BackToTop from '../components/BackToTop';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -455,6 +456,7 @@ const MediaConverter = () => {
         </div>
       </main>
       <Button />
+      <BackToTop />
       <Footer />
     </div>
   );

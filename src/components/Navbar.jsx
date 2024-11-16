@@ -24,18 +24,30 @@ const Navbar = () => {
         <div className={`nav-middle ${isMenuOpen ? 'open' : ''}`}>
           <div class="nav-middle-item">
             <a href='#'>comnet Solutions</a>
+            <svg class="dropdown-chevron ml-3" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1.5L6 6.5L1 1.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
           </div>
           <div class="nav-middle-item">
             <a href='#'>Resources</a>
+            <svg class="dropdown-chevron ml-3" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1.5L6 6.5L1 1.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
           </div>
           <div class="nav-middle-item">
             <a href='#'>About</a>
+            <svg class="dropdown-chevron ml-3" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1.5L6 6.5L1 1.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
           </div>
           <div class="nav-middle-item">
             <a href='https://acresecurity.com/partner-hub?types=ComNet'>Partner Hub</a>
           </div>
           <div class="nav-middle-item">
             <a href='#'>Products</a>
+            <svg class="dropdown-chevron ml-3" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1.5L6 6.5L1 1.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
           </div>
         </div>
         <div className='nav-right'>
