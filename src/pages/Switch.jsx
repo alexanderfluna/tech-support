@@ -251,12 +251,50 @@ const Switch = () => {
         <p className="faq-title">Troubleshooting Common Issues</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-power')}>
-              No Power
-            </button>
-            {visibleAnswer === 'no-power' && (
+            <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> No Power Light</button>
+            {visibleAnswer === 'no-power-light' && (
               <div className="faq-answer">
-                <li>Make sure that ...</li>
+                <p>1. Enter the device part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a>.</p>
+                <p>2. Open the device's data sheet.</p>
+                <p>3. Find the required input voltage for the device (e.g. 90-240VAC, 8-24VDC, 48-56VDC, 24VAC)</p>
+                <p>4. Verify the power source is supplying the necessary voltage.</p>
+                <li>Using a voltmeter:</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
+            {visibleAnswer === 'no-link-light' && (
+              <div className="faq-answer">
+                <li>No link light</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> No PoE </button>
+            {visibleAnswer === 'no-poe' && (
+              <div className="faq-answer">
+                <li>No PoE</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> No Communication </button>
+            {visibleAnswer === 'no-communication' && (
+              <div className="faq-answer">
+                <li>No communication</li>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <p className="faq-title">Relevant Information</p>
+        <div className="faq-list">
+        <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('relevant-information')}> Relevant Information </button>
+            {visibleAnswer === 'relevant-information' && (
+              <div className="faq-answer">
+                <li>Relevant information.</li>
               </div>
             )}
           </div>

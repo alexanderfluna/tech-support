@@ -8,6 +8,11 @@
   text-align: center;
 }
 
+.faq-item {
+  text-align: left;
+  font-size: 20px;
+}
+
 .selector-tool {
   display: block;
   width: 100%;
