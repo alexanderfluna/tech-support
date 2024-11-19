@@ -307,7 +307,7 @@ const Switch = () => {
                 <p>1. Look up the data sheet of the device(s) powered by PoE and the data sheet of the device under test.</p>
                 <li>Confirm that the powered device is compatible with the PoE standard of the device under test (i.e. 802.3af, 802.3at, 802.3bt).</li>
                 <p>2. Confirm the power supply produces enough wattage for the device(s) powered by PoE and the device under test.</p>
-                <p>3. Use a voltmeter to verify the power supply's 48VDC-56VDC voltage output.</p>
+                <p>3. Use a voltmeter to verify the power supply's is producing 48-56VDC.</p>
                 <li>Connect the red probe to the voltmeter's positive terminal and the black probe to the negative (or ground) terminal.</li>
                 <li>Set the voltmeter to DC voltage mode.</li>
                 <li>Touch the the red probe to the positive terminal and the black probe to the negative terminal.</li>
@@ -355,12 +355,9 @@ const Switch = () => {
             <button className="faq-question" onClick={() => toggleAnswer('relevant-information')}> Relevant Information </button>
             {visibleAnswer === 'relevant-information' && (
               <div className="faq-answer">
-                <p>Default IP:</p>
-                <li>192.168.10.1</li>
-                <p>Default username:</p>
-                <li>admin</li>
-                <p>Default password:</p>
-                <li>admin</li>
+                <p>Default IP: 192.168.10.1</p>
+                <p>Default username: admin</p>
+                <p>Default password: admin</p>
                 <p>Auto MDI/MDIX (Medium Dependent Interface / Medium Dependent Interface Crossover)</p>
                 <li>Automatically detects the type of Ethernet cable being used (straight-through vs. cross over)</li>
               </div>

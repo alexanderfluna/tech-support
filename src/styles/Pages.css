@@ -96,6 +96,10 @@
   padding: 10px;
 }
 
+.faq-answer p {
+  font-weight: bold;
+}
+
 .filter-options {
   display: flex;
   justify-content: space-around;
