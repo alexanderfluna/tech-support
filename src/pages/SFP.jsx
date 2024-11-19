@@ -257,16 +257,38 @@ const SFP = () => {
           </>
         )}
 
-        <h1 className="faq-title">FAQ</h1>
-
+        <p className="faq-title">Relevant Information</p>
         <div className="faq-list">
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided
-            </button>
-            {visibleAnswer === 'to-be-decided' && (
+        <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('fiber')}> Fiber </button>
+            {visibleAnswer === 'fiber' && (
               <div className="faq-answer">
-                <p>...</p>
+                <p>Core and Cladding</p>
+                <li>Glass material: immune to EMI (electromagnetic interference)</li>
+                <p>Wavelengths</p>
+                <li>850nm, 1310nm, 1550nm</li>
+                <p>Spectral Width</p>
+                <li>Margin of error for the wavelength.</li>
+                <p>dBm (decibel-milliwatts)</p>
+                <li>A unit of measurement used to express the power level of a signal.</li>
+                <li>0 dBm = 1 mW (1000 microwatts) of power</li>
+                <li>A decrease of 3 dBm halves the power output (i.e. -3dbm = 500 microwatts of power).</li>
+                <p>Wavelength Divsion Multiplexing (WDM)</p>
+                <li>A technology that enables simultaneous transmission of multiple signals over a single optical fiber by user different wavelengths of light</li>
+                <p>Multimode Fiber</p>
+                <li>Covers shorter distances than single mode (i.e. 2 miles at 100mbps)</li>
+                <li>Modal Dispersion: ...</li>
+                <li>OM1 (62.5/125)</li>
+                <li>OM2 or Greater (50/125)</li>
+                <p>Singlemode Fiber</p>
+                <li>Chromatic Dispersion: ...</li>
+                <li>OS1</li>
+                <li>OS2</li>
+                <p>4 Types of Lasers</p>
+                <li>LED (Light Emitting Diode)</li>
+                <li>VCSL (Vertical-Cavity Surface-Emitting Laser)</li>
+                <li>FP (Fabry-Pérot)</li>
+                <li>DFB (Distributed Feedback)</li>       
               </div>
             )}
           </div>

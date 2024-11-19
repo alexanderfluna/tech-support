@@ -3,6 +3,9 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
+import NoPowerLight from '../relevant-information/NoPowerLight';
+import Fiber from '../relevant-information/Fiber';
+import PowerOverEthernet from '../relevant-information/PowerOverEthernet';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -250,24 +253,7 @@ const Switch = () => {
 
         <p className="faq-title">Troubleshooting Common Issues</p>
         <div className="faq-list">
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> No Power Light</button>
-            {visibleAnswer === 'no-power-light' && (
-              <div className="faq-answer">
-                <p>1. Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a>.</p>
-                <p>2. Open the device's data sheet and locate its required input voltage (e.g. 8-24VDC, 48-56VDC, 12-57VDC, 24VAC).</p>
-                <p>3. Use a voltmeter to verify the power supply's polarity and voltage output.</p>
-                <li>Connect the red probe to the voltmeter's positive terminal and the black probe to the negative (or ground) terminal.</li>
-                <li>Set the voltmeter to DC voltage mode.</li>
-                <li>Touch the the red probe to the suspected positive terminal and the black probe to the suspected negative terminal.</li>
-                <li>A positive voltage reading indicates correct polarity; a negative reading indicates reversed polarity.</li>
-                <li>Ensure the power supply delivers the required input voltage while connected to the device.</li>
-                <p>4. If the power supply fails to provide the required voltage while connected:</p>
-                <li>Test that the power supply is functional by using it to power another device.</li>
-                <li>Switch to a different power source and repeat step 3.</li>
-              </div>
-            )}
-          </div>
+          {<NoPowerLight />}
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
             {visibleAnswer === 'no-link-light' && (
@@ -352,8 +338,8 @@ const Switch = () => {
         <p className="faq-title">Relevant Information</p>
         <div className="faq-list">
         <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('relevant-information')}> Relevant Information </button>
-            {visibleAnswer === 'relevant-information' && (
+            <button className="faq-question" onClick={() => toggleAnswer('relevant-switch-information')}> Relevant Switch Information </button>
+            {visibleAnswer === 'relevant-switch-information' && (
               <div className="faq-answer">
                 <p>Default IP: 192.168.10.1</p>
                 <p>Default username: admin</p>
@@ -363,6 +349,8 @@ const Switch = () => {
               </div>
             )}
           </div>
+          <Fiber />
+          <PowerOverEthernet />
         </div>
       </main>
       <Button />
