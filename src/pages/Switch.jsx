@@ -254,11 +254,17 @@ const Switch = () => {
             <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> No Power Light</button>
             {visibleAnswer === 'no-power-light' && (
               <div className="faq-answer">
-                <p>1. Enter the device part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a>.</p>
-                <p>2. Open the device's data sheet.</p>
-                <p>3. Find the required input voltage for the device (e.g. 90-240VAC, 8-24VDC, 48-56VDC, 24VAC)</p>
-                <p>4. Verify the power source is supplying the necessary voltage.</p>
-                <li>Using a voltmeter:</li>
+                <p>1. Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a>.</p>
+                <p>2. Open the device's data sheet and locate its required input voltage (e.g. 8-24VDC, 48-56VDC, 12-57VDC, 24VAC).</p>
+                <p>3. Use a voltmeter to verify the power supply's polarity and voltage output.</p>
+                <li>Connect the red probe to the voltmeter's positive terminal and the black probe to the negative (or ground) terminal.</li>
+                <li>Set the voltmeter to DC voltage mode.</li>
+                <li>Touch the the red probe to the suspected positive terminal and the black probe to the suspected negative terminal.</li>
+                <li>A positive voltage reading indicates correct polarity; a negative reading indicates reversed polarity.</li>
+                <li>Ensure the power supply delivers the required input voltage while connected to the device.</li>
+                <p>4. If the power supply fails to provide the required voltage while connected:</p>
+                <li>Test that the power supply is functional by using it to power another device.</li>
+                <li>Switch to a different power source and repeat step 3.</li>
               </div>
             )}
           </div>
@@ -266,7 +272,31 @@ const Switch = () => {
             <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
             {visibleAnswer === 'no-link-light' && (
               <div className="faq-answer">
-                <li>No link light</li>
+                <p>1. For Devices with Built-in Optics:</p>
+                <li>Confirm that the fiber in use is compatible with the device::</li>
+                <li>Fiber Type: Multimode vs. Single Mode</li>
+                <li>Fiber Strand Count: Single strand vs. Dual strand</li>
+                <li>Connector Type: ST connector(s) vs. SC connector(s)</li>
+                <p>2. For Devices Requring SFPs:</p>
+                <li>Confirm that the SFPs are compatible with both the device and the fiber in use:</li>
+                <li>Data Rate: Fast Ethernet vs. Gigabit Ethernet</li>
+                <li>Fiber Type: Multimode vs Single mode</li>
+                <li>Fiber Strand Count: Single strand vs. Dual strand</li>
+                <li>Connector Type: LC connector(s) vs. SC connector(s)</li>
+                <p>3. Test the Fiber with Another Device.</p>
+                <li>Use the fiber with another device to determine if a link light is achieved.</li>
+                <p>4. Swap out the device and SFPs (if applicable) on either end with an identical.</p>
+                <li>This will determine which device on either end is failing.</li>
+                <p>5. Fiber Optic Cleaning Kit:</p>
+                <li>Use the lint-free wipes and cleaning pen from the optic cleaning kit to clean fiber connectors and the SFP cage gently. Ensure no debris remains before reconnecting.</li>
+                <p>6. Optical Power Meter:</p>
+                <li>Connect the power meter to the fiber cable and check the dBm reading. Compare this to the device’s recommended signal strength (available in the datasheet) to confirm it is within the expected range.</li>
+                <p>7. Optical Time-Domain Reflectometer (OTDR)</p>
+                <li>Connect the OTDR to one end of the fiber cable. The OTDR will send light pulses through the fiber to analyze reflections and signal loss, producing a graph with detailed information on reflections, signal loss, and potential faults.</li>
+                <li>Note the distance to any reflections or faults as shown on the OTDR report.</li>
+                <p>8. Visual Fault Locator:</p>
+                <li>Connect the visual fault locator to the fiber cable and check for any areas where red light escapes or dims.</li>
+                <li>Inspect any detected light leaks for possible damage or poor connections.</li>
               </div>
             )}
           </div>
@@ -274,7 +304,19 @@ const Switch = () => {
             <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> No PoE </button>
             {visibleAnswer === 'no-poe' && (
               <div className="faq-answer">
-                <li>No PoE</li>
+                <p>1. Look up the data sheet of the device(s) powered by PoE and the data sheet of the device under test.</p>
+                <li>Confirm that the powered device is compatible with the PoE standard of the device under test (i.e. 802.3af, 802.3at, 802.3bt).</li>
+                <p>2. Confirm the power supply produces enough wattage for the device(s) powered by PoE and the device under test.</p>
+                <p>3. Use a voltmeter to verify the power supply's 48VDC-56VDC voltage output.</p>
+                <li>Connect the red probe to the voltmeter's positive terminal and the black probe to the negative (or ground) terminal.</li>
+                <li>Set the voltmeter to DC voltage mode.</li>
+                <li>Touch the the red probe to the positive terminal and the black probe to the negative terminal.</li>
+                <li>Ensure the power supply delivers the required 48VDC-56VDC input voltage while connected to the device.</li>
+                <p>3. If the power supply fails to provide the required voltage while connected:</p>
+                <li>Test that the power supply is functional by using it to power another device.</li>
+                <li>Switch to a different power source and repeat steps 2 and 3</li>
+                <p>4. Test that the powered device gets powered on via another PoE source.</p>
+                <p>5. Replace the Ethernet cable.</p>
               </div>
             )}
           </div>
@@ -282,7 +324,26 @@ const Switch = () => {
             <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> No Communication </button>
             {visibleAnswer === 'no-communication' && (
               <div className="faq-answer">
-                <li>No communication</li>
+                <p>1. Confirm the switch powers on.</p>
+                <p>2. Verify access to the switch's GUI.</p>
+                <p>3. Identify the current firmware version of the switch.</p>
+                <li>Ensure all switches of the same model within the network have matching firmware versions.</li>
+                <p>4. Factory default the switch to determine if the issue persists.</p>
+                <p>5. Assess whether the lack of communication affects all ports.</p>
+                <p>6. Determine if communication is restored automatically or reuqires a power cycle.</p>
+                <p>7. Evaluate whether the switch locks up periodically (e.g. hourly, every two hours, daily, etc.)</p>
+                <p>8. Isolate the switch outside of the network to determine if the issue persists.</p>
+                <p>9. Replace the switch with a known-working one to determine if the issue persists.</p>
+                <p>10. Note the network topology:</p>
+                <li>Ring/Mesh Topology: Enable RSTP on all devices. (ADD PRIORITIES)</li>
+                <li>Other Topologies: Disable RSTP on all devices.</li>
+                <p>11. Confirm if there are VLANs in the network</p>
+                <li>Ensure consistent VLAN configurations across all switches.</li>
+                <p>12. Identify the connected devices:</p>
+                <li>For multicast devices (e.g. IP cameras, intercoms, phones):</li>
+                <li>Enable IGMP snooping on the switch to prevent port flooding from multicast packets.</li>
+                <li>Enable IGMP querying at the network's head end.</li>
+                <p>13. Replace Ethernet cables to rule out cabling issues.</p>
               </div>
             )}
           </div>
@@ -294,7 +355,14 @@ const Switch = () => {
             <button className="faq-question" onClick={() => toggleAnswer('relevant-information')}> Relevant Information </button>
             {visibleAnswer === 'relevant-information' && (
               <div className="faq-answer">
-                <li>Relevant information.</li>
+                <p>Default IP:</p>
+                <li>192.168.10.1</li>
+                <p>Default username:</p>
+                <li>admin</li>
+                <p>Default password:</p>
+                <li>admin</li>
+                <p>Auto MDI/MDIX (Medium Dependent Interface / Medium Dependent Interface Crossover)</p>
+                <li>Automatically detects the type of Ethernet cable being used (straight-through vs. cross over)</li>
               </div>
             )}
           </div>

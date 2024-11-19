@@ -11,7 +11,7 @@ const Home = () => {
 
   const handleButtonClick = (buttonText) => {
     const formattedText = buttonText.toLowerCase().replace(/\s+/g, '-');
-    navigate(`/${formattedText}`);
+    navigate(`/tech-support/${formattedText}`);
   };
 
   useEffect(() => {

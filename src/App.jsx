@@ -19,18 +19,18 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/tech-support" element={<Home />} />
-        <Route path="/card-cage" element={<CardCage />} />
-        <Route path="/copper-line" element={<CopperLine />} />
-        <Route path="/fdc" element={<FDC />} />
-        <Route path="/fdx" element={<FDX />} />
-        <Route path="/fdw" element={<FDW />} />
-        <Route path="/media-converter" element={<MediaConverter />} />
-        <Route path="/poe-injector" element={<PoEInjector />} />
-        <Route path="/power-supply" element={<PowerSupply />} />
-        <Route path="/razberi" element={<Razberi />} />
-        <Route path="/sfp" element={<SFP />} />
-        <Route path="/switch" element={<Switch />} />
-        <Route path="/wireless" element={<Wireless />} />
+        <Route path="/tech-support/card-cage" element={<CardCage />} />
+        <Route path="/tech-support/copper-line" element={<CopperLine />} />
+        <Route path="/tech-support/fdc" element={<FDC />} />
+        <Route path="/tech-support/fdx" element={<FDX />} />
+        <Route path="/tech-support/fdw" element={<FDW />} />
+        <Route path="/tech-support/media-converter" element={<MediaConverter />} />
+        <Route path="/tech-support/poe-injector" element={<PoEInjector />} />
+        <Route path="/tech-support/power-supply" element={<PowerSupply />} />
+        <Route path="/tech-support/razberi" element={<Razberi />} />
+        <Route path="/tech-support/sfp" element={<SFP />} />
+        <Route path="/tech-support/switch" element={<Switch />} />
+        <Route path="/tech-support/wireless" element={<Wireless />} />
       </Routes>
     </Router>
   );

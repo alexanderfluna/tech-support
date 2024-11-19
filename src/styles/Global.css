@@ -17,3 +17,12 @@ body {
 main {
   flex: 1;
 }
+
+p {
+  padding-bottom: 5px;
+}
+
+li {
+  padding-bottom: 5px;
+  padding-left: 25px;
+}
