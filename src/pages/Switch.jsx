@@ -316,14 +316,14 @@ const Switch = () => {
                 <li>Ensure all switches of the same model within the network have matching firmware versions.</li>
                 <p>4. Factory default the switch to determine if the issue persists.</p>
                 <p>5. Assess whether the lack of communication affects all ports.</p>
-                <p>6. Determine if communication is restored automatically or reuqires a power cycle.</p>
+                <p>6. Determine if communication is restored automatically or requires a power cycle.</p>
                 <p>7. Evaluate whether the switch locks up periodically (e.g. hourly, every two hours, daily, etc.)</p>
                 <p>8. Isolate the switch outside of the network to determine if the issue persists.</p>
                 <p>9. Replace the switch with a known-working one to determine if the issue persists.</p>
                 <p>10. Note the network topology:</p>
                 <li>Ring/Mesh Topology: Enable RSTP on all devices. (ADD PRIORITIES)</li>
                 <li>Other Topologies: Disable RSTP on all devices.</li>
-                <p>11. Confirm if there are VLANs in the network</p>
+                <p>11. Confirm if there are VLANs in the network.</p>
                 <li>Ensure consistent VLAN configurations across all switches.</li>
                 <p>12. Identify the connected devices:</p>
                 <li>For multicast devices (e.g. IP cameras, intercoms, phones):</li>
