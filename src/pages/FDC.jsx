@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
+import NoPowerLight from '../relevant-information/NoPowerLight';
+import Fiber from '../relevant-information/Fiber';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -279,19 +281,79 @@ const FDC = () => {
           </>
         )}
 
-        <h1 className="faq-title">FAQ</h1>
-
+        <p className="faq-title">Troubleshooting Common Issues</p>
         <div className="faq-list">
+          {<NoPowerLight />}
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided 
-            </button>
-            {visibleAnswer === 'to-be-decided' && (
+            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
+            {visibleAnswer === 'no-link-light' && (
               <div className="faq-answer">
-                <p>...</p> 
+                <p>1. Confirm that the fiber in use is compatible with the device:</p>
+                <li>Fiber Type: Multimode vs. Single Mode</li>
+                <li>Fiber Strand Count: Single strand vs. Dual strand</li>
+                <li>Connector Type: ST connector(s) vs. SC connector(s)</li>
+                <p>2. Test the Fiber with Another Device.</p>
+                <li>Use the fiber with another device to determine if a link light is achieved.</li>
+                <p>3. Swap out the device on either end with an identical.</p>
+                <li>This will determine which device on either end is failing.</li>
+                <p>4. Fiber Optic Cleaning Kit:</p>
+                <li>Use the lint-free wipes and cleaning pen from the optic cleaning kit to clean fiber connectors and the SFP cage gently. Ensure no debris remains before reconnecting.</li>
+                <p>5. Optical Power Meter:</p>
+                <li>Connect the power meter to the fiber cable and check the dBm reading. Compare this to the device’s recommended signal strength (available in the datasheet) to confirm it is within the expected range.</li>
+                <p>6. Optical Time-Domain Reflectometer (OTDR)</p>
+                <li>Connect the OTDR to one end of the fiber cable. The OTDR will send light pulses through the fiber to analyze reflections and signal loss, producing a graph with detailed information on reflections, signal loss, and potential faults.</li>
+                <li>Note the distance to any reflections or faults as shown on the OTDR report.</li>
+                <p>7. Visual Fault Locator:</p>
+                <li>Connect the visual fault locator to the fiber cable and check for any areas where red light escapes or dims.</li>
+                <li>Inspect any detected light leaks for possible damage or poor connections.</li>
               </div>
             )}
           </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('no-contacts')}> No Contacts </button>
+            {visibleAnswer === 'no-contacts' && (
+              <div className="faq-answer">
+                <p>1. Ensure the wires are connected properly.</p>
+                <li>FDC10 and FDC8/FDC80</li>
+                <img src="photos/FDC/fdc10.jpg" style={{"padding-right": "100px"}}></img>
+                <img src="photos/FDC/fdc80.jpg" style={{height: "750px"}}></img>
+                <p>2. Confirm the inputs are dry (volt-free) closures.</p>
+                <li>It is not acceptable to have voltage across the input pair.</li>
+                <p>3. If an ohmmeter is being used across the screwheads on the green terminal block and if the screws are not tightened, it will look like the relay is not responding. </p>
+                <li>Be sure that there are wires in the terminal block and that the screws are tightened. If wires are not inserted into the terminal block, tighten the screws anyway and then measure across the screw heads.</li>
+                <p>4. Cycle power on the unit.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <p className="faq-title">Relevant Information</p>
+        <div className="faq-list">
+        <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('fdc10')}> FDC10 </button>
+            {visibleAnswer === 'fdc10' && (
+              <div className="faq-answer">
+                <p>...</p>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('fdc8')}> FDC8 </button>
+            {visibleAnswer === 'fdc8' && (
+              <div className="faq-answer">
+                <p>...</p>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('fdc80')}> FDC80 </button>
+            {visibleAnswer === 'fdc80' && (
+              <div className="faq-answer">
+                <p>...</p>
+              </div>
+            )}
+          </div>
+          <Fiber />
         </div>
       </main>
       <Button />
