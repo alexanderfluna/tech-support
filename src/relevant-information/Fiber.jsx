@@ -9,7 +9,7 @@ const Fiber = () => {
 
   return (
     <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('fiber')}> Fiber </button>
+            <button className="faq-question" onClick={() => toggleAnswer('fiber')}>  Fiber </button>
             {visibleAnswer === 'fiber' && (
               <div className="faq-answer">
                 <p>Core and Cladding</p>
@@ -37,7 +37,13 @@ const Fiber = () => {
                 <li>LED (Light Emitting Diode)</li>
                 <li>VCSL (Vertical-Cavity Surface-Emitting Laser)</li>
                 <li>FP (Fabry-Pérot)</li>
-                <li>DFB (Distributed Feedback)</li>       
+                <li>DFB (Distributed Feedback)</li>
+                <p>1000BASE-FX</p>
+                <li>...</li>  
+                <p>1000BASE-LH</p>
+                <li>...</li>
+                <p>1000BASE-LX</p>
+                <li>...</li>
               </div>
             )}
           </div>

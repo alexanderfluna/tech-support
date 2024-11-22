@@ -516,14 +516,6 @@ const MediaConverter = () => {
 
         <p className="faq-title">Relevant Information</p>
         <div className="faq-list">
-        <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('relevant-media-converter-information')}> Relevant Media Converter Information </button>
-            {visibleAnswer === 'relevant-media-converter-information' && (
-              <div className="faq-answer">
-                <p>'A' and 'B' pairs.</p>
-              </div>
-            )}
-          </div>
           {<Fiber />}
           {<PowerOverEthernet />}
         </div>

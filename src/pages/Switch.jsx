@@ -338,7 +338,7 @@ const Switch = () => {
         <p className="faq-title">Relevant Information</p>
         <div className="faq-list">
         <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('relevant-switch-information')}> Relevant Switch Information </button>
+            <button className="faq-question" onClick={() => toggleAnswer('relevant-switch-information')}>  Switches </button>
             {visibleAnswer === 'relevant-switch-information' && (
               <div className="faq-answer">
                 <p>Default IP: 192.168.10.1</p>

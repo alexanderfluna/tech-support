@@ -288,22 +288,18 @@ const FDC = () => {
             <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
             {visibleAnswer === 'no-link-light' && (
               <div className="faq-answer">
-                <p>1. Confirm that the fiber in use is compatible with the device:</p>
-                <li>Fiber Type: Multimode vs. Single Mode</li>
-                <li>Fiber Strand Count: Single strand vs. Dual strand</li>
-                <li>Connector Type: ST connector(s) vs. SC connector(s)</li>
-                <p>2. Test the Fiber with Another Device.</p>
+                <p>1. Test the Fiber with Another Device.</p>
                 <li>Use the fiber with another device to determine if a link light is achieved.</li>
-                <p>3. Swap out the device on either end with an identical.</p>
+                <p>2. Swap out the device on either end with an identical.</p>
                 <li>This will determine which device on either end is failing.</li>
-                <p>4. Fiber Optic Cleaning Kit:</p>
+                <p>3. Fiber Optic Cleaning Kit:</p>
                 <li>Use the lint-free wipes and cleaning pen from the optic cleaning kit to clean fiber connectors and the SFP cage gently. Ensure no debris remains before reconnecting.</li>
-                <p>5. Optical Power Meter:</p>
+                <p>4. Optical Power Meter:</p>
                 <li>Connect the power meter to the fiber cable and check the dBm reading. Compare this to the device’s recommended signal strength (available in the datasheet) to confirm it is within the expected range.</li>
-                <p>6. Optical Time-Domain Reflectometer (OTDR)</p>
+                <p>5. Optical Time-Domain Reflectometer (OTDR)</p>
                 <li>Connect the OTDR to one end of the fiber cable. The OTDR will send light pulses through the fiber to analyze reflections and signal loss, producing a graph with detailed information on reflections, signal loss, and potential faults.</li>
                 <li>Note the distance to any reflections or faults as shown on the OTDR report.</li>
-                <p>7. Visual Fault Locator:</p>
+                <p>6. Visual Fault Locator:</p>
                 <li>Connect the visual fault locator to the fiber cable and check for any areas where red light escapes or dims.</li>
                 <li>Inspect any detected light leaks for possible damage or poor connections.</li>
               </div>
@@ -316,7 +312,7 @@ const FDC = () => {
                 <p>1. Ensure the wires are connected properly.</p>
                 <li>FDC10 and FDC8/FDC80</li>
                 <img src="photos/FDC/fdc10.jpg" style={{"padding-right": "100px"}}></img>
-                <img src="photos/FDC/fdc80.jpg" style={{height: "750px"}}></img>
+                <img src="photos/FDC/fdc80.jpg" style={{height: "700px"}}></img>
                 <p>2. Confirm the inputs are dry (volt-free) closures.</p>
                 <li>It is not acceptable to have voltage across the input pair.</li>
                 <p>3. If an ohmmeter is being used across the screwheads on the green terminal block and if the screws are not tightened, it will look like the relay is not responding. </p>
@@ -333,7 +329,14 @@ const FDC = () => {
             <button className="faq-question" onClick={() => toggleAnswer('fdc10')}> FDC10 </button>
             {visibleAnswer === 'fdc10' && (
               <div className="faq-answer">
-                <p>...</p>
+                <p>Applications:</p>
+                <li>Using multimode fiber: FDC10M1A or FDC10RM1A on one end. FDC10M1B or FDC10RM1B on the other.</li>
+                <li>Using singlemode fiber: FDC10S1A or FDC10RS1A on one end. FDC10S1B or FDC10RS1B on the other.</li>
+                <p>Relevant Info:</p> 
+                <li>Only 1 fiber with an ST optic is required.</li>
+                <li>'A' and 'B' pairs.</li>
+                <li>There are two bidirectional contact closure channels.</li>
+                <li>The 'R' in the model number is for 'regular'.</li>
               </div>
             )}
           </div>
@@ -341,7 +344,19 @@ const FDC = () => {
             <button className="faq-question" onClick={() => toggleAnswer('fdc8')}> FDC8 </button>
             {visibleAnswer === 'fdc8' && (
               <div className="faq-answer">
-                <p>...</p>
+                <p>Applications:</p>
+                <li>Using multimode fiber: FDC8TM1 on the transmit side. FDC8RM1 or FDC8NLRM1 on the receive side.</li>
+                <li>Using singlemode fiber: FDC8TS1 on the transmit side. FDC8RS1 or FDC8NLRS1 on the receive side.</li>
+                <p>Relevant Info:</p>
+                <li>Only 1 fiber with an ST optic is required.</li>
+                <li>'Transmit' and 'Receive' pairs.</li>
+                <li>There are 8 contact closures going from the transmitter to the receiver.</li>
+                <li>Latching (No 'NL' in the model number):</li>
+                <li style={{"padding-left": "100px"}}>In the case of a loss of optical link, the relays will remain in the same state.</li>
+                <li style={{"padding-left": "100px"}}>There is no summary fault relay.</li>
+                <li>Non-latching (The 'NL' in the model number):</li>
+                <li style={{"padding-left": "100px"}}>In the case of a loss of optical link, the relays will open.</li>
+                <li style={{"padding-left": "100px"}}>There is no summary fault relay. However, it is possible to permanently close on of the relay channels, so that if it ever opens, it can be detected that there was a loss of optical link.</li>
               </div>
             )}
           </div>
@@ -349,7 +364,31 @@ const FDC = () => {
             <button className="faq-question" onClick={() => toggleAnswer('fdc80')}> FDC80 </button>
             {visibleAnswer === 'fdc80' && (
               <div className="faq-answer">
-                <p>...</p>
+                <p>Applications:</p>
+                <li>Using multimode fiber: FDC80TM1 on the transmit side. FDC80RM1 or FDC80NLRM1 on the receive side.</li>
+                <li>Using singlemode fiber: FDC80RS1 on the transmit side. FDC80NLRS1 on the receive side.</li>
+                <li>Using RS-485: FDC80T485 on the transmit side. FDC80R485 on the receive side.</li>
+                <p>Relevant info:</p>
+                <li>Only 1 fiber with an ST optic is required.</li>
+                <li>'Transmit' and 'Receive' pairs.</li>
+                <li>There are 8 contact closures going from the transmitter to the receiver.</li>
+                <li>Latching (No 'NL' in the model number):</li>
+                <li style={{"padding-left": "100px"}}>In the case of a loss of optical link, the relays will remain in the same state.</li>
+                <li style={{"padding-left": "100px"}}>There is a summary fault relay.</li>
+                <li>Non-latching (The 'NL' in the model number):</li>
+                <li style={{"padding-left": "100px"}}>In the case of a loss of optical link, the relays will open.</li>
+                <li style={{"padding-left": "100px"}}>There is a summary fault relay.</li>
+                <p>Supervision</p>
+                <li>The device can detect if there is a short circuit.</li>
+                <li style={{"padding-left": "100px"}}>A slow fashing red LED indicates a short circuit.</li>
+                <li>The device can detect if there are cut wires.</li>
+                <li style={{"padding-left": "100px"}}>A fast fashing red LED indicates a cut wire.</li>
+                <li>Transmitter</li>
+                <li style={{"padding-left": "100px"}}>Flipping dip switch #1 on will allow for detection of short circuits.</li>
+                <li style={{"padding-left": "100px"}}>Flipping dip switch #2 on will allow for detection of cut wires.</li>
+                <li>Receiver</li>
+                <li style={{"padding-left": "100px"}}>Flipping dip switch #1 on will add fiber loss to the summary fault relay.</li>
+                <li style={{"padding-left": "100px"}}>Flipping dip switch #2 on will add contact faults to the summary fault relay.</li>
               </div>
             )}
           </div>

@@ -41,8 +41,9 @@ const Home = () => {
           {[
             'Switch',
             'Media Converter',
-            'SFP',
             'Wireless',
+            'Razberi',
+            'SFP',
             'Copper Line',
             'FDC',
             'FDX',
@@ -50,7 +51,6 @@ const Home = () => {
             'Power Supply',
             'PoE Injector',
             'Card Cage',
-            'Razberi',
           ].map(product => (
             <button
               key={product}
