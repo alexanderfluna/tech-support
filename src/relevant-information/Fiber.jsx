@@ -26,11 +26,12 @@ const Fiber = () => {
                 <li>A technology that enables simultaneous transmission of multiple signals over a single optical fiber by user different wavelengths of light</li>
                 <p>Multimode Fiber</p>
                 <li>Covers shorter distances than single mode (i.e. 2 miles at 100mbps)</li>
-                <li>Modal Dispersion: ...</li>
+                <li>Modal Dispersion: The spreading of a light pulse in multimode optical fibers caused by different propagation paths traveling at different speeds, which can limit data transmission efficiency.</li>
                 <li>OM1 (62.5/125)</li>
                 <li>OM2 or Greater (50/125)</li>
                 <p>Singlemode Fiber</p>
-                <li>Chromatic Dispersion: ...</li>
+                <li>Capable of covering longer distances than multimode (i.e. upwards of 70 miles and more).</li>
+                <li>Chromatic Dispersion: The spreading of a light pulse in optical fibers caused by different wavelengths traveling at different speeds, leading to signal distortion over long distances.</li>
                 <li>OS1</li>
                 <li>OS2</li>
                 <p>4 Types of Lasers</p>

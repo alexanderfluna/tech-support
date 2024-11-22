@@ -284,8 +284,8 @@ const Wireless = () => {
         <p className="faq-title">Relevant Information</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('relevant-wireless-information')}> Relevant Wireless Information </button>
-            {visibleAnswer === 'relevant-wireless-information' && (
+            <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Wireless </button>
+            {visibleAnswer === 'wireless' && (
               <div className="faq-answer">
                 <p>- Default Acess Point IP: 192.168.10.100</p>
                 <p>- Default Client IP: 192.168.10.101</p>
