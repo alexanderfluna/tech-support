@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import CardCage from './pages/CardCage';
+import Enclosures from './pages/Enclosures';
 import CopperLine from './pages/CopperLine';
-import FDC from './pages/FDC';
-import FDX from './pages/FDX';
-import FDW from './pages/FDW';
+import ContactClosure from './pages/ContactClosure';
+import SerialData from './pages/SerialData';
+import Wiegand from './pages/Wiegand';
 import MediaConverter from './pages/MediaConverter';
 import PoEInjector from './pages/PoEInjector';
 import PowerSupply from './pages/PowerSupply';
@@ -19,11 +19,11 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/tech-support" element={<Home />} />
-        <Route path="/tech-support/card-cage" element={<CardCage />} />
+        <Route path="/tech-support/enclosures" element={<Enclosures />} />
         <Route path="/tech-support/copper-line" element={<CopperLine />} />
-        <Route path="/tech-support/fdc" element={<FDC />} />
-        <Route path="/tech-support/fdx" element={<FDX />} />
-        <Route path="/tech-support/fdw" element={<FDW />} />
+        <Route path="/tech-support/contact-closure" element={<ContactClosure />} />
+        <Route path="/tech-support/serial-data" element={<SerialData />} />
+        <Route path="/tech-support/Wiegand" element={<Wiegand />} />
         <Route path="/tech-support/media-converter" element={<MediaConverter />} />
         <Route path="/tech-support/poe-injector" element={<PoEInjector />} />
         <Route path="/tech-support/power-supply" element={<PowerSupply />} />

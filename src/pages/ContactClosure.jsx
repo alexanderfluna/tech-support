@@ -8,7 +8,7 @@ import Fiber from '../relevant-information/Fiber';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
-const FDC = () => {
+const ContactClosure = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -101,7 +101,7 @@ const FDC = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">FDC</h2>
+        <h2 className="faq-title">Contact Closure</h2>
         <button className="selector-tool" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -402,4 +402,4 @@ const FDC = () => {
   );
 };
 
-export default FDC;
+export default ContactClosure;

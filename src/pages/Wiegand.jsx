@@ -3,10 +3,11 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
+import NoPowerLight from '../relevant-information/NoPowerLight';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
-const FDW = () => {
+const Wiegand = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -80,7 +81,7 @@ const FDW = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">FDW</h2>
+        <h2 className="faq-title">Wiegand</h2>
         <button className="selector-tool" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -159,16 +160,38 @@ const FDW = () => {
           </>
         )}
 
-        <h1 className="faq-title">FAQ</h1>
-
+        <p className="faq-title">Troubleshooting Common Issues</p>
         <div className="faq-list">
+          {<NoPowerLight />}
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided
-            </button>
-            {visibleAnswer === 'to-be-decided' && (
+            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
+            {visibleAnswer === 'no-link-light' && (
               <div className="faq-answer">
-                <p>...</p>
+                <p>Swap the transmit and receive fiber strands.</p>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> No Communication </button>
+            {visibleAnswer === 'no-communication' && (
+              <div className="faq-answer">
+                <p>Central with no expansions:</p>
+                <li>Remove power and fiber strands.</li>
+                <li>Flip all dip switches down.</li>
+                <li>Flip dip switches 1, 4, 8 on.</li>
+                <li>Apply power. There should be a green status LED. Remove power.</li>
+                <li>Flip all dip switches down.</li>
+                <li>Flip dip switch 3 on.</li>
+                <li>Apply power.</li>
+                <p>Remote with no expansions:</p>
+                <li>Remove power and fiber strands.</li>
+                <li>Flip all dip switches down.</li>
+                <li>Flip dip switches 1, 4, 8 on.</li>
+                <li>Apply power. There should be a green status LED. Remove power.</li>
+                <li>Flip all dip switches off.</li>
+                <li>Cycle power.</li>
+                <p>Ensure the correct wires configuration:</p>
+                <img src="photos/FDW/FDW.jpg"></img>
               </div>
             )}
           </div>
@@ -181,4 +204,4 @@ const FDW = () => {
   );
 };
 
-export default FDW;
+export default Wiegand;

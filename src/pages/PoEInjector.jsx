@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
+import PowerOverEthernet from '../relevant-information/PowerOverEthernet';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -248,20 +249,20 @@ const PoEInjector = () => {
           </>
         )}
 
-        <h1 className="faq-title">FAQ</h1>
-
+        <h1 className="faq-title">Relevant Information</h1>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided 
+            <button className="faq-question" onClick={() => toggleAnswer('poe-injector')}>
+              PoE Injector 
             </button>
-            {visibleAnswer === 'to-be-decided' && (
+            {visibleAnswer === 'poe-injector' && (
               <div className="faq-answer">
                 <p>...</p>
               </div>
             )}
           </div>
         </div>
+        <PowerOverEthernet />
       </main>
       <Button />
       <BackToTop />

@@ -16,28 +16,28 @@ const Switch = () => {
   const [availableOptions, setAvailableOptions] = useState({
     Hardened: [],
     Managed: [],
-    Fiber: [],
+    PoE: [],
     Copper: [],
+    Fiber: [],
     Combo: [],
-    PoE: []
   });
 
   const sortOrders = {
     Hardened: ["No", "Yes"],
     Managed: ["No", "Yes"],
-    Fiber: ["0", "1 FE", "2 FE", "4 FE", "1 GE", "2 GE", "3 GE", "4 GE", "8 GE", "12 GE", "24 GE", "2 2.5G + 2 10G"],
+    PoE: ["No", "PoE", "PoEHo"],
     Copper: ["0", "2 FE", "4 FE", "5 FE", "7 FE", "8 FE", "3 GE", "4 GE", "8 GE", "12 GE", "16 GE", "22 GE", "24 GE"],
+    Fiber: ["0", "1 FE", "2 FE", "4 FE", "1 GE", "2 GE", "3 GE", "4 GE", "8 GE", "12 GE", "24 GE", "2 10G", "4 10G"],
     Combo: ["0", "1 GE", "2 GE", "4 GE", "16 GE"],
-    PoE: ["No", "PoE", "PoEHo"]
   };
 
   const [filters, setFilters] = useState({
     Hardened: null,
     Managed: null,
-    Fiber: null,
+    PoE: null,
     Copper: null,
+    Fiber: null,
     Combo: null,
-    PoE: null
   });
 
   useEffect(() => {
@@ -57,10 +57,10 @@ const Switch = () => {
     setFilters({
       Hardened: null,
       Managed: null,
-      Fiber: null,
+      PoE: null,
       Copper: null,
+      Fiber: null,
       Combo: null,
-      PoE: null
     });
   };
 
@@ -86,10 +86,10 @@ const Switch = () => {
   const resetFilters = () => {
     setFilters({ Hardened: null,
       Managed: null,
-      Fiber: null,
+      PoE: null,
       Copper: null,
+      Fiber: null,
       Combo: null,
-      PoE: null
     });
     setFilteredProducts(products); 
     updateAvailableOptions(products); 
@@ -99,10 +99,10 @@ const Switch = () => {
     const options = {
       Hardened: [...new Set(filteredProducts.map((product) => product.Hardened))],
       Managed: [...new Set(filteredProducts.map((product) => product.Managed))],
-      Fiber: [...new Set(filteredProducts.map((product) => product.Fiber))],
+      PoE: [...new Set(filteredProducts.map((product) => product.PoE))],
       Copper: [...new Set(filteredProducts.map((product) => product.Copper))],
+      Fiber: [...new Set(filteredProducts.map((product) => product.Fiber))],
       Combo: [...new Set(filteredProducts.map((product) => product.Combo))],
-      PoE: [...new Set(filteredProducts.map((product) => product.PoE))]
     };
     setAvailableOptions(options);
   };
@@ -179,7 +179,8 @@ const Switch = () => {
     {Model: "CNFE4+1SMSS2POE/SC", Hardened: "Yes", Managed: "No", Fiber: "1 FE", Copper: "4 FE", Combo: "0", PoE: "PoE"},
     {Model: "CNFE5SMS", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "No"},
     {Model: "CNFE5SMSPOE", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "PoE"},
-];
+    {Model: "CWX28F4T24MPB", Hardened: "No", Managed: "Yes", Fiber: "4 10G", Copper: "24 GE", Combo: "0", PoE: "PoEHo"},
+  ];
 
   return (
     <div>
@@ -227,10 +228,10 @@ const Switch = () => {
                     <th>Model</th>
                     <th>Hardened</th>
                     <th>Managed</th>
-                    <th>Fiber Ports</th>
-                    <th>Copper Ports</th>
-                    <th>Combo Ports</th>
                     <th>PoE</th>
+                    <th>Copper Ports</th>
+                    <th>Fiber Ports</th>
+                    <th>Combo Ports</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -239,10 +240,10 @@ const Switch = () => {
                       <td>{product.Model}</td>
                       <td>{product.Hardened}</td>
                       <td>{product.Managed}</td>
-                      <td>{product.Fiber === "0" ? "-" : product.Fiber}</td>
-                      <td>{product.Copper === "0" ? "-" : product.Copper}</td>
-                      <td>{product.Combo === "0" ? "-" : product.Combo}</td>
                       <td>{product.PoE}</td>
+                      <td>{product.Copper === "0" ? "-" : product.Copper}</td>
+                      <td>{product.Fiber === "0" ? "-" : product.Fiber}</td>
+                      <td>{product.Combo === "0" ? "-" : product.Combo}</td>
                     </tr>
                   ))}
                 </tbody>

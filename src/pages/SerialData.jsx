@@ -8,7 +8,7 @@ import Fiber from '../relevant-information/Fiber';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
-const FDX = () => {
+const SerialData = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -109,7 +109,7 @@ const FDX = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">FDX</h2>
+        <h2 className="faq-title">Serial Data</h2>
         <button className="selector-tool" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -344,7 +344,6 @@ const FDX = () => {
                 <li>Balanced (differential)</li>
                 <li>Bus</li>
                 <li>1200 meters at 9600 bps</li>
-                <li>Bus</li>
                 <p>RS-485 bus:</p>
                 <li style={{"padding-left": "50px"}}>High Impedance Load:</li>
                 <li style={{"padding-left": "100px"}}>True 485 devices go into tri-state when transmitting or receiving data.</li>
@@ -370,4 +369,4 @@ const FDX = () => {
   );
 };
 
-export default FDX;
+export default SerialData;

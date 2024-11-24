@@ -85,9 +85,9 @@ const CardCage = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Card Cage</h2>
+        <h2 className="faq-title">Enclosures</h2>
         <button className="selector-tool" onClick={toggleTable}>
-          Selector Tool
+          Card Cage Selector Tool
         </button>
         {showTable && (
           <>
@@ -237,14 +237,14 @@ const CardCage = () => {
           </>
         )}
 
-        <h1 className="faq-title">FAQ</h1>
+        <h1 className="faq-title">Relevant Information</h1>
 
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided
+            <button className="faq-question" onClick={() => toggleAnswer('enclosures')}>
+              Enclosures
             </button>
-            {visibleAnswer === 'to-be-decided' && (
+            {visibleAnswer === 'enclosures' && (
               <div className="faq-answer">
                 <p>...</p>
               </div>

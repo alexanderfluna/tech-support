@@ -169,14 +169,14 @@ const PowerSupply = () => {
           </>
         )}
 
-        <h1 className="faq-title">FAQ</h1>
+        <h1 className="faq-title">Relevant Information</h1>
 
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('to-be-decided')}>
-              To be decided 
+            <button className="faq-question" onClick={() => toggleAnswer('power-supply')}>
+              Power Supply
             </button>
-            {visibleAnswer === 'to-be-decided' && (
+            {visibleAnswer === 'power-supply' && (
               <div className="faq-answer">
                 <p>...</p> 
               </div>
