@@ -342,11 +342,20 @@ const Switch = () => {
             <button className="faq-question" onClick={() => toggleAnswer('relevant-switch-information')}>  Switches </button>
             {visibleAnswer === 'relevant-switch-information' && (
               <div className="faq-answer">
+                <p>Layer 2 switches route data to devices in the LAN using their MAC address.</p>
                 <p>Default IP: 192.168.10.1</p>
                 <p>Default username: admin</p>
                 <p>Default password: admin</p>
                 <p>Auto MDI/MDIX (Medium Dependent Interface / Medium Dependent Interface Crossover)</p>
                 <li>Automatically detects the type of Ethernet cable being used (straight-through vs. cross over)</li>
+                <p>Protocols:</p>
+                <li>RSTP</li>
+                <li>STP</li>
+                <li>IGMP</li>
+                <li>RBRIDGE</li>
+                <li>LLDP</li>
+                <li>NTP</li>
+                <li>QoS</li>
               </div>
             )}
           </div>

@@ -516,6 +516,17 @@ const MediaConverter = () => {
 
         <p className="faq-title">Relevant Information</p>
         <div className="faq-list">
+        <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('media-converters')}> Media Converters </button>
+            {visibleAnswer === 'media-converters' && (
+              <div className="faq-answer">
+                <p>Converts Ethernet to fiber and fiber to Ethernet.</p>
+                <p>If PoE is being used one end, it is not required on the other end.</p>
+                <p>Dual media converters are two media converters in one box.</p>
+                <p>Quad media converters are four media converters in one box.</p>
+              </div>
+            )}
+          </div>
           {<Fiber />}
           {<PowerOverEthernet />}
         </div>
