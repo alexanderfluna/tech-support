@@ -80,7 +80,7 @@ const Footer = () => {
           <p>Enter your email, and we'll keep you updated with relevant Acre news and articles.</p>
         </div>
         <div className="right-div">
-          <h3>Email address *</h3>
+          <div style={{display: "flex", "flex-direction": "row"}}><h3>Email address</h3> <h3 style={{color: "rgb(211, 0, 15)", "padding-left": "5px"}}>*</h3></div>
           <input
             className="email-input"
             type="email"
@@ -126,7 +126,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p>Privacy Policy</p>
-        <p>© 2024 Acre Security</p>
+        <p>© Copyright 2024 Acre Security</p>
         <p>Website by Alexander Luna</p>
       </div>
     </footer>
