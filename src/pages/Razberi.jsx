@@ -84,7 +84,7 @@ const Razberi = () => {
               <div className="faq-answer">
                 <p>Specs:</p>
                 <li>32-port PoE switch</li>
-                <li>i5 Intel processor</li>
+                <li>Intel i5 processor</li>
                 <li>2 mSatas with RAID 1</li>
                 <li>RAM: 16GB, 32 GB</li>
                 <li>Up to 88TB of storage</li>
@@ -103,20 +103,88 @@ const Razberi = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('core')}>  VA4, V08, V12, V14, V24 </button>
-            {visibleAnswer === 'core' && (
+            <button className="faq-question" onClick={() => toggleAnswer('va4')}>  VA4 </button>
+            {visibleAnswer === 'va4' && (
               <div className="faq-answer">
-                <p>VA4</p>
+                <p>VA4-E2314</p>
+                <li>Intel Xeon E2314</li>
+                <li>RAM: 16GB / 32 GB</li>
                 <li>4 bays. Up to 22TB per bay.</li>
-                <p>V08</p>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('v08')}>  V08 </button>
+            {visibleAnswer === 'v08' && (
+              <div className="faq-answer">
+                <p>V08B-4310</p>
+                <li>Intel Xeon Silver 4310</li>
+                <li>RAM: 16GB / 32GB</li>
                 <li>8 bays. Up to 22TB per bay.</li>
-                <p>V12</p>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V08B-D4310</p>
+                <li>Dual Intel Xeon Silver 310</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V08C-4410Y</p>
+                <li>Intel Xeon Silver 4410Y</li>
+                <li>RAM: 16GB / 32GB</li>
+                <li>8 bays. Up to 22TB per bay.</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V08C-D4410Y</p>
+                <li>Dual Intel Xeon Silver 4410Y</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('v12')}>  V12 </button>
+            {visibleAnswer === 'v12' && (
+              <div className="faq-answer">
+                <p>V12B-4310</p>
+                <li>Intel Xeon Silver 4310</li>
+                <li>RAM: 16GB / 32GB</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V12B-D4310</p>
+                <li>Dual Intel Xeon Silver 4310</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V12-4410Y</p>
                 <li>12 bays. Up to 22TB per bay.</li>
-                <p>V14</p>
+                <li>Intel Xeon Silver 4410Y</li>
+                <li>RAM: 16GB / 32GB</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V12C-D4410Y</p>
+                <li>Dual Intel Xeon Silver 4410Y</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('v14')}>  V14 </button>
+            {visibleAnswer === 'v14' && (
+              <div className="faq-answer">
+                <p>V14B-4310</p>
+                <li>Intel Xeon Silver 4310</li>
+                <li>RAM: 16GB / 32GB</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V14B-D4310</p>
+                <li>Dual Intel Xeon Silver 4310</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V14C-4410Y</p>
                 <li>14 bays. Up to 22TB per bay.</li>
-                <p>V24</p>
+                <li>Intel Xeon Silver 4410Y</li>
+                <li>RAM: 16GB / 32GB</li>
+                <p>________________________________________________________________________________________________________</p>
+                <p>V14C-D4410Y</p>
+                <li>Dual Intel Xeon Silver 4410Y</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('v24')}>  V24 </button>
+            {visibleAnswer === 'v24' && (
+              <div className="faq-answer">
+                <p>V24C-D4410Y</p>
                 <li>24 bays. Up to 22TB per bay.</li>
-                <p>Dual Processors:</p>
+                <li>Dual Intel Xeon Silver 4410Y</li>
+                <li>RAM: 16GB / 32GB</li>
               </div>
             )}
           </div>

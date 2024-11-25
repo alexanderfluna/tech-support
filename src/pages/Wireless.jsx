@@ -258,27 +258,29 @@ const Wireless = () => {
             <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> No Communication </button>
             {visibleAnswer === 'no-communication' && (
               <div className="faq-answer">
-                <p>1) Confirm the radios are being powered on properly.</p>
-                <li>The radios must not be powered on by the same PoE switch.</li>
-                <p>2) Consider the network topology.</p>
+                <p>1) Confirm the radios are being powered on properly:</p>
+                <li>The radios must be powered on via PoE.</li>
+                <li>The radios cannot be powered on by the same PoE switch.</li>
+                <p>2) Consider the network topology:</p>
                 <li>Point to point.</li>
                 <li>Point to multipoint</li>
                 <li>Add/drop/repeat</li>
                 <li>If there are multiple radios in the area, consider if there may be duplicate IPs or ESSIDs.</li>
                 <p>3) Determine: </p>
-                <li>What the IPs will be ( The access point and client(s) must have unique IPs on the same subnet).</li>
+                <li>If a physical connection is made to one of the radios, it is possible to configure the other(s) from that spot.</li>
+                <li style={{ 'padding-left': '100px' }}>Otherwise, it is best to make a physical connection with the access point and then the client(s).</li>
+                <li>If the radios are at default, then there is no need to factory default them.</li>
+                <li style={{ 'padding-left': '100px' }}>Otherwise, if the radios have been configured, then it is recommended to first factory default them.</li>
+                <li>What the IPs will be ( The access point and client(s) must have unique IPs on the same subnet ).</li>
                 <li>What the ESSID will be ( The ESSID must be exactly the same on the access point and client(s) ).</li>
                 <li>What the PSK will be ( The PSK must be exactly the same on the access point and client(s) ).</li>
-                <li>If the radios are defaulted, there is no need to factory default them.</li>
-                <li>If the radios have been configured, it is recommended to first factory default them.</li>
-                <p>4) Reconfigure the radios:</p>
-                <li>Configure the access point and then configure the client(s).</li>
-                <li>Access Point:</li>
+                <p>4) Configure the radios:</p>
+                <li>Configuring the Access Point:</li>
                 <li style={{ 'padding-left': '100px' }}>Set the IP address.</li>
                 <li style={{ 'padding-left': '100px' }}>Set the ESSID.</li>
                 <li style={{ 'padding-left': '100px' }}>Set the PSK.</li>
                 <li style={{ 'padding-left': '100px' }}>Set as an acess point.</li>
-                <li>Client(s):</li>
+                <li>Configuring the Client(s):</li>
                 <li style={{ 'padding-left': '100px' }}>Set the IP address ( The access point and client(s) must have unique IPs on the same subnet ).</li>
                 <li style={{ 'padding-left': '100px' }}>Set the ESSID ( The ESSID must be exactly the same on the access point and client(s) ).</li>
                 <li style={{ 'padding-left': '100px' }}>Set the PSK ( The PSK must be exactly the same on the access point and client(s) ).</li>
