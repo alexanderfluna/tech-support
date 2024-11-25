@@ -83,20 +83,22 @@ const Razberi = () => {
             {visibleAnswer === 'ss32x' && (
               <div className="faq-answer">
                 <p>Specs:</p>
-                <li>32-port PoE switch.</li>
+                <li>32-port PoE switch</li>
                 <li>i5 Intel processor</li>
-                <li>2 mSatas with RAID 1.</li>
+                <li>2 mSatas with RAID 1</li>
                 <li>RAM: 16GB, 32 GB</li>
-                <li>Up to 88TB of storage.</li>
+                <li>Up to 88TB of storage</li>
                 <li>GPU: GPU-T1000</li>
-                <li>Operating System: Windows 10, Windows Server 2019, Windows Server 2022</li>
-                <li>RAID: 0, 1, 5, 6, 10</li>
-                <p>Available in long chassis: 'LX'</p>
-                <p>Available as 2U.</p>
-                <p>Default switch IP: 192.168.50.1</p>
-                <p>Default U1 / SFP1 combo port IP: 192.168.50.19</p>
-                <p>Default U2 IP: DHCP</p>
-                <p>Default SFP2 IP: DHCP</p>
+                <li>Operating System: Windows 10, Windows 11, Windows Server 2019, or Windows Server 2022</li>
+                <li>RAID: 0, 1, 5, 6, or 10</li>
+                <li>Available in long chassis: 'LX' in the part number</li>
+                <li>Available as 2U: '2U' in the part number</li>
+                <p>_______________________________________________________________________________________________________________</p>
+                <p>Default Configurations:</p>
+                <li>Default switch IP: 192.168.50.1</li>
+                <li>Default U1 / SFP1 combo port IP: 192.168.50.19</li>
+                <li>Default U2 IP: DHCP</li>
+                <li>Default SFP2 IP: DHCP</li>
               </div>
             )}
           </div>
@@ -114,6 +116,7 @@ const Razberi = () => {
                 <li>14 bays. Up to 22TB per bay.</li>
                 <p>V24</p>
                 <li>24 bays. Up to 22TB per bay.</li>
+                <p>Dual Processors:</p>
               </div>
             )}
           </div>

@@ -18,8 +18,8 @@ const Fiber = () => {
                 <p>_______________________________________________________________________________________________________________</p>
                 <p>Multimode Fiber</p>
                 <li>Covers shorter distances than single mode (i.e. 2 miles at 100mbps)</li>
-                <li>OM1 (62.5 micron core / 125 micron cladding)</li>
-                <li>OM2 or greater (50 micron core / 125 micron cladding)</li>
+                <li>OM1 (62.5 micron core / 125 micron cladding): 275m at 1 Gbps</li>
+                <li>OM2 or greater (50 micron core / 125 micron cladding): 550m at 1Gbps</li>
                 <li>Modal Dispersion</li>
                 <li style={{"padding-left": "100px"}}>Occurs in multimode fibers due to the existence of multiple light paths (modes) through the fiber core. Light traveling in different modes (e.g., straight through the center vs. bouncing at angles along the core) takes slightly different times to reach the end of the fiber, which can limit data transmission efficiency.</li>
                 <p>_______________________________________________________________________________________________________________</p>
