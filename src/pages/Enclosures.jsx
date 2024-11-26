@@ -222,7 +222,7 @@ const CardCage = () => {
                 </thead>
                 <tbody>
                   {filteredProducts.map((product, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.model}</td>
                       <td>{product.slots}</td>
                       <td>{product.voltage}</td>

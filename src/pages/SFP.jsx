@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
+import Fiber from '../relevant-information/Fiber';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -243,7 +244,7 @@ const SFP = () => {
                 </thead>
                 <tbody>
                   {filteredProducts.map((product, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.itemNumber}</td> 
                       <td>{product.txMedium}</td>
                       <td>{product.dataRate}</td>
@@ -258,41 +259,15 @@ const SFP = () => {
         )}
 
         <p className="faq-title">Relevant Information</p>
-        <div className="faq-list">
         <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('fiber')}> Fiber </button>
-            {visibleAnswer === 'fiber' && (
+            <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}> SFP Chart </button>
+            {visibleAnswer === 'sfp-chart' && (
               <div className="faq-answer">
-                <p>Core and Cladding</p>
-                <li>Glass material: immune to EMI (electromagnetic interference)</li>
-                <p>Wavelengths</p>
-                <li>850nm, 1310nm, 1550nm</li>
-                <p>Spectral Width</p>
-                <li>Margin of error for the wavelength.</li>
-                <p>dBm (decibel-milliwatts)</p>
-                <li>A unit of measurement used to express the power level of a signal.</li>
-                <li>0 dBm = 1 mW (1000 microwatts) of power</li>
-                <li>A decrease of 3 dBm halves the power output (i.e. -3dbm = 500 microwatts of power).</li>
-                <p>Wavelength Divsion Multiplexing (WDM)</p>
-                <li>A technology that enables simultaneous transmission of multiple signals over a single optical fiber by user different wavelengths of light</li>
-                <p>Multimode Fiber</p>
-                <li>Covers shorter distances than single mode (i.e. 2 miles at 100mbps)</li>
-                <li>Modal Dispersion: ...</li>
-                <li>OM1 (62.5/125)</li>
-                <li>OM2 or Greater (50/125)</li>
-                <p>Singlemode Fiber</p>
-                <li>Chromatic Dispersion: ...</li>
-                <li>OS1</li>
-                <li>OS2</li>
-                <p>4 Types of Lasers</p>
-                <li>LED (Light Emitting Diode)</li>
-                <li>VCSL (Vertical-Cavity Surface-Emitting Laser)</li>
-                <li>FP (Fabry-Pérot)</li>
-                <li>DFB (Distributed Feedback)</li>       
+              <img src="photos/SFP/SFP.png"></img>
               </div>
             )}
           </div>
-        </div>
+        <Fiber />
       </main>
       <Button />
       <BackToTop />

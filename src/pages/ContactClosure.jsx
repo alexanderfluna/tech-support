@@ -265,7 +265,7 @@ const ContactClosure = () => {
                 </thead>
                 <tbody>
                   {filteredProducts.map((product, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.model}</td>
                       <td>{product.fiber}</td>
                       <td>{product.latchingOrNonLatching}</td>

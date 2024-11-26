@@ -82,7 +82,12 @@ const Razberi = () => {
             <button className="faq-question" onClick={() => toggleAnswer('ss32x')}>  SS32X </button>
             {visibleAnswer === 'ss32x' && (
               <div className="faq-answer">
-                <p>Specs:</p>
+                <a href="pdf/razberi/SS32_Data_Sheet.pdf" download>
+                  <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px" }}>
+                    Download SS32 Data Sheet
+                  </button>
+                </a>
+                <p>Most relevant specs:</p>
                 <li>32-port PoE switch</li>
                 <li>Intel i5 processor</li>
                 <li>2 mSatas with RAID 1</li>
@@ -106,6 +111,11 @@ const Razberi = () => {
             <button className="faq-question" onClick={() => toggleAnswer('va4')}>  VA4 </button>
             {visibleAnswer === 'va4' && (
               <div className="faq-answer">
+                <a href="pdf/razberi/VA4_Data_Sheet.pdf" download>
+                  <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px" }}>
+                    Download VA4 Data Sheet
+                  </button>
+                </a>
                 <p>VA4-E2314</p>
                 <li>Intel Xeon E2314</li>
                 <li>RAM: 16GB / 32 GB</li>
@@ -185,6 +195,21 @@ const Razberi = () => {
                 <li>24 bays. Up to 22TB per bay.</li>
                 <li>Dual Intel Xeon Silver 4410Y</li>
                 <li>RAM: 16GB / 32GB</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('defense')}>  Camera Defense and Appliance Defense </button>
+            {visibleAnswer === 'defense' && (
+              <div className="faq-answer">
+                <p>Camera Defense:</p>
+                <li>Bind ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities.</li>
+                <li>Configure the firewalls to allow only essential services or protocols, removing unnecessary ones.</li>
+                <li>Restrict network traffic to known networks or approved devices with fixed IP addresses through whitelisting.</li>
+                <li>Enforce secure password policies, disallowing default, prohibited, or common passwords.</li>
+                <p>Appliance Defense (Cylance)</p>
+                <li>Our Cylance antivirus and antimalware solution leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time.</li>
+                <li>Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</li>
               </div>
             )}
           </div>

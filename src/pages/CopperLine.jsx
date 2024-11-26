@@ -272,8 +272,8 @@ const CopperLine = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredProducts.map((product) => (
-                    <tr key={product.partNumber}>
+                  {filteredProducts.map((product, index) => (
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.partNumber}</td>
                       <td>{product.position}</td>
                       <td>{product.channels}</td>

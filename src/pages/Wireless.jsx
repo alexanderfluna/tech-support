@@ -210,7 +210,7 @@ const Wireless = () => {
                 </thead>
                 <tbody>
                   {filteredProducts.map((product, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.model}</td>
                       <td>{product.quantity}</td>
                       <td>{product.size}</td>
@@ -299,7 +299,7 @@ const Wireless = () => {
                 <li>ESSID: The radio's broadcast name.</li>
                 <li>PSK: The radio's password.</li>
                 <li>Gain: The measure of how effectively an antenna directs or concentrates radio frequency (RF) energy in a particular direction, compared to a reference antenna.</li>
-                <li style={{"padding-left": "100px"}}>The gain can be referenced to dBi, gain reliative to an isotropic radiator (a theortetical antenna that radiadtes equally in all directions).</li>
+                <li style={{"padding-left": "100px"}}>The gain can be referenced to dBi, gain relative to an isotropic radiator (a theoretical antenna that radiates equally in all directions).</li>
                 <li>RSSI (Received signal strength indicator): intended to be used as an indicator of the quality of connection that exists 
                 between an access point and client radio.</li>
                 <li style={{"padding-left": "100px"}}>Less than -75 to -95 dBm: No signal or intermittent operation.</li>

@@ -148,7 +148,7 @@ const Wiegand = () => {
                 </thead>
                 <tbody>
                   {filteredProducts.map((product, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.model}</td>
                       <td>{product.fiber}</td>
                       <td>{product.centralRemote}</td>
@@ -189,8 +189,8 @@ const Wiegand = () => {
                 <li>Flip dip switches 1, 4, 8 on.</li>
                 <li>Apply power. There should be a green status LED. Remove power.</li>
                 <li>Flip all dip switches off.</li>
-                <li>Cycle power.</li>
-                <p>Ensure the correct wires configuration:</p>
+                <li>Apply power.</li>
+                <p>Ensure the correct wire configuration:</p>
                 <img src="photos/FDW/FDW.jpg"></img>
               </div>
             )}

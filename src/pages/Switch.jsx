@@ -236,7 +236,7 @@ const Switch = () => {
                 </thead>
                 <tbody>
                   {filteredProducts.map((product, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.Model}</td>
                       <td>{product.Hardened}</td>
                       <td>{product.Managed}</td>
@@ -244,6 +244,7 @@ const Switch = () => {
                       <td>{product.Copper === "0" ? "-" : product.Copper}</td>
                       <td>{product.Fiber === "0" ? "-" : product.Fiber}</td>
                       <td>{product.Combo === "0" ? "-" : product.Combo}</td>
+                      
                     </tr>
                   ))}
                 </tbody>

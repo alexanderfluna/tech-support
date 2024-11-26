@@ -431,7 +431,7 @@ const MediaConverter = () => {
                 </thead>
                 <tbody>
                   {filteredProducts.map((product, index) => (
-                    <tr key={index}>
+                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
                       <td>{product.Model}</td>
                       {Object.keys(availableOptions).map((key) => (
                         <td key={key}>{product[key]}</td>
