@@ -344,6 +344,22 @@ const CopperLine = () => {
               </div>
             )}
           </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('copper')}> Copper </button>
+            {visibleAnswer === 'copper' && (
+              <div className="faq-answer">
+                <p>Copper</p>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('coax')}> Coax </button>
+            {visibleAnswer === 'coax' && (
+              <div className="faq-answer">
+                <p>Coax</p>
+              </div>
+            )}
+          </div>
         </div>
       </main>
       <Button />
