@@ -11,7 +11,7 @@ import PoEInjector from './pages/PoEInjector';
 import PowerSupply from './pages/PowerSupply';
 import Razberi from './pages/Razberi';
 import SFP from './pages/SFP';
-import Switch from './pages/Switch';
+import Switch from './pages/EthernetSwitch';
 import Wireless from './pages/Wireless';
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/tech-support/power-supply" element={<PowerSupply />} />
         <Route path="/tech-support/razberi" element={<Razberi />} />
         <Route path="/tech-support/sfp" element={<SFP />} />
-        <Route path="/tech-support/switch" element={<Switch />} />
+        <Route path="/tech-support/ethernet-switch" element={<Switch />} />
         <Route path="/tech-support/wireless" element={<Wireless />} />
       </Routes>
     </Router>

@@ -349,6 +349,8 @@ const CopperLine = () => {
             {visibleAnswer === 'copper' && (
               <div className="faq-answer">
                 <p>Copper</p>
+                <li>There is a 300m limitation because...</li>
+                <li>The copper line extends this distance by ...</li>
               </div>
             )}
           </div>
@@ -357,6 +359,7 @@ const CopperLine = () => {
             {visibleAnswer === 'coax' && (
               <div className="faq-answer">
                 <p>Coax</p>
+                <p>BNC connector</p>
               </div>
             )}
           </div>

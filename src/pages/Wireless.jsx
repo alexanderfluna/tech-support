@@ -292,8 +292,8 @@ const Wireless = () => {
         <p className="faq-title">Relevant Information</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Wireless </button>
-            {visibleAnswer === 'wireless' && (
+            <button className="faq-question" onClick={() => toggleAnswer('netwave')}> Netwave </button>
+            {visibleAnswer === 'netwave' && (
               <div className="faq-answer">
                 <p>Terminology:</p>
                 <li>ESSID: The radio's broadcast name.</li>
@@ -332,6 +332,21 @@ const Wireless = () => {
                 <p>RJ45 Port 2</p>
                 <li>RJ45 Fast Ethernet port -- 802.3af Power Sourcing Equipment (PSE)</li>
                 <li>Using port 2, the radio can power up a PD.</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Wireless </button>
+            {visibleAnswer === 'wireless' && (
+              <div className="faq-answer">
+                <p>Oscillating circuit</p>
+                <p>Band:</p>
+                <p>Carrier wave:</p>
+                <p>Central frequency:</p>
+                <p>Channel:</p>
+                <p>Amplitude modulation</p>
+                <p>Frequency modulation</p>
+                <p>Phase modulation</p>
               </div>
             )}
           </div>

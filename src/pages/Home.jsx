@@ -40,7 +40,7 @@ const Home = () => {
 
         <div className='button-container'>
           {[
-            'Switch',
+            'Ethernet Switch',
             'Media Converter',
             'Wireless',
             'Razberi',
