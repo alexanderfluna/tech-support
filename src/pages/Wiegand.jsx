@@ -160,7 +160,7 @@ const Wiegand = () => {
           </>
         )}
 
-        <p className="faq-title">Troubleshooting Common Issues</p>
+        <p className="faq-title">How To Troubleshoot Common Issues</p>
         <div className="faq-list">
           {<NoPowerLight />}
           <div className="faq-item">

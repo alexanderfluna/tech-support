@@ -169,7 +169,7 @@ const PowerSupply = () => {
           </>
         )}
 
-        <h1 className="faq-title">Relevant Information</h1>
+        <h1 className="faq-title">Frequently Asked Questions</h1>
 
         <div className="faq-list">
           <div className="faq-item">

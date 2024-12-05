@@ -9,7 +9,7 @@ import PowerOverEthernet from '../relevant-information/PowerOverEthernet';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
-const Switch = () => {
+const EthernetSwitch = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -253,7 +253,7 @@ const Switch = () => {
           </>
         )}
 
-        <p className="faq-title">Troubleshooting Common Issues</p>
+        <p className="faq-title">How To Troubleshoot Common Issues</p>
         <div className="faq-list">
           {<NoPowerLight />}
           <div className="faq-item">
@@ -337,7 +337,7 @@ const Switch = () => {
           </div>
         </div>
 
-        <p className="faq-title">Relevant Information</p>
+        <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
         <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('relevant-switch-information')}>  Switches </button>
@@ -386,4 +386,4 @@ const Switch = () => {
   );
 };
 
-export default Switch;
+export default EthernetSwitch;

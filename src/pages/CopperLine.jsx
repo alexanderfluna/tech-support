@@ -289,7 +289,7 @@ const CopperLine = () => {
           </>
         )}
 
-        <p className="faq-title">Relevant Information</p>
+        <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)')}> CLFE(X)EO(U/C) to CLFE(X)EO(U/C) </button>

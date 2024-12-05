@@ -281,7 +281,7 @@ const ContactClosure = () => {
           </>
         )}
 
-        <p className="faq-title">Troubleshooting Common Issues</p>
+        <p className="faq-title">How To Troubleshoot Common Issues</p>
         <div className="faq-list">
           {<NoPowerLight />}
           <div className="faq-item">
@@ -323,7 +323,7 @@ const ContactClosure = () => {
           </div>
         </div>
 
-        <p className="faq-title">Relevant Information</p>
+        <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
         <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('fdc10')}> FDC10 </button>

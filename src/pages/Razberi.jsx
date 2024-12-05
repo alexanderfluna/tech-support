@@ -39,7 +39,7 @@ const Razberi = () => {
           </div>
         )}
 
-        <p className="faq-title">Troubleshooting Common Issues</p>
+        <p className="faq-title">How To Troubleshoot Common Issues</p>
         <div className="faq-list">
           <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('no-power')}> No Power </button>
@@ -76,7 +76,7 @@ const Razberi = () => {
         </div>
           
 
-        <p className="faq-title">Relevant Information</p>
+        <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
         <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('ss32x')}>  SS32X </button>
