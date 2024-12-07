@@ -241,7 +241,12 @@ const SFP = () => {
             SFP Chart
           </button>
           {visibleAnswer === 'sfp-chart' && (
-            <div className="faq-answer">
+            <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
+              <a href="pdf/SFP/sfp-modules.pdf" download>
+                  <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px" }}>
+                    Download SFP Chart
+                  </button>
+                </a>
               <img src="photos/SFP/SFP.png" alt="SFP Chart" />
             </div>
           )}

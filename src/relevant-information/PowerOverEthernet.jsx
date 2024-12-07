@@ -28,10 +28,18 @@ const PowerOverEthernet = () => {
 
   return (
     <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('power-over-ethernet')}> Power Over Ethernet </button>
+            <button className="faq-question" onClick={() => toggleAnswer('power-over-ethernet')}> What is power over Ethernet? </button>
             {visibleAnswer === 'power-over-ethernet' && (
               <div className="faq-answer">
-                <p>PoE Standards</p>
+                <li>A PoE switch, media converter, or injector is useful for powering on IP devices over the same Ethernet cable that provides data.</li>
+                <li>A PoE switch or media converter is not required on both ends of fiber. It is only required on the side that will be powering on an IP device.</li>
+                <p>Mode A PoE:</p>
+                <li>Pins 1 and 2 carry the positive DC voltage (+).</li>
+                <li>Pins 3 and 6 carry the negative DC voltage (-).</li>
+                <p>Mode B PoE:</p>
+                <li>Pins 4 and 5 carry the positive DC voltage (+).</li>
+                <li>Pins 7 and 8 carry the negative DC voltage (-)</li>
+                <p>The PoE standards:</p>
                 <table
                   style={{
                     width: "100%",
@@ -65,7 +73,7 @@ const PowerOverEthernet = () => {
                     ))}
                   </tbody>
                 </table>
-                <p>PoE classes</p>
+                <p>The PoE classes:</p>
                 <table
                   style={{
                     width: "100%",

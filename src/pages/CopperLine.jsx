@@ -15,31 +15,30 @@ const CopperLine = () => {
     channels: [],
     formFactor: [],
     cable: [],
-    poEPassthrough: [],
     poEInjection: []
   });
 
   const products = [
-    { partNumber: "CLFE1EOC", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "Coax", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLFE1EOU", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "UTP", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLFE4EOC", position: "Local/Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLFE4EOU", position: "Local/Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLFE8EOC", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "Coax", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLFE8EOU", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "UTP", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLFE16EOC", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "Coax", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLFE16EOU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP", poEPassthrough: "Yes", poEInjection: "No" },
-    { partNumber: "CLLFE1POEC", position: "Local", channels: 1, formFactor: "Small Size", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLRFE1POEC", position: "Remote", channels: 1, formFactor: "Small Size", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLLFE1POEU", position: "Local", channels: 1, formFactor: "Small Size", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLRFE1POEU", position: "Remote", channels: 1, formFactor: "Small Size", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLLFE4POEC", position: "Local", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLRFE4POEC", position: "Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLLFE4POEU", position: "Local", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLRFE4POEU", position: "Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLLFE8POEC", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLLFE8POEU", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLLFE16POEC", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "Coax", poEPassthrough: "Yes", poEInjection: "Yes" },
-    { partNumber: "CLLFE16POEU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP", poEPassthrough: "Yes", poEInjection: "Yes" },
+    { partNumber: "CLFE1EOC", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "Coax",  poEInjection: "No" },
+    { partNumber: "CLFE1EOU", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "UTP",  poEInjection: "No" },
+    { partNumber: "CLFE4EOC", position: "Local/Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax",  poEInjection: "No" },
+    { partNumber: "CLFE4EOU", position: "Local/Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP",  poEInjection: "No" },
+    { partNumber: "CLFE8EOC", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "No" },
+    { partNumber: "CLFE8EOU", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "No" },
+    { partNumber: "CLFE16EOC", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "No" },
+    { partNumber: "CLFE16EOU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "No" },
+    { partNumber: "CLLFE1POEC", position: "Local", channels: 1, formFactor: "Small Size", cable: "Coax",  poEInjection: "Yes" },
+    { partNumber: "CLRFE1POEC", position: "Remote", channels: 1, formFactor: "Small Size", cable: "Coax",  poEInjection: "Yes" },
+    { partNumber: "CLLFE1POEU", position: "Local", channels: 1, formFactor: "Small Size", cable: "UTP",  poEInjection: "Yes" },
+    { partNumber: "CLRFE1POEU", position: "Remote", channels: 1, formFactor: "Small Size", cable: "UTP",  poEInjection: "Yes" },
+    { partNumber: "CLLFE4POEC", position: "Local", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax",  poEInjection: "Yes" },
+    { partNumber: "CLRFE4POEC", position: "Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax",  poEInjection: "Yes" },
+    { partNumber: "CLLFE4POEU", position: "Local", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP",  poEInjection: "Yes" },
+    { partNumber: "CLRFE4POEU", position: "Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP",  poEInjection: "Yes" },
+    { partNumber: "CLLFE8POEC", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "Yes" },
+    { partNumber: "CLLFE8POEU", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "Yes" },
+    { partNumber: "CLLFE16POEC", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "Yes" },
+    { partNumber: "CLLFE16POEU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "Yes" },
   ];
 
   const [filters, setFilters] = useState({
@@ -47,7 +46,6 @@ const CopperLine = () => {
     channels: null,
     formFactor: null,
     cable: null,
-    poEPassthrough: null,
     poEInjection: null
   });
 
@@ -65,7 +63,7 @@ const CopperLine = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ position: null, channels: null, formFactor: null, cable: null, poEPassthrough: null, poEInjection: null }); 
+    setFilters({ position: null, channels: null, formFactor: null, cable: null,  poEInjection: null }); 
   };
 
   const handleFilterChange = (filterType, value) => {
@@ -89,7 +87,7 @@ const CopperLine = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ position: null, channels: null, formFactor: null, cable: null, poEPassthrough: null, poEInjection: null});
+    setFilters({ position: null, channels: null, formFactor: null, cable: null, poEInjection: null});
     setFilteredProducts(products); 
     updateAvailableOptions(products); 
   };
@@ -99,10 +97,9 @@ const CopperLine = () => {
     const channels = [...new Set(filteredProducts.map((product) => product.channels))];
     const formFactor = [...new Set(filteredProducts.map((product) => product.formFactor))];
     const cable = [...new Set(filteredProducts.map((product) => product.cable))];
-    const poEPassthrough = [...new Set(filteredProducts.map((product) => product.poEPassthrough))];
     const poEInjection = [...new Set(filteredProducts.map((product) => product.poEInjection))];
     
-    setAvailableOptions({ position, channels, formFactor, cable, poEPassthrough, poEInjection });
+    setAvailableOptions({ position, channels, formFactor, cable, poEInjection });
   };
 
   return (
@@ -213,29 +210,6 @@ const CopperLine = () => {
 
               <div>
                 <h3>
-                  PoE Pass Through
-                  {filters.poEPassthrough && (
-                    <button className="clear-filter" onClick={() => clearFilter("poEPassthrough")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.poEPassthrough.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="poEPassthrough"
-                      value={option}
-                      checked={filters.poEPassthrough === option}
-                      onChange={() => handleFilterChange("poEPassthrough", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
-
-              <div>
-                <h3>
                   PoE Injection
                   {filters.poEInjection && (
                     <button className="clear-filter" onClick={() => clearFilter("poEInjection")}>
@@ -267,7 +241,6 @@ const CopperLine = () => {
                     <th>Channels</th>
                     <th>Form Factor</th>
                     <th>Cable</th>
-                    <th>PoE Pass Through</th>
                     <th>PoE Injection</th>
                   </tr>
                 </thead>
@@ -279,7 +252,6 @@ const CopperLine = () => {
                       <td>{product.channels}</td>
                       <td>{product.formFactor}</td>
                       <td>{product.cable}</td>
-                      <td>{product.poEPassthrough}</td>
                       <td>{product.poEInjection}</td>
                     </tr>
                   ))}
@@ -348,9 +320,10 @@ const CopperLine = () => {
             <button className="faq-question" onClick={() => toggleAnswer('copper')}> Copper </button>
             {visibleAnswer === 'copper' && (
               <div className="faq-answer">
-                <p>Copper</p>
-                <li>There is a 300m limitation because...</li>
-                <li>The copper line extends this distance by ...</li>
+                <p>Copper has a 100 meter limitation.</p>
+                <li>As the signal travels through copper cables, it weakens due to the resistance of the copper. The longer the distance, the more the signal degrades, making it harder for the receiving end to interpret the signal correctly.</li>
+                <li>Copper cables are susceptible to electromagnetic interference, which can distort the signals as they travel. Over long distances, this interference becomes more pronounced and can further degrade the quality of the signal.</li>
+                <p>The copper line extends this distance up to 2,000 feet for non-PoE.</p>
               </div>
             )}
           </div>
@@ -358,8 +331,45 @@ const CopperLine = () => {
             <button className="faq-question" onClick={() => toggleAnswer('coax')}> Coax </button>
             {visibleAnswer === 'coax' && (
               <div className="faq-answer">
-                <p>Coax</p>
                 <p>BNC connector</p>
+                <li>A BNC (Bayonet Neill-Concelman) connector is a small, coaxial cable connector commonly used for transmitting video and data signals in applications like CCTV, radio, and television, featuring a twist-and-lock mechanism for secure connections.</li>
+                <p>The copper line can send signals over coax up to 2,000 feet for non-PoE.</p>
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    fontSize: "18px",
+                    textAlign: "left",
+                  }}
+                >
+                  <thead>
+                    <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                      <th style={{ padding: "10px", border: "1px solid #ddd" }}>Cable Type</th>
+                      <th style={{ padding: "10px", border: "1px solid #ddd" }}>Applications</th>
+                      <th style={{ padding: "10px", border: "1px solid #ddd" }}>Impedance</th>
+                      <th style={{ padding: "10px", border: "1px solid #ddd" }}>Size</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { type: "RG9", applications: "Used in older video systems, less common today", impedance: "75 Ohms", size: "Large" },
+                      { type: "RG6", applications: "Used in satellite TV, cable systems, and broadband internet", impedance: "75 Ohms", size: "Medium" },
+                      { type: "RG59", applications: "Used in analog video applications, CCTV", impedance: "75 Ohms", size: "Small" },
+                    ].map((item, index) => (
+                      <tr
+                        key={index}
+                        style={{
+                          backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
+                        }}
+                      >
+                        <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.type}</td>
+                        <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.applications}</td>
+                        <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.impedance}</td>
+                        <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.size}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             )}
           </div>

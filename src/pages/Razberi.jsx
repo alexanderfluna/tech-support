@@ -42,7 +42,7 @@ const Razberi = () => {
         <p className="faq-title">How To Troubleshoot Common Issues</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-power')}> No Power </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-power')}> The unit does not power on. </button>
             {visibleAnswer === 'no-power' && (
               <div className="faq-answer">
                 <p>There may be an issue with the power supply or CPU board. Contact technical support for an RMA.</p>
@@ -50,7 +50,7 @@ const Razberi = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> No PoE or Port Activity </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> There is no PoE or port activitiy. </button>
             {visibleAnswer === 'no-poe' && (
               <div className="faq-answer">
                 <p>There may be an issue with the switch board. Contact technical support for an RMA.</p>
@@ -58,7 +58,7 @@ const Razberi = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> Failed Disk </button>
+            <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> There is a failed hard drive. </button>
             {visibleAnswer === 'failed-disk' && (
               <div className="faq-answer">
                 <p>Contact technical support for a replacement disk and assistance with reconfiguring the RAID array as needed.</p>
@@ -66,7 +66,7 @@ const Razberi = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('lost-windows-password')}> Lost Windows Password </button>
+            <button className="faq-question" onClick={() => toggleAnswer('lost-windows-password')}> I have lost the Windows password. </button>
             {visibleAnswer === 'lost-windows-password' && (
               <div className="faq-answer">
                 <p>Contact technical support for the Windows recovery files.</p>
@@ -90,7 +90,7 @@ const Razberi = () => {
                 <p>Most relevant specs:</p>
                 <li>32-port PoE switch</li>
                 <li>Intel i5 processor</li>
-                <li>2 mSatas with RAID 1</li>
+                <li>Two M.2 SSDs with RAID 1</li>
                 <li>RAM: 16GB, 32 GB</li>
                 <li>Up to 88TB of storage</li>
                 <li>GPU: GPU-T1000</li>
@@ -103,6 +103,27 @@ const Razberi = () => {
                 <li>Default U1 / SFP1 combo port IP: 192.168.50.19</li>
                 <li>Default U2 IP: DHCP</li>
                 <li>Default SFP2 IP: DHCP</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('dell')}>  Dell Servers </button>
+            {visibleAnswer === 'dell' && (
+              <div className="faq-answer">
+                <p>iDRAC (Integrated Dell Remote Access Controller)</p>
+                <li>This tool allows one to remote into the server and maange it.</li>
+                <p>BOSS (Boot Optimized Storage Solution)</p>
+                <li>This card is designed for booting the server's operating system using two mirrored M.2 SATA SSDs.</li>
+                <p>BOSS-N1</p>
+                <li>NVMe (Non-Volatile Memory Express)</li>
+                <li>NVMe-based M.2 SSDs</li>
+                <li>Higher performance than BOSS-S1</li>
+                <p>BOSS-S1</p>
+                <li>SATA (Serial ATA)</li>
+                <li>SATA-based M.2 SSDs</li>
+                <li>Lower performance than BOSS-N1</li>
+                <p>PERC (PowerEdge RAID Controller)</p>
+                <li>This hardware RAID controller manages the RAID configuration.</li>
               </div>
             )}
           </div>
@@ -204,24 +225,46 @@ const Razberi = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('RAID')}>  RAID </button>
+            <button className="faq-question" onClick={() => toggleAnswer('RAID')}>  What is RAID? </button>
             {visibleAnswer === 'RAID' && (
               <div className="faq-answer">
-                <p>RAID 0</p>
-                <li>Requires at least 2 drives.</li>
-                <li>No configuration.</li>
-                <p>RAID 1</p>
-                <li>Requires at least 2 drives.</li>
-                <li>Total storage: Half the # of drives.</li>
-                <p>RAID 5</p>
-                <li>Requires at least 3 drives.</li>
-                <li>Total storage: Minus 1 drive.</li>
-                <p>RAID 6</p>
-                <li>Requires at least 4 drives.</li>
-                <li>Total storage: Minus 2 drives.</li>
-                <p>RAID 10</p>
-                <li>Requires at least 4 drives.</li>
-                <li>Total storage: Half the # of drives.</li>
+                <p>RAID (Redundant Array of Independent Disks) is data storage technology that combines multiple hard drives or SSDs into a single unit to improve performance, redunancy, or both, depending on the RAID level used.</p>
+                  <table
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      fontSize: "18px",
+                      textAlign: "left",
+                    }}
+                  >
+                    <thead>
+                      <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>RAID Level</th>
+                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Minimum Required Drives</th>
+                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Total Storage</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { level: "RAID 0", drives: "At least 2", storage: "No configuration" },
+                        { level: "RAID 1", drives: "At least 2", storage: "Half the # of drives" },
+                        { level: "RAID 5", drives: "At least 3", storage: "Minus 1 drive" },
+                        { level: "RAID 6", drives: "At least 4", storage: "Minus 2 drives" },
+                        { level: "RAID 10", drives: "At least 4", storage: "Half the # of drives" },
+                      ].map((item, index) => (
+                        <tr
+                          key={index}
+                          style={{
+                            backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
+                          }}
+                        >
+                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.level}</td>
+                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.drives}</td>
+                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.storage}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
               </div>
             )}
           </div>

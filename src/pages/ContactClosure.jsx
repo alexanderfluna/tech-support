@@ -285,7 +285,7 @@ const ContactClosure = () => {
         <div className="faq-list">
           {<NoPowerLight />}
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
             {visibleAnswer === 'no-link-light' && (
               <div className="faq-answer">
                 <p>1. Test the Fiber with Another Device.</p>
@@ -306,7 +306,7 @@ const ContactClosure = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-contacts')}> No Contacts </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-contacts')}> The contacts are not getting sent across the fiber. </button>
             {visibleAnswer === 'no-contacts' && (
               <div className="faq-answer">
                 <p>1. Ensure the wires are connected properly.</p>

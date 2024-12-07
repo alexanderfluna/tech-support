@@ -243,7 +243,7 @@ const SerialData = () => {
         <div className="faq-list">
           {<NoPowerLight />}
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
             {visibleAnswer === 'no-link-light' && (
               <div className="faq-answer">
                 <p>1. Test the Fiber with Another Device.</p>
@@ -264,7 +264,7 @@ const SerialData = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> No Communication </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The serial data is not getting sent over the fiber. </button>
             {visibleAnswer === 'no-communication' && (
               <div className="faq-answer">
                 <p>1. Ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</p>

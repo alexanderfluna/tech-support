@@ -249,19 +249,7 @@ const PoEInjector = () => {
           </>
         )}
 
-        <h1 className="faq-title">Frequently Asked Questions</h1>
-        <div className="faq-list">
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('poe-injector')}>
-              PoE Injector 
-            </button>
-            {visibleAnswer === 'poe-injector' && (
-              <div className="faq-answer">
-                <p>...</p>
-              </div>
-            )}
-          </div>
-        </div>
+        <p className="faq-title">Frequently Asked Questions</p>
         <PowerOverEthernet />
       </main>
       <Button />

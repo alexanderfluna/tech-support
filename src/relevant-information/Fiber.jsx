@@ -32,7 +32,7 @@ const Fiber = () => {
 
   return (
     <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('fiber')}>  Fiber </button>
+            <button className="faq-question" onClick={() => toggleAnswer('fiber')}>  What is fiber? </button>
             {visibleAnswer === 'fiber' && (
               <div className="faq-answer">
                 <p>Core and Cladding</p>
@@ -143,12 +143,11 @@ const Fiber = () => {
                     ))}
                   </tbody>
                 </table>
-                <p>Fiber Standards</p>
+                <p style={{"margin-top": "30px"}}>The fiber standards</p>
                 <table
                   style={{
                     width: "100%",
                     borderCollapse: "collapse",
-                    margin: "20px 0",
                     fontSize: "18px",
                     textAlign: "left",
                   }}

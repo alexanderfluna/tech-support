@@ -236,21 +236,6 @@ const CardCage = () => {
             </div>
           </>
         )}
-
-        <h1 className="faq-title">Frequently Asked Questions</h1>
-
-        <div className="faq-list">
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('enclosures')}>
-              Enclosures
-            </button>
-            {visibleAnswer === 'enclosures' && (
-              <div className="faq-answer">
-                <p>...</p>
-              </div>
-            )}
-          </div>
-        </div>
       </main>
       <Button />
       <BackToTop />

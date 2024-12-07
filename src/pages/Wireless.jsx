@@ -227,63 +227,58 @@ const Wireless = () => {
         <p className="faq-title">How To Troubleshoot Common Issues</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> No Power Light </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> The unit does not power on. </button>
             {visibleAnswer === 'no-power-light' && (
               <div className="faq-answer">
-                <p>If using a PoE injector:</p>
-                <li>1) Ensure a hardened PoE injector is being used when outdoors.</li>
-                <li>2) Verify the PoE injector is compatible with the IEEE 802.3at standard.</li>
-                <li>3) Test that the PoE injector will power on another device.</li>
-                <li>4) Try using another known-working IEEE 802.3at compataible PoE injector.</li>
-                <li>5) Try using a known-working IEEE 802.3at compatible PoE switch.</li>
-                <li>6) Contact technical support if the problem continue to persist.</li>
-                <p>_______________________________________________________________________________________________________</p>
-                <p>If using a PoE switch:</p>
-                <li>1) Ensure a hardened PoE switch and hardened power supply are being used when outdoors.</li>
-                <li>2) Verify the PoE switch is compatible with the IEEE 802.3at standard.</li>
-                <li>3) Confirm the power supply produces enough wattage for the device(s) powered by PoE and the radio.</li>
-                <li>4) Use a voltmeter to verify the power supply is producing 48 to 56VDC:</li>
+                <p>If a PoE injector being used the radio:</p>
+                <li>Ensure a hardened PoE injector is being used when outdoors.</li>
+                <li>Verify the PoE injector is compatible with the IEEE 802.3at standard.</li>
+                <li>Test that the PoE injector will power on another device.</li>
+                <li>Try using another known-working IEEE 802.3at compataible PoE injector.</li>
+                <li>Try using a known-working IEEE 802.3at compatible PoE switch.</li>
+                <p style={{"padding-top": "40px"}}>If a PoE switch is being used to power the radio:</p>
+                <li>Ensure a hardened PoE switch and hardened power supply are being used when outdoors.</li>
+                <li>Verify the PoE switch is compatible with the IEEE 802.3at standard.</li>
+                <li>Confirm the power supply produces enough wattage for the device(s) powered by PoE and the radio.</li>
+                <li>Use a voltmeter to verify the power supply is producing 48 to 56VDC:</li>
                 <li style={{ 'padding-left': '100px' }}>Confirm the red probe is connected the voltmeter's positive terminal and the black probe is connected to the negative (or ground) terminal.</li>
                 <li style={{ 'padding-left': '100px' }}>Ensure the voltmeter is set to DC voltage mode.</li>
                 <li style={{ 'padding-left': '100px' }}>Touch the the red probe to the positive terminal and the black probe to the negative terminal.</li>
                 <li style={{ 'padding-left': '100px' }}>Verify the power supply delivers the required 48VDC-56VDC input voltage while connected to the switch.</li>
-                <li>5) If the power supply fails to provide the required voltage while connected:</li>
-                <li>6) Try using another known-working IEEE 802.3at compatible PoE switch.</li>
-                <li>7) Try using a known-working IEEE 802.3at compataible PoE injector.</li>
-                <li>8) Contact technical support if the problem continue to persist.</li>
+                <li>Attempt using another known-working IEEE 802.3at compatible PoE switch.</li>
+                <li>Try using a known-working IEEE 802.3at compatible PoE injector.</li>
               </div>
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> No Communication </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The radios are not communicating. </button>
             {visibleAnswer === 'no-communication' && (
               <div className="faq-answer">
-                <p>1) Confirm the radios are being powered on properly:</p>
+                <p>1. Confirm the radios are being properly powered.</p>
                 <li>The radios must be powered on via PoE.</li>
                 <li>The radios cannot be powered on by the same PoE switch.</li>
-                <p>2) Consider the network topology:</p>
-                <li>Point to point.</li>
-                <li>Point to multipoint</li>
-                <li>Add/drop/repeat</li>
-                <li>If there are multiple radios in the area, consider if there may be duplicate IPs or ESSIDs.</li>
-                <p>3) Determine: </p>
-                <li>If a physical connection is made to one of the radios, it is possible to configure the other(s) from that spot.</li>
-                <li style={{ 'padding-left': '100px' }}>Otherwise, it is best to make a physical connection with the access point and then the client(s).</li>
-                <li>If the radios are at default, then there is no need to factory default them.</li>
-                <li style={{ 'padding-left': '100px' }}>Otherwise, if the radios have been configured, then it is recommended to first factory default them.</li>
+                <p>2. Consider the network topology.</p>
+                <li>Point to point?</li>
+                <li>Point to multipoint?</li>
+                <li>Add/drop/repeat?</li>
+                <li>If there are multiple radios in the area, could there be any duplicate IPs or ESSIDs?</li>
+                <li>If the radios have been configured, it is recommended to factory default them first. If the radios are at default, then there is no need.</li>
+                <li>If there is a physical connection with one of the radios, is it possible to configure the other(s) from that location? </li>
+                <li style={{ 'padding-left': '120px' }}>Otherwise, it is best to make a physical connection with the access point and then with the client(s).</li>
+                <p>3. Determine: </p>
                 <li>What the IPs will be ( The access point and client(s) must have unique IPs on the same subnet ).</li>
                 <li>What the ESSID will be ( The ESSID must be exactly the same on the access point and client(s) ).</li>
                 <li>What the PSK will be ( The PSK must be exactly the same on the access point and client(s) ).</li>
-                <p>4) Configure the radios:</p>
+                <p>4. Configure the radios:</p>
                 <li>Configuring the Access Point:</li>
-                <li style={{ 'padding-left': '100px' }}>Set the IP address.</li>
-                <li style={{ 'padding-left': '100px' }}>Set the ESSID.</li>
-                <li style={{ 'padding-left': '100px' }}>Set the PSK.</li>
-                <li style={{ 'padding-left': '100px' }}>Set as an acess point.</li>
+                <li style={{ 'padding-left': '120px' }}>Set the IP address.</li>
+                <li style={{ 'padding-left': '120px' }}>Set the ESSID.</li>
+                <li style={{ 'padding-left': '120px' }}>Set the PSK.</li>
+                <li style={{ 'padding-left': '120px' }}>Set as an acess point.</li>
                 <li>Configuring the Client(s):</li>
-                <li style={{ 'padding-left': '100px' }}>Set the IP address ( The access point and client(s) must have unique IPs on the same subnet ).</li>
-                <li style={{ 'padding-left': '100px' }}>Set the ESSID ( The ESSID must be exactly the same on the access point and client(s) ).</li>
-                <li style={{ 'padding-left': '100px' }}>Set the PSK ( The PSK must be exactly the same on the access point and client(s) ).</li>
+                <li style={{ 'padding-left': '120px' }}>Set the IP address ( The access point and client(s) must have unique IPs on the same subnet ).</li>
+                <li style={{ 'padding-left': '120px' }}>Set the ESSID ( The ESSID must be exactly the same on the access point and client(s) ).</li>
+                <li style={{ 'padding-left': '120px' }}>Set the PSK ( The PSK must be exactly the same on the access point and client(s) ).</li>
                 <li>After configuration, the radios should automatically connect.</li>
               </div>
             )}
@@ -292,12 +287,11 @@ const Wireless = () => {
         <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('netwave')}> Netwave </button>
-            {visibleAnswer === 'netwave' && (
+            <button className="faq-question" onClick={() => toggleAnswer('netwave-terminology')}> What does the netwave terminology mean? </button>
+            {visibleAnswer === 'netwave-terminology' && (
               <div className="faq-answer">
-                <p>Terminology:</p>
                 <li>ESSID: The radio's broadcast name.</li>
-                <li>PSK: The radio's password.</li>
+                <li>PSK: The radio's password to join the network.</li>
                 <li>Gain: The measure of how effectively an antenna directs or concentrates radio frequency (RF) energy in a particular direction, compared to a reference antenna.</li>
                 <li style={{"padding-left": "100px"}}>The gain can be referenced to dBi, gain relative to an isotropic radiator (a theoretical antenna that radiates equally in all directions).</li>
                 <li>RSSI (Received signal strength indicator): intended to be used as an indicator of the quality of connection that exists 
@@ -305,16 +299,33 @@ const Wireless = () => {
                 <li style={{"padding-left": "100px"}}>Less than -75 to -95 dBm: No signal or intermittent operation.</li>
                 <li style={{"padding-left": "100px"}}>-75 dBm and greater: Moderate connection</li>
                 <li style={{"padding-left": "100px"}}>-65 dBm and greater: Solid connection</li>
-                <li style={{"padding-left": "100px"}}>-55 to 0 dBm: Excellent connection</li>
-                <p>_______________________________________________________________________________________________________</p>
-                <p>Specs:</p>
+                <li style={{"padding-left": "100px"}}>-55 to 0 dBm: Excellent connection</li>                
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('netwave-specs')}> What are the netwave specs? </button>
+            {visibleAnswer === 'netwave-specs' && (
+              <div className="faq-answer">
                 <li>A full size radio has a 17º beamwidth and gain of 20 dBi.</li>
                 <li>A minituare radio has a 30º beamwidth and gain of 16 dBi.</li>
                 <li>Up to 500mbps throughput.</li>
                 <li>Work at distances of up to 2 miles.</li>
                 <li>Operating Power: 48 to 57VDC</li>
                 <li>Secure transmission: WPA2 - AES</li>
-                <p>_______________________________________________________________________________________________________</p>
+                <p>RJ45 Port 1</p>
+                <li>RJ45 Gigabit Ethernet port -- 802.3at PoE Compliant Powered Device (30 W, 48-57V)</li>
+                <li>Using port 1, the radio must be powered on by a PSE.</li>
+                <p>RJ45 Port 2</p>
+                <li>RJ45 Fast Ethernet port -- 802.3af Power Sourcing Equipment (PSE)</li>
+                <li>Using port 2, the radio can power up a PD.</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('netwave-configurations')}> What are the netwave default configurations? </button>
+            {visibleAnswer === 'netwave-configurations' && (
+              <div className="faq-answer">
                 <p>Default Configurations:</p>
                 <li>Default ESSID: Netwave-1</li>
                 <li>Default PSK: 12345678</li>
@@ -324,21 +335,14 @@ const Wireless = () => {
                 <li>Default GUI username: root</li>
                 <li>Default GUI password: root</li>
                 <li style={{"padding-left": "100px"}}>On older radios, it sometimes defaults to admin, admin.</li>
-                <p>_______________________________________________________________________________________________________</p>
-                <p>RJ45 Port 1</p>
-                <li>RJ45 Gigabit Ethernet port -- 802.3at PoE Compliant Powered Device (30 W, 48-57V)</li>
-                <li>Using port 1, the radio must be powered on by a PSE.</li>
-                <p>_______________________________________________________________________________________________________</p>
-                <p>RJ45 Port 2</p>
-                <li>RJ45 Fast Ethernet port -- 802.3af Power Sourcing Equipment (PSE)</li>
-                <li>Using port 2, the radio can power up a PD.</li>
               </div>
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Wireless </button>
+            <button className="faq-question" onClick={() => toggleAnswer('wireless')}> How does wireless work? </button>
             {visibleAnswer === 'wireless' && (
               <div className="faq-answer">
+                <p>802.11</p>
                 <p>Oscillating circuit</p>
                 <p>Band:</p>
                 <p>Carrier wave:</p>

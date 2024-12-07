@@ -78,6 +78,10 @@
 }
 
 @media (max-width: 1350px) {
+  .nav {
+    width: auto;
+  }
+
   .nav-middle,
   .nav-right {
     display: none;

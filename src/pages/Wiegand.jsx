@@ -164,7 +164,7 @@ const Wiegand = () => {
         <div className="faq-list">
           {<NoPowerLight />}
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> No Link Light </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
             {visibleAnswer === 'no-link-light' && (
               <div className="faq-answer">
                 <p>Swap the transmit and receive fiber strands.</p>
@@ -172,7 +172,7 @@ const Wiegand = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> No Communication </button>
+            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The central and remote are not communicating. </button>
             {visibleAnswer === 'no-communication' && (
               <div className="faq-answer">
                 <p>Central with no expansions:</p>
