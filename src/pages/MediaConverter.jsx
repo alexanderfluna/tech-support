@@ -6,6 +6,7 @@ import BackToTop from '../components/BackToTop';
 import NoPowerLight from '../relevant-information/NoPowerLight';
 import Fiber from '../relevant-information/Fiber';
 import PowerOverEthernet from '../relevant-information/PowerOverEthernet';
+import OSI from '../relevant-information/OSI';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -526,6 +527,7 @@ const MediaConverter = () => {
           </div>
           {<Fiber />}
           {<PowerOverEthernet />}
+          {<OSI />}
         </div>
       </main>
       <Button />

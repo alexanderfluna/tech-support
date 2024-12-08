@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
+import PowerOverEthernet from '../relevant-information/PowerOverEthernet';
+import OSI from '../relevant-information/OSI';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -287,7 +289,7 @@ const Wireless = () => {
         <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('netwave-terminology')}> What does the netwave terminology mean? </button>
+            <button className="faq-question" onClick={() => toggleAnswer('netwave-terminology')}> What does the Netwave terminology mean? </button>
             {visibleAnswer === 'netwave-terminology' && (
               <div className="faq-answer">
                 <li>ESSID: The radio's broadcast name.</li>
@@ -304,7 +306,7 @@ const Wireless = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('netwave-specs')}> What are the netwave specs? </button>
+            <button className="faq-question" onClick={() => toggleAnswer('netwave-specs')}> What are the Netwave specs? </button>
             {visibleAnswer === 'netwave-specs' && (
               <div className="faq-answer">
                 <li>A full size radio has a 17º beamwidth and gain of 20 dBi.</li>
@@ -323,7 +325,7 @@ const Wireless = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('netwave-configurations')}> What are the netwave default configurations? </button>
+            <button className="faq-question" onClick={() => toggleAnswer('netwave-configurations')}> What are the Netwave default configurations? </button>
             {visibleAnswer === 'netwave-configurations' && (
               <div className="faq-answer">
                 <p>Default Configurations:</p>
@@ -354,6 +356,8 @@ const Wireless = () => {
               </div>
             )}
           </div>
+          {<PowerOverEthernet />}
+          {<OSI />}
         </div>
       </main>
       <Button />
