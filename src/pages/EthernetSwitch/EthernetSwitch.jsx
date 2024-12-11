@@ -151,7 +151,7 @@ const EthernetSwitch = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('default-configuration')}>  What are the default configurations? </button>
+            <button className="faq-question" onClick={() => toggleAnswer('default-configuration')}>  What are the default configurations on Comnet's Ethernet switches? </button>
             {visibleAnswer === 'default-configuration' && (
               <div className="faq-answer">
                 <li>Default IP: 192.168.10.1</li>
@@ -161,7 +161,7 @@ const EthernetSwitch = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('switch-protocols')}>  What are the switch protocols? </button>
+            <button className="faq-question" onClick={() => toggleAnswer('switch-protocols')}>  What are the Ethernet switch protocols? </button>
             {visibleAnswer === 'switch-protocols' && (
               <div className="faq-answer">
                 <li>ARP</li>

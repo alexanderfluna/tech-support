@@ -326,7 +326,7 @@ const ContactClosure = () => {
         <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
         <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('fdc10')}> FDC10 </button>
+            <button className="faq-question" onClick={() => toggleAnswer('fdc10')}> What are the applications for the FDC10? </button>
             {visibleAnswer === 'fdc10' && (
               <div className="faq-answer">
                 <p>Applications:</p>
@@ -341,7 +341,7 @@ const ContactClosure = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('fdc8')}> FDC8 </button>
+            <button className="faq-question" onClick={() => toggleAnswer('fdc8')}> What are the applications for the FDC8? </button>
             {visibleAnswer === 'fdc8' && (
               <div className="faq-answer">
                 <p>Applications:</p>
@@ -361,7 +361,7 @@ const ContactClosure = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('fdc80')}> FDC80 </button>
+            <button className="faq-question" onClick={() => toggleAnswer('fdc80')}> What are the applications for the FDC80? </button>
             {visibleAnswer === 'fdc80' && (
               <div className="faq-answer">
                 <p>Applications:</p>

@@ -267,20 +267,22 @@ const SerialData = () => {
             <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The serial data is not getting sent over the fiber. </button>
             {visibleAnswer === 'no-communication' && (
               <div className="faq-answer">
-                <p>1. Ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</p>
+                <p>1. Determine what lights are illuminated on the unit.</p>
+                <img src="photos/FDX/fdx60-led.jpg"></img>
+                <p>2. Ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</p>
+                <li>Impedance mismatch:</li>
+                <li style={{"padding-left": "100px"}}>Occurs where two interconnected electronic devices or components have different impedance values (resistance to alternating current).</li>
+                <li style={{"padding-left": "100px"}}>Without proper termination (e.g., a resistor matching the cable's characteristic impedance), the energy of the signal doesn't dissipate properly, leading to ringing.</li>
+                <li>Ringing</li>
+                <li style={{"padding-left": "100px"}}>Reflection of data from one device back to the other.</li>
                 <li>Lumped distance:</li>
                 <li style={{"padding-left": "100px"}}>Where the resistors is placed doesn't matter because the devices are so close.</li>
                 <li>Distributed distance:</li>
                 <li style={{"padding-left": "100px"}}>The resistor must be placed at the end because the distance is so far.</li>
-                <li>Impedance mismatch:</li>
-                <li style={{"padding-left": "100px"}}>Occurs where two interconnected electronic devices or components have different impedance values (resistance to alternating current).</li>
-                <li>Ringing</li>
-                <li style={{"padding-left": "100px"}}>Reflection from one device back to the other.</li>
-                <p>2. Verify the wires are connected properly:</p>
+                <p>3. Verify the wires are connected properly:</p>
                 <img src="photos/FDX/fdx60-wires.jpg"></img>
-                <p>3. Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration:</p>
+                <p>4. Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration:</p>
                 <img src="photos/FDX/fdx60-switches.jpg"></img>
-                <img src="photos/FDX/fdx60-led.jpg"></img>
               </div>
             )}
           </div>
@@ -289,7 +291,7 @@ const SerialData = () => {
         <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
         <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('fdx60')}> FDX60 </button>
+            <button className="faq-question" onClick={() => toggleAnswer('fdx60')}> What are the applications for the FDX60? </button>
             {visibleAnswer === 'fdx60' && (
               <div className="faq-answer">
                 <p>Applications:</p>
@@ -301,7 +303,7 @@ const SerialData = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('terminal-server')}> CNFE3DOE2/M </button>
+            <button className="faq-question" onClick={() => toggleAnswer('terminal-server')}> What are the applications for the CNFE3DOE2/M? </button>
             {visibleAnswer === 'terminal-server' && (
               <div className="faq-answer">
                 <p>Terminal Server</p>
@@ -310,7 +312,7 @@ const SerialData = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('rs232')}> RS-232 </button>
+            <button className="faq-question" onClick={() => toggleAnswer('rs232')}> What is RS-232? </button>
             {visibleAnswer === 'rs232' && (
               <div className="faq-answer">
                 <li>Full deplex over 3 wires</li>
@@ -327,7 +329,7 @@ const SerialData = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('rs422')}> RS-422 </button>
+            <button className="faq-question" onClick={() => toggleAnswer('rs422')}> What is RS-422? </button>
             {visibleAnswer === 'rs422' && (
               <div className="faq-answer">
                 <li>Full duplex over 4 wires</li>
@@ -342,7 +344,7 @@ const SerialData = () => {
             )}
           </div>
           <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('rs485')}> RS-485 </button>
+            <button className="faq-question" onClick={() => toggleAnswer('rs485')}> What is RS-485? </button>
             {visibleAnswer === 'rs485' && (
               <div className="faq-answer">
                 <p>2-wire RS-485</p>

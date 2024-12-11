@@ -143,7 +143,7 @@ const Fiber = () => {
                     ))}
                   </tbody>
                 </table>
-                <p style={{"margin-top": "30px"}}>The fiber standards</p>
+                <p style={{"margin-top": "30px"}}>The fiber standards:</p>
                 <table
                   style={{
                     width: "100%",

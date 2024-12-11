@@ -25,7 +25,7 @@ const Home = () => {
         <div className="middle-section"> 
           <div className="middle-section-left">
             <h1 style={{"font-size": "72px", color: "#22132B"}}>Technical Support</h1>
-            <p>Thank you for choosing ComNet by acre.</p>
+            <p>Thank you for choosing Comnet by acre.</p>
             <p>Our technical support page features product selector tools, how to troubleshooting common issues, and answers to frequently asked questions.</p>
             <div style={{display: "flex", "flex-direction": "row"}}><p>Scroll down to select your product.</p><p style={{"padding-left": "10px", color: "rgb(255, 0, 164)"}}>↓</p></div>
           </div>
