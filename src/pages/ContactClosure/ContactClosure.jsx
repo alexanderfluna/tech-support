@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Button from '../components/Button';
-import Footer from '../components/Footer';
-import BackToTop from '../components/BackToTop';
-import NoPowerLight from '../relevant-information/NoPowerLight';
-import Fiber from '../relevant-information/Fiber';
-import '../styles/Global.css';
-import '../styles/Pages.css';
+import Navbar from '../../components/Navbar';
+import Button from '../../components/Button';
+import Footer from '../../components/Footer';
+import BackToTop from '../../components/BackToTop';
+import NoPowerLight from '../../relevant-information/NoPowerLight';
+import Fiber from '../../relevant-information/Fiber';
+import '../../styles/Global.css';
+import '../../styles/Pages.css';
 
 const ContactClosure = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);

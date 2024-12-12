@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Enclosures from './pages/Enclosures';
 import CopperLine from './pages/CopperLine';
-import ContactClosure from './pages/ContactClosure';
+import ContactClosure from './pages/ContactClosure/ContactClosure';
 import SerialData from './pages/SerialData';
 import Wiegand from './pages/Wiegand';
 import MediaConverter from './pages/MediaConverter';
