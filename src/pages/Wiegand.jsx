@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
 import NoPowerLight from '../relevant-information/NoPowerLight';
+import Fiber from '../relevant-information/Fiber';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
@@ -194,6 +195,29 @@ const Wiegand = () => {
                 <img src="photos/FDW/FDW.jpg"></img>
               </div>
             )}
+          </div>
+
+          <p className="faq-title">Frequently Asked Questions</p>
+          <div className="faq-list">
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
+              {visibleAnswer === 'wiegand' && (
+                <div className="faq-answer">
+                  <li>Wiegand is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</li>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="faq-list">
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
+              {visibleAnswer === 'osdp' && (
+                <div className="faq-answer">
+                  <li>OSDP (Open Supervised Device Protocol) is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</li>
+                </div>
+              )}
+            </div>
+            <Fiber />
           </div>
         </div>
       </main>

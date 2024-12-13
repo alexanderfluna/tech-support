@@ -19,6 +19,16 @@ const Wireless = () => {
     continent: []
   });
 
+  const wifiStandards = [
+    { standard: '802.11', frequency: '2.4 GHz', maxDataRate: '2 Mbps', channelBandwidth: '22 MHz', date: '1997' },
+    { standard: '802.11a', frequency: '5 GHz', maxDataRate: '54 Mbps', channelBandwidth: '20 MHz', date: '1999' },
+    { standard: '802.11b', frequency: '2.4 GHz', maxDataRate: '11 Mbps', channelBandwidth: '22 MHz', date: '1999' },
+    { standard: '802.11g', frequency: '2.4 GHz', maxDataRate: '54 Mbps', channelBandwidth: '20 MHz', date: '2003' },
+    { standard: '802.11n', frequency: '2.4 GHz / 5 GHz', maxDataRate: '600 Mbps', channelBandwidth: '20/40 MHz', date: '2009' },
+    { standard: '802.11ac', frequency: '5 GHz', maxDataRate: '1.3 Gbps', channelBandwidth: '20/40/80/160 MHz', date: '2013' },
+    { standard: '802.11ax', frequency: '2.4 GHz / 5 GHz / 6 GHz', maxDataRate: '9.6 Gbps', channelBandwidth: '20/40/80/160 MHz', date: '2019' },
+  ];
+
   const products = [
     { model: "NW1", quantity: "Single", size: "Full", beamwidth: "17°", continent: "North America" },
     { model: "NW1/M", quantity: "Single", size: "Mini", beamwidth: "30°", continent: "North America" },
@@ -344,15 +354,64 @@ const Wireless = () => {
             <button className="faq-question" onClick={() => toggleAnswer('wireless')}> How does wireless work? </button>
             {visibleAnswer === 'wireless' && (
               <div className="faq-answer">
-                <p>802.11</p>
+                <p>Wi-Fi Standards</p>
+                <table
+                    style={{
+                        width: '100%',
+                        borderCollapse: 'collapse',
+                    }}
+                >
+                    <thead
+                        style={{
+                            backgroundColor: 'rgb(106, 13, 173)',
+                            color: 'white',
+                        }}
+                    >
+                        <tr>
+                            <th style={{ padding: '10px', textAlign: 'left' }}>Standard</th>
+                            <th style={{ padding: '10px', textAlign: 'left' }}>Frequency Band</th>
+                            <th style={{ padding: '10px', textAlign: 'left' }}>Max Data Rate</th>
+                            <th style={{ padding: '10px', textAlign: 'left' }}>Channel Bandwidth</th>
+                            <th style={{ padding: '10px', textAlign: 'left' }}>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {wifiStandards.map((row, index) => (
+                            <tr
+                                key={index}
+                                style={{
+                                    backgroundColor: index % 2 === 0 ? 'white' : '#f9f9f9',
+                                }}
+                            >
+                                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.standard}</td>
+                                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.frequency}</td>
+                                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.maxDataRate}</td>
+                                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.channelBandwidth}</td>
+                                <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.date}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <p>Frequency Bands</p>
+                <li>Ranges of electromagnetic spectrum frequencies used for transmitting signals, such as radio, Wi-Fi, and cellular communication.</li>
+                <p>Central frequency</p>
+                <li>The middle frequency within a frequency band, often used as a reference for modulation or transmission.</li>
+                <p>Frequency Band Channels</p>
+                <li>Subdivisions within a frequency band that allows multiple simultaneous communications without interference.</li>
+                <p>2.4 Ghz</p>
+                <li>A frequency band commonly used for Wi-Fi, Bluetooth, and other wireless technologies, offering broad coverage but susceptible to interference.</li>
+                <p>5 Ghz</p>
+                <li>A higher frequency band for Wi-Fi offering faster speeds and less.</li>
                 <p>Oscillating circuit</p>
-                <p>Band:</p>
-                <p>Carrier wave:</p>
-                <p>Central frequency:</p>
-                <p>Channel:</p>
+                <li>An electrical circuit that generates alternating current or signals by periodically reversing direction or amplitude.</li>
+                <p>Carrier wave</p>
+                <li>A continuous electromagnetic wave modulated with information for transmission in communication systems.</li>
                 <p>Amplitude modulation</p>
+                <li>A modulation technique where the amplitude of a carrier wave is varied based on the signal information.</li>
                 <p>Frequency modulation</p>
+                <li>A modulation technique where the frequency of a carrier wave is varied according to the signal information.</li>
                 <p>Phase modulation</p>
+                <li>A modulation technique where the phase of a carrier wave is altered to encode the signal information.</li>
               </div>
             )}
           </div>

@@ -17,7 +17,7 @@ const EthernetSwitchSelectorTool = () => {
       Hardened: ["No", "Yes"],
       Managed: ["No", "Yes"],
       PoE: ["No", "30W", "60W", "90W"],
-      Copper: ["0", "2 FE", "4 FE", "5 FE", "7 FE", "8 FE", "3 GE", "4 GE", "8 GE", "12 GE", "16 GE", "22 GE", "24 GE"],
+      Copper: ["0", "2 FE", "4 FE", "5 FE", "7 FE", "8 FE", "3 GE", "4 GE", "8 GE", "12 GE", "16 GE", "22 GE", "24 GE", "48 GE"],
       Fiber: ["0", "1 FE", "2 FE", "4 FE", "1 GE", "2 GE", "3 GE", "4 GE", "8 GE", "12 GE", "24 GE", "2 10G", "4 10G"],
       Combo: ["0", "1 GE", "2 GE", "4 GE", "16 GE"],
     };
@@ -171,6 +171,7 @@ const EthernetSwitchSelectorTool = () => {
       {Model: "CNFE5SMS", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "No"},
       {Model: "CNFE5SMSPOE", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "30W"},
       {Model: "CWX28F4T24MPB", Hardened: "No", Managed: "Yes", Fiber: "4 10G", Copper: "24 GE", Combo: "0", PoE: "90W"},
+      {Model: "CWX52F4T48MP", Hardened: "No", Managed: "Yes", Fiber: "4 10G", Copper: "48 GE", Combo: "0", PoE: "90W"},
     ];
 
   return (

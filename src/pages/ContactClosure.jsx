@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../components/Navbar';
-import Button from '../../components/Button';
-import Footer from '../../components/Footer';
-import BackToTop from '../../components/BackToTop';
-import NoPowerLight from '../../relevant-information/NoPowerLight';
-import Fiber from '../../relevant-information/Fiber';
-import '../../styles/Global.css';
-import '../../styles/Pages.css';
+import Navbar from '../components/Navbar';
+import Button from '../components/Button';
+import Footer from '../components/Footer';
+import BackToTop from '../components/BackToTop';
+import NoPowerLight from '../relevant-information/NoPowerLight';
+import Fiber from '../relevant-information/Fiber';
+import '../styles/Global.css';
+import '../styles/Pages.css';
 
 const ContactClosure = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
@@ -325,7 +325,7 @@ const ContactClosure = () => {
 
         <p className="faq-title">Frequently Asked Questions</p>
         <div className="faq-list">
-        <div className="faq-item">
+          <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('fdc10')}> What are the applications for the FDC10? </button>
             {visibleAnswer === 'fdc10' && (
               <div className="faq-answer">
@@ -389,6 +389,30 @@ const ContactClosure = () => {
                 <li>Receiver</li>
                 <li style={{"padding-left": "100px"}}>Flipping dip switch #1 on will add fiber loss to the summary fault relay.</li>
                 <li style={{"padding-left": "100px"}}>Flipping dip switch #2 on will add contact faults to the summary fault relay.</li>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('formA')}> What is a Form A relay? </button>
+            {visibleAnswer === 'formA' && (
+              <div className="faq-answer">
+                <li>Form A relays are Single Pole Single Throw (SPST) normally open relays.</li>
+                <li>When the relay coil in a Form A mechanical relay is not energized, or when there is no magnetic field nearby in a reed relay, the relay contacts are open.</li>
+                <li>When the relay coil in a Form A relay is energized, or when a magnetic field exists nearby in a reed relay, the relay contacts close.</li>
+                <li>Used in applications where you need to switch a circuit on when the relay is activated: common in simple on/off control circuits, like turning on a light or powering a device.</li>
+                <img src="photos/FDC/FormA.png" style={{height: "400px"}}></img>
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('formC')}> What is a Form C relay? </button>
+            {visibleAnswer === 'formC' && (
+              <div className="faq-answer">
+                <li>Form C relays are Single Pole Double Throw (SPDT) relays with a normally open set of contacts and a normally closed set of contacts.</li>
+                <li>When the relay coil is not energized, the relay contacts are open relative to normally open and common AND are closed relative to normally closed and common.</li>
+                <li>When the relay coil is energized, the relay contacts are closed relative to normally open and common AND are open relative to normally closed and common.</li>
+                <li>Form C relays are used in applications where you need to alternate between two circuits. It allows for switching between two states, such as toggling between two power sources or switching between two devices: like switching between a primary and backup power supply.</li>
+                <img src="photos/FDC/FormC.png" style={{height: "400px"}}></img>
               </div>
             )}
           </div>
