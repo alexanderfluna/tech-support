@@ -56,4 +56,5 @@
     {Model: "CNFE5SMS", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "No"},
     {Model: "CNFE5SMSPOE", Hardened: "Yes", Managed: "No", Fiber: "0", Copper: "5 FE", Combo: "0", PoE: "30W"},
     {Model: "CWX28F4T24MPB", Hardened: "No", Managed: "Yes", Fiber: "4 10G", Copper: "24 GE", Combo: "0", PoE: "90W"},
+    {Model: "CWX52F4T48MP", Hardened: "No", Managed: "Yes", Fiber: "4 10G", Copper: "48 GE", Combo: "0", PoE: "90W"},
 ]
