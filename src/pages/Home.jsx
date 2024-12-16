@@ -18,17 +18,7 @@ const Home = () => {
 
     if (videoDesktop && videoMobile) {
       const handleVideoEnd = () => {
-        if (isDesktopPlaying) {
-          videoDesktop.style.display = "none";
-          videoMobile.style.display = "block";
-          videoMobile.play();
-          setIsDesktopPlaying(false);
-        } else {
-          videoMobile.style.display = "none";
-          videoDesktop.style.display = "block";
-          videoDesktop.play();
-          setIsDesktopPlaying(true);
-        }
+        setIsDesktopPlaying((prev) => !prev);
       };
 
       videoDesktop.addEventListener('ended', handleVideoEnd);
@@ -39,15 +29,13 @@ const Home = () => {
         videoMobile.removeEventListener('ended', handleVideoEnd);
       };
     }
-  }, [isDesktopPlaying]);
+  }, []);
 
   useEffect(() => {
-    // Autoplay the initial video when the component mounts
+    // Play the active video
     if (isDesktopPlaying && videoDesktopRef.current) {
-      videoDesktopRef.current.style.display = "block";
       videoDesktopRef.current.play();
     } else if (videoMobileRef.current) {
-      videoMobileRef.current.style.display = "block";
       videoMobileRef.current.play();
     }
   }, [isDesktopPlaying]);
@@ -64,26 +52,37 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <main className='main-content'>
+      <main className="main-content">
         <div className="middle-section">
           <div className="middle-section-left">
-            <h1 style={{ fontSize: "48px" }}>Comnet by acre| Technical Support</h1>
-            <p>Our technical support page features product selector tools, how to troubleshooting common issues, and answers to frequently asked questions.</p>
-            <div style={{ display: "flex", flexDirection: "row" }}>
+          <h1 style={{ fontSize: '72px', "justify-content": "center" }}>Comnet by acre</h1>
+            <h1 style={{ fontSize: '48px' }}>Technical Support</h1>
+            <p>
+              Our technical support page features product selector tools, how to troubleshooting common
+              issues, and answers to frequently asked questions.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
               <p>Scroll down to select your product.</p>
-              <p style={{ paddingLeft: "10px", color: "rgb(255, 0, 164)" }}>↓</p>
+              <p style={{ paddingLeft: '10px', color: 'rgb(255, 0, 164)' }}>↓</p>
             </div>
           </div>
-          <div className="middle-section-right">
+          <div
+            className="middle-section-right"
+            style={{
+              position: 'relative',
+              height: '40em',
+              width: '40em',
+            }}
+          >
             <video
               ref={videoDesktopRef}
               className="video"
               style={{
                 top: 0,
                 left: 0,
-                height: "40em",
-                width: "100%",
-                visibility: isDesktopPlaying ? "visible" : "hidden",
+                height: '100%',
+                width: '100%',
+                visibility: isDesktopPlaying ? 'visible' : 'hidden',
                 zIndex: isDesktopPlaying ? 1 : 0,
               }}
               loop={false}
@@ -101,13 +100,13 @@ const Home = () => {
               ref={videoMobileRef}
               className="video"
               style={{
+                position: 'absolute',
                 top: 0,
                 left: 0,
-                height: "33em",
-                width: "100%",
-                visibility: isDesktopPlaying ? "hidden" : "visible",
+                height: '100%',
+                width: '100%',
+                visibility: isDesktopPlaying ? 'hidden' : 'visible',
                 zIndex: isDesktopPlaying ? 0 : 1,
-                "margin-bottom": "110px"
               }}
               loop={false}
               muted
@@ -121,31 +120,30 @@ const Home = () => {
               />
             </video>
           </div>
-
-            </div>
-            <div className='button-container'>
-              {[
-                'Ethernet Switch',
-                'Media Converter',
-                'Wireless',
-                'Razberi',
-                'SFP',
-                'Copper Line',
-                'Contact Closure',
-                'Serial Data',
-                'Wiegand',
-                'Power Supply',
-                'PoE Injector',
-                'Enclosures',
-              ].map(product => (
-                <button
-                  key={product}
-                  className='product-button'
-                  onClick={() => handleButtonClick(product)}
-                >
-                  {product}
-                </button>
-              ))}
+        </div>
+        <div className="button-container">
+          {[
+            'Ethernet Switch',
+            'Media Converter',
+            'Wireless',
+            'Razberi',
+            'SFP',
+            'Copper Line',
+            'Contact Closure',
+            'Serial Data',
+            'Wiegand',
+            'Power Supply',
+            'PoE Injector',
+            'Enclosures',
+          ].map((product) => (
+            <button
+              key={product}
+              className="product-button"
+              onClick={() => handleButtonClick(product)}
+            >
+              {product}
+            </button>
+          ))}
         </div>
       </main>
       <BackToTop />
