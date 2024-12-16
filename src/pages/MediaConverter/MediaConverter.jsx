@@ -105,6 +105,8 @@ const MediaConverter = () => {
                 <li>Comnet offers a multi-rate media converter that can switch between Fast Ethernet or Gigabit Ethernet via the dip switch.</li>
                 <li>Dual media converters are two media converters in one box.</li>
                 <li>Quad media converters are four media converters in one box.</li>
+                <li>A multiplexer takes several inputs and gives a single output.</li>
+                <li>A demultiplexer takes a single input and gives several outputs.</li>
               </div>
             )}
           </div>

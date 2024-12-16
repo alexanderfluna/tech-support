@@ -1,17 +1,20 @@
 .main-content {
   padding: 50px;
+  background-color: rgb(51 0 51);
 }
 
 .main-content h1 {
   font-size: 60px;
   margin-bottom: 20px;
   text-align: left;
+  color: white;
 }
 
 .main-content p {
   font-size: 22px;
   line-height: 1.6;
   text-align: left;
+  color: white;
 }
 
 .middle-section {
@@ -68,7 +71,7 @@
   border: none;
   padding: 15px;
   border-radius: 8px;
-  font-size: 25px;
+  font-size: 2em;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
