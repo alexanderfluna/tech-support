@@ -16,7 +16,7 @@
 .selector-tool {
   display: block;
   width: 100%;
-  padding: 25px;
+  padding: 1em;
   margin-top: 30px;
   margin-bottom: 20px;
   font-size: 1.2rem;
@@ -26,7 +26,7 @@
   border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 25px;
+  font-size: 2em;
 }
 
 .selector-tool:hover {

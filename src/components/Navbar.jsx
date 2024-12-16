@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className='navbar'>
       <div className="nav">
         <div className='nav-left'>
-          <img class="logo-img logo-dark-header" src="https://acresecurity.com/hubfs/Website/Global/Logos/Acre-Logo_light.svg" alt="Acre-Logo_light" loading="eager" width="145" height="60"/>
+          <img class="logo-img logo-dark-header" src="https://acresecurity.com/hubfs/Website/Global/Logos/Acre-Logo_light.svg" onClick={() => window.location.href = 'https://acresecurity.com/'} alt="Acre-Logo_light" loading="eager" width="145" height="60"/>
         </div>
         <div className={`nav-middle ${isMenuOpen ? 'open' : ''}`}>
           <div class="nav-middle-item">
