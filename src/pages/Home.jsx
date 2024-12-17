@@ -55,7 +55,7 @@ const Home = () => {
       <main className="main-content">
         <div className="middle-section">
           <div className="middle-section-left">
-            <h1 style={{ fontSize: '4em', 'text-decoration': 'underline' }}>Comnet by acre</h1>
+            <h1 style={{ fontSize: '4em' }}>Comnet by acre</h1>
             <h1 style={{ fontSize: '5em', }}>Technical Support</h1>
             <p>
               Our technical support page features product selector tools, how to troubleshooting common
