@@ -69,6 +69,7 @@ const Home = () => {
               position: 'relative',
               height: '40em',
               width: '40em',
+              'max-width': '100vw',
             }}
           >
             <video
