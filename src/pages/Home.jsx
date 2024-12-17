@@ -55,8 +55,8 @@ const Home = () => {
       <main className="main-content">
         <div className="middle-section">
           <div className="middle-section-left">
-            <h1 style={{ fontSize: '58px', "justify-content": "center" }}>Comnet by acre</h1>
-            <h1 style={{ fontSize: '72px', color: 'linear-gradient(0deg, rgba(82,34,195,1) 0%, rgba(253,45,150,1) 100%)'}}>Technical Support</h1>
+            <h1 style={{ fontSize: '4em', 'text-decoration': 'underline' }}>Comnet by acre</h1>
+            <h1 style={{ fontSize: '5em', }}>Technical Support</h1>
             <p>
               Our technical support page features product selector tools, how to troubleshooting common
               issues, and answers to frequently asked questions.

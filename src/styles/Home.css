@@ -4,14 +4,13 @@
 }
 
 .main-content h1 {
-  font-size: 60px;
   margin-bottom: 20px;
   text-align: left;
   color: white;
 }
 
 .main-content p {
-  font-size: 22px;
+  font-size: 1.5em;
   line-height: 1.6;
   text-align: left;
   color: white;
@@ -71,7 +70,7 @@
   border: none;
   padding: 15px;
   border-radius: 8px;
-  font-size: 2em;
+  font-size: 1.5em;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
