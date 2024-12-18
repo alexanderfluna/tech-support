@@ -54,15 +54,18 @@ const Home = () => {
       <Navbar />
       <main className="main-content">
         <div className="middle-section">
-          <div className="middle-section-left">
-            <h1 style={{ fontSize: '4em' }}>Comnet by acre</h1>
-            <h1 style={{ fontSize: '5em', }}>Technical Support</h1>
-            <p>
-              Our technical support page features product selector tools, how to troubleshooting common
-              issues, and answers to frequently asked questions.
-            </p>
-              <p style={{ display: 'flex', flexDirection: 'row' }}>Scroll down to select your product.<p style={{ paddingLeft: '10px', color: 'rgb(255, 0, 164)'}}>↓</p></p>
-          </div>
+        <div className="middle-section-left">
+          <h1 className="header-title">Comnet by acre</h1>
+          <h1 className="header-support">Technical Support</h1>
+          <p className="description">
+            Our technical support page features product selector tools, how to troubleshoot common
+            issues, and answers to frequently asked questions.
+          </p>
+          <p className="scroll-text">
+            Scroll down to select your product.
+            <span className="arrow">↓</span>
+          </p>
+        </div>
           <div
             className="middle-section-right"
             style={{
