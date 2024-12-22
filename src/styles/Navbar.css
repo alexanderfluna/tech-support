@@ -77,9 +77,9 @@
 }
 
 @media (max-width: 480px) {
-  .nav {
-    display: flex;
-    gap: 100px;
+  .nav-left {
+    justify-content: left;
+    width: auto;
   }
 }
 
