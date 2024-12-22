@@ -52,16 +52,16 @@
 /* Responsive styles for smaller screens */
 @media (max-width: 480px) {
   .header-title {
-    font-size: 10vw;
+    font-size: 5w;
   }
   .header-support {
-    font-size: 20vw;
+    font-size: 10vw;
   }
   .description {
-    font-size: 5vw;
+    font-size: 2vw;
   }
   .scroll-text {
-    font-size: 5vw;
+    font-size: 2vw;
   }
 }
 
