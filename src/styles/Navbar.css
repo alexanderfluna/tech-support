@@ -78,6 +78,7 @@
 
 @media (max-width: 480px) {
   .nav {
+    display: flex;
     gap: 20px;
   }
 }
