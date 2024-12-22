@@ -76,6 +76,12 @@
   margin: 3px 0;
 }
 
+@media (max-width: 480px) {
+  .nav {
+    gap: 20px;
+  }
+}
+
 @media (max-width: 1350px) {
   .nav {
     width: auto;
