@@ -49,7 +49,6 @@
   color: rgb(255, 0, 164);
 }
 
-/* Responsive styles for smaller screens */
 @media (max-width: 480px) {
   .header-title {
     font-size: 2.2em;
