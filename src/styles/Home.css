@@ -64,11 +64,8 @@
   .scroll-text {
     font-size: .5vw;
   }
-  .middle-section-left,
   .middle-section-right {
-    width: 100%;
-    text-align: center;
-    padding-top: 0px;
+    padding-left: 30px;
   }
 }
 
