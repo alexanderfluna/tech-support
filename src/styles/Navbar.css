@@ -78,8 +78,8 @@
 
 @media (max-width: 480px) {
   .nav-left, nav-right {
-    height: 20px;
-    width: 20px;
+    height: auto;
+    width: auto;
   }
 }
 
