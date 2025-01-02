@@ -55,7 +55,6 @@ const Home = () => {
       <main className="main-content">
         <div className="middle-section">
         <div className="middle-section-left">
-          <h1 className="header-title">Comnet by acre</h1>
           <h1 className="header-support">Technical Support</h1>
           <p className="description">
             Our technical support page features product selector tools, how to troubleshoot common
@@ -146,6 +145,7 @@ const Home = () => {
             </button>
           ))}
         </div>
+        
       </main>
       <BackToTop />
       <Footer />

@@ -5,6 +5,7 @@ import '../styles/Footer.css';
 const Footer = () => {
   return (
     <footer className='footer'>
+      
       <img
         src='https://acresecurity.com/hubfs/Website/Global/Images/Dividers/divider-2.svg'
         alt='Wave divider'

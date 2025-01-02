@@ -1,6 +1,6 @@
 .navbar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: rgb(51 0 51);
+  background-color: white;
 }
 
 .nav {
@@ -32,7 +32,7 @@
 }
 
 .nav-middle a {
-  color: white;
+  color: black;
   text-decoration: none;
   padding-left: 30px;
   padding-right: 10px;
@@ -72,15 +72,18 @@
 .menu .line {
   width: 40px;
   height: 30px;
-  background-color: white;
+  background-color: black;
   margin: 3px 0;
 }
 
-@media (max-width: 1350px) {
-  .nav {
-    width: auto;
+@media (max-width: 480px) {
+  .nav-left, nav-right {
+    height: 20px;
+    width: 20px;
   }
+}
 
+@media (max-width: 1350px) {
   .nav-middle,
   .nav-right {
     display: none;
@@ -89,7 +92,7 @@
   .menu {
     display: flex;
   }
-
+  /*
   .nav-middle.open {
     display: flex;
     flex-direction: column;
@@ -98,6 +101,11 @@
     left: 0;
     background-color: rgb(51 0 51);
     width: 100%;
-    padding-bottom: 50px;
+    padding-top: 50px;
   }
+
+  .nav-middle a {
+    color: white;
+  }
+  */
 }
