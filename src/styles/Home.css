@@ -117,48 +117,15 @@
 
 @media (max-width: 480px) {
   .header-title {
-    font-size: 6vw;
-    margin: 10px 0;
+    font-size: 5vw;
   }
   .header-support {
-    font-size: 7vw;
-    margin-bottom: 15px;
+    font-size: 8vw;
   }
   .description {
-    font-size: 4vw;
-    line-height: 1.4;
-    margin-bottom: 15px;
+    font-size: .5w;
   }
   .scroll-text {
-    font-size: 4vw;
-    line-height: 1.4;
-    margin-bottom: 10px;
-  }
-  .middle-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-  .middle-section-left, .middle-section-right {
-    flex: 1;
-  }
-  .middle-section-right {
-    padding: 0 10px;
-    margin: 0 auto;
-  }
-  .video {
-    height: auto;
-    width: 100%;
-  }
-  .button-container {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
-    padding: 10px;
-  }
-  .product-button {
-    font-size: 4vw;
-    padding: 10px 12px;
-    border-radius: 10px;
+    font-size: .5vw;
   }
 }
