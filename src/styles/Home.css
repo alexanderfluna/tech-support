@@ -141,16 +141,10 @@
     gap: 10px;
   }
   .middle-section-right {
-    order: -1; /* Move the video above the text */
-    padding: 0 10px;
+    order: -1;
     margin: 0 auto;
-    width: 100%;
   }
   .middle-section-left {
-    width: 100%;
-  }
-  .video {
-    height: auto;
     width: 100%;
   }
   .button-container {
