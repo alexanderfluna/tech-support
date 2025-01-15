@@ -7,8 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 80px 20px 20px;
-  max-height: 120px;
+  max-height: 100px;
+  padding-right: 80px;
 }
 
 .nav-left {
@@ -111,15 +111,33 @@
 
   @media (max-width: 480px) {
     .nav {
-      gap: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: auto;
     }
-
+    
     .nav-left {
-
+      flex: 0; 
+      display: flex;
+      justify-content: flex-start;
+      margin-right: auto; 
     }
-
+    
+    .nav-left .logo-img {
+      max-width: 100px; 
+    }
+    
     .menu {
-
+      flex: 0;
+      display: flex;
+      cursor: pointer;
+    }
+  
+    .menu .line {
+      width: 25px;
+      height: 3px;
+      background-color: black;
     }
   }
 }
