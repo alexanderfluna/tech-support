@@ -51,24 +51,6 @@
   color: rgb(255, 0, 164);
 }
 
-@media (max-width: 480px) {
-  .header-title {
-    font-size: 5vw;
-  }
-  .header-support {
-    font-size: 8vw;
-  }
-  .description {
-    font-size: .5w;
-  }
-  .scroll-text {
-    font-size: .5vw;
-  }
-  .middle-section-right {
-    padding-left: 30px;
-  }
-}
-
 .middle-section-right {
   flex: 1;
 }
@@ -102,23 +84,72 @@
 .button-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 30px;
   max-width: 1200px;
+  padding-top: 30px;
   margin: 0 auto;
 }
 
 .product-button {
   width: 100%;
-  background-color: #e6ccff;
-  color: black;
+  background: linear-gradient(135deg, #e6ccff, #c299ff);
+  color: #000;
   border: none;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 15px 20px;
+  border-radius: 12px;
   font-size: 1.5em;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .product-button:hover {
-  background-color: #d4b3ff;
+  background: linear-gradient(135deg, #d4b3ff, #b380ff);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.product-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 6vw; /* Slightly larger for better readability */
+    margin: 10px 0;
+  }
+  .header-support {
+    font-size: 7vw; /* Adjusted for better fit */
+    margin-bottom: 15px;
+  }
+  .description {
+    font-size: 4vw; /* Corrected unit */
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+  .scroll-text {
+    font-size: 4vw; /* Corrected unit */
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .middle-section-right {
+    padding: 0 10px; /* Reduced padding for tighter fit */
+    margin: 0 auto; /* Centered content */
+  }
+  .video {
+    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* Ensure full width */
+  }
+  .button-container {
+    grid-template-columns: repeat(1, 1fr); /* Stack buttons in a single column */
+    gap: 10px; /* Reduced gap for smaller screens */
+    padding: 10px; /* Add padding for better alignment */
+  }
+  .product-button {
+    font-size: 4vw; /* Adjusted for smaller screen */
+    padding: 10px 12px; /* Reduced padding */
+    border-radius: 10px; /* Slightly rounded corners */
+  }
 }
