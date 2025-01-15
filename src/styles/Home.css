@@ -117,39 +117,48 @@
 
 @media (max-width: 480px) {
   .header-title {
-    font-size: 6vw; /* Slightly larger for better readability */
+    font-size: 6vw;
     margin: 10px 0;
   }
   .header-support {
-    font-size: 7vw; /* Adjusted for better fit */
+    font-size: 7vw;
     margin-bottom: 15px;
   }
   .description {
-    font-size: 4vw; /* Corrected unit */
+    font-size: 4vw;
     line-height: 1.4;
     margin-bottom: 15px;
   }
   .scroll-text {
-    font-size: 4vw; /* Corrected unit */
+    font-size: 4vw;
     line-height: 1.4;
     margin-bottom: 10px;
   }
+  .middle-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .middle-section-left, .middle-section-right {
+    flex: 1;
+  }
   .middle-section-right {
-    padding: 0 10px; /* Reduced padding for tighter fit */
-    margin: 0 auto; /* Centered content */
+    padding: 0 10px;
+    margin: 0 auto;
   }
   .video {
-    height: auto; /* Maintain aspect ratio */
-    width: 100%; /* Ensure full width */
+    height: auto;
+    width: 100%;
   }
   .button-container {
-    grid-template-columns: repeat(1, 1fr); /* Stack buttons in a single column */
-    gap: 10px; /* Reduced gap for smaller screens */
-    padding: 10px; /* Add padding for better alignment */
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    padding: 10px;
   }
   .product-button {
-    font-size: 4vw; /* Adjusted for smaller screen */
-    padding: 10px 12px; /* Reduced padding */
-    border-radius: 10px; /* Slightly rounded corners */
+    font-size: 4vw;
+    padding: 10px 12px;
+    border-radius: 10px;
   }
 }
