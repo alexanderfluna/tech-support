@@ -117,15 +117,50 @@
 
 @media (max-width: 480px) {
   .header-title {
-    font-size: 5vw;
+    font-size: 6vw;
+    margin: 10px 0;
   }
   .header-support {
-    font-size: 8vw;
+    font-size: 7vw;
+    margin-bottom: 15px;
   }
   .description {
-    font-size: .5w;
+    font-size: 4vw;
+    line-height: 1.4;
+    margin-bottom: 15px;
   }
   .scroll-text {
-    font-size: .5vw;
+    font-size: 4vw;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .middle-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .middle-section-right {
+    order: -1; /* Move the video above the text */
+    padding: 0 10px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .middle-section-left {
+    width: 100%;
+  }
+  .video {
+    height: auto;
+    width: 100%;
+  }
+  .button-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  .product-button {
+    font-size: 4vw;
+    padding: 10px 12px;
+    border-radius: 10px;
   }
 }
