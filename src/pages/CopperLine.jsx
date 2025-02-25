@@ -352,7 +352,7 @@ const CopperLine = () => {
                   </thead>
                   <tbody>
                     {[
-                      { type: "RG9", applications: "Used in older video systems, less common today", impedance: "75 Ohms", size: "Large" },
+                      { type: "RG11", applications: "Used in older video systems, less common today", impedance: "75 Ohms", size: "Large" },
                       { type: "RG6", applications: "Used in satellite TV, cable systems, and broadband internet", impedance: "75 Ohms", size: "Medium" },
                       { type: "RG59", applications: "Used in analog video applications, CCTV", impedance: "75 Ohms", size: "Small" },
                     ].map((item, index) => (
