@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -8,37 +8,6 @@ import '../styles/Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
-  const videoDesktopRef = useRef(null);
-  const videoMobileRef = useRef(null);
-  const [isDesktopPlaying, setIsDesktopPlaying] = useState(true);
-
-  useEffect(() => {
-    const videoDesktop = videoDesktopRef.current;
-    const videoMobile = videoMobileRef.current;
-
-    if (videoDesktop && videoMobile) {
-      const handleVideoEnd = () => {
-        setIsDesktopPlaying((prev) => !prev);
-      };
-
-      videoDesktop.addEventListener('ended', handleVideoEnd);
-      videoMobile.addEventListener('ended', handleVideoEnd);
-
-      return () => {
-        videoDesktop.removeEventListener('ended', handleVideoEnd);
-        videoMobile.removeEventListener('ended', handleVideoEnd);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    // Play the active video
-    if (isDesktopPlaying && videoDesktopRef.current) {
-      videoDesktopRef.current.play();
-    } else if (videoMobileRef.current) {
-      videoMobileRef.current.play();
-    }
-  }, [isDesktopPlaying]);
 
   const handleButtonClick = (buttonText) => {
     const formattedText = buttonText.toLowerCase().replace(/\s+/g, '-');
@@ -52,76 +21,24 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <main className="main-content">
-        <div className="middle-section">
-        <div className="middle-section-left">
-          <h1 className="header-support">Technical Support</h1>
-          <p className="description">
-            Our technical support page features product selector tools, how to troubleshoot common
-            issues, and answers to frequently asked questions.
-          </p>
-          <p className="scroll-text">
-            Scroll down to select your product.
-            <span className="arrow">↓</span>
-          </p>
-        </div>
-          <div
-            className="middle-section-right"
-            style={{
-              position: 'relative',
-              height: '40em',
-              width: '40em',
-              'max-width': '100vw',
-            }}
-          >
-            <video
-              ref={videoDesktopRef}
-              className="video"
-              style={{
-                top: 0,
-                left: 0,
-                height: '100%',
-                width: '100%',
-                visibility: isDesktopPlaying ? 'visible' : 'hidden',
-                zIndex: isDesktopPlaying ? 1 : 0,
-              }}
-              loop={false}
-              muted
-              playsInline
-              disablePictureInPicture
-              autoPlay
-            >
-              <source
-                src="https://23532239.fs1.hubspotusercontent-na1.net/hubfs/23532239/Website/Pages/Homepage/dekstop-homepage-logo-animation.mp4"
-                type="video/mp4"
-              />
-            </video>
-            <video
-              ref={videoMobileRef}
-              className="video"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                height: '100%',
-                width: '100%',
-                visibility: isDesktopPlaying ? 'hidden' : 'visible',
-                zIndex: isDesktopPlaying ? 0 : 1,
-              }}
-              loop={false}
-              muted
-              playsInline
-              disablePictureInPicture
-              autoPlay
-            >
-              <source
-                src="https://23532239.fs1.hubspotusercontent-na1.net/hubfs/23532239/Website/Pages/Homepage/mobile-homepage-logo-animation.mp4"
-                type="video/mp4"
-              />
-            </video>
+      <main className='main-content'>
+        <div className="middle-section"> 
+          <div className="middle-section-left">
+            <h1 style={{"font-size": "72px", color: "#22132B"}}>Technical Support</h1>
+            <p>Our technical support page features product selector tools, how to troubleshoot common
+            issues, and answers to frequently asked questions.</p>
+            <p>Select your product below. ↓</p>
           </div>
+          <div className="middle-section-right">
+            <img
+              src='https://acresecurity.com/hs-fs/hubfs/Landing%20pages/Landing%20Page%20Images/comnet%20by%20acre%20full%20product%20range.png?width=2000&height=1333&name=comnet%20by%20acre%20full%20product%20range.png" alt="Product Selector Tool - ComNet by acre" loading="lazy" 20by%20acre.webp?width=3000&amp;height=3000&amp;name=Product%20Selector%20Tool%20-%20ComNet%20by%20acre.webp 3000w, https://acresecurity.com/hs-fs/hubfs/Website/Pages/Landing%20Page/Product%20Selector%20Tool%20-%20ComNet%20by%20acre.webp?width=3600&amp;height=3600&amp;name=Product%20Selector%20Tool%20-%20ComNet%20by%20acre.webp'
+              alt='Comnet devices'
+              className='image-right'
+            />
+          </div> 
         </div>
-        <div className="button-container">
+
+        <div className='button-container'>
           {[
             'Ethernet Switch',
             'Media Converter',
@@ -135,17 +52,16 @@ const Home = () => {
             'Power Supply',
             'PoE Injector',
             'Enclosures',
-          ].map((product) => (
+          ].map(product => (
             <button
               key={product}
-              className="product-button"
+              className='product-button'
               onClick={() => handleButtonClick(product)}
             >
               {product}
             </button>
           ))}
         </div>
-        
       </main>
       <BackToTop />
       <Footer />
