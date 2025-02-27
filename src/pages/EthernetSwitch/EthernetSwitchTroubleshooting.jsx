@@ -37,6 +37,7 @@ function EthernetSwitchTroubleshooting() {
                         </button>
                         {visibleAnswers.has('no-link-light') && (
                             <div className="faq-answer">
+                                <p>0. Remove and reinsert the fiber to determine if the link light reappears.</p>
                                 <p>1. For devices with built-in optics, confirm that the fiber in use is compatible with the device:</p>
                                 <li>The fiber type (single mode vs. multimode).</li>
                                 <li>The number of fiber strands (single strand vs. dual strand).</li>

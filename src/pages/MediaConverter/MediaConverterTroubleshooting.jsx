@@ -35,6 +35,7 @@ function MediaConverterTroubleshooting() {
                         <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no optical link. </button>
                         {visibleAnswers.has('no-link-light') && (
                         <div className="faq-answer">
+                            <p>0. Remove and reinsert the fiber to determine if the link light reappears.</p>
                             <p>1. For devices requiring an 'A' and 'B' pair, ensure there is an A on one side and a B on the other. </p>
                             <li>These devices only allow one strand of fiber, therefore the data must be transmitted and received over the one strand.</li>
                             <li>The 'A' and 'B' units transmit and receive at different wavelengths.</li>
