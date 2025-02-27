@@ -60,6 +60,8 @@ const SFP = () => {
 
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
+  const [showTroubleshooting, setShowTroubleshooting] = useState(false);
+  const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [availableOptions, setAvailableOptions] = useState({
     dataRate: ['FE', 'GE', '10G'],
@@ -105,6 +107,14 @@ const SFP = () => {
       Rx: null,
     });
   };
+
+  const toggleTroubleshooting = () => {
+    setShowTroubleshooting(!showTroubleshooting);
+  }
+
+  const toggleFAQ = () => {
+    setShowFAQ(!showFAQ);
+  }
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -160,7 +170,7 @@ const SFP = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">SFP</h2>
-        <button className="selector-tool" onClick={toggleTable}>
+        <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
         {showTable && (
@@ -235,23 +245,42 @@ const SFP = () => {
           </>
         )}
 
-        <p className="faq-title">Frequently Asked Questions</p>
-        <div className="faq-item">
-          <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
-            SFP Chart
-          </button>
-          {visibleAnswer === 'sfp-chart' && (
-            <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
-              <a href="pdf/SFP/sfp-modules.pdf" download>
-                  <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
-                    Download SFP Chart
-                  </button>
-                </a>
-              <img src="photos/SFP/SFP.png" alt="SFP Chart" />
+        <button className="purple-button" onClick={toggleTroubleshooting}>
+          Troubleshooting Common Issues
+        </button>
+        {showTroubleshooting && (
+          <>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('troubleshooting')}>
+                Troubleshooting
+              </button> 
             </div>
-          )}
-        </div>
-        <Fiber />
+          </>
+        )}
+
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+        </button>
+        {showFAQ && (
+          <>
+            <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
+              SFP Chart
+            </button>
+            {visibleAnswer === 'sfp-chart' && (
+              <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
+                <a href="pdf/SFP/sfp-modules.pdf" download>
+                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
+                      Download SFP Chart
+                    </button>
+                  </a>
+                <img src="photos/SFP/SFP.png" alt="SFP Chart" />
+              </div>
+            )}
+          </div>
+          <Fiber />
+          </>
+        )}      
       </main>
       <Button />
       <BackToTop />
