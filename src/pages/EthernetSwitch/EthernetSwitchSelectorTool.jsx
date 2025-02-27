@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const EthernetSwitchSelectorTool = () => {
-    const [visibleAnswer, setVisibleAnswer] = useState(null);
     const [showTable, setShowTable] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [availableOptions, setAvailableOptions] = useState({
@@ -36,10 +35,6 @@ const EthernetSwitchSelectorTool = () => {
       setFilteredProducts(products);
       updateAvailableOptions(products);
     }, []);
-  
-    const toggleAnswer = (questionId) => {
-      setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
-    };
   
     const toggleTable = () => {
       setShowTable(!showTable);
@@ -175,16 +170,16 @@ const EthernetSwitchSelectorTool = () => {
     ];
 
   return (
-    <div>
-    <button className="selector-tool" onClick={toggleTable}>
+    <div className="faq-list">
+    <button className="purple-button" onClick={toggleTable}>
         Selector Tool
     </button>
     {showTable && (
         <>
-        <button className="reset-button" onClick={resetFilters}>
-            Reset
-        </button>
         <div className="filter-options">
+          <button className="reset-button" onClick={resetFilters}>
+              Reset
+          </button>
             {Object.entries(availableOptions).map(([filterType, options]) => (
             <div key={filterType}>
                 <h3>

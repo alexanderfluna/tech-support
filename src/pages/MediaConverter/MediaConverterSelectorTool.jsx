@@ -366,15 +366,15 @@ const EthernetSwitchSelectorTool = () => {
 
   return (
     <div>
-        <button className="selector-tool" onClick={toggleTable}>
+        <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
         {showTable && (
           <>
+            <div className="filter-options">
             <button className="reset-button" onClick={resetFilters}>
               Reset
             </button>
-            <div className="filter-options">
               {Object.entries(availableOptions).map(([filterType, options]) => (
                 <div key={filterType} className="filter-section">
                   <h3 className="filter-header">

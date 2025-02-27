@@ -12,7 +12,7 @@ import PowerSupply from './pages/PowerSupply';
 import Razberi from './pages/Razberi';
 import SFP from './pages/SFP';
 import EthernetSwitch from './pages/EthernetSwitch/EthernetSwitch';
-import Wireless from './pages/Wireless';
+import Wireless from './pages/Wireless/Wireless';
 
 const App = () => {
   return (
