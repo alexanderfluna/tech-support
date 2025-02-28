@@ -373,7 +373,7 @@ const Wireless = () => {
               )}
             </div>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('wireless')}> How does wireless work? </button>
+              <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Learn about wireless. </button>
               {visibleAnswer === 'wireless' && (
                 <div className="faq-answer">
                   <p>Wi-Fi Standards</p>
