@@ -146,8 +146,8 @@
   background-color: rgb(51, 51, 51);
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 480px) {
   .faq-answer {
-    padding: 0 30px;
+    padding: 0px;
   }
 }
