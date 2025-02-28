@@ -28,22 +28,22 @@ const PowerOverEthernet = () => {
 
   return (
     <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('power-over-ethernet')}> What is PoE (Power over Ethernet)? </button>
+            <button className="faq-question" onClick={() => toggleAnswer('power-over-ethernet')}> Learn about PoE. </button>
             {visibleAnswer === 'power-over-ethernet' && (
               <div className="faq-answer">
-                <p>PoE Devices:</p>
-                <li>A PoE switch, media converter, or injector is useful for powering on IP devices over the same Ethernet cable that provides data.</li>
-                <li>A PoE switch or media converter is not required on both ends of fiber. It is only required on the side that will be powering on an IP device.</li>
-                <p>The PoE standards:</p>
-                <table
-                  style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    margin: "20px 0",
-                    fontSize: "18px",
-                    textAlign: "left",
-                  }}
-                >
+                <p>Power over Ethernet (PoE) allows both data and electrical power to be transmitted over a single Ethernet cable, eliminating the need for separate power adapters. This is especially useful for powering IP cameras, wireless access points, VoIP phones, and other networked devices in environments where running additional power lines is impractical or expensive.</p>
+                <p>To enable PoE, you need a PoE-enabled device such as a PoE switch, media converter, or injector. A PoE switch is the most common solution, as it provides both data and power from a single network device. A PoE injector, on the other hand, is useful when you have a non-PoE switch but need to power a PoE device. A media converter with PoE functionality can also be used when extending network connectivity over fiber optic cables while still supplying power to a remote device.</p>
+                <p>It's important to note that a PoE switch or media converter is only required on the end of the connection where power needs to be supplied to a device. If you're using fiber optics to extend your network, keep in mind that fiber cables do not carry electrical power—only data. The PoE-enabled device should be placed at the end where power needs to be injected.</p>
+
+                <p>PoE technology has evolved over the years, with different standards providing increasing levels of power to accommodate a wider range of devices. The IEEE has established several PoE standards that define how much power can be delivered and at what voltage levels. The following table outlines the main PoE standards and their specifications:</p>
+                
+                <table style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  margin: "20px 0",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}>
                   <thead>
                     <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Standard</th>
@@ -54,12 +54,9 @@ const PowerOverEthernet = () => {
                   </thead>
                   <tbody>
                     {standards.map((item, index) => (
-                      <tr
-                        key={index}
-                        style={{
-                          backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
-                        }}
-                      >
+                      <tr key={index} style={{
+                        backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
+                      }}>
                         <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.standard}</td>
                         <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.type}</td>
                         <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.power}</td>
@@ -68,16 +65,18 @@ const PowerOverEthernet = () => {
                     ))}
                   </tbody>
                 </table>
-                <p>The PoE classes:</p>
-                <table
-                  style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    margin: "20px 0",
-                    fontSize: "18px",
-                    textAlign: "left",
-                  }}
-                >
+
+                <p>Each standard supports different power levels, making it essential to choose the right type based on your device's requirements. Modern high-powered devices, such as PTZ cameras and outdoor access points, often require PoE++ (IEEE 802.3bt) to function properly.</p>
+
+                <p>PoE devices are classified into different power classes, which help ensure that power is allocated efficiently. The class determines how much power the powered device (PD) can request from the power sourcing equipment (PSE). The following table outlines these PoE classes and their respective power ranges:</p>
+
+                <table style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  margin: "20px 0",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}>
                   <thead>
                     <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>PoE Class</th>
@@ -86,29 +85,23 @@ const PowerOverEthernet = () => {
                   </thead>
                   <tbody>
                     {poeClasses.map((item, index) => (
-                      <tr
-                        key={index}
-                        style={{
-                          backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
-                        }}
-                      >
+                      <tr key={index} style={{
+                        backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
+                      }}>
                         <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.class}</td>
                         <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.powerRange}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                <p>Passthrough PoE:</p>
-                <li>The PoE is passed through the device.</li>
-                <p>Passive PoE:</p>
-                <li>The device will always provides PoE, even without a handshake.</li>
-                <p>Mode A PoE:</p>
-                <li>Pins 1 and 2 carry the positive DC voltage (+).</li>
-                <li>Pins 3 and 6 carry the negative DC voltage (-).</li>
-                <p>Mode B PoE:</p>
-                <li>Pins 4 and 5 carry the positive DC voltage (+).</li>
-                <li>Pins 7 and 8 carry the negative DC voltage (-)</li>
+                <p>Understanding PoE classes can help network administrators allocate power more efficiently and avoid overloading PoE switches, which have a maximum power budget.</p>
+                <p>Some devices support passthrough PoE, which allows them to receive power through PoE while also passing power along to another device. This is useful in scenarios where only one power source is available, but multiple PoE devices need to be powered. A common example is a PoE-enabled network switch that receives power from an upstream PoE injector and distributes it to connected IP cameras or access points.</p>
+                <p>Unlike standard PoE, which follows IEEE specifications and negotiates power delivery between devices, passive PoE simply delivers power without any handshake or power negotiation. This means the device on the receiving end must be compatible with the voltage provided, as there is no automatic adjustment. Passive PoE is often used in proprietary networking equipment but requires caution to avoid damaging non-compatible devices.</p>
+                <p>PoE can be delivered using different wiring methods. In Mode A, power is sent over the same wires used for data transmission. Specifically, power is carried on pins 1 and 2 (positive) and pins 3 and 6 (negative). This method is commonly used in PoE network switches and allows for power and data transmission on a single twisted pair.</p>
+                <p>Mode B delivers power over the unused wire pairs in an Ethernet cable, separate from the data transmission pairs. In this configuration, pins 4 and 5 carry the positive voltage, while pins 7 and 8 carry the negative voltage. This approach is more common in PoE injectors and legacy PoE implementations.</p>
+                <p>While both Mode A and Mode B provide the same functionality, the method used depends on the network equipment. Most modern PoE switches support both modes to ensure compatibility with a wide range of devices.</p>
               </div>
+           
             )}
           </div>
   );

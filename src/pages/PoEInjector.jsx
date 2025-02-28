@@ -10,6 +10,7 @@ import '../styles/Pages.css';
 const PoEInjector = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
+  const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     dataRate: [],
@@ -56,6 +57,10 @@ const PoEInjector = () => {
     setFilters({ dataRate: null, ieee: null, power: null, outputVoltage: null, inputVoltage: null }); 
   };
 
+  const toggleFAQ = () => {
+    setShowFAQ(!showFAQ);
+  }
+
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
@@ -96,7 +101,7 @@ const PoEInjector = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">PoE Injector</h2>
-        <button className="selector-tool" onClick={toggleTable}>
+        <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
         {showTable && (
@@ -249,8 +254,14 @@ const PoEInjector = () => {
           </>
         )}
 
-        <p className="faq-title">Frequently Asked Questions</p>
-        <PowerOverEthernet />
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+          </button>       
+          {showFAQ && (
+            <>
+              <PowerOverEthernet />
+            </>
+          )} 
       </main>
       <Button />
       <BackToTop />

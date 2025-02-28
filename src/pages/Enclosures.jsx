@@ -86,7 +86,7 @@ const CardCage = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Enclosures</h2>
-        <button className="selector-tool" onClick={toggleTable}>
+        <button className="purple-button" onClick={toggleTable}>
           Card Cage Selector Tool
         </button>
         {showTable && (

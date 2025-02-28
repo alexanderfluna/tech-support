@@ -91,7 +91,7 @@ const PowerSupply = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Power Supply</h2>
-        <button className="selector-tool" onClick={toggleTable}>
+        <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
         {showTable && (

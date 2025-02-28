@@ -9,59 +9,16 @@ const OSI = () => {
 
   return (
     <div className="faq-item">
-      <button className="faq-question" onClick={() => toggleAnswer('osi')}>What is the OSI model?</button>
+      <button className="faq-question" onClick={() => toggleAnswer('osi')}>Learn about the OSI model.</button>
       {visibleAnswer === 'osi' && (
         <div className="faq-answer">
-            <p>Layer 1 - Physical</p>
-            <li>Physical signals, such as electrical pulses, light pulse, or radio waves, represent binary bits (0s and 1s).</li>
-            <li>Handles raw bit transmission over physical media, managing hardware characteristics such as connectors, voltage levels, and data rates.</li>
-            <li>Copper cables: Transmit electrical signals (Ethernet, RS485 / 422 / 232).</li>
-            <li>Fiber optic cables: Transmit light signals.</li>
-            <li>Wireless: Use radio waves (Wi-Fi, Bluetooth)</li>
-            <li>Media converters: Convert signals between different types of media</li>
-            <li>Hubs: Repeat signals to all connected devices</li>
-
-            <p>Layer 2 - Data Link</p>
-            <li>Frames, each containing MAC addresses, with communication based on hardware addressing rather than IP addresses.</li>
-            <li>Provides node-to-node data transfer and handles error detection and correct at the frame level. It is divided into two sublayers: MAC (Media Access Control) and LLC (Logical Link Control).</li>
-            <li>Network Interface Cards (NICS): Enable device network access through MAC addressing.</li>
-            <li>Switches: Forward frames to the correct device based on MAC addresses, reducing network traffic.</li>
-            <li>Bridges: Link and filter traffic between two separate networks using MAC addresses.</li>
-
-            <p>Layer 3 - Network</p>
-            <li>Packets, containing IP addresses, allow communication across different networks and enabling end-to-end data transfer.</li>
-            <li>Manages routing across networks. This layer is responsible for logical addressing (IP addresses), packet forward, and path determination.</li>
-            <li>Routers: Direct packets across networks by interpreting IP addresses.</li>
-            <li>Layer 3 switches: Combine Layer 2 switching and Layer 3 routing capabilities.</li>
-
-            <p>Layer 4 - Transport</p>
-            <li>Segments or datagrams, which include port numbers identifying specific devices or applications, such as web or file transfer services exist in this layer.</li>
-            <li>This layer ensures reliable data transfer through flow control, segmentation, error detection, retransmission, and acknowledgements.</li>
-            <li>Computers, Servers, Printers, TVs, Cameras, and other devices use the Trasnport layer to manage data reliability with protocols such as TCP or UDP.</li>
-            <li>Transmission Control Protocol (TCP): Reliable, connection-oriented transmission.</li>
-            <li>User Datagram Protocol (UDP): Faster, connectionless transmission.</li>
-
-            <p>Layer 5 - Session</p>
-            <li>This layer ensures sessions are opened, maintained, and closed in an organized manner. It manages sessions with multiple streams between devices.</li>
-            <li>Computers and server use the Session layer for applications needing persisting connections like video calls or file transfers.</li>
-            <li>Streaming servers and clients use the Session layer to set up video streaming session.</li>
-
-            <p>Layer 6 - Presentation</p>
-            <li>This layer manages data translation, encryption, and compression, ensuring that data is in a format compatible with the application layer. It translated data into formats like JPEG, MPEG, HTML, or ASCII</li>
-            <li>Computers and TVs use this layer to handle multimedia data, translating it into viewable formats.</li>
-            <li>Servers encrypt and decrypt at this layer, especailly for secure web applications (SSL/TLS)</li>
-            <li>AES (Advanced Encryption Standard): Used to encrypt data for security purposes.</li>
-            <li>TLS/SSL (Transport Layer Security/Secure Sockets Layer): Encrypts data for secure communication.</li>
-            <li>H.264: Widely used video compression standard, balancing quality and data size for efficient transmission. (Average processors)</li>
-            <li>H.265: Advanced compression standard offering higher efficiency than H.264, reducing bandwidth requirements for the same quality. (Above-average processors)</li>
-
-            <p>Layer 7 - Application</p>
-            <li>The Application layer is closest to the user, providing interfaces for applications to communicate with the network, enabling services like email, file transfers, and web browsing.</li>
-            <li>HTTP/HTTPS (Hypertext Transfer Protocol/Secure): Protocol for web browsing.</li>
-            <li>FTP (File Transfer Protocol): Used for file transfers between client and server.</li>
-            <li>SMTP (Simple Mail Transfer Protocol): Manages the sending of email.</li>
-            <li>DNS (Domain Name System): Resolves domain names to IP addresses.</li>
-
+          <p>Layer 1, the Physical layer, is all about the actual signals that carry data. These signals can be electrical pulses, light pulses, or radio waves that represent binary bits (0s and 1s). It handles how data moves through cables and wireless signals. Copper cables, like Ethernet, send electrical signals, while fiber optic cables use light. Wireless connections, such as Wi-Fi and Bluetooth, use radio waves. Devices like media converters change signals from one type to another, and hubs repeat signals to all connected devices.</p>
+          <p>Layer 2, the Data Link layer, is responsible for organizing data into frames, which include MAC addresses for communication. This layer ensures data moves from one device to another without errors. It has two parts: the MAC (Media Access Control) and LLC (Logical Link Control). Network Interface Cards (NICs) allow devices to connect to networks using MAC addresses. Switches forward frames to the correct device, reducing unnecessary network traffic. Bridges help connect and filter traffic between different networks.</p>
+          <p>Layer 3, the Network layer, deals with packets, which contain IP addresses for communication across networks. This layer ensures that data reaches the right destination by managing routing and logical addressing. Routers direct packets based on IP addresses, helping them move between networks. Layer 3 switches combine the features of both switches and routers, allowing them to handle both local and wide network communication.</p>
+          <p>Layer 4, the Transport layer, is responsible for breaking data into segments or datagrams and adding port numbers to help identify specific applications, such as web browsing or file transfers. This layer ensures reliable data delivery by managing flow control, error detection, and retransmission when needed. Devices like computers, servers, printers, and cameras use the Transport layer to maintain data reliability with protocols like TCP (for reliable, connection-oriented transmission) and UDP (for faster, connectionless transmission).</p>
+          <p>Layer 5, the Session layer, manages and maintains communication sessions between devices. It ensures that sessions open, stay active, and close properly. This is especially important for applications that need continuous communication, such as video calls or file transfers. Streaming services also use this layer to establish and manage video streaming sessions.</p>
+          <p>Layer 6, the Presentation layer, ensures that data is in the right format for applications to use. It handles data translation, encryption, and compression. For example, it converts data into formats like JPEG for images, MPEG for videos, HTML for web pages, and ASCII for text. Devices like computers and TVs use this layer to process multimedia content. It is also where encryption happens for secure applications, using standards like AES for security and TLS/SSL for safe web browsing. Video compression formats like H.264 and H.265 also work at this layer to optimize video quality and file size.</p>
+          <p>Layer 7, the Application layer, is the one closest to users. It provides interfaces that allow applications to communicate over a network. This layer enables services such as email, web browsing, and file transfers. Common protocols include HTTP/HTTPS for web browsing, FTP for transferring files, SMTP for sending emails, and DNS for converting domain names into IP addresses.</p>  
         </div>
       )}
     </div>

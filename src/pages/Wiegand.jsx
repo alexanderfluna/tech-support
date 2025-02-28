@@ -11,6 +11,8 @@ import '../styles/Pages.css';
 const Wiegand = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
+  const [showTroubleshooting, setShowTroubleshooting] = useState(false);
+  const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     fiber: [],
@@ -45,6 +47,14 @@ const Wiegand = () => {
     updateAvailableOptions(products);
     setFilters({ fiber: null, centralRemote: null });
   };
+
+  const toggleTroubleshooting = () => {
+    setShowTroubleshooting(!showTroubleshooting);
+  }
+
+  const toggleFAQ = () => {
+    setShowFAQ(!showFAQ);
+  }
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -83,7 +93,7 @@ const Wiegand = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Wiegand</h2>
-        <button className="selector-tool" onClick={toggleTable}>
+        <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
         {showTable && (
@@ -161,65 +171,75 @@ const Wiegand = () => {
           </>
         )}
 
-        <p className="faq-title">How To Troubleshoot Common Issues</p>
-        <div className="faq-list">
-          {<NoPowerLight />}
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
-            {visibleAnswer === 'no-link-light' && (
-              <div className="faq-answer">
-                <p>Swap the transmit and receive fiber strands.</p>
+        <button className="purple-button" onClick={toggleTroubleshooting}>
+          Troubleshooting Common Issues
+        </button>
+        {showTroubleshooting && (
+          <>
+            <div className="faq-list">
+              {<NoPowerLight />}
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
+                {visibleAnswer === 'no-link-light' && (
+                  <div className="faq-answer">
+                    <p>Swap the transmit and receive fiber strands.</p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The central and remote are not communicating. </button>
-            {visibleAnswer === 'no-communication' && (
-              <div className="faq-answer">
-                <p>Central with no expansions:</p>
-                <li>Remove power and fiber strands.</li>
-                <li>Flip all dip switches down.</li>
-                <li>Flip dip switches 1, 4, 8 on.</li>
-                <li>Apply power. There should be a green status LED. Remove power.</li>
-                <li>Flip all dip switches down.</li>
-                <li>Flip dip switch 3 on.</li>
-                <li>Apply power.</li>
-                <p>Remote with no expansions:</p>
-                <li>Remove power and fiber strands.</li>
-                <li>Flip all dip switches down.</li>
-                <li>Flip dip switches 1, 4, 8 on.</li>
-                <li>Apply power. There should be a green status LED. Remove power.</li>
-                <li>Flip all dip switches off.</li>
-                <li>Apply power.</li>
-                <p>Ensure the correct wire configuration:</p>
-                <img src="photos/FDW/FDW.jpg"></img>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The central and remote are not communicating. </button>
+                {visibleAnswer === 'no-communication' && (
+                  <div className="faq-answer">
+                    <p>Central with no expansions:</p>
+                    <li>Remove power and fiber strands.</li>
+                    <li>Flip all dip switches down.</li>
+                    <li>Flip dip switches 1, 4, 8 on.</li>
+                    <li>Apply power. There should be a green status LED. Remove power.</li>
+                    <li>Flip all dip switches down.</li>
+                    <li>Flip dip switch 3 on.</li>
+                    <li>Apply power.</li>
+                    <p>Remote with no expansions:</p>
+                    <li>Remove power and fiber strands.</li>
+                    <li>Flip all dip switches down.</li>
+                    <li>Flip dip switches 1, 4, 8 on.</li>
+                    <li>Apply power. There should be a green status LED. Remove power.</li>
+                    <li>Flip all dip switches off.</li>
+                    <li>Apply power.</li>
+                    <p>Ensure the correct wire configuration:</p>
+                    <img src="photos/FDW/FDW.jpg"></img>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-
-          <p className="faq-title">Frequently Asked Questions</p>
-          <div className="faq-list">
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
-              {visibleAnswer === 'wiegand' && (
-                <div className="faq-answer">
-                  <li>Wiegand is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</li>
-                </div>
-              )}
             </div>
-          </div>
-          <div className="faq-list">
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
-              {visibleAnswer === 'osdp' && (
-                <div className="faq-answer">
-                  <li>OSDP (Open Supervised Device Protocol) is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</li>
-                </div>
-              )}
+          </>
+        )}
+        
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+        </button>
+        {showFAQ && (
+          <>
+            <div className="faq-list">
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
+                {visibleAnswer === 'wiegand' && (
+                  <div className="faq-answer">
+                    <li>Wiegand is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</li>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
+                {visibleAnswer === 'osdp' && (
+                  <div className="faq-answer">
+                    <li>OSDP (Open Supervised Device Protocol) is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</li>
+                  </div>
+                )}
+              </div>
+              <Fiber />
             </div>
-            <Fiber />
-          </div>
-        </div>
+          </>
+        )} 
       </main>
       <Button />
       <BackToTop />
