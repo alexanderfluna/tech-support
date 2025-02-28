@@ -253,7 +253,7 @@ const Wireless = () => {
           <>
             <div className="faq-list">
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> The unit does not power on. </button>
+              <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> The radio does not power on. </button>
               {visibleAnswer === 'no-power-light' && (
                 <div className="faq-answer">
                   <p><strong>[1] Try using a hardened, IEEE 802.3at compliant PoE injector to power the radio.</strong></p>

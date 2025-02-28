@@ -251,9 +251,28 @@ const SFP = () => {
         {showTroubleshooting && (
           <>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('troubleshooting')}>
-                Troubleshooting
-              </button> 
+              <button className="faq-question" onClick={() => toggleAnswer('no-optical-link')}>
+                There is no optical link.
+              </button>
+              {visibleAnswer === 'no-optical-link' && (
+                <>
+                <div className="faq-answer">
+                  <p>[1] For SFPs requiring an 'A' and 'B' pair, ensure there is an 'A' unit on one side of the fiber and a 'B' unit on the other side of the fiber. </p>
+                  <li>The data must be transmitted and received over the one strand of fiber. Using wavelength division multiplexing (WDM), the 'A' and 'B' units transmit and receive data at different wavelengths.</li>
+                  <p>[2] Confirm that the fiber in use is compatible with the SFP module.</p>
+                  <li>[2.1] The data rate (Gigabit Ethernet vs. Fast Ethernet).</li>
+                  <li>[2.2] The fiber type (single mode vs multimode).</li>
+                  <li>[2.3] The number of fiber strands (single strand vs. dual strand).</li>
+                  <li>[2.4] The optical connector (SC vs. LC).</li>
+                  <p>[3] Test if the fiber works with another device.</p>
+                  <p>[4] Using a process of elimination, swap out the device and/or SFP on either end of the fiber with an identical device and/or SFP to determine which unit is failing.</p>
+                  <p>[5] Connect one end of the fiber to an optical power meter and connect the other end of the fiber to the SFP and check the dBm reading. Compare this to the SFP's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</p>
+                  <p>[6] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</p>
+                </div>
+                </>
+              )
+
+              }
             </div>
           </>
         )}
@@ -265,7 +284,7 @@ const SFP = () => {
           <>
             <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
-              SFP Chart
+              View Comnet's SFP chart.
             </button>
             {visibleAnswer === 'sfp-chart' && (
               <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>

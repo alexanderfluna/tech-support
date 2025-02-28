@@ -201,7 +201,7 @@ const Razberi = () => {
             </div>
             <PowerOverEthernet />
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('terminology')}>  I need help understanding the server terminology. </button>
+              <button className="faq-question" onClick={() => toggleAnswer('terminology')}>  Learn about servers. </button>
               {visibleAnswer === 'terminology' && (
                 <div className="faq-answer">
                   <p>Definitions:</p>

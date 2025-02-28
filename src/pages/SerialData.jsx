@@ -260,20 +260,11 @@ const SerialData = () => {
               <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
               {visibleAnswer === 'no-link-light' && (
                 <div className="faq-answer">
-                  <p>1. Test the Fiber with Another Device.</p>
-                  <li>Use the fiber with another device to determine if a link light is achieved.</li>
-                  <p>2. Swap out the device on either end with an identical.</p>
-                  <li>This will determine which device on either end is failing.</li>
-                  <p>3. Fiber Optic Cleaning Kit:</p>
-                  <li>Use the lint-free wipes and cleaning pen from the optic cleaning kit to clean fiber connectors and the SFP cage gently. Ensure no debris remains before reconnecting.</li>
-                  <p>4. Optical Power Meter:</p>
-                  <li>Connect the power meter to the fiber cable and check the dBm reading. Compare this to the device’s recommended signal strength (available in the datasheet) to confirm it is within the expected range.</li>
-                  <p>5. Optical Time-Domain Reflectometer (OTDR)</p>
-                  <li>Connect the OTDR to one end of the fiber cable. The OTDR will send light pulses through the fiber to analyze reflections and signal loss, producing a graph with detailed information on reflections, signal loss, and potential faults.</li>
-                  <li>Note the distance to any reflections or faults as shown on the OTDR report.</li>
-                  <p>6. Visual Fault Locator:</p>
-                  <li>Connect the visual fault locator to the fiber cable and check for any areas where red light escapes or dims.</li>
-                  <li>Inspect any detected light leaks for possible damage or poor connections.</li>
+                    <p>[1] Confirm that the fiber in use is compatible with the device.</p>
+                    <p>[2] Test if the fiber works with another device.</p>
+                    <p>[3] Using a process of elimination, swap out the device on either end of the fiber with an identical device to determine which unit is failing.</p>
+                    <p>[4] Connect one end of the fiber to an optical power meter and connect the other end of the fiber to the device and check the dBm reading. Compare this to the device's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</p>
+                    <p>[5] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</p>
                 </div>
               )}
             </div>
@@ -281,9 +272,9 @@ const SerialData = () => {
               <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The serial data is not getting sent over the fiber. </button>
               {visibleAnswer === 'no-communication' && (
                 <div className="faq-answer">
-                  <p>1. Determine what lights are illuminated on the unit.</p>
+                  <p>[1] Determine what lights are illuminated on the unit.</p>
                   <img src="photos/FDX/fdx60-led.jpg"></img>
-                  <p>2. Ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</p>
+                  <p>[2] If passing 2-wire RS485, ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</p>
                   <li>Impedance mismatch:</li>
                   <li style={{"padding-left": "100px"}}>Occurs where two interconnected electronic devices or components have different impedance values (resistance to alternating current).</li>
                   <li style={{"padding-left": "100px"}}>Without proper termination (e.g., a resistor matching the cable's characteristic impedance), the energy of the signal doesn't dissipate properly, leading to ringing.</li>
@@ -293,7 +284,7 @@ const SerialData = () => {
                   <li style={{"padding-left": "100px"}}>Where the resistors is placed doesn't matter because the devices are so close.</li>
                   <li>Distributed distance:</li>
                   <li style={{"padding-left": "100px"}}>The resistor must be placed at the end because the distance is so far.</li>
-                  <p>3. Verify the wires are connected properly:</p>
+                  <p>[3] Verify the wires are connected properly. </p>
                   <img src="photos/FDX/fdx60-wires.jpg"></img>
                   <p>4. Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration:</p>
                   <img src="photos/FDX/fdx60-switches.jpg"></img>

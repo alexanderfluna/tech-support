@@ -302,20 +302,11 @@ const ContactClosure = () => {
                 <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
                 {visibleAnswer === 'no-link-light' && (
                   <div className="faq-answer">
-                    <p>1. Test the Fiber with Another Device.</p>
-                    <li>Use the fiber with another device to determine if a link light is achieved.</li>
-                    <p>2. Swap out the device on either end with an identical.</p>
-                    <li>This will determine which device on either end is failing.</li>
-                    <p>3. Fiber Optic Cleaning Kit:</p>
-                    <li>Use the lint-free wipes and cleaning pen from the optic cleaning kit to clean fiber connectors and the SFP cage gently. Ensure no debris remains before reconnecting.</li>
-                    <p>4. Optical Power Meter:</p>
-                    <li>Connect the power meter to the fiber cable and check the dBm reading. Compare this to the device’s recommended signal strength (available in the datasheet) to confirm it is within the expected range.</li>
-                    <p>5. Optical Time-Domain Reflectometer (OTDR)</p>
-                    <li>Connect the OTDR to one end of the fiber cable. The OTDR will send light pulses through the fiber to analyze reflections and signal loss, producing a graph with detailed information on reflections, signal loss, and potential faults.</li>
-                    <li>Note the distance to any reflections or faults as shown on the OTDR report.</li>
-                    <p>6. Visual Fault Locator:</p>
-                    <li>Connect the visual fault locator to the fiber cable and check for any areas where red light escapes or dims.</li>
-                    <li>Inspect any detected light leaks for possible damage or poor connections.</li>
+                    <p>[1] Confirm that the fiber in use is compatible with the device.</p>
+                    <p>[2] Test if the fiber works with another device.</p>
+                    <p>[3] Using a process of elimination, swap out the device on either end of the fiber with an identical device to determine which unit is failing.</p>
+                    <p>[4] Connect one end of the fiber to an optical power meter and connect the other end of the fiber to the device and check the dBm reading. Compare this to the device's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</p>
+                    <p>[5] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</p>
                   </div>
                 )}
               </div>
@@ -323,15 +314,13 @@ const ContactClosure = () => {
                 <button className="faq-question" onClick={() => toggleAnswer('no-contacts')}> The contacts are not getting sent across the fiber. </button>
                 {visibleAnswer === 'no-contacts' && (
                   <div className="faq-answer">
-                    <p>1. Ensure the wires are connected properly.</p>
+                    <p>[1] Ensure the wires are connected properly.</p>
                     <li>FDC10 and FDC8/FDC80</li>
                     <img src="photos/FDC/fdc10.jpg" style={{"padding-right": "100px"}}></img>
                     <img src="photos/FDC/fdc80.jpg" style={{height: "700px"}}></img>
-                    <p>2. Confirm the inputs are dry (volt-free) closures.</p>
-                    <li>It is not acceptable to have voltage across the input pair.</li>
-                    <p>3. If an ohmmeter is being used across the screwheads on the green terminal block and if the screws are not tightened, it will look like the relay is not responding. </p>
-                    <li>Be sure that there are wires in the terminal block and that the screws are tightened. If wires are not inserted into the terminal block, tighten the screws anyway and then measure across the screw heads.</li>
-                    <p>4. Cycle power on the unit.</p>
+                    <p>[2] Confirm the inputs are dry (volt-free) closures. It is not acceptable to have voltage across the input pair.</p>
+                    <p>[3] If an ohmmeter is being used across the screwheads on the green terminal block and if the screws are not tightened, it will look like the relay is not responding. Be sure that there are wires in the terminal block and that the screws are tightened. If wires are not inserted into the terminal block, tighten the screws anyway and then measure across the screw heads.</p>
+                    <p>[4] Cycle power on the unit.</p>
                   </div>
                 )}
               </div>
