@@ -117,7 +117,7 @@ const Wireless = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Wireless</h2>
+        <h2 className="faq-title">Wireless Ethernet</h2>
         <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -256,10 +256,10 @@ const Wireless = () => {
               <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> The radio does not power on. </button>
               {visibleAnswer === 'no-power-light' && (
                 <div className="faq-answer">
-                  <p><strong>[1] Try using a hardened, IEEE 802.3at compliant PoE injector to power the radio.</strong></p>
+                  <p><strong>[1] Try using a hardened, IEEE 802.3af/at compliant PoE injector to power the radio.</strong></p>
                   <li>[1.1] Verify that the PoE injector will power on another device.</li>
-                  <li>[1.2] Retry using another hardened IEEE 802.3at compliant PoE injector.</li>
-                  <p style={{"padding-top": "40px"}}><strong>[2] Try using a hardened, IEEE 802.3at compliant PoE switch to power the radio.</strong></p>
+                  <li>[1.2] Retry using another hardened IEEE 802.3af/at compliant PoE injector.</li>
+                  <p style={{"padding-top": "40px"}}><strong>[2] Try using a hardened, IEEE 802.3af/at compliant PoE switch to power the radio.</strong></p>
                   <li>[2.1] Ensure a hardened power supply is used to power the PoE switch.</li>
                   <li>[2.2] Verify the power supply produces enough wattage for the device(s) powered by PoE and the radio.</li>
                   <li>[2.3] Use a voltmeter to verify the power supply is producing 48 to 56VDC under load.</li>
@@ -267,7 +267,7 @@ const Wireless = () => {
                   <li style={{ 'padding-left': '100px' }}>[2.3.2] Ensure the voltmeter is set to DC voltage mode.</li>
                   <li style={{ 'padding-left': '100px' }}>[2.3.3] Touch the the red probe to the positive terminal and the black probe to the negative terminal.</li>
                   <li style={{ 'padding-left': '100px' }}>[2.3.4] Verify the power supply delivers the required 48VDC-56VDC input voltage while connected to the switch.</li>
-                  <li>[2.4] Retry using another hardened IEEE 802.3at compliant PoE switch.</li>
+                  <li>[2.4] Retry using another hardened IEEE 802.3af/at compliant PoE switch.</li>
                 </div>
               )}
             </div>

@@ -20,17 +20,17 @@ const App = () => {
       <Routes>
         <Route path="/tech-support" element={<Home />} />
         <Route path="/tech-support/enclosures" element={<Enclosures />} />
-        <Route path="/tech-support/copper-line" element={<CopperLine />} />
+        <Route path="/tech-support/ethernet-extender" element={<CopperLine />} />
         <Route path="/tech-support/contact-closure" element={<ContactClosure />} />
         <Route path="/tech-support/serial-data" element={<SerialData />} />
         <Route path="/tech-support/Wiegand" element={<Wiegand />} />
         <Route path="/tech-support/media-converter" element={<MediaConverter />} />
         <Route path="/tech-support/poe-injector" element={<PoEInjector />} />
         <Route path="/tech-support/power-supply" element={<PowerSupply />} />
-        <Route path="/tech-support/razberi" element={<Razberi />} />
+        <Route path="/tech-support/razberi-server" element={<Razberi />} />
         <Route path="/tech-support/sfp" element={<SFP />} />
         <Route path="/tech-support/ethernet-switch" element={<EthernetSwitch />} />
-        <Route path="/tech-support/wireless" element={<Wireless />} />
+        <Route path="/tech-support/wireless-ethernet" element={<Wireless />} />
       </Routes>
     </Router>
   );

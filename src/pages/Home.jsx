@@ -42,10 +42,10 @@ const Home = () => {
           {[
             'Ethernet Switch',
             'Media Converter',
-            'Wireless',
-            'Razberi',
+            'Wireless Ethernet',
+            'Razberi Server',
             'SFP',
-            'Copper Line',
+            'Ethernet Extender',
             'Contact Closure',
             'Serial Data',
             'Wiegand',

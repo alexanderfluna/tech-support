@@ -116,7 +116,7 @@ const CopperLine = () => {
     <div>
       <Navbar />
       <main className="faq-container">
-        <h2 className="faq-title">Copper Line</h2>
+        <h2 className="faq-title">Ethernet Extender</h2>
         <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
