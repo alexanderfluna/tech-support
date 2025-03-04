@@ -14,9 +14,9 @@ const EthernetSwitch = () => {
       <Navbar />
       <main className="faq-container">
         <h1 className="faq-title">Ethernet Switch</h1>
+        {<EthernetSwitchFrequentlyAskedQuestions />}
         {<EthernetSwitchSelectorTool />}
         {<EthernetSwitchTroubleshooting />}
-        {<EthernetSwitchFrequentlyAskedQuestions />}
       </main>
       <Button />
       <BackToTop />

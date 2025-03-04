@@ -38,127 +38,6 @@ const Razberi = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Razberi Server</h2>
-        <button className="purple-button" onClick={toggleTable}>
-          Selector Tool
-        </button>
-        {showSelectorText && (
-          <div className="selector-placeholder">
-            <p>Selector tool functionality coming soon...</p>
-          </div>
-        )}
-
-        <button className="purple-button" onClick={toggleTroubleshooting}>
-          Troubleshooting Common Issues
-        </button>
-        {showTroubleshooting && (
-          <>
-            <div className="faq-list">
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-power-ss32x')}> Troubleshooting power issues on an SS32X. </button>
-              {visibleAnswer === 'no-power-ss32x' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
-                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
-                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
-                  <p><strong>[4] Verify a healthy OS, RAID, and switch.</strong></p>
-                  <p><strong>[5] Confirm the following settings in BIOS.</strong></p>
-                  <li>Check that the boot order is correct. Windows Boot Manager should be option #1.</li>
-                  <li>In "Advanced" -- "ACPI Settings", make sure "Enable Hibernation" is disabled.</li>
-                  <li>In "Advanced" -- "ACPI Settings", make sure "ACPI Sleep State" is set to "Suspend Disabled"</li>
-                  <li>In "Chipset" -- "PCH-IO Configuration" -- "SATA and RST Configuration", make sure all the hard drives are detected. There should be 4 of them (but it will show up as 0, 1, 2, and 3).</li>
-                  <li>In "Chipset" -- "Board Configuration", make sure "PWR-On After PWR-Fail" is set to "Last state" or "On".</li>
-                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
-                  <p><strong>[7] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-power-core')}> Troubleshooting power issues on a Core Server. </button>
-              {visibleAnswer === 'no-power-core' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
-                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
-                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
-                  <p><strong>[4] Verify a healthy OS and RAID.</strong></p>
-                  <p><strong>[5] Enter the System Setup when booting into the server.</strong></p>
-                  <li>Change the <strong>Thermal Profile</strong> to <strong>Minimum Power (Performance per Watt Optimized).</strong></li>
-                  <li>The power of the server can be capped by specifing the watts, BTU/hr, and by a percentage. A lower power consumption typically means lower heat output, which can reduce cooling requirements. The fans may run at a lower speed, making the server quieter. Lower power usage can also reduce the thermal stress, potentially extending the life of components like CPUs and power supplies. However, if the server is power capped too aggressively, the CPU and memory performance may be throttled to stay within the limit.</li>
-                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
-                  <p><strong>[7] Perform a hardware diagnostic on the server. This can be done in the <strong>Lifecycle Controller</strong> under the <strong>Hardware Diagnostics</strong> tab and <strong>Run Hardware Diagnostics</strong> button.</strong></p>
-                  <p><strong>[8] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> Troubleshooting PoE switch issues. </button>
-              {visibleAnswer === 'no-poe' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Confirm the powered devices are 802.3af/at compliant.</strong></p>
-                  <p><strong>[2] Ensure the switch is not producing more PoE than the PoE budget allows.</strong></p>
-                  <p><strong>[3] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> Troubleshooting a failed hard drive. </button>
-              {visibleAnswer === 'failed-disk' && (
-                <div className="faq-answer">
-                  <p><strong>Contact technical support to determine if the unit is under warranty. If so, we can send out a replacement hard drive and provide assistance with reconfiguring the RAID array as needed. If the unit is not under warranty, consider purchasing a new hard drive for replacement, and we can provide assistance with reconfiguring the RAID array as needed.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID issues. </button>
-              {visibleAnswer === 'RAID' && (
-                <div className="faq-answer">
-                  <p><strong>RAID 0:</strong> One drive failing messes the entire RAID.</p>
-                  <p><strong>RAID 1:</strong> Allows for the loss of half of the drives. Replacing the drive(s) will automatically rebuild the RAID array.</p>
-                  <p><strong>RAID 5:</strong> Allows for the loss of one drive. Replacing the drive will automatically rebuild the RAID array.</p>
-                  <p><strong>RAID 6:</strong> Allows for the loss of two drives. Replacing the drive(s) will automatically rebuild the RAID array.</p>
-                  <p><strong>RAID 10:</strong> Allows for the loss of half of the drives. Replacing the drive(s) will automatically rebuild the RAID array.</p>
-                  <p><strong>If the RAID array has failed: </strong>Delete the virtual disk, create a new virtual disk, and format the volume as NTFS using one of the following.</p>
-                  <li>Disk Management</li>
-                  <li>Intel Rapid Storage Technology</li>
-                  <li>iDRAC</li>
-                  <li>BIOS</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('windows-os')}> Troubleshooting Windows OS issues. </button>
-              {visibleAnswer === 'windows-os' && (
-                <div className="faq-answer">
-                  <li>Event Viewer</li>
-                  <li>Task Manager</li>
-                  <li>Razberi Monitor or iDRAC Alert Logs</li>
-                  <li>OS recovery</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('RDP')}>  Setting up a Remote Desktop Connection.  </button>
-              {visibleAnswer === 'RDP' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Enable RDP in the server's settings.</strong></p>
-                  <p><strong>[2] Connect a laptop to a NIC on the server.</strong></p>
-                  <p><strong>[3] Open the Remote Desktop Connection software on the laptop.</strong></p>
-                  <p><strong>[4] Enter the IP address of the server's NIC.</strong></p>
-                  <p><strong>[5] Enter the Windows username and password.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('lost-windows-password')}> Forgot Windows Password. </button>
-              {visibleAnswer === 'lost-windows-password' && (
-                <div className="faq-answer">
-                  <p><strong>There is no way to reset the Windows password. A recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</strong></p>
-                </div>
-              )}
-            </div>
-          </div>
-          </>
-        )}
-        
         <button className="purple-button" onClick={toggleFAQ}>
           Frequently Asked Questions
         </button>
@@ -281,7 +160,144 @@ const Razberi = () => {
           </div>
           </>
         )}
-        
+
+        <button className="purple-button" onClick={toggleTable}>
+          Selector Tool
+        </button>
+        {showSelectorText && (
+          <div className="selector-placeholder">
+            <p>Selector tool functionality coming soon...</p>
+          </div>
+        )}
+
+        <button className="purple-button" onClick={toggleTroubleshooting}>
+          Troubleshooting Common Issues
+        </button>
+        {showTroubleshooting && (
+          <>
+            <div className="faq-list">
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('no-power-ss32x')}> Troubleshooting power issues on an SS32X. </button>
+              {visibleAnswer === 'no-power-ss32x' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
+                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
+                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
+                  <p><strong>[4] Verify a healthy OS, RAID, and switch.</strong></p>
+                  <p><strong>[5] Confirm the following settings in BIOS.</strong></p>
+                  <li>Check that the boot order is correct. Windows Boot Manager should be option #1.</li>
+                  <li>In "Advanced" -- "ACPI Settings", make sure "Enable Hibernation" is disabled.</li>
+                  <li>In "Advanced" -- "ACPI Settings", make sure "ACPI Sleep State" is set to "Suspend Disabled"</li>
+                  <li>In "Chipset" -- "PCH-IO Configuration" -- "SATA and RST Configuration", make sure all the hard drives are detected. There should be 4 of them (but it will show up as 0, 1, 2, and 3).</li>
+                  <li>In "Chipset" -- "Board Configuration", make sure "PWR-On After PWR-Fail" is set to "Last state" or "On".</li>
+                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
+                  <p><strong>[7] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('no-power-core')}> Troubleshooting power issues on a Core Server. </button>
+              {visibleAnswer === 'no-power-core' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
+                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
+                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
+                  <p><strong>[4] Verify a healthy OS and RAID.</strong></p>
+                  <p><strong>[5] Enter the System Setup when booting into the server.</strong></p>
+                  <li>Change the <strong>Thermal Profile</strong> to <strong>Minimum Power (Performance per Watt Optimized).</strong></li>
+                  <li>The power of the server can be capped by specifing the watts, BTU/hr, and by a percentage. A lower power consumption typically means lower heat output, which can reduce cooling requirements. The fans may run at a lower speed, making the server quieter. Lower power usage can also reduce the thermal stress, potentially extending the life of components like CPUs and power supplies. However, if the server is power capped too aggressively, the CPU and memory performance may be throttled to stay within the limit.</li>
+                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
+                  <p><strong>[7] Perform a hardware diagnostic on the server. This can be done in the <strong>Lifecycle Controller</strong> under the <strong>Hardware Diagnostics</strong> tab and <strong>Run Hardware Diagnostics</strong> button.</strong></p>
+                  <p><strong>[8] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> Troubleshooting PoE switch issues. </button>
+              {visibleAnswer === 'no-poe' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Confirm the powered devices are 802.3af/at compliant.</strong></p>
+                  <p><strong>[2] Ensure the switch is not producing more PoE than the PoE budget allows.</strong></p>
+                  <p><strong>[3] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</strong></p>
+                  <p><strong>[4] In the command prompt on the server, attempt pinging the switch at 192.168.50.1.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> Troubleshooting a failed hard drive. </button>
+              {visibleAnswer === 'failed-disk' && (
+                <div className="faq-answer">
+                  <p><strong>Contact technical support to determine if the unit is under warranty. If so, we can send out a replacement hard drive and provide assistance with reconfiguring the RAID array as needed. If the unit is not under warranty, consider purchasing a new hard drive for replacement, and we can provide assistance with reconfiguring the RAID array as needed.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID issues. </button>
+              {visibleAnswer === 'RAID' && (
+                <div className="faq-answer">
+                  <p><strong>RAID 0:</strong> Requires at least 2 drives. One drive failing corrupts the entire RAID.</p>
+                  <p><strong>RAID 1:</strong> Requires at least 2 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
+                  <p><strong>RAID 5:</strong> Requires at least 3 drives and allows for the loss of one. Replacing the drive will automatically rebuild the RAID.</p>
+                  <p><strong>RAID 6:</strong> Requires at least 4 drives and allows for the loss of two. Replacing the drive(s) will automatically rebuild the RAID.</p>
+                  <p><strong>RAID 10:</strong> Requires at least 4 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
+                  <p><strong>If the RAID array has failed: </strong>Delete the virtual disk, create a new virtual disk, and format the volume as NTFS using one of the following.</p>
+                  <li>Disk Management</li>
+                  <li>Intel Rapid Storage Technology</li>
+                  <li>iDRAC</li>
+                  <li>BIOS</li>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('windows-os')}> Troubleshooting Windows OS issues. </button>
+              {visibleAnswer === 'windows-os' && (
+                <div className="faq-answer">
+                  <li>Event Viewer</li>
+                  <li>Task Manager</li>
+                  <li>Razberi Monitor or iDRAC alert logs</li>
+                  <li>OS recovery</li>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('RDP')}>  Setting Up a Remote Desktop Connection.  </button>
+              {visibleAnswer === 'RDP' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Enable RDP in the server's settings.</strong></p>
+                  <p><strong>[2] Connect a laptop to a NIC on the server.</strong></p>
+                  <p><strong>[3] Open the Remote Desktop Connection software on the laptop.</strong></p>
+                  <p><strong>[4] Enter the IP address of the server's NIC.</strong></p>
+                  <p><strong>[5] Enter the Windows username and password.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('lost-windows-password')}> I Forgot the Windows Password. </button>
+              {visibleAnswer === 'lost-windows-password' && (
+                <div className="faq-answer">
+                  <p><strong>There is no way to reset the Windows password. A recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('registration')}> I Want to Skip Registration. </button>
+              {visibleAnswer === 'registration' && (
+                <div className="faq-answer">
+                  <p><strong>[1] While on the registration page, hold down: Ctrl + Shift + Alt + F11.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('camera-defense')}> I Want to Set Up CameraDefense. </button>
+              {visibleAnswer === 'camera-defense' && (
+                <div className="faq-answer">
+                  <p><strong>Attach video here.</strong></p>
+                </div>
+              )}
+            </div>
+          </div>
+          </>
+        )}
       </main>
       <Button />
       <BackToTop />

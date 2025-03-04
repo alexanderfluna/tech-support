@@ -101,6 +101,14 @@ const PoEInjector = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">PoE Injector</h2>
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+          </button>       
+          {showFAQ && (
+            <>
+              <PowerOverEthernet />
+            </>
+          )} 
         <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -253,15 +261,6 @@ const PoEInjector = () => {
             </div>
           </>
         )}
-
-        <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-          </button>       
-          {showFAQ && (
-            <>
-              <PowerOverEthernet />
-            </>
-          )} 
       </main>
       <Button />
       <BackToTop />

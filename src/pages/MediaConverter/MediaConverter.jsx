@@ -15,9 +15,9 @@ const MediaConverter = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Media Converter</h2>
+        {<MediaConverterFrequentlyAskedQuestions />}
         {<MediaConverterSelectorTool />}
         {<MediaConverterTroubleshooting />}
-        {<MediaConverterFrequentlyAskedQuestions />}
       </main>
       <Button />
       <BackToTop />

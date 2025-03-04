@@ -32,20 +32,6 @@ function EthernetSwitchFrequentlyAskedQuestions() {
             {FAQ && (
                 <>
                     <div className="faq-item">
-                        <button className="faq-question" onClick={() => toggleAnswer('default-configuration')}>
-                            What are the default configurations on a Comnet Ethernet switch?
-                        </button>
-                        {visibleAnswers.has('default-configuration') && (
-                            <div className="faq-answer">
-                                <p>The default configurations of a Comnet Ethernet switch are:</p>
-                                <li>The default IP address is 192.168.10.1</li>
-                                <li>The default username is "admin"</li>
-                                <li>The default password is "admin"</li>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="faq-item">
                         <button className="faq-question" onClick={() => toggleAnswer('ethernet-switch')}>
                             Learn about Ethernet switches.
                         </button>
@@ -106,7 +92,19 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                                 </div>
                         )}
                     </div>
-
+                    <div className="faq-item">
+                        <button className="faq-question" onClick={() => toggleAnswer('default-configuration')}>
+                            What are the default configurations on a Comnet Ethernet switch?
+                        </button>
+                        {visibleAnswers.has('default-configuration') && (
+                            <div className="faq-answer">
+                                <p><strong>The default configurations of a Comnet Ethernet switch are:</strong></p>
+                                <li>The default IP address is 192.168.10.1</li>
+                                <li>The default username is "admin"</li>
+                                <li>The default password is "admin"</li>
+                            </div>
+                        )}
+                    </div>
                     <Fiber />
                     <PowerOverEthernet />
                     <OSI />

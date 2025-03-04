@@ -170,6 +170,29 @@ const SFP = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">SFP</h2>
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+        </button>
+        {showFAQ && (
+          <>
+            <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
+              Comnet's SFP chart.
+            </button>
+            {visibleAnswer === 'sfp-chart' && (
+              <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
+                <a href="pdf/SFP/sfp-modules.pdf" download>
+                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
+                      Download SFP Chart
+                    </button>
+                  </a>
+                <img src="photos/SFP/SFP.png" alt="SFP Chart" />
+              </div>
+            )}
+          </div>
+          <Fiber />
+          </>
+        )}
         <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -270,34 +293,8 @@ const SFP = () => {
                   <p>[6] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</p>
                 </div>
                 </>
-              )
-
-              }
+              )}
             </div>
-          </>
-        )}
-
-        <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-        </button>
-        {showFAQ && (
-          <>
-            <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
-              View Comnet's SFP chart.
-            </button>
-            {visibleAnswer === 'sfp-chart' && (
-              <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
-                <a href="pdf/SFP/sfp-modules.pdf" download>
-                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
-                      Download SFP Chart
-                    </button>
-                  </a>
-                <img src="photos/SFP/SFP.png" alt="SFP Chart" />
-              </div>
-            )}
-          </div>
-          <Fiber />
           </>
         )}      
       </main>

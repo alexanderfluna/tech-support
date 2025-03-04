@@ -118,6 +118,126 @@ const Wireless = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Wireless Ethernet</h2>
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+        </button>
+        {showFAQ && (
+          <>
+            <div className="faq-list">
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('netwave-configurations')}> How do I configure Comnet's wireless radios? </button>
+              {visibleAnswer === 'netwave-configurations' && (
+                <div className="faq-answer">
+                  <p><strong>Click the link to <a href="pdf/Wireless/NetWave.pdf" download>download Comnet's wireless configuration documentation</a>.</strong></p>
+              </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('netwave-specs')}> How do I find the specs of a Comnet wireless radio? </button>
+              {visibleAnswer === 'netwave-specs' && (
+                <div className="faq-answer">
+                  <p><strong>Enter the radio's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> and view the data sheet.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('security')}> What security features does a Comnet wireless radio provide? </button>
+              {visibleAnswer === 'security' && (
+                <div className="faq-answer">
+                  <p><strong>[1] The access point and client(s) are bound together by a shared ESSID and PSK.</strong></p>
+                  <p><strong>[2] It is recommended to change the IP addresses, ESSID and PSK of the wireless radios as this information is public.</strong></p>
+                  <p><strong>[3] Hiding the ESSID prevents it from showing up under Wifi scans.</strong></p>
+                  <p><strong>[4] The wireless communication is encrypted using WPA2.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Learn about wireless. </button>
+              {visibleAnswer === 'wireless' && (
+                <div className="faq-answer">
+                  <p>The <strong>Extended Service Set Identifier (ESSID)</strong> is the broadcast name of a wireless network, allowing devices to identify and connect to the correct access point. It serves as a unique identifier within a wireless network, ensuring seamless roaming between multiple access points when configured correctly.</p>
+                  <p>The <strong>Pre-Shared Key (PSK)</strong> is the password required to join a secured wireless network. This key is an essential component of WPA and WPA2 encryption protocols, ensuring that only authorized users can access the network. A strong PSK helps protect against unauthorized access and potential security threats.</p>
+                  <p><strong>Antenna gain</strong> measures how effectively an antenna directs or concentrates radio frequency (RF) energy in a particular direction compared to a reference antenna. Higher gain antennas focus energy more efficiently, increasing signal range and strength while reducing interference from unwanted directions.</p>
+                  <p>Gain is typically referenced in <strong>decibels isotropic (dBi)</strong>, which represents the gain relative to an <strong>isotropic radiator</strong>—a theoretical antenna that radiates power uniformly in all directions. An antenna with a positive dBi value directs energy more efficiently than an isotropic source, making it ideal for focused, long-range wireless communications.</p>
+                  <p>The <strong>Received Signal Strength Indicator (RSSI)</strong> measures the power level of a received wireless signal, serving as an indicator of connection quality between an access point and a client device. RSSI values are measured in negative decibels (dBm), with higher values (closer to zero) representing stronger signals. The quality of a connection can be categorized as follows:</p>
+                  <img src="photos/Wireless/RSSI.png" alt="RSSI chart"/>
+                  <p>Understanding these parameters helps optimize wireless network performance by positioning antennas strategically, selecting appropriate gain values, and ensuring strong RSSI levels for reliable connectivity.</p>
+                  <p><strong>Wi-Fi Standards</strong></p>
+                  <table
+                      style={{
+                          width: '100%',
+                          borderCollapse: 'collapse',
+                      }}
+                  >
+                      <thead
+                          style={{
+                              backgroundColor: 'rgb(106, 13, 173)',
+                              color: 'white',
+                          }}
+                      >
+                          <tr>
+                              <th style={{ padding: '10px', textAlign: 'left' }}>Standard</th>
+                              <th style={{ padding: '10px', textAlign: 'left' }}>Frequency Band</th>
+                              <th style={{ padding: '10px', textAlign: 'left' }}>Max Data Rate</th>
+                              <th style={{ padding: '10px', textAlign: 'left' }}>Channel Bandwidth</th>
+                              <th style={{ padding: '10px', textAlign: 'left' }}>Date</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {wifiStandards.map((row, index) => (
+                              <tr
+                                  key={index}
+                                  style={{
+                                      backgroundColor: index % 2 === 0 ? 'white' : '#f9f9f9',
+                                  }}
+                              >
+                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.standard}</td>
+                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.frequency}</td>
+                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.maxDataRate}</td>
+                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.channelBandwidth}</td>
+                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.date}</td>
+                              </tr>
+                          ))}
+                      </tbody>
+                  </table>
+                  
+                  <p><strong>Frequency Bands</strong></p>
+                  <p>Wireless communication relies on specific ranges of the electromagnetic spectrum, known as frequency bands. These bands are carefully allocated to ensure seamless transmission of data over radio waves. Wi-Fi, cellular networks, and Bluetooth all operate within designated frequency bands to minimize interference and optimize performance.</p>
+                  
+                  <p><strong>Central Frequency</strong></p>
+                  <p>The central frequency of a band serves as a reference point for modulation and transmission. It represents the midpoint of the frequency range, ensuring that signals are transmitted efficiently within a specified spectrum without overlapping with adjacent channels.</p>
+                  
+                  <p><strong>Frequency Band Channels</strong></p>
+                  <p>To accommodate multiple devices and prevent signal congestion, frequency bands are divided into channels. Each channel acts as an independent pathway for data transmission, allowing multiple devices to communicate simultaneously without interference. The ability to switch channels dynamically enhances network reliability and speed.</p>
+                  
+                  <p><strong>2.4 GHz Band</strong></p>
+                  <p>The 2.4 GHz frequency band is widely used in Wi-Fi networks due to its broad coverage and strong signal penetration through walls and obstacles. However, this band is shared with other technologies such as Bluetooth and microwave ovens, leading to potential interference in congested environments.</p>
+                  
+                  <p><strong>5 GHz Band</strong></p>
+                  <p>The 5 GHz frequency band offers higher data speeds and reduced interference compared to the 2.4 GHz band. It provides more available channels, allowing for faster and more stable wireless connections. However, its shorter wavelength results in reduced range and weaker signal penetration through solid objects.</p>
+                  
+                  <p><strong>Oscillating Circuit</strong></p>
+                  <p>At the heart of wireless communication lies the oscillating circuit, which generates alternating current signals at specific frequencies. These circuits play a crucial role in producing carrier waves, enabling the transmission of data through electromagnetic waves in a structured and controlled manner.</p>
+                  
+                  <p><strong>Carrier Wave</strong></p>
+                  <p>A carrier wave is a continuous electromagnetic wave that serves as a vehicle for transmitting information. By modulating its properties, such as amplitude, frequency, or phase, a carrier wave can encode digital or analog signals for wireless communication.</p>
+                  
+                  <p><strong>Amplitude Modulation (AM)</strong></p>
+                  <p>Amplitude modulation is a technique where the strength of a carrier wave varies according to the signal being transmitted. This method was historically used in radio broadcasting and is still relevant in certain communication applications today.</p>
+                  
+                  <p><strong>Frequency Modulation (FM)</strong></p>
+                  <p>Frequency modulation encodes data by varying the frequency of the carrier wave while keeping its amplitude constant. FM is widely used in radio transmission, as it provides improved resistance to signal degradation and interference.</p>
+                  
+                  <p><strong>Phase Modulation (PM)</strong></p>
+                  <p>Phase modulation involves altering the phase of the carrier wave in response to the signal being transmitted. It is commonly used in digital communication systems, such as Wi-Fi and cellular networks, to improve data integrity and transmission efficiency.</p>
+                </div>
+              )}
+            </div>
+            {<PowerOverEthernet />}
+            {<OSI />}
+          </div>
+          </>
+        )}
         <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -256,187 +376,49 @@ const Wireless = () => {
               <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> The radio does not power on. </button>
               {visibleAnswer === 'no-power-light' && (
                 <div className="faq-answer">
-                  <p><strong>[1] Try using a hardened, IEEE 802.3af/at compliant PoE injector to power the radio.</strong></p>
-                  <li>[1.1] Verify that the PoE injector will power on another device.</li>
-                  <li>[1.2] Retry using another hardened IEEE 802.3af/at compliant PoE injector.</li>
-                  <p style={{"padding-top": "40px"}}><strong>[2] Try using a hardened, IEEE 802.3af/at compliant PoE switch to power the radio.</strong></p>
-                  <li>[2.1] Ensure a hardened power supply is used to power the PoE switch.</li>
-                  <li>[2.2] Verify the power supply produces enough wattage for the device(s) powered by PoE and the radio.</li>
-                  <li>[2.3] Use a voltmeter to verify the power supply is producing 48 to 56VDC under load.</li>
-                  <li style={{ 'padding-left': '100px' }}>[2.3.1] Confirm the red probe is connected the voltmeter's positive terminal and the black probe is connected to the negative (or ground) terminal.</li>
-                  <li style={{ 'padding-left': '100px' }}>[2.3.2] Ensure the voltmeter is set to DC voltage mode.</li>
-                  <li style={{ 'padding-left': '100px' }}>[2.3.3] Touch the the red probe to the positive terminal and the black probe to the negative terminal.</li>
-                  <li style={{ 'padding-left': '100px' }}>[2.3.4] Verify the power supply delivers the required 48VDC-56VDC input voltage while connected to the switch.</li>
-                  <li>[2.4] Retry using another hardened IEEE 802.3af/at compliant PoE switch.</li>
+                  <p><strong>[1] Try using a hardened IEEE 802.3af/at compliant PoE injector to power the radio.</strong></p>
+                  <p>[1.1] Verify that the PoE injector will power on another device.</p>
+                  <p>[1.2] Retry using another hardened IEEE 802.3af/at compliant PoE injector.</p>
+
+                  <p style={{"padding-top": "40px"}}><strong>[2] Try using a hardened IEEE 802.3af/at compliant PoE switch to power the radio.</strong></p>
+                  <p>[2.1] Ensure a hardened power supply is used to power the PoE switch.</p>
+                  <p>[2.2] Verify the power supply produces enough wattage for the device(s) powered by PoE and the radio.</p>
+                  <p>[2.3] Use a voltmeter to verify the power supply is producing 48 to 56VDC under load.</p>
+                  <p style={{ 'padding-left': '100px' }}>[2.3.1] Confirm the red probe is connected the voltmeter's positive terminal and the black probe is connected to the negative (or ground) terminal.</p>
+                  <p style={{ 'padding-left': '100px' }}>[2.3.2] Ensure the voltmeter is set to DC voltage mode.</p>
+                  <p style={{ 'padding-left': '100px' }}>[2.3.3] Touch the the red probe to the positive terminal and the black probe to the negative terminal.</p>
+                  <p style={{ 'padding-left': '100px' }}>[2.3.4] Verify the power supply delivers the required 48VDC-56VDC input voltage while connected to the switch.</p>
+                  <p>[2.4] Retry using another hardened IEEE 802.3af/at compliant PoE switch.</p>
                 </div>
               )}
             </div>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The radios are not communicating. </button>
+              <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The radio is losing connection. </button>
               {visibleAnswer === 'no-communication' && (
                 <div className="faq-answer">
-                  <p><strong>[1] Confirm the radios are being properly powered.</strong></p>
-                  <li>The radios must be powered on via PoE.</li>
-                  <li>The radios cannot be powered on by the same PoE switch.</li>
-                  <p><strong>[2] Consider the network topology.</strong></p>
-                  <li>Is it point-to-point?</li>
-                  <li>Is it point-to-multipoint?</li>
-                  <li>Is it add/drop/repeat?</li>
-                  <li>If there are multiple radios in the area, could there be any duplicate IPs or ESSIDs?</li>
-                  <li>If the radios have been configured, it is recommended to factory default them first. If the radios are at default, then there is no need.</li>
-                  <li>If there is a physical connection with one of the radios, is it possible to configure the other(s) from that location? If not, it is best to make a physical connection with the access point and then with the client(s).</li>
-                  <p><strong>[3] Determine the following information. </strong></p>
-                  <li>What the IP addresses will be ( The IP addresses don't have to be on the same subnet as the end devices ).</li>
-                  <li>What the ESSID will be ( The ESSID must be exactly the same on the access point and client(s) ).</li>
-                  <li>What the PSK will be ( The PSK must be exactly the same on the access point and client(s) ).</li>
-                  <p><strong>[4] Configure the radios.</strong></p>
-                  <li>[4.1] Configure the access point.</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.1.1] Factory default the radio.</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.1.2] Set a unique IP address.</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.1.3] Set the ESSID.</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.1.4] Set the PSK.</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.1.5] Set as an access point.</li>
-                  <li>[4.2] Configure the client(s).</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.1] Factory default the radio.</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.2] Set a unique IP address.</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.3] Set the ESSID ( The ESSID must be exactly the same on the access point and client(s) ).</li>
-                  <li style={{ 'padding-left': '120px' }}>[4.4] Set the PSK ( The PSK must be exactly the same on the access point and client(s) ).</li>
-                  <p><strong>[5] After configuration, the radios should automatically connect. If not, use the scan button in the client to connect to the access point under the shared ESSID and PSK.</strong></p>
-                  <p>Include configuration pdf here.</p>
+                  <p><strong>[1] Default the wireless radio and reconfigure it.</strong></p>
+                  <li>Click the link to <a href="pdf/Wireless/NetWave.pdf" download>download Comnet's wireless configuration documentation</a>.</li>   
+                  <p><strong>[2] Confirm the radio is being properly powered.</strong></p>
+                  <li>The radio must be powered on via a hardened, 802.3af/at compliant PoE source.</li>
+                  <li>There cannot be more than one radio powered by the same PoE switch as this will create a ring.</li>
+                  <p><strong>[3] Confirm each radio in the network has the latest firmware version.</strong></p>
+                  <p><strong>[4] Confirm each radio in the network has a unique IP address.</strong></p>
+                  <p><strong>[5] Confirm there is a direct line of sight between the access points and its associated client(s).</strong></p>
+                  <p><strong>[6] Confirm the access point and its associated client(s) share the same ESSID and PSK.</strong></p>
+                  <p><strong>[7] If there are multiple access points in the network, confirm each access point and its associated client(s) share a unique ESSID and PSK.</strong></p>
+                  <p><strong>[8] Using an aerial view in Google Maps, confirm the client(s) are within the beamwidth of the access point.</strong></p>
+                  <p><strong>[9] Determine the throughput. It is recommended to limit the throughput to 250Mbps in either direction.</strong></p>
+                  <p><strong>[10] Enable Ping Watchdog to reboot the radio after 5 failed ping attempts.</strong></p>
+                  <p><strong>[11] Set the radio to reboot automaticaly at a specified interval (e.g. 2 hours, 12 hours, 24 hours).</strong></p>
+                  <p><strong>[12] Enable AP Background ACS scan on the access point radio to automatically scan and switch to the best channel after 60 seconds.</strong></p>
+                  <p><strong>[13] In an add/drop/repeat topology, ensure there are no more than 3 hops.</strong></p>
+                  <p><strong>[14]If there are two radios mounted on the same pole:</strong></p>
+                  <li>If the radios are facing the same direction, ensure there is at least a 3 meter distance between.</li>
+                  <li>If the radios are facing opposite directions, ensure there is at least a 3 feet distance between.</li>
+                  <img></img>
                 </div>
               )}
             </div>
-          </div>
-          </>
-        )}
-
-        
-      <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-        </button>
-        {showFAQ && (
-          <>
-            <div className="faq-list">
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('netwave-configurations')}> What are the default configurations on a Comnet wireless radio? </button>
-              {visibleAnswer === 'netwave-configurations' && (
-                <div className="faq-answer">
-                  <p><strong>The default configurations on a Comnet wireless radio are:</strong></p>
-                  <li>The default IP address of an access point radio is: 192.168.10.100</li>
-                  <li>The default IP address of a client radio is: 192.168.10.101</li>
-                  <li style={{"padding-left": "100px"}}>Please note that when any radio is reset, it defaults as a client.</li>
-                  <li>The default username and password for the web interface is: root, root.</li>
-                  <li style={{"padding-left": "100px"}}>Please note that on older radios, the username and password sometimes defaults to admin, admin.</li>
-                  <li>The default ESSID is: Netwave-1</li>
-                  <li>The default PSK is: 12345678</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('netwave-specs')}> What are the specs of a Comnet wireless radio? </button>
-              {visibleAnswer === 'netwave-specs' && (
-                <div className="faq-answer">
-                  <p>Attach the pdfs for each radio here.</p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Learn about wireless. </button>
-              {visibleAnswer === 'wireless' && (
-                <div className="faq-answer">
-                  <p>The <strong>Extended Service Set Identifier (ESSID)</strong> is the broadcast name of a wireless network, allowing devices to identify and connect to the correct access point. It serves as a unique identifier within a wireless network, ensuring seamless roaming between multiple access points when configured correctly.</p>
-
-                  <p>The <strong>Pre-Shared Key (PSK)</strong> is the password required to join a secured wireless network. This key is an essential component of WPA and WPA2 encryption protocols, ensuring that only authorized users can access the network. A strong PSK helps protect against unauthorized access and potential security threats.</p>
-
-                  <p><strong>Antenna gain</strong> measures how effectively an antenna directs or concentrates radio frequency (RF) energy in a particular direction compared to a reference antenna. Higher gain antennas focus energy more efficiently, increasing signal range and strength while reducing interference from unwanted directions.</p>
-
-                  <p>Gain is typically referenced in <strong>decibels isotropic (dBi)</strong>, which represents the gain relative to an <strong>isotropic radiator</strong>—a theoretical antenna that radiates power uniformly in all directions. An antenna with a positive dBi value directs energy more efficiently than an isotropic source, making it ideal for focused, long-range wireless communications.</p>
-
-                  <p>The <strong>Received Signal Strength Indicator (RSSI)</strong> measures the power level of a received wireless signal, serving as an indicator of connection quality between an access point and a client device. RSSI values are measured in negative decibels (dBm), with higher values (closer to zero) representing stronger signals. The quality of a connection can be categorized as follows:</p>
-
-                  <p><strong>Less than -75 to -95 dBm</strong>: The signal is either too weak to establish a connection or results in intermittent operation with frequent disconnects.</p>
-
-                  <li><strong>-75 dBm and greater</strong>: The connection is moderate, usable but may experience occasional performance issues.</li>
-
-                  <li><strong>-65 dBm and greater</strong>: The connection is stable and solid, ensuring reliable communication for most applications.</li>
-
-                  <li><strong>-55 to 0 dBm</strong>: The connection is excellent, providing optimal performance with minimal interference and maximum throughput.</li>
-
-                  <p>Understanding these parameters helps optimize wireless network performance by positioning antennas strategically, selecting appropriate gain values, and ensuring strong RSSI levels for reliable connectivity.</p>
-
-                  <p><strong>Wi-Fi Standards</strong></p>
-                  <table
-                      style={{
-                          width: '100%',
-                          borderCollapse: 'collapse',
-                      }}
-                  >
-                      <thead
-                          style={{
-                              backgroundColor: 'rgb(106, 13, 173)',
-                              color: 'white',
-                          }}
-                      >
-                          <tr>
-                              <th style={{ padding: '10px', textAlign: 'left' }}>Standard</th>
-                              <th style={{ padding: '10px', textAlign: 'left' }}>Frequency Band</th>
-                              <th style={{ padding: '10px', textAlign: 'left' }}>Max Data Rate</th>
-                              <th style={{ padding: '10px', textAlign: 'left' }}>Channel Bandwidth</th>
-                              <th style={{ padding: '10px', textAlign: 'left' }}>Date</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          {wifiStandards.map((row, index) => (
-                              <tr
-                                  key={index}
-                                  style={{
-                                      backgroundColor: index % 2 === 0 ? 'white' : '#f9f9f9',
-                                  }}
-                              >
-                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.standard}</td>
-                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.frequency}</td>
-                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.maxDataRate}</td>
-                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.channelBandwidth}</td>
-                                  <td style={{ padding: '10px', border: '1px solid #ddd', textAlign: 'left' }}>{row.date}</td>
-                              </tr>
-                          ))}
-                      </tbody>
-                  </table>
-                  
-                  <p><strong>Frequency Bands</strong></p>
-                  <p>Wireless communication relies on specific ranges of the electromagnetic spectrum, known as frequency bands. These bands are carefully allocated to ensure seamless transmission of data over radio waves. Wi-Fi, cellular networks, and Bluetooth all operate within designated frequency bands to minimize interference and optimize performance.</p>
-                  
-                  <p><strong>Central Frequency</strong></p>
-                  <p>The central frequency of a band serves as a reference point for modulation and transmission. It represents the midpoint of the frequency range, ensuring that signals are transmitted efficiently within a specified spectrum without overlapping with adjacent channels.</p>
-                  
-                  <p><strong>Frequency Band Channels</strong></p>
-                  <p>To accommodate multiple devices and prevent signal congestion, frequency bands are divided into channels. Each channel acts as an independent pathway for data transmission, allowing multiple devices to communicate simultaneously without interference. The ability to switch channels dynamically enhances network reliability and speed.</p>
-                  
-                  <p><strong>2.4 GHz Band</strong></p>
-                  <p>The 2.4 GHz frequency band is widely used in Wi-Fi networks due to its broad coverage and strong signal penetration through walls and obstacles. However, this band is shared with other technologies such as Bluetooth and microwave ovens, leading to potential interference in congested environments.</p>
-                  
-                  <p><strong>5 GHz Band</strong></p>
-                  <p>The 5 GHz frequency band offers higher data speeds and reduced interference compared to the 2.4 GHz band. It provides more available channels, allowing for faster and more stable wireless connections. However, its shorter wavelength results in reduced range and weaker signal penetration through solid objects.</p>
-                  
-                  <p><strong>Oscillating Circuit</strong></p>
-                  <p>At the heart of wireless communication lies the oscillating circuit, which generates alternating current signals at specific frequencies. These circuits play a crucial role in producing carrier waves, enabling the transmission of data through electromagnetic waves in a structured and controlled manner.</p>
-                  
-                  <p><strong>Carrier Wave</strong></p>
-                  <p>A carrier wave is a continuous electromagnetic wave that serves as a vehicle for transmitting information. By modulating its properties, such as amplitude, frequency, or phase, a carrier wave can encode digital or analog signals for wireless communication.</p>
-                  
-                  <p><strong>Amplitude Modulation (AM)</strong></p>
-                  <p>Amplitude modulation is a technique where the strength of a carrier wave varies according to the signal being transmitted. This method was historically used in radio broadcasting and is still relevant in certain communication applications today.</p>
-                  
-                  <p><strong>Frequency Modulation (FM)</strong></p>
-                  <p>Frequency modulation encodes data by varying the frequency of the carrier wave while keeping its amplitude constant. FM is widely used in radio transmission, as it provides improved resistance to signal degradation and interference.</p>
-                  
-                  <p><strong>Phase Modulation (PM)</strong></p>
-                  <p>Phase modulation involves altering the phase of the carrier wave in response to the signal being transmitted. It is commonly used in digital communication systems, such as Wi-Fi and cellular networks, to improve data integrity and transmission efficiency.</p>
-                </div>
-              )}
-            </div>
-            {<PowerOverEthernet />}
-            {<OSI />}
           </div>
           </>
         )}

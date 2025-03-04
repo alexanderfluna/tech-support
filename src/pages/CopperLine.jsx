@@ -117,6 +117,125 @@ const CopperLine = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Ethernet Extender</h2>
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+        </button>
+        {showFAQ && (
+          <>
+            <div className="faq-list">
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)')}> CLFE(X)EO(U/C) to CLFE(X)EO(U/C) </button>
+              {visibleAnswer === 'CLFE(X)EO(U/C) to CLFE(X)EO(U/C)' && (
+                <div className="faq-answer">
+                  <p>Local vs. Remote</p>
+                  <li>The 1 or 4 channels can be local or remote via dip switch.</li>
+                  <li>The 8 or 16 channels can only be local.</li>
+                  <p>No PoE Injection</p>
+                  <li>The devices support pass-through PoE at the 802.3af standard</li>
+                  <li>There is no pass-through PoE for UTP - 1 pair.</li>
+                  <p>LEDs</p>
+                  <li>The entire setup must be connected for LEDs to be illuminated.</li>
+                  <p>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</p>
+                  <li>Page 2: CLFE1EOC and CLFE1EOU images and dip switches.</li>
+                  <li>Page 3: CLFE4EOC images and dip switches.</li>
+                  <li>Page 4: CLFE4EOU images and dip switches.</li>
+                  <li>Page 5: CLFE8EOC and CLFE8EOU images and dip switches.</li>
+                  <li>Page 6: CLFE16EOC images and dip switches.</li>
+                  <li>Page 7: CLFE16EOU images and dip switches.</li>
+                  <li>Page 8: Application diagrams.</li>
+                  <li>Page 9: Installation instructions, power table and LED table.</li>
+                  <li>Page 10: Application notes, extended distance table, troubleshooting guide.</li>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)')}> CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) </button>
+              {visibleAnswer === 'CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)' && (
+                <div className="faq-answer">
+                  <p>Local (CLL) vs. Remote (CLR)</p>
+                  <li>The 1, 4, 8, or 16 channels can be local.</li>
+                  <li>The 1 or 4 channels can be remote.</li>
+                  <p>PoE Injection</p>
+                  <li>o	The local or remote device can inject 48VDC at the 802.3at standard.</li>
+                  <li>There is no pass-through PoE for UTP - 1 pair.</li>
+                  <p>LEDs</p>
+                  <li>The entire setup must be connected for LEDs to be illuminated.</li>
+                  <p>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</p>
+                  <li>Page 2: CLLFE1POEC and CLRFE1POEC images and dip switch.</li>
+                  <li>Page 3: CLLFE1POEU and CLRFE1PEOU images and dip switches.</li>
+                  <li>Page 4: CLLFE4POEC and CLRFE4PEOU images and dip switch.</li>
+                  <li>Page 5: CLLFE4POEU and CLRFE4POEU images and dip switches.</li>
+                  <li>Page 6: CLLFE8EOC images and dip switches.</li>
+                  <li>Page 7: CLLFE8EOU images and dip switches.</li>
+                  <li>Page 8: CLLFE16EOC images and dip switches.</li>
+                  <li>Page 9: CLLFE16EOU images and dip switches.</li>
+                  <li>Page 10: Application diagrams.</li>
+                  <li>Page 11: Installation instructions, power table, LED table, and application notes.</li>
+                  <li>Page 12: Extended distance table and troubleshooting guide</li>
+                  <li>Page 13: Ferrite core</li>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('copper')}> Copper </button>
+              {visibleAnswer === 'copper' && (
+                <div className="faq-answer">
+                  <p>Copper has a 100 meter limitation.</p>
+                  <li>As the signal travels through copper cables, it weakens due to the resistance of the copper. The longer the distance, the more the signal degrades, making it harder for the receiving end to interpret the signal correctly.</li>
+                  <li>Copper cables are susceptible to electromagnetic interference, which can distort the signals as they travel. Over long distances, this interference becomes more pronounced and can further degrade the quality of the signal.</li>
+                  <p>The copper line extends this distance up to 2,000 feet for non-PoE.</p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('coax')}> Coax </button>
+              {visibleAnswer === 'coax' && (
+                <div className="faq-answer">
+                  <p>BNC connector</p>
+                  <li>A BNC (Bayonet Neill-Concelman) connector is a small, coaxial cable connector commonly used for transmitting video and data signals in applications like CCTV, radio, and television, featuring a twist-and-lock mechanism for secure connections.</li>
+                  <p>The copper line can send signals over coax up to 2,000 feet for non-PoE.</p>
+                  <table
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      fontSize: "18px",
+                      textAlign: "left",
+                    }}
+                  >
+                    <thead>
+                      <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Cable Type</th>
+                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Applications</th>
+                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Impedance</th>
+                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Size</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        { type: "RG11", applications: "Used in older video systems, less common today", impedance: "75 Ohms", size: "Large" },
+                        { type: "RG6", applications: "Used in satellite TV, cable systems, and broadband internet", impedance: "75 Ohms", size: "Medium" },
+                        { type: "RG59", applications: "Used in analog video applications, CCTV", impedance: "75 Ohms", size: "Small" },
+                      ].map((item, index) => (
+                        <tr
+                          key={index}
+                          style={{
+                            backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
+                          }}
+                        >
+                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.type}</td>
+                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.applications}</td>
+                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.impedance}</td>
+                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.size}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </div>
+          </>
+        )}
         <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -268,126 +387,6 @@ const CopperLine = () => {
                 </tbody>
               </table>
             </div>
-          </>
-        )}
-
-        <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-        </button>
-        {showFAQ && (
-          <>
-            <div className="faq-list">
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)')}> CLFE(X)EO(U/C) to CLFE(X)EO(U/C) </button>
-              {visibleAnswer === 'CLFE(X)EO(U/C) to CLFE(X)EO(U/C)' && (
-                <div className="faq-answer">
-                  <p>Local vs. Remote</p>
-                  <li>The 1 or 4 channels can be local or remote via dip switch.</li>
-                  <li>The 8 or 16 channels can only be local.</li>
-                  <p>No PoE Injection</p>
-                  <li>The devices support pass-through PoE at the 802.3af standard</li>
-                  <li>There is no pass-through PoE for UTP - 1 pair.</li>
-                  <p>LEDs</p>
-                  <li>The entire setup must be connected for LEDs to be illuminated.</li>
-                  <p>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</p>
-                  <li>Page 2: CLFE1EOC and CLFE1EOU images and dip switches.</li>
-                  <li>Page 3: CLFE4EOC images and dip switches.</li>
-                  <li>Page 4: CLFE4EOU images and dip switches.</li>
-                  <li>Page 5: CLFE8EOC and CLFE8EOU images and dip switches.</li>
-                  <li>Page 6: CLFE16EOC images and dip switches.</li>
-                  <li>Page 7: CLFE16EOU images and dip switches.</li>
-                  <li>Page 8: Application diagrams.</li>
-                  <li>Page 9: Installation instructions, power table and LED table.</li>
-                  <li>Page 10: Application notes, extended distance table, troubleshooting guide.</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)')}> CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) </button>
-              {visibleAnswer === 'CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)' && (
-                <div className="faq-answer">
-                  <p>Local (CLL) vs. Remote (CLR)</p>
-                  <li>The 1, 4, 8, or 16 channels can be local.</li>
-                  <li>The 1 or 4 channels can be remote.</li>
-                  <p>PoE Injection</p>
-                  <li>o	The local or remote device can inject 48VDC at the 802.3at standard.</li>
-                  <li>There is no pass-through PoE for UTP - 1 pair.</li>
-                  <p>LEDs</p>
-                  <li>The entire setup must be connected for LEDs to be illuminated.</li>
-                  <p>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</p>
-                  <li>Page 2: CLLFE1POEC and CLRFE1POEC images and dip switch.</li>
-                  <li>Page 3: CLLFE1POEU and CLRFE1PEOU images and dip switches.</li>
-                  <li>Page 4: CLLFE4POEC and CLRFE4PEOU images and dip switch.</li>
-                  <li>Page 5: CLLFE4POEU and CLRFE4POEU images and dip switches.</li>
-                  <li>Page 6: CLLFE8EOC images and dip switches.</li>
-                  <li>Page 7: CLLFE8EOU images and dip switches.</li>
-                  <li>Page 8: CLLFE16EOC images and dip switches.</li>
-                  <li>Page 9: CLLFE16EOU images and dip switches.</li>
-                  <li>Page 10: Application diagrams.</li>
-                  <li>Page 11: Installation instructions, power table, LED table, and application notes.</li>
-                  <li>Page 12: Extended distance table and troubleshooting guide</li>
-                  <li>Page 13: Ferrite core</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('copper')}> Copper </button>
-              {visibleAnswer === 'copper' && (
-                <div className="faq-answer">
-                  <p>Copper has a 100 meter limitation.</p>
-                  <li>As the signal travels through copper cables, it weakens due to the resistance of the copper. The longer the distance, the more the signal degrades, making it harder for the receiving end to interpret the signal correctly.</li>
-                  <li>Copper cables are susceptible to electromagnetic interference, which can distort the signals as they travel. Over long distances, this interference becomes more pronounced and can further degrade the quality of the signal.</li>
-                  <p>The copper line extends this distance up to 2,000 feet for non-PoE.</p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('coax')}> Coax </button>
-              {visibleAnswer === 'coax' && (
-                <div className="faq-answer">
-                  <p>BNC connector</p>
-                  <li>A BNC (Bayonet Neill-Concelman) connector is a small, coaxial cable connector commonly used for transmitting video and data signals in applications like CCTV, radio, and television, featuring a twist-and-lock mechanism for secure connections.</li>
-                  <p>The copper line can send signals over coax up to 2,000 feet for non-PoE.</p>
-                  <table
-                    style={{
-                      width: "100%",
-                      borderCollapse: "collapse",
-                      fontSize: "18px",
-                      textAlign: "left",
-                    }}
-                  >
-                    <thead>
-                      <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
-                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Cable Type</th>
-                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Applications</th>
-                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Impedance</th>
-                        <th style={{ padding: "10px", border: "1px solid #ddd" }}>Size</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        { type: "RG11", applications: "Used in older video systems, less common today", impedance: "75 Ohms", size: "Large" },
-                        { type: "RG6", applications: "Used in satellite TV, cable systems, and broadband internet", impedance: "75 Ohms", size: "Medium" },
-                        { type: "RG59", applications: "Used in analog video applications, CCTV", impedance: "75 Ohms", size: "Small" },
-                      ].map((item, index) => (
-                        <tr
-                          key={index}
-                          style={{
-                            backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
-                          }}
-                        >
-                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.type}</td>
-                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.applications}</td>
-                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.impedance}</td>
-                          <td style={{ padding: "10px", border: "1px solid #ddd" }}>{item.size}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-          </div>
           </>
         )}
       </main>

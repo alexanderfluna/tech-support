@@ -93,6 +93,33 @@ const Wiegand = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Wiegand</h2>
+        <button className="purple-button" onClick={toggleFAQ}>
+          Frequently Asked Questions
+        </button>
+        {showFAQ && (
+          <>
+            <div className="faq-list">
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
+                {visibleAnswer === 'wiegand' && (
+                  <div className="faq-answer">
+                    <p>Wiegand is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</p>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
+                {visibleAnswer === 'osdp' && (
+                  <div className="faq-answer">
+                    <p>OSDP (Open Supervised Device Protocol) is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</p>
+                  </div>
+                )}
+              </div>
+              <Fiber />
+            </div>
+          </>
+        )} 
+        
         <button className="purple-button" onClick={toggleTable}>
           Selector Tool
         </button>
@@ -213,33 +240,6 @@ const Wiegand = () => {
             </div>
           </>
         )}
-        
-        <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-        </button>
-        {showFAQ && (
-          <>
-            <div className="faq-list">
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
-                {visibleAnswer === 'wiegand' && (
-                  <div className="faq-answer">
-                    <p>Wiegand is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</p>
-                  </div>
-                )}
-              </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
-                {visibleAnswer === 'osdp' && (
-                  <div className="faq-answer">
-                    <p>OSDP (Open Supervised Device Protocol) is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</p>
-                  </div>
-                )}
-              </div>
-              <Fiber />
-            </div>
-          </>
-        )} 
       </main>
       <Button />
       <BackToTop />
