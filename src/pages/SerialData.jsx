@@ -308,8 +308,8 @@ const SerialData = () => {
               )}
             </div>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The serial data is not passing. </button>
-              {visibleAnswer === 'no-communication' && (
+              <button className="faq-question" onClick={() => toggleAnswer('fdx60')}> The serial data is not passing on the FDX60. </button>
+              {visibleAnswer === 'fdx60' && (
                 <div className="faq-answer">
                   <p><strong>[1] Document what lights are illuminated on the unit.</strong></p>
                   <img src="photos/FDX/fdx60-led.jpg"></img>
@@ -319,6 +319,14 @@ const SerialData = () => {
                   <img src="photos/FDX/fdx60-switches.jpg"></img>
                   <p><strong>[4] If passing 2-wire RS485, ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</strong></p>
                   <p>Impedance mismatch occurs when two interconnected electronic devices or components have different impedance values, which means they resist alternating current differently. This mismatch can cause signal integrity issues if not properly managed. Without proper termination, such as using a resistor that matches the cable's characteristic impedance, the signal energy is not absorbed correctly, leading to a phenomenon called ringing. Ringing happens when a data signal reflects back and forth between devices instead of cleanly reaching its destination, which can distort communication. The impact of termination placement depends on the distance between devices. In lumped distance systems, where devices are very close together, the resistor's exact placement is not critical. However, in distributed distance systems, where devices are far apart, the termination resistor must be placed at the end of the line to prevent reflections and ensure signal stability.</p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('cnfe3doe2')}> The serial data is not passing on the CNFE3DOE2. </button>
+              {visibleAnswer === 'cnfe3doe2' && (
+                <div className="faq-answer">
+                  <a href="pdf/SerialData/CNFE3DOE2.pdf">Click the link to download the configuration manual.</a>
                 </div>
               )}
             </div>

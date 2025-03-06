@@ -75,6 +75,14 @@ function MediaConverterTroubleshooting() {
                         </div>
                         )}
                     </div>
+                    <div className="faq-item">
+                        <button className="faq-question" onClick={() => toggleAnswer('cnfe2mc2c')}> CNFE2MC2C contacts. </button>
+                        {visibleAnswers.has('cnfe2mc2c') && (
+                        <div className="faq-answer">
+                            <a href="pdf/MediaConverter/CNFE2MC2C.pdf">Click the link to download the configuration manual.</a>
+                        </div>
+                        )}
+                    </div>
                     </div>
                 </>
             )}

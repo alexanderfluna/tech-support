@@ -383,6 +383,14 @@ const ContactClosure = () => {
                   </div>
                 )}
               </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('cnfe3')}> CNFE3FX1TX2C4DX/M </button>
+                {visibleAnswer === 'cnfe3' && (
+                  <div className="faq-answer">
+                    <a href="pdf/ContactClosure/CNFE3FX1TX2C4.pdf">Click the link to view the configuration manual.</a>
+                  </div>
+                )}
+              </div>
             </div>
           </>
         )}
