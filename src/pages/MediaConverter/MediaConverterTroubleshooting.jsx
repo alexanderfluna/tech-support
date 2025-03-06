@@ -80,8 +80,8 @@ function MediaConverterTroubleshooting() {
                             <p><strong>[4] Determine if the power supply is delivering the required input/operating voltage.</strong></p>
                             <p style={{paddingLeft: "40px"}}>[4.1] If the voltage is less than the required input/operating voltage range, replace the power supply and redo step 3.</p>
                             <p style={{paddingLeft: "40px"}}>[4.2] If the voltage is within the required input/operating voltage range and the unit does not power on, contact technical support.</p>
-                            <p>[5] Replace the Ethernet cable to determine if the issue persists.</p>
-                            <p>[6] Replace the media converter with the another of the same model to determine if the issue persists.</p>
+                            <p><strong>[5] Replace the Ethernet cable to determine if the issue persists.</strong></p>
+                            <p><strong>[6] Replace the media converter with the another of the same model to determine if the issue persists.</strong></p>
                         </div>
                         )}
                     </div>

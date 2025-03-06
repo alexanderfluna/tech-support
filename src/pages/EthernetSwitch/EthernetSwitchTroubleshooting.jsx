@@ -88,14 +88,14 @@ function EthernetSwitchTroubleshooting() {
                                 <p><strong>[4] Determine if the power supply is delivering the required input/operating voltage.</strong></p>
                                 <p style={{paddingLeft: "40px"}}>[4.1] If the voltage is less than the required input/operating voltage range, replace the power supply and redo step 3.</p>
                                 <p style={{paddingLeft: "40px"}}>[4.2] If the voltage is within the required input/operating voltage range and the unit does not power on, contact technical support.</p>
-                                <p>[5] Document which ports are affected.</p>
-                                <p>[6] Document if communication is restored automatically or if the switch requires a power cycle.</p>
-                                <p>[7] Document whether the switch locks up periodically (e.g. ever hour, every two hours, daily, etc.) or randomly.</p>
-                                <p>[8] Verify that the web interface is accessible.</p>
-                                <p>[9] Factory default the switch.</p>
-                                <p>[10] Identify the current firmware version of the switch and update to the latest version.</p>
-                                <p>[11] Isolate the switch outside of the network on a bench to determine if the issue persists.</p>
-                                <p>[12] Replace the switch with a known-working one to determine if the same issue persists with the new switch.</p>
+                                <p><strong>[5] Document which ports are affected.</strong></p>
+                                <p><strong>[6] Document if communication is restored automatically or if the switch requires a power cycle.</strong></p>
+                                <p><strong>[7] Document whether the switch locks up periodically (e.g. ever hour, every two hours, daily, etc.) or randomly.</strong></p>
+                                <p><strong>[8] Verify that the web interface is accessible.</strong></p>
+                                <p><strong>[9] Factory default the switch.</strong></p>
+                                <p><strong>[10] Identify the current firmware version of the switch and update to the latest version.</strong></p>
+                                <p><strong>[11] Isolate the switch outside of the network on a bench to determine if the issue persists.</strong></p>
+                                <p><strong>[12] Replace the switch with a known-working one to determine if the same issue persists with the new switch.</strong></p>
                             </div>
                         )}
                     </div>
