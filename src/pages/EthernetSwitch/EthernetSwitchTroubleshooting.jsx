@@ -44,7 +44,7 @@ function EthernetSwitchTroubleshooting() {
                                 <p style={{paddingLeft: "40px"}}>[1.4] The optical connector (SC vs. LC).</p>
                                 <p><strong>[2] Test if the fiber works with another device.</strong></p>
                                 <p><strong>[3] Using a process of elimination, swap out the device and/or SFP on either end of the fiber with an identical device and/or SFP to determine which unit is failing.</strong></p>
-                                <p><strong>[4] If an optical power meter is avaialble, connect one end of the fiber to the optical power meter, connect the other end of the fiber to the switch or SFP, and check the dBm reading. Compare this to the device's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</strong></p>
+                                <p><strong>[4] If an optical power meter is available, connect one end of the fiber to the optical power meter, connect the other end of the fiber to the switch or SFP, and check the dBm reading. Compare this to the device's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</strong></p>
                                 <p><strong>[5] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</strong></p>
                             </div>
                         )}
@@ -67,6 +67,7 @@ function EthernetSwitchTroubleshooting() {
                                 <p style={{paddingLeft: "40px"}}>[2.2] Verify that the device(s) powered by PoE are compatible with the PoE standard of the switch (802.3af, 802.3at, or 802.3bt).</p>
                                 <p><strong>[3] Test that the device(s) powered by PoE get powered on via another PoE source.</strong></p>
                                 <p><strong>[4] Replace the Ethernet cable to rule it out.</strong></p>
+                                <p><strong>[5] Force the port to produce PoE in the GUI.</strong></p>
                             </div>
                         )}
                     </div>

@@ -60,14 +60,14 @@ const Razberi = () => {
                   <li>Two M.2 SSDs with RAID 1</li>
                   <li>RAM: 16GB, 32 GB</li>
                   <li>Up to 88TB of storage</li>
-                  <li>GPU: GPU-T1000</li>
+                  <li>GPU: GPU-T400 or GPU-T1000</li>
                   <li>Operating System: Windows 10, Windows 11, Windows Server 2019, or Windows Server 2022</li>
                   <li>RAID: 0, 1, 5, 6, or 10</li>
                   <li>Available in long chassis with 'LX' in the part number</li>
                   <li>Available as 2U with '2U' in the part number</li>
                   <p><strong>The default configurations of the SS32X server switch are:</strong></p>
                   <li>Default switch IP: 192.168.50.1</li>
-                  <li>Default U1 / SFP1 combo port IP: 192.168.50.19</li>
+                  <li>Default Admin Uplink IP: 192.168.50.19</li>
                   <li>Default U2 IP: DHCP</li>
                   <li>Default SFP2 IP: DHCP</li>
                   <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
@@ -227,7 +227,12 @@ const Razberi = () => {
               <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> Troubleshooting a failed hard drive. </button>
               {visibleAnswer === 'failed-disk' && (
                 <div className="faq-answer">
-                  <p><strong>Contact technical support to determine if the unit is under warranty. If so, we can send out a replacement hard drive and provide assistance with reconfiguring the RAID array as needed. If the unit is not under warranty, consider purchasing a new hard drive for replacement, and we can provide assistance with reconfiguring the RAID array as needed.</strong></p>
+                  <p><strong>[1] Confirm the hard drive has failed in one of the following:</strong></p>
+                  <li>Device Manager</li>
+                  <li>Diskpart</li>
+                  <li>Intel Rapid Storage Technology</li>
+                  <li>iDRAC</li>
+                  <p><strong>[2] Contact technical support to determine if the unit is under warranty. If so, we can send out a replacement hard drive and provide assistance with reconfiguring the RAID array as needed. If the unit is not under warranty, consider purchasing a new hard drive for replacement, and we can provide assistance with reconfiguring the RAID array as needed.</strong></p>
                 </div>
               )}
             </div>

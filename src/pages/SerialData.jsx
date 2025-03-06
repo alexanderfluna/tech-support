@@ -126,88 +126,32 @@ const SerialData = () => {
         {showFAQ && (
           <>
             <div className="faq-list">
-            <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('fdx60')}> What are the applications for the FDX60? </button>
-                {visibleAnswer === 'fdx60' && (
-                  <div className="faq-answer">
-                    <p>Applications:</p>
-                    <li>Using 1 strand of multimode fiber: FDX60M1A or FDX60M1AM on one end. FDX60M1B or FDX60M1BM on the other.</li>
-                    <li>Using 1 strands of singlemode fiber: FDX60S1A or FDX60S1AM on one end. FDX60S1B or FDX60S1BM on the other.</li>
-                    <li>Using 2 strands of multimode fiber: FDX60M2 or FDX60M2M on one end. FDX60M2 or FDX60M2M on the other.</li>
-                    <li>Using 2 strands of singlemode fiber: FDX60S2 or FDX60S2M on one end. FDX60S2 or FDX60S2M on the other.</li>
-                  </div>
-                )}
-              </div>
               <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('terminal-server')}> What are the applications for the CNFE3DOE2/M? </button>
-                {visibleAnswer === 'terminal-server' && (
-                  <div className="faq-answer">
-                    <p>Terminal Server</p>
-                    <li>Serial to Ethernet or Ethernet to Serial.</li>
-                  </div>
-                )}
-              </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('rs232')}> What is RS-232? </button>
+                <button className="faq-question" onClick={() => toggleAnswer('rs232')}> Learn about RS-232. </button>
                 {visibleAnswer === 'rs232' && (
                   <div className="faq-answer">
-                    <li>Full deplex over 3 wires</li>
-                    <li style={{"padding-left": "100px"}}>One wire is ground.</li>
-                    <li style={{"padding-left": "100px"}}>One wire is transmit.</li>
-                    <li style={{"padding-left": "100px"}}>One wire is receive.</li>
-                    <li style={{"padding-left": "100px"}}>When transmitting, 1s and 0s are distinguished by the difference in voltage between the ground and the transmit wire.</li>
-                    <li style={{"padding-left": "100px"}}>When receiving, 1s and 0s are distinguished by the difference in voltage between the ground and the receive wire.</li>
-                    <li style={{"padding-left": "100px"}}>Because of this, RS-232 data is more susceptible to noise interference.</li>
-                    <li>Unbalanced (single ended)</li>
-                    <li>Point-to-point</li>
-                    <li>15 meters at 9600 bps</li>
+                    <p><strong>RS-232</strong> is a standard for serial communication that allows full-duplex data transmission using just three wires: transmit (TX), receive (RX), and ground (GND). Full-duplex means data can be sent and received at the same time, with one wire dedicated to sending data and another for receiving. The ground wire serves as a reference point for distinguishing between binary 1s and 0s, which are determined by the voltage difference between the transmit or receive wire and the ground. However, because RS-232 uses an unbalanced (single-ended) signaling method, it is more susceptible to noise interference, as electrical noise can easily disrupt voltage differences and introduce errors. RS-232 is a point-to-point communication standard, meaning it connects only two devices directly without support for multiple devices on the same line. The maximum recommended cable length for RS-232 depends on the data transmission speed, but at a common baud rate of 9600 bps (bits per second), it can reliably transmit data up to 15 meters (about 50 feet). While RS-232 was widely used in older computer and networking hardware for connecting modems, printers, and other peripherals, it has largely been replaced by USB and other modern communication interfaces, though it is still used in industrial and legacy systems.</p>
                   </div>
                 )}
               </div>
               <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('rs422')}> What is RS-422? </button>
+                <button className="faq-question" onClick={() => toggleAnswer('rs422')}> Learn about RS-422. </button>
                 {visibleAnswer === 'rs422' && (
                   <div className="faq-answer">
-                    <li>Full duplex over 4 wires</li>
-                    <li style={{"padding-left": "100px"}}>Two wire are transmit.</li>
-                    <li style={{"padding-left": "100px"}}>Two wire are receive.</li>
-                    <li style={{"padding-left": "100px"}}>When transmitting, 1s and 0s are distinguished by the difference in voltage between the D+ and D- wire.</li>
-                    <li style={{"padding-left": "100px"}}>Because of this, external noise affects both wires equally, and the receiver only looks at the voltage difference, rejecting the noise.</li>
-                    <li>Balanced (differential)</li>
-                    <li>Add/drop/repeat</li>
-                    <li>1200 meters at 9600 bps</li>
+                    <p><strong>RS-422</strong> is a serial communication standard that supports full-duplex data transmission using four wires: two for transmitting (TX+ and TX-) and two for receiving (RX+ and RX-). Unlike RS-232, which uses single-ended signaling, RS-422 employs balanced (differential) signaling, meaning data is transmitted as the voltage difference between each pair of wires rather than a single voltage level referenced to ground. This design makes RS-422 highly resistant to electrical noise because any interference affects both wires equally, and the receiver only processes the difference between them, effectively canceling out external noise. RS-422 supports point-to-point connections but can also be used in multi-drop configurations where multiple receivers share a common transmitter, a feature useful for industrial and automation systems. Additionally, RS-422 supports add/drop/repeat functionality, allowing data signals to be relayed across long distances by intermediate devices. With its improved noise immunity and signal integrity, RS-422 can reliably transmit data up to 1200 meters (about 4000 feet) at a baud rate of 9600 bps, making it ideal for applications requiring long-distance and high-reliability communication, such as industrial automation, telemetry, and process control.</p>
                   </div>
                 )}
               </div>
               <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('rs485')}> What is RS-485? </button>
+                <button className="faq-question" onClick={() => toggleAnswer('rs485')}> Learn about RS-485. </button>
                 {visibleAnswer === 'rs485' && (
                   <div className="faq-answer">
-                    <p>2-wire RS-485</p>
-                    <li>Half duplex on 2 wires</li>
-                    <li style={{"padding-left": "100px"}}>The two wires switch between transmitting and receiving.</li>
-                    <li style={{"padding-left": "100px"}}>When transmitting, 1s and 0s are distinguished by the difference in voltage between the D+ and D- wire.</li>
-                    <li style={{"padding-left": "100px"}}>When receiving, 1s and 0s are distinguished by the difference in voltage between the D+ and D- wire.</li>
-                    <li>Balanced (differential)</li>
-                    <li>1200 meters at 9600 bps</li>
-                    <p>4-wire RS-485</p>
-                    <li>Full duplex over 4 wires</li>
-                    <li style={{"padding-left": "100px"}}>Two wire are transmit.</li>
-                    <li style={{"padding-left": "100px"}}>Two wire are receive.</li>
-                    <li style={{"padding-left": "100px"}}>When transmitting, 1s and 0s are distinguished by the difference in voltage between the D+ and D- wire.</li>
-                    <li style={{"padding-left": "100px"}}>Because of this, external noise affects both wires equally, and the receiver only looks at the voltage difference, rejecting the noise.</li>
-                    <li>Balanced (differential)</li>
-                    <li>Bus</li>
-                    <li>1200 meters at 9600 bps</li>
-                    <p>RS-485 bus:</p>
-                    <li style={{"padding-left": "50px"}}>High Impedance Load:</li>
-                    <li style={{"padding-left": "100px"}}>True 485 devices go into tri-state when transmitting or receiving data.</li>
-                    <li style={{"padding-left": "100px"}}>There can only be one device in tri-state at a time.</li>
-                    <li style={{"padding-left": "100px"}}>Connecting a resistance across the bus makes it look like there is only one device at a time.</li>
-                    <li style={{"padding-left": "50px"}}>Tri-state level detect</li>
-                    <li style={{"padding-left": "100px"}}>A device can only go into tri-state if a certain load threshold is met (e.g. 400 mV).</li>
-                    <li style={{"padding-left": "50px"}}>Turnaround time</li>
-                    <li style={{"padding-left": "100px"}}>Polling the device to see if they are ready to transmit data.</li>
+                    <p><strong>RS-485</strong> is a serial communication standard designed for long-distance, high-speed, and noise-resistant data transmission. Unlike RS-232, RS-485 uses balanced (differential) signaling, where data is transmitted as the voltage difference between two wires, D+ and D-. This differential approach makes RS-485 highly resistant to electrical noise, as interference affects both wires equally, and the receiver only processes the voltage difference, effectively canceling out external noise. RS-485 is widely used in industrial automation, building management systems, and other applications where multiple devices need to communicate over long distances. It supports both two-wire and four-wire configurations, each with distinct advantages.</p>
+                    <p>In a <strong>2-wire RS-485</strong> setup, communication is half-duplex, meaning the same pair of wires is used for both transmitting and receiving data, but not at the same time. Devices must switch between sending and receiving, which requires careful coordination to avoid collisions. Since RS-485 relies on differential signaling, binary 1s and 0s are determined by the voltage difference between the D+ and D- wires. The system can transmit data up to 1200 meters (about 4000 feet) at a baud rate of 9600 bps, making it ideal for industrial applications where long-distance communication is needed but full-duplex communication is not required.</p>
+                    <p> <strong>4-wire RS-485</strong> configuration allows full-duplex communication, where two wires are dedicated to transmitting and two separate wires are used for receiving. This setup enables continuous two-way communication, as devices do not need to switch between sending and receiving. Similar to the 2-wire version, data is transmitted using differential signaling, making it highly resistant to noise. The 4-wire configuration is commonly used in point-to-point or bus-based systems where simultaneous two-way communication is needed. Like the 2-wire version, it also supports transmission over distances up to 1200 meters at 9600 bps.</p>
+                    <p>RS-485 is designed for multi-device communication and operates on a <strong>bus topology</strong>, where multiple devices share the same communication lines. To enable multiple devices to coexist on the same bus, RS-485 devices have a high-impedance load mode, also known as "tri-state." In this mode, a device can completely disconnect from the bus when it is not transmitting or receiving, allowing other devices to communicate without interference. However, only one device can be in tri-state at a time, so proper coordination is necessary to avoid data collisions. Adding termination resistors across the bus helps maintain signal integrity by preventing reflections that could distort data transmission.</p>
+                    <p>Another key feature of RS-485 is <strong>tri-state level detect</strong>, which ensures that a device only enters tri-state mode when a specific voltage threshold (such as 400 mV) is met. This prevents unintended bus conflicts. Additionally, turnaround time is an important factor in RS-485 networks, as devices need to be polled to determine when they are ready to transmit. Efficient turnaround timing is crucial in half-duplex systems, where devices must take turns communicating on the same wires.</p>
+                    <p>Because of its robustness, long-distance capabilities, and ability to support multiple devices on the same bus, RS-485 is widely used in industrial control systems, HVAC controls, building automation, and other applications where reliable serial communication is essential.</p>
                   </div>
                 )}
               </div>
@@ -358,31 +302,23 @@ const SerialData = () => {
                     <p>[1] Confirm that the fiber in use is compatible with the device.</p>
                     <p>[2] Test if the fiber works with another device.</p>
                     <p>[3] Using a process of elimination, swap out the device on either end of the fiber with an identical device to determine which unit is failing.</p>
-                    <p>[4] Connect one end of the fiber to an optical power meter and connect the other end of the fiber to the device and check the dBm reading. Compare this to the device's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</p>
+                    <p>[4] If an optical power meter is available, connect one end of the fiber to an optical power meter and connect the other end of the fiber to the device and check the dBm reading. Compare this to the device's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</p>
                     <p>[5] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</p>
                 </div>
               )}
             </div>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The serial data is not getting sent over the fiber. </button>
+              <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The serial data is not passing. </button>
               {visibleAnswer === 'no-communication' && (
                 <div className="faq-answer">
-                  <p>[1] Determine what lights are illuminated on the unit.</p>
+                  <p><strong>[1] Document what lights are illuminated on the unit.</strong></p>
                   <img src="photos/FDX/fdx60-led.jpg"></img>
-                  <p>[2] If passing 2-wire RS485, ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</p>
-                  <li>Impedance mismatch:</li>
-                  <li style={{"padding-left": "100px"}}>Occurs where two interconnected electronic devices or components have different impedance values (resistance to alternating current).</li>
-                  <li style={{"padding-left": "100px"}}>Without proper termination (e.g., a resistor matching the cable's characteristic impedance), the energy of the signal doesn't dissipate properly, leading to ringing.</li>
-                  <li>Ringing</li>
-                  <li style={{"padding-left": "100px"}}>Reflection of data from one device back to the other.</li>
-                  <li>Lumped distance:</li>
-                  <li style={{"padding-left": "100px"}}>Where the resistors is placed doesn't matter because the devices are so close.</li>
-                  <li>Distributed distance:</li>
-                  <li style={{"padding-left": "100px"}}>The resistor must be placed at the end because the distance is so far.</li>
-                  <p>[3] Verify the wires are connected properly. </p>
+                  <p><strong>[2] Verify the wires are connected properly.</strong></p>
                   <img src="photos/FDX/fdx60-wires.jpg"></img>
-                  <p>4. Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration:</p>
+                  <p><strong>[3] Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration.</strong></p>
                   <img src="photos/FDX/fdx60-switches.jpg"></img>
+                  <p><strong>[4] If passing 2-wire RS485, ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</strong></p>
+                  <p>Impedance mismatch occurs when two interconnected electronic devices or components have different impedance values, which means they resist alternating current differently. This mismatch can cause signal integrity issues if not properly managed. Without proper termination, such as using a resistor that matches the cable's characteristic impedance, the signal energy is not absorbed correctly, leading to a phenomenon called ringing. Ringing happens when a data signal reflects back and forth between devices instead of cleanly reaching its destination, which can distort communication. The impact of termination placement depends on the distance between devices. In lumped distance systems, where devices are very close together, the resistor's exact placement is not critical. However, in distributed distance systems, where devices are far apart, the termination resistor must be placed at the end of the line to prevent reflections and ensure signal stability.</p>
                 </div>
               )}
             </div>
