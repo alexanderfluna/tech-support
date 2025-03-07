@@ -3,7 +3,7 @@ import '../styles/Chatbox.css';
 
 const Chatbox = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState(''); // Store only the latest bot message
+  const [message, setMessage] = useState('');
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -20,7 +20,7 @@ const Chatbox = () => {
       botReply = 'Select the product category of the device you want to troubleshoot and select the Troubleshooting Common Issues option.';
     }
 
-    setMessage(botReply); // Only store the latest response
+    setMessage(botReply);
   };
 
   return (
@@ -36,7 +36,6 @@ const Chatbox = () => {
             <button onClick={toggleChat} className="close-button">X</button>
           </div>
 
-          {/* Buttons stay at the top */}
           <div className="chatbox-buttons">
             <button onClick={() => handleButtonClick('learn')}>
               I want to learn more about a Comnet product.
@@ -49,7 +48,6 @@ const Chatbox = () => {
             </button>
           </div>
 
-          {/* Display only the latest bot message */}
           <div className="chatbox-content">
             {message && <div className="chat-message bot">{message}</div>}
           </div>
