@@ -56,9 +56,8 @@
 }
 
 .nav-right .contact-button:hover {
-  border: white;
   color: rgb(217, 0, 139);
-  border-bottom: 1px solid rgb(217, 0, 139);
+  border: 1px solid rgb(217, 0, 139);
 }
 
 .menu {

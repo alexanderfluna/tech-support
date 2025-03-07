@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
-import BackToTop from '../../components/BackToTop';
+import Chatbox from '../../components/Chatbox';
 import MediaConverterSelectorTool from './MediaConverterSelectorTool';
 import MediaConverterTroubleshooting from './MediaConverterTroubleshooting';
 import MediaConverterFrequentlyAskedQuestions from './MediaConverterFrequentlyAskedQuestions';
@@ -20,7 +20,7 @@ const MediaConverter = () => {
         {<MediaConverterTroubleshooting />}
       </main>
       <Button />
-      <BackToTop />
+      <Chatbox />
       <Footer />
     </div>
   );

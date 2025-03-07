@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import BackToTop from '../components/BackToTop';
+import Chatbox from '../components/Chatbox';
 import '../styles/Global.css';
 import '../styles/Home.css';
 
@@ -63,7 +63,7 @@ const Home = () => {
           ))}
         </div>
       </main>
-      <BackToTop />
+      <Chatbox />
       <Footer />
     </div>
   );

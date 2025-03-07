@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
-import BackToTop from '../../components/BackToTop';
+import Chatbox from '../../components/Chatbox';
 import EthernetSwitchSelectorTool from './EthernetSwitchSelectorTool'
 import EthernetSwitchTroubleshooting from './EthernetSwitchTroubleshooting'
 import EthernetSwitchFrequentlyAskedQuestions from './EthernetSwitchFrequentlyAskedQuestions'
@@ -19,7 +19,7 @@ const EthernetSwitch = () => {
         {<EthernetSwitchTroubleshooting />}
       </main>
       <Button />
-      <BackToTop />
+      <Chatbox />
       <Footer />
     </div>
   );

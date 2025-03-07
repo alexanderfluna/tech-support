@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import BackToTop from '../components/BackToTop';
+import Chatbox from '../components/Chatbox';
 import Fiber from '../relevant-information/Fiber';
 import '../styles/Global.css';
 import '../styles/Pages.css';
@@ -175,9 +175,9 @@ const SFP = () => {
         </button>
         {showFAQ && (
           <>
-            <div className="faq-item">
+          <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
-              Comnet's SFP chart.
+              View Comnet's SFP chart.
             </button>
             {visibleAnswer === 'sfp-chart' && (
               <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
@@ -187,6 +187,16 @@ const SFP = () => {
                     </button>
                   </a>
                 <img src="photos/SFP/SFP.png" alt="SFP Chart" />
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('sfp')}>
+              Learn about SFPs.
+            </button>
+            {visibleAnswer === 'sfp' && (
+              <div className="faq-answer">
+                <p>SFP (Small Form-Factor Pluggable) modules are compact, hot-swappable devices used in network equipment like switches and routers to send and receive data over fiber optic or copper cables. They support singlemode or multimode fiber for different distances and come in various speeds like Fast Ethernet (FE), Gigabit Ethernet (GE), and 10 Gigabit (10G). SFPs use different connectors, such as LC, SC, or RJ-45, depending on the cable type. They help expand network capabilities without replacing entire devices.</p>
               </div>
             )}
           </div>
@@ -275,7 +285,7 @@ const SFP = () => {
           <>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('no-optical-link')}>
-                There is no optical link.
+                Troubleshooting no optical link.
               </button>
               {visibleAnswer === 'no-optical-link' && (
                 <>
@@ -295,11 +305,35 @@ const SFP = () => {
                 </>
               )}
             </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('ddi')}>
+                How to view the status of the SFP.
+              </button>
+              {visibleAnswer === 'ddi' && (
+                <>
+                  <div className="faq-answer">
+                    <p><strong>It is possible to view the status of the SFP in any Comnet switch via the DDMI section or the SPF Status section.</strong></p>
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('cisco')}>
+                Will Comnet SFPs work with Cisco devices?
+              </button>
+              {visibleAnswer === 'cisco' && (
+                <>
+                  <div className="faq-answer">
+                    <p><strong>ComNet SFP modules will optically communicate with properly matched Cisco SFPs when Cisco SFPs are installed in a Cisco switch. Note that ComNet SFPs will not operate when installed in a Cisco switch.</strong></p>
+                  </div>
+                </>
+              )}
+            </div>
           </>
         )}      
       </main>
       <Button />
-      <BackToTop />
+      <Chatbox />
       <Footer />
     </div>
   );

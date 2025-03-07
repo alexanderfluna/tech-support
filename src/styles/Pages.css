@@ -146,8 +146,67 @@
   background-color: rgb(51, 51, 51);
 }
 
+.selector-placeholder {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.selector-options {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.selector-button {
+  padding: 15px 30px;
+  font-size: 16px;
+  background: transparent;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 400px;
+  font-weight: bold;
+}
+
+.selector-button:hover {
+  background-color: #eb8dc8;
+}
+
+.selected {
+  background-color: #d9008b;
+}
+
+.separator {
+  width: 2px;
+  background-color: black;
+}
+
+.selected-text {
+  margin-top: 10px;
+  font-size: 18px;
+  color: black;
+}
+
+@media (max-width: 1500px) {
+  .faq-answer {
+    padding: 0px 50px;
+  }
+  .selector-button {
+    width: 280px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .faq-answer {
     padding: 0px 2px;
+  }
+
+  .selector-button {
+    width: 150px;
   }
 }

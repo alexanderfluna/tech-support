@@ -37,13 +37,13 @@ function EthernetSwitchTroubleshooting() {
                         </button>
                         {visibleAnswers.has('no-link-light') && (
                             <div className="faq-answer">
-                                <p><strong>[1] Confirm that the fiber in use is compatible with the switch and/or SFP module.</strong></p>
+                                <p><strong>[1] Confirm that the fiber and devices on both ends of the fiber are compatible:</strong></p>
                                 <p style={{paddingLeft: "40px"}}>[1.1] The data rate (Gigabit Ethernet vs. Fast Ethernet).</p>
                                 <p style={{paddingLeft: "40px"}}>[1.2] The fiber type (single mode vs multimode).</p>
                                 <p style={{paddingLeft: "40px"}}>[1.3] The number of fiber strands (single strand vs. dual strand).</p>
                                 <p style={{paddingLeft: "40px"}}>[1.4] The optical connector (SC vs. LC).</p>
-                                <p><strong>[2] Test if the fiber works with another device.</strong></p>
-                                <p><strong>[3] Using a process of elimination, swap out the device and/or SFP on either end of the fiber with an identical device and/or SFP to determine which unit is failing.</strong></p>
+                                <p><strong>[2] Using a process of elimination, swap out the device and/or SFP on either end of the fiber with an identical device and/or SFP to determine which unit is failing.</strong></p>
+                                <p><strong>[3] Test if the fiber works with another device.</strong></p>
                                 <p><strong>[4] If an optical power meter is available, connect one end of the fiber to the optical power meter, connect the other end of the fiber to the switch or SFP, and check the dBm reading. Compare this to the device's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</strong></p>
                                 <p><strong>[5] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</strong></p>
                             </div>

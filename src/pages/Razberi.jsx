@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import BackToTop from '../components/BackToTop';
+import Chatbox from '../components/Chatbox';
 import PowerOverEthernet from '../relevant-information/PowerOverEthernet';
 import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const Razberi = () => {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [showSelector, setShowSelector] = useState(false);
   const [showSelectorText, setShowSelectorText] = useState(false);
   const [showTroubleshooting, setShowTroubleshooting] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
+  const [selected, setSelected] = useState("");
+
 
   const toggleAnswer = (questionId) => {
     setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
@@ -19,6 +22,11 @@ const Razberi = () => {
 
   const toggleTable = () => {
     setShowSelectorText(!showSelectorText); 
+  };
+
+  const toggleSelector = () => {
+    setShowSelector(!showSelector);
+    setSelected("");
   };
 
   const toggleTroubleshooting = () => {
@@ -161,14 +169,47 @@ const Razberi = () => {
           </>
         )}
 
-        <button className="purple-button" onClick={toggleTable}>
-          Selector Tool
-        </button>
-        {showSelectorText && (
-          <div className="selector-placeholder">
-            <p>Selector tool functionality coming soon...</p>
+      <button className="purple-button" onClick={toggleSelector}>
+        Selector Tool
+      </button>
+
+      {showSelector && (
+        <div className="selector-placeholder">
+          <div className="selector-options">
+            <button
+              className={`selector-button ${selected === "Server Switch" ? "selected" : ""}`}
+              onClick={() => setSelected("Server Switch")}
+            >
+              Server Switch
+            </button>
+            <span className="separator"></span>
+            <button
+              className={`selector-button ${selected === "Server" ? "selected" : ""}`}
+              onClick={() => setSelected("Server")}
+            >
+              Server
+            </button>
           </div>
-        )}
+
+          {selected && (
+            <div>
+              <p className="selected-text">{selected}</p>
+              {selected === "Server Switch" && (
+                <p className="additional-info">
+                  It's great that the server comes with a switch! This integration helps simplify your network setup by allowing your devices to connect seamlessly without the need for additional network equipment.
+                </p>
+              )}
+              {selected === "Server" && (
+                <p className="additional-info">
+                  The server provides ample storage space, making it perfect for handling large files, data backups, or running multiple applications with ease. Enjoy better performance and scalability!
+                </p>
+              )}
+            </div>
+          )}
+          {!selected && <p className="placeholder-text"></p>}
+        </div>
+      )}
+
 
         <button className="purple-button" onClick={toggleTroubleshooting}>
           Troubleshooting Common Issues
@@ -305,7 +346,7 @@ const Razberi = () => {
         )}
       </main>
       <Button />
-      <BackToTop />
+      <Chatbox />
       <Footer />
     </div>
   );
