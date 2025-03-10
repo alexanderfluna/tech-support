@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 import Chatbox from '../../components/Chatbox';
 import MediaConverterSelectorTool from './MediaConverterSelectorTool';
-import MediaConverterTroubleshooting from './MediaConverterTroubleshooting';
-import MediaConverterFrequentlyAskedQuestions from './MediaConverterFrequentlyAskedQuestions';
+import MediaConverterFAQ from './MediaConverterFAQ';
 import '../../styles/Global.css';
 import '../../styles/Pages.css';
 
@@ -15,9 +13,9 @@ const MediaConverter = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Media Converter</h2>
-        {<MediaConverterFrequentlyAskedQuestions />}
+        <p style={{fontWeight: "bold"}}>______________________________________</p>
         {<MediaConverterSelectorTool />}
-        {<MediaConverterTroubleshooting />}
+        {<MediaConverterFAQ />}
       </main>
       <Button />
       <Chatbox />

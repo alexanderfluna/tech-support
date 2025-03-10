@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Chatbox from '../components/Chatbox';
+import NoOpticalLink from '../relevant-information/NoOpticalLink';
 import Fiber from '../relevant-information/Fiber';
 import '../styles/Global.css';
 import '../styles/Pages.css';
@@ -60,7 +61,6 @@ const SFP = () => {
 
   const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
-  const [showTroubleshooting, setShowTroubleshooting] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [availableOptions, setAvailableOptions] = useState({
@@ -107,10 +107,6 @@ const SFP = () => {
       Rx: null,
     });
   };
-
-  const toggleTroubleshooting = () => {
-    setShowTroubleshooting(!showTroubleshooting);
-  }
 
   const toggleFAQ = () => {
     setShowFAQ(!showFAQ);
@@ -170,41 +166,10 @@ const SFP = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">SFP</h2>
-        <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-        </button>
-        {showFAQ && (
-          <>
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
-              View Comnet's SFP chart.
-            </button>
-            {visibleAnswer === 'sfp-chart' && (
-              <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
-                <a href="pdf/SFP/sfp-modules.pdf" download>
-                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
-                      Download SFP Chart
-                    </button>
-                  </a>
-                <img src="photos/SFP/SFP.png" alt="SFP Chart" />
-              </div>
-            )}
-          </div>
-          <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('sfp')}>
-              Learn about SFPs.
-            </button>
-            {visibleAnswer === 'sfp' && (
-              <div className="faq-answer">
-                <p>SFP (Small Form-Factor Pluggable) modules are compact, hot-swappable devices used in network equipment like switches and routers to send and receive data over fiber optic or copper cables. They support singlemode or multimode fiber for different distances and come in various speeds like Fast Ethernet (FE), Gigabit Ethernet (GE), and 10 Gigabit (10G). SFPs use different connectors, such as LC, SC, or RJ-45, depending on the cable type. They help expand network capabilities without replacing entire devices.</p>
-              </div>
-            )}
-          </div>
-          <Fiber />
-          </>
-        )}
+        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
-          Selector Tool
+          <h1>Selector Tool</h1>
+          <p>Our SFP Selector Tool filters Comnet's SFP modules by the data rate, transmission medium, number of fiber strands, optical connector, path length, transmission wavelength, and receiving wavelength.</p>
         </button>
         {showTable && (
           <>
@@ -278,33 +243,14 @@ const SFP = () => {
           </>
         )}
 
-        <button className="purple-button" onClick={toggleTroubleshooting}>
-          Troubleshooting Common Issues
+        <button className="purple-button" onClick={toggleFAQ}>
+          <h1>FAQ</h1>
+          <p>Our FAQ section contains answers to frequently asked questions and how to troubleshoot common issues regarding Comnet's SFP modules.</p>
         </button>
-        {showTroubleshooting && (
+        {showFAQ && (
           <>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-optical-link')}>
-                Troubleshooting no optical link.
-              </button>
-              {visibleAnswer === 'no-optical-link' && (
-                <>
-                <div className="faq-answer">
-                  <p><strong>[1] For SFPs requiring an 'A' and 'B' pair, ensure there is an 'A' unit on one side of the fiber and a 'B' unit on the other side of the fiber.</strong></p>
-                  <li>The data must be transmitted and received over the one strand of fiber. Using wavelength division multiplexing (WDM), the 'A' and 'B' units transmit and receive data at different wavelengths.</li>
-                  <p><strong>[2] Confirm that the fiber in use is compatible with the SFP module.</strong></p>
-                  <p style={{paddingLeft: "40px"}}>[2.1] The data rate (Gigabit Ethernet vs. Fast Ethernet).</p>
-                  <p style={{paddingLeft: "40px"}}>[2.2] The fiber type (single mode vs multimode).</p>
-                  <p style={{paddingLeft: "40px"}}>[2.3] The number of fiber strands (single strand vs. dual strand).</p>
-                  <p style={{paddingLeft: "40px"}}>[2.4] The optical connector (SC vs. LC).</p>
-                  <p><strong>[3] Test if the fiber works with another device.</strong></p>
-                  <p><strong>[4] Using a process of elimination, swap out the device and/or SFP on either end of the fiber with an identical device and/or SFP to determine which unit is failing.</strong></p>
-                  <p><strong>[5] If an optical power meter is available, connect one end of the fiber to the optical power meter, connect the other end of the fiber to the SFP, and check the dBm reading. Compare this to the SFP's recommended signal strength, available in the datasheet, to confirm it is within the expected range.</strong></p>
-                  <p><strong>[6] If the link light is stuck green, remove and reinsert the fiber to verify if the link light reappears.</strong></p>
-                </div>
-                </>
-              )}
-            </div>
+          {<NoOpticalLink/>}
+          {<Fiber/>}
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('ddi')}>
                 How to view the status of the SFP.
@@ -329,6 +275,31 @@ const SFP = () => {
                 </>
               )}
             </div>
+            <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('sfp-chart')}>
+              View Comnet's SFP chart.
+            </button>
+            {visibleAnswer === 'sfp-chart' && (
+              <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
+                <a href="pdf/SFP/sfp-modules.pdf" download>
+                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
+                      Download SFP Chart
+                    </button>
+                  </a>
+                <img src="photos/SFP/SFP.png" alt="SFP Chart" />
+              </div>
+            )}
+          </div>
+          <div className="faq-item">
+            <button className="faq-question" onClick={() => toggleAnswer('sfp')}>
+              Learn about SFPs.
+            </button>
+            {visibleAnswer === 'sfp' && (
+              <div className="faq-answer">
+                <p>SFP (Small Form-Factor Pluggable) modules are compact, hot-swappable devices used in network equipment like switches and routers to send and receive data over fiber optic or copper cables. They support singlemode or multimode fiber for different distances and come in various speeds like Fast Ethernet (FE), Gigabit Ethernet (GE), and 10 Gigabit (10G). SFPs use different connectors, such as LC, SC, or RJ-45, depending on the cable type. They help expand network capabilities without replacing entire devices.</p>
+              </div>
+            )}
+          </div>
           </>
         )}      
       </main>

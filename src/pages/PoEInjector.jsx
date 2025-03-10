@@ -101,16 +101,10 @@ const PoEInjector = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">PoE Injector</h2>
-        <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-          </button>       
-          {showFAQ && (
-            <>
-              <PowerOverEthernet />
-            </>
-          )} 
+        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
-          Selector Tool
+          <h1>Selector Tool</h1>
+          <p>Our PoE injector Selector Tool filters Comnet's PoE inejctors by data rate, IEEE compliance, output power, output voltage, and input voltage.</p>
         </button>
         {showTable && (
           <>
@@ -261,6 +255,15 @@ const PoEInjector = () => {
             </div>
           </>
         )}
+        <button className="purple-button" onClick={toggleFAQ}>
+          <h1>FAQ</h1>
+          <p>Our FAQ section contains answers to frequently asked questions and how to troubleshoot common issues regarding Comnet's PoE injectors.</p>
+        </button>       
+          {showFAQ && (
+            <>
+              <PowerOverEthernet />
+            </>
+          )} 
       </main>
       <Button />
       <Chatbox />

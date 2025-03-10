@@ -25,8 +25,8 @@ const Home = () => {
         <div className="middle-section"> 
           <div className="middle-section-left">
             <h1 style={{"font-size": "72px", color: "#22132B"}}>Technical Support</h1>
-            <p>Our technical support page features product selector tools, how to troubleshoot common
-            issues, and answers to frequently asked questions.</p>
+            <p>Our technical support page features product selector tools, answers to frequently asked questions, and how to troubleshoot common
+            issues.</p>
             <p>Select your product below. ↓</p>
           </div>
           <div className="middle-section-right">

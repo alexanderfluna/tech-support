@@ -3,8 +3,7 @@ import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 import Chatbox from '../../components/Chatbox';
 import EthernetSwitchSelectorTool from './EthernetSwitchSelectorTool'
-import EthernetSwitchTroubleshooting from './EthernetSwitchTroubleshooting'
-import EthernetSwitchFrequentlyAskedQuestions from './EthernetSwitchFrequentlyAskedQuestions'
+import EthernetSwitchFAQ from './EthernetSwitchFAQ'
 import '../../styles/Global.css';
 import '../../styles/Pages.css';
 
@@ -14,9 +13,9 @@ const EthernetSwitch = () => {
       <Navbar />
       <main className="faq-container">
         <h1 className="faq-title">Ethernet Switch</h1>
-        {<EthernetSwitchFrequentlyAskedQuestions />}
+        <p style={{fontWeight: "bold"}}>______________________________________</p>
         {<EthernetSwitchSelectorTool />}
-        {<EthernetSwitchTroubleshooting />}
+        {<EthernetSwitchFAQ />}
       </main>
       <Button />
       <Chatbox />

@@ -13,11 +13,11 @@ const Chatbox = () => {
     let botReply = '';
 
     if (response === 'learn') {
-      botReply = 'Select the product category of the device you want to learn more about and choose the Frequently Asked Questions option.';
+      botReply = 'Select the product category of the device you want to learn more about and choose the FAQ option.';
     } else if (response === 'part') {
       botReply = 'Select the product category of the device you want the part number for and choose the Selector Tool option.';
     } else if (response === 'troubleshoot') {
-      botReply = 'Select the product category of the device you want to troubleshoot and select the Troubleshooting Common Issues option.';
+      botReply = 'Select the product category of the device you want to troubleshoot and select the FAQ option.';
     }
 
     setMessage(botReply);

@@ -93,35 +93,10 @@ const Wiegand = () => {
       <Navbar />
       <main className="faq-container">
         <h2 className="faq-title">Wiegand</h2>
-        <button className="purple-button" onClick={toggleFAQ}>
-          Frequently Asked Questions
-        </button>
-        {showFAQ && (
-          <>
-            <div className="faq-list">
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
-                {visibleAnswer === 'wiegand' && (
-                  <div className="faq-answer">
-                    <p><strong>Wiegand</strong> is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</p>
-                  </div>
-                )}
-              </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
-                {visibleAnswer === 'osdp' && (
-                  <div className="faq-answer">
-                    <p><strong>OSDP (Open Supervised Device Protocol)</strong> is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</p>
-                  </div>
-                )}
-              </div>
-              <Fiber />
-            </div>
-          </>
-        )} 
-        
+        <p style={{fontWeight: "bold"}}>______________________________________</p>        
         <button className="purple-button" onClick={toggleTable}>
-          Selector Tool
+          <h1>Selector Tool</h1>
+          <p>Our Wiegand Selector Tool filters Comnet's wiegand devices by the type of fiber and whether a central or remote is needed.</p>
         </button>
         {showTable && (
           <>
@@ -197,14 +172,14 @@ const Wiegand = () => {
             </div>
           </>
         )}
-
-        <button className="purple-button" onClick={toggleTroubleshooting}>
-          Troubleshooting Common Issues
+        <button className="purple-button" onClick={toggleFAQ}>
+          <h1>FAQ</h1>
+          <p>Our FAQ section contains answers to frequently asked questions and how to troubleshoot common issues regarding Comnet's wiegand devices.</p>
         </button>
-        {showTroubleshooting && (
+        {showFAQ && (
           <>
             <div className="faq-list">
-              {<NoPowerLight />}
+            {<NoPowerLight />}
               <div className="faq-item">
                 <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
                 {visibleAnswer === 'no-link-light' && (
@@ -249,9 +224,26 @@ const Wiegand = () => {
                   </div>
                 )}
               </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
+                {visibleAnswer === 'wiegand' && (
+                  <div className="faq-answer">
+                    <p><strong>Wiegand</strong> is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</p>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
+                {visibleAnswer === 'osdp' && (
+                  <div className="faq-answer">
+                    <p><strong>OSDP (Open Supervised Device Protocol)</strong> is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</p>
+                  </div>
+                )}
+              </div>
+              <Fiber />
             </div>
           </>
-        )}
+        )} 
       </main>
       <Button />
       <Chatbox />
