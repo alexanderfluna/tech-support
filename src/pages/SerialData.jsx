@@ -261,12 +261,13 @@ const SerialData = () => {
                 <div className="faq-answer">
                   <p><strong>[1] Document what lights are illuminated on the unit.</strong></p>
                   <img src="photos/FDX/fdx60-led.jpg"></img>
-                  <p><strong>[2] Verify the wires are connected properly.</strong></p>
-                  <img src="photos/FDX/fdx60-wires.jpg"></img>
+                  <p><strong>[2] If passing 2-wire RS485, ensure there is 120-omh resistor across pins 6 and 7 (+I/O and -I/O).</strong></p>
+                  <li>An impedance mismatch occurs because of two electronic devices with different impedance values, meaning they resist alternating current differently. Without proper termination, a resistor that matches the cable's characteristic impedance, the signal is not properly absorbed, leading to ringing.</li>
+                  <li>Ringing happens when a data signal reflects back and forth between devices instead of cleanly reaching its destination. In a lumped distance, where devices are very close together, the resistor can be placed at either end. In distributed distance systems, where devices are far apart, the terminating resistor must be placed at both ends.</li>
                   <p><strong>[3] Confirm the dip switches are set correctly. Cycle power after changing the dip switch configuration.</strong></p>
                   <img src="photos/FDX/fdx60-switches.jpg"></img>
-                  <p><strong>[4] If passing 2-wire RS485, ensure there are 120-omh resistors on the twisted pairs to prevent ringing.</strong></p>
-                  <p>Impedance mismatch occurs when two interconnected electronic devices or components have different impedance values, which means they resist alternating current differently. This mismatch can cause signal integrity issues if not properly managed. Without proper termination, such as using a resistor that matches the cable's characteristic impedance, the signal energy is not absorbed correctly, leading to a phenomenon called ringing. Ringing happens when a data signal reflects back and forth between devices instead of cleanly reaching its destination, which can distort communication. The impact of termination placement depends on the distance between devices. In lumped distance systems, where devices are very close together, the resistor's exact placement is not critical. However, in distributed distance systems, where devices are far apart, the termination resistor must be placed at the end of the line to prevent reflections and ensure signal stability.</p>
+                  <p><strong>[4] Verify the wires are connected properly.</strong></p>
+                  <img src="photos/FDX/fdx60-wires.jpg"></img>
                 </div>
               )}
             </div>

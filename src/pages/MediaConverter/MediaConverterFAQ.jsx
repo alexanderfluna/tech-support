@@ -48,11 +48,14 @@ function MediaConverterFrequentlyAskedQuestions() {
                     </div>
                     )}
                 </div>
+                {<Fiber />}
+                {<PowerOverEthernet />}
+                {<OSI />}
                 {<NoPowerLight />}
                 {<NoOpticalLink />}
                 {<NoPoE />}
                     <div className="faq-item">
-                        <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> There is no Ethernet port activity. </button>
+                        <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> Troubleshooting a unit with no Ethernet port activity. </button>
                         {visibleAnswers.has('no-communication') && (
                         <div className="faq-answer">
                             <p><strong>[1] Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a>.</strong></p>
@@ -71,16 +74,13 @@ function MediaConverterFrequentlyAskedQuestions() {
                         )}
                     </div>
                     <div className="faq-item">
-                        <button className="faq-question" onClick={() => toggleAnswer('cnfe2mc2c')}> CNFE2MC2C contacts. </button>
+                        <button className="faq-question" onClick={() => toggleAnswer('cnfe2mc2c')}> Configure the contacts on a CNFE2MC2C. </button>
                         {visibleAnswers.has('cnfe2mc2c') && (
                         <div className="faq-answer">
                             <a href="pdf/MediaConverter/CNFE2MC2C.pdf">Click the link to download the configuration manual.</a>
                         </div>
                         )}
                     </div>
-                {<Fiber />}
-                {<PowerOverEthernet />}
-                {<OSI />}
             </>
         )}
     

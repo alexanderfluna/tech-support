@@ -85,171 +85,6 @@ const Razberi = () => {
         </button>
         {showFAQ && (
           <>
-            <div className="faq-list">
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-power-ss32x')}> Troubleshooting power issues on an SS32X. </button>
-              {visibleAnswer === 'no-power-ss32x' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
-                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
-                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
-                  <p><strong>[4] Verify a healthy OS, RAID, and switch.</strong></p>
-                  <p><strong>[5] Confirm the following settings in BIOS.</strong></p>
-                  <li>Check that the boot order is correct. Windows Boot Manager should be option #1.</li>
-                  <li>In "Advanced" -- "ACPI Settings", make sure "Enable Hibernation" is disabled.</li>
-                  <li>In "Advanced" -- "ACPI Settings", make sure "ACPI Sleep State" is set to "Suspend Disabled"</li>
-                  <li>In "Chipset" -- "PCH-IO Configuration" -- "SATA and RST Configuration", make sure all the hard drives are detected. There should be 4 of them (but it will show up as 0, 1, 2, and 3).</li>
-                  <li>In "Chipset" -- "Board Configuration", make sure "PWR-On After PWR-Fail" is set to "Last state" or "On".</li>
-                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
-                  <p><strong>[7] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-power-core')}> Troubleshooting power issues on a Core Server. </button>
-              {visibleAnswer === 'no-power-core' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
-                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
-                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
-                  <p><strong>[4] Verify a healthy OS and RAID.</strong></p>
-                  <p><strong>[5] Enter the System Setup when booting into the server.</strong></p>
-                  <li>Change the <strong>Thermal Profile</strong> to <strong>Minimum Power (Performance per Watt Optimized).</strong></li>
-                  <li>The power of the server can be capped by specifing the watts, BTU/hr, and by a percentage. A lower power consumption typically means lower heat output, which can reduce cooling requirements. The fans may run at a lower speed, making the server quieter. Lower power usage can also reduce the thermal stress, potentially extending the life of components like CPUs and power supplies. However, if the server is power capped too aggressively, the CPU and memory performance may be throttled to stay within the limit.</li>
-                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
-                  <p><strong>[7] Perform a hardware diagnostic on the server. This can be done in the <strong>Lifecycle Controller</strong> under the <strong>Hardware Diagnostics</strong> tab and <strong>Run Hardware Diagnostics</strong> button.</strong></p>
-                  <p><strong>[8] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> Troubleshooting PoE switch issues. </button>
-              {visibleAnswer === 'no-poe' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Confirm the powered devices are 802.3af/at compliant.</strong></p>
-                  <p><strong>[2] Ensure the switch is not producing more PoE than the PoE budget allows.</strong></p>
-                  <p><strong>[3] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</strong></p>
-                  <p><strong>[4] In the command prompt on the server, attempt pinging the switch at 192.168.50.1.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> Troubleshooting a failed hard drive. </button>
-              {visibleAnswer === 'failed-disk' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Confirm the hard drive has failed in one of the following:</strong></p>
-                  <li>Device Manager</li>
-                  <li>Diskpart</li>
-                  <li>Intel Rapid Storage Technology</li>
-                  <li>iDRAC</li>
-                  <p><strong>[2] Contact technical support to determine if the unit is under warranty. If so, we can send out a replacement hard drive and provide assistance with reconfiguring the RAID array as needed. If the unit is not under warranty, consider purchasing a new hard drive for replacement, and we can provide assistance with reconfiguring the RAID array as needed.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID issues. </button>
-              {visibleAnswer === 'RAID' && (
-                <div className="faq-answer">
-                  <p><strong>RAID 0:</strong> Requires at least 2 drives. One drive failing corrupts the entire RAID.</p>
-                  <p><strong>RAID 1:</strong> Requires at least 2 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
-                  <p><strong>RAID 5:</strong> Requires at least 3 drives and allows for the loss of one. Replacing the drive will automatically rebuild the RAID.</p>
-                  <p><strong>RAID 6:</strong> Requires at least 4 drives and allows for the loss of two. Replacing the drive(s) will automatically rebuild the RAID.</p>
-                  <p><strong>RAID 10:</strong> Requires at least 4 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
-                  <p><strong>If the RAID array has failed: </strong>Delete the virtual disk, create a new virtual disk, and format the volume as NTFS using one of the following.</p>
-                  <li>Disk Management</li>
-                  <li>Intel Rapid Storage Technology</li>
-                  <li>iDRAC</li>
-                  <li>BIOS</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('windows-os')}> Troubleshooting Windows OS issues. </button>
-              {visibleAnswer === 'windows-os' && (
-                <div className="faq-answer">
-                  <li>Event Viewer</li>
-                  <li>Task Manager</li>
-                  <li>Razberi Monitor or iDRAC alert logs</li>
-                  <li>OS recovery</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('RDP')}>  Setting Up a Remote Desktop Connection.  </button>
-              {visibleAnswer === 'RDP' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Enable RDP in the server's settings.</strong></p>
-                  <p><strong>[2] Connect a laptop to a NIC on the server.</strong></p>
-                  <p><strong>[3] Open the Remote Desktop Connection software on the laptop.</strong></p>
-                  <p><strong>[4] Enter the IP address of the server's NIC.</strong></p>
-                  <p><strong>[5] Enter the Windows username and password.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('lost-windows-password')}> I Forgot the Windows Password. </button>
-              {visibleAnswer === 'lost-windows-password' && (
-                <div className="faq-answer">
-                  <p><strong>There is no way to reset the Windows password. A recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('registration')}> I Want to Skip Registration. </button>
-              {visibleAnswer === 'registration' && (
-                <div className="faq-answer">
-                  <p><strong>[1] While on the registration page, hold down: Ctrl + Shift + Alt + F11.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('camera-defense')}> I Want to Set Up CameraDefense. </button>
-              {visibleAnswer === 'camera-defense' && (
-                <div className="faq-answer">
-                  <p><strong>Attach video here.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('ss32x')}> Why choose the SS32X server switch? </button>
-              {visibleAnswer === 'ss32x' && (
-                <div className="faq-answer">
-                  <a href="pdf/razberi/SS32_Data_Sheet.pdf" download>
-                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
-                      Click to Download the SS32X Data Sheet
-                    </button>
-                  </a>
-                  <p>The <strong>SS32X</strong> is a powerful and versatile network video recording (NVR) solution, designed specifically for large-scale surveillance systems that require both high storage capacity and efficient power distribution. It comes equipped with a built-in 32-port Power over Ethernet Plus (PoE+) switch, allowing it to power and connect multiple IP cameras without the need for additional power sources or injectors. This simplifies installation and reduces cable clutter, making it an ideal choice for businesses, campuses, and security-conscious facilities. With a maximum storage capacity of up to 88TB, the SS32X can accommodate extensive video archives, ensuring that high-resolution footage is retained for extended periods. This is particularly beneficial for compliance with security regulations or for organizations that require long-term video retention.</p>
-                  <p><strong>The most relevant SS32X server switch specs are:</strong></p>
-                  <li>32-port PoE switch</li>
-                  <li>Intel i5 processor</li>
-                  <li>Two M.2 SSDs with RAID 1</li>
-                  <li>RAM: 16GB, 32 GB</li>
-                  <li>Up to 88TB of storage</li>
-                  <li>GPU: GPU-T400 or GPU-T1000</li>
-                  <li>Operating System: Windows 10, Windows 11, Windows Server 2019, or Windows Server 2022</li>
-                  <li>RAID: 0, 1, 5, 6, or 10</li>
-                  <li>Available in long chassis with 'LX' in the part number</li>
-                  <li>Available as 2U with '2U' in the part number</li>
-                  <p><strong>The default configurations of the SS32X server switch are:</strong></p>
-                  <li>Default switch IP: 192.168.50.1</li>
-                  <li>Default Admin Uplink IP: 192.168.50.19</li>
-                  <li>Default U2 IP: DHCP</li>
-                  <li>Default SFP2 IP: DHCP</li>
-                  <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
-                  <p><strong>Appliance Defense (Cylance)</strong> is an  antimalware solution that leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time. Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('dell')}>  Why choose a Core server? </button>
-              {visibleAnswer === 'dell' && (
-                <div className="faq-answer">
-                  <p>Purchasing a <strong>Razberi Core server</strong> for storing camera footage is a smart investment due to its reliability, scalability, and enterprise-grade features designed for high-performance storage. The Dell PowerEdge servers offer robust RAID configurations, ensuring data redundancy and protection against drive failures, which is crucial for surveillance systems that require continuous recording and long-term storage. With support for large-capacity hard drives and SSDs, the servers can accommodate extensive video archives while maintaining fast access speeds. Additionally, their compatibility with video management software (VMS) makes them an ideal choice for security applications. Advanced remote management tools, such as Dell iDRAC, allow for efficient monitoring and maintenance, reducing downtime and ensuring smooth operation. Whether for small businesses or large-scale surveillance deployments, the servers provides the performance, security, and expandability needed to handle high-resolution camera footage effectively. The core servers have the option of including <strong>10 GbE Ethernet ports or 10GbE SFP+ ports</strong> for greater data rates.</p>
-                  <p>The <strong>Xeon processor</strong> is a great choice for storing and managing camera footage. Built for 24/7 use, it ensures smooth performance even with heavy workloads. With multiple cores and threads, it can process video files quickly, while ECC memory support helps prevent errors, keeping the footage safe and accurate. Its large cache and fast memory speeds allow for quick access to stored video. Unlike regular processors, Xeon CPUs are made for reliability and long-term use, making them perfect for security systems that need to run without interruption. A <strong>dual Xeon processor</strong> setup is ideal for storing and managing camera footage because it doubles the processing power, allowing for faster video processing, smoother performance, and better multitasking. With two CPUs, the server can handle more camera streams at once, ensuring high-quality recording and playback without lag. It also improves redundancy and reliability, so if one processor is overloaded, the other can help manage the workload. Additionally, more CPU cores and threads mean better support for advanced video analytics, AI-driven surveillance, and large-scale data storage, making a dual Xeon setup perfect for high-performance security systems.</p>
-                </div>
-              )}
-            </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('terminology')}>  Learn about computing. </button>
               {visibleAnswer === 'terminology' && (
@@ -323,6 +158,182 @@ const Razberi = () => {
               )}
             </div>
             <PowerOverEthernet />
+              <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('ss32x')}> Why choose an SS32X server switch? </button>
+              {visibleAnswer === 'ss32x' && (
+                <div className="faq-answer">
+                  <a href="pdf/razberi/SS32_Data_Sheet.pdf" download>
+                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
+                      Click to Download the SS32X Data Sheet
+                    </button>
+                  </a>
+                  <p>The <strong>SS32X</strong> is a powerful and versatile network video recording (NVR) solution, designed specifically for large-scale surveillance systems that require both high storage capacity and efficient power distribution. It comes equipped with a built-in 32-port Power over Ethernet Plus (PoE+) switch, allowing it to power and connect multiple IP cameras without the need for additional power sources or injectors. This simplifies installation and reduces cable clutter, making it an ideal choice for businesses, campuses, and security-conscious facilities. With a maximum storage capacity of up to 88TB, the SS32X can accommodate extensive video archives, ensuring that high-resolution footage is retained for extended periods. This is particularly beneficial for compliance with security regulations or for organizations that require long-term video retention.</p>
+                  <p><strong>The most relevant SS32X server switch specs are:</strong></p>
+                  <li>32-port PoE switch</li>
+                  <li>Intel i5 processor</li>
+                  <li>Two M.2 SSDs with RAID 1</li>
+                  <li>RAM: 16GB, 32 GB</li>
+                  <li>Up to 88TB of storage</li>
+                  <li>GPU: GPU-T400 or GPU-T1000</li>
+                  <li>Operating System: Windows 10, Windows 11, Windows Server 2019, or Windows Server 2022</li>
+                  <li>RAID: 0, 1, 5, 6, or 10</li>
+                  <li>Available in long chassis with 'LX' in the part number</li>
+                  <li>Available as 2U with '2U' in the part number</li>
+                  <p><strong>The default configurations of the SS32X server switch are:</strong></p>
+                  <li>Default switch IP: 192.168.50.1</li>
+                  <li>Default Admin Uplink IP: 192.168.50.19</li>
+                  <li>Default U2 IP: DHCP</li>
+                  <li>Default SFP2 IP: DHCP</li>
+                  <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
+                  <p><strong>Appliance Defense (Cylance)</strong> is an  antimalware solution that leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time. Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('dell')}>  Why choose a Razberi recording server? </button>
+              {visibleAnswer === 'dell' && (
+                <div className="faq-answer">
+                  <p>Purchasing a <strong>Razberi recording server</strong> for storing camera footage is a smart investment due to its reliability, scalability, and enterprise-grade features designed for high-performance storage. The Dell PowerEdge servers offer robust RAID configurations, ensuring data redundancy and protection against drive failures, which is crucial for surveillance systems that require continuous recording and long-term storage. With support for large-capacity hard drives and SSDs, the servers can accommodate extensive video archives while maintaining fast access speeds. Additionally, their compatibility with video management software (VMS) makes them an ideal choice for security applications. Advanced remote management tools, such as Dell iDRAC, allow for efficient monitoring and maintenance, reducing downtime and ensuring smooth operation. Whether for small businesses or large-scale surveillance deployments, the servers provides the performance, security, and expandability needed to handle high-resolution camera footage effectively. The core servers have the option of including <strong>10 GbE Ethernet ports or 10GbE SFP+ ports</strong> for greater data rates.</p>
+                  <p>The <strong>Xeon processor</strong> is a great choice for storing and managing camera footage. Built for 24/7 use, it ensures smooth performance even with heavy workloads. With multiple cores and threads, it can process video files quickly, while ECC memory support helps prevent errors, keeping the footage safe and accurate. Its large cache and fast memory speeds allow for quick access to stored video. Unlike regular processors, Xeon CPUs are made for reliability and long-term use, making them perfect for security systems that need to run without interruption. A <strong>dual Xeon processor</strong> setup is ideal for storing and managing camera footage because it doubles the processing power, allowing for faster video processing, smoother performance, and better multitasking. With two CPUs, the server can handle more camera streams at once, ensuring high-quality recording and playback without lag. It also improves redundancy and reliability, so if one processor is overloaded, the other can help manage the workload. Additionally, more CPU cores and threads mean better support for advanced video analytics, AI-driven surveillance, and large-scale data storage, making a dual Xeon setup perfect for high-performance security systems.</p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('RDP')}>  I Wabt to Set Up a Remote Desktop Connection.  </button>
+              {visibleAnswer === 'RDP' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Enable RDP in the server's settings.</strong></p>
+                  <p><strong>[2] Connect a laptop to a NIC on the server.</strong></p>
+                  <p><strong>[3] Open the Remote Desktop Connection software on the laptop.</strong></p>
+                  <p><strong>[4] Enter the IP address of the server's NIC.</strong></p>
+                  <p><strong>[5] Enter the Windows username and password.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('lost-windows-password')}> I Forgot the Windows Password. </button>
+              {visibleAnswer === 'lost-windows-password' && (
+                <div className="faq-answer">
+                  <p><strong>There is no way to reset the Windows password. A recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('registration')}> I Want to Skip the Registration on My Server. </button>
+              {visibleAnswer === 'registration' && (
+                <div className="faq-answer">
+                  <p><strong>While on the registration page, hold down: Ctrl + Shift + Alt + F11.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('camera-defense')}> How do I Set Up CameraDefense? </button>
+              {visibleAnswer === 'camera-defense' && (
+                <div className="faq-answer">
+                  <p><strong>Attach CameraDefense pictures here...</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-list">
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('no-power-ss32x')}> Troubleshooting power issues on an SS32X. </button>
+              {visibleAnswer === 'no-power-ss32x' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
+                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
+                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
+                  <p><strong>[4] Verify a healthy OS, RAID, and switch.</strong></p>
+                  <p><strong>[5] Confirm the following settings in BIOS.</strong></p>
+                  <li>Check that the boot order is correct. Windows Boot Manager should be option #1.</li>
+                  <li>In "Advanced" -- "ACPI Settings", make sure "Enable Hibernation" is disabled.</li>
+                  <li>In "Advanced" -- "ACPI Settings", make sure "ACPI Sleep State" is set to "Suspend Disabled"</li>
+                  <li>In "Chipset" -- "PCH-IO Configuration" -- "SATA and RST Configuration", make sure all the hard drives are detected. There should be 4 of them (but it will show up as 0, 1, 2, and 3).</li>
+                  <li>In "Chipset" -- "Board Configuration", make sure "PWR-On After PWR-Fail" is set to "Last state" or "On".</li>
+                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
+                  <p><strong>[7] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('no-power-core')}> Troubleshooting power issues on a Core Server. </button>
+              {visibleAnswer === 'no-power-core' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
+                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
+                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
+                  <p><strong>[4] Verify a healthy OS and RAID.</strong></p>
+                  <p><strong>[5] Enter the System Setup when booting into the server.</strong></p>
+                  <li>Change the <strong>Thermal Profile</strong> to <strong>Minimum Power (Performance per Watt Optimized).</strong></li>
+                  <li>The power of the server can be capped by specifing the watts, BTU/hr, and by a percentage. A lower power consumption typically means lower heat output, which can reduce cooling requirements. The fans may run at a lower speed, making the server quieter. Lower power usage can also reduce the thermal stress, potentially extending the life of components like CPUs and power supplies. However, if the server is power capped too aggressively, the CPU and memory performance may be throttled to stay within the limit.</li>
+                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
+                  <p><strong>[7] Perform a hardware diagnostic on the server. This can be done in the <strong>Lifecycle Controller</strong> under the <strong>Hardware Diagnostics</strong> tab and <strong>Run Hardware Diagnostics</strong> button.</strong></p>
+                  <p><strong>[8] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> Troubleshooting PoE switch issues. </button>
+              {visibleAnswer === 'no-poe' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Confirm the powered devices are 802.3af/at compliant.</strong></p>
+                  <p><strong>[2] Ensure the switch is not producing more PoE than the PoE budget allows.</strong></p>
+                  <p><strong>[3] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</strong></p>
+                  <p><strong>[4] In the command prompt on the server, attempt pinging the switch at 192.168.50.1.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> Troubleshooting a failed hard drive. </button>
+              {visibleAnswer === 'failed-disk' && (
+                <div className="faq-answer">
+                  <p><strong>[1] Confirm the hard drive has failed in one of the following:</strong></p>
+                  <li>Device Manager</li>
+                  <li>Diskpart</li>
+                  <li>Intel Rapid Storage Technology</li>
+                  <li>iDRAC</li>
+                  <p><strong>[2] Contact technical support to determine if the unit is under warranty. If so, we can send out a replacement hard drive and provide assistance with reconfiguring the RAID array as needed. If the unit is not under warranty, consider purchasing a new hard drive for replacement, and we can provide assistance with reconfiguring the RAID array as needed.</strong></p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID issues. </button>
+              {visibleAnswer === 'RAID' && (
+                <div className="faq-answer">
+                  <p><strong>If the RAID array has failed: </strong>Delete the virtual disk, create a new virtual disk, and format the volume as NTFS using one of the following.</p>
+                  <li>Disk Management</li>
+                  <li>Intel Rapid Storage Technology</li>
+                  <li>iDRAC</li>
+                  <li>BIOS</li>
+                  <p><strong>RAID 0:</strong> Requires at least 2 drives. One drive failing corrupts the entire RAID.</p>
+                  <p><strong>RAID 1:</strong> Requires at least 2 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
+                  <p><strong>RAID 5:</strong> Requires at least 3 drives and allows for the loss of one. Replacing the drive will automatically rebuild the RAID.</p>
+                  <p><strong>RAID 6:</strong> Requires at least 4 drives and allows for the loss of two. Replacing the drive(s) will automatically rebuild the RAID.</p>
+                  <p><strong>RAID 10:</strong> Requires at least 4 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('NIC')}> Troubleshooting NIC issues. </button>
+              {visibleAnswer === 'NIC' && (
+                <div className="faq-answer">
+                  <p>[1] Enter "View network status and tasks" in the Windows search box.</p>
+                  <p>[2] Disable and enable the NIC</p>
+                  <p>[3] Diagnose the NIC connection</p>
+                  <p>[4] In Device Manager, verify the NIC has the necessary drivers.</p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('windows-os')}> Troubleshooting Windows OS issues. </button>
+              {visibleAnswer === 'windows-os' && (
+                <div className="faq-answer">
+                  <li>Event Viewer</li>
+                  <li>Task Manager</li>
+                  <li>Razberi Monitor or iDRAC alert logs</li>
+                  <li>OS recovery</li>
+                </div>
+              )}
+            </div>
           </div>
           </>
         )}

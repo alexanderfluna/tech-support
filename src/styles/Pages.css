@@ -188,7 +188,7 @@
   color: black;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
   .faq-answer {
     padding: 0px 50px;
   }
