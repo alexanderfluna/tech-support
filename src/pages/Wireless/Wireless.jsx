@@ -415,6 +415,14 @@ const Wireless = () => {
                 </div>
               )}
             </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('interactive')}> Interactive Configuration </button>
+              {visibleAnswers.has('interactive') && (
+                <div className="faq-answer">
+
+                </div>
+              )}
+            </div>
           </div>
           </>
         )}
