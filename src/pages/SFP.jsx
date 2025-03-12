@@ -273,9 +273,9 @@ const SFP = () => {
             </button>
             {visibleAnswers.has('sfp-chart') && (
               <div className="faq-answer" style={{display: "flex", "flex-direction": "column"}}>
-                <a href="pdf/SFP/sfp-modules.pdf" download>
+                <a href="pdf/SFP/sfp-modules.pdf">
                     <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px"}}>
-                      Download SFP Chart
+                      View Comnet SFP Chart
                     </button>
                   </a>
                 <img src="photos/SFP/SFP.png" alt="SFP Chart" />

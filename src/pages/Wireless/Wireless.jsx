@@ -346,7 +346,7 @@ const Wireless = () => {
               <button className="faq-question" onClick={() => toggleAnswer('netwave-configurations')}> How do I configure Comnet's wireless radios? </button>
               {visibleAnswers.has('netwave-configurations') && (
                 <div className="faq-answer">
-                  <p><strong>Click the link to <a href="pdf/Wireless/NetWave.pdf" download>download Comnet's wireless configuration documentation</a>.</strong></p>
+                  <p><strong>Click the link to <a href="pdf/Wireless/NetWave.pdf">view Comnet's wireless configuration documentation</a>.</strong></p>
               </div>
               )}
             </div>
@@ -394,7 +394,7 @@ const Wireless = () => {
               {visibleAnswers.has('no-communication') && (
                 <div className="faq-answer">
                   <p><strong>[1] Default the wireless radio and reconfigure it.</strong></p>
-                  <li>Click the link to <a href="pdf/Wireless/NetWave.pdf" download>download Comnet's wireless configuration documentation</a>.</li>   
+                  <li>Click the link to <a href="pdf/Wireless/NetWave.pdf">view Comnet's wireless configuration documentation</a>.</li>   
                   <p><strong>[2] Confirm the radio is being properly powered.</strong></p>
                   <li>The radio must be powered on via a hardened, 802.3af/at compliant PoE source.</li>
                   <li>There cannot be more than one radio powered by the same PoE switch as this will create a ring.</li>

@@ -73,9 +73,9 @@ const Razberi = () => {
               <p className="selected-text">{selected}</p>
               {selected === "Server Switch" && (
                 <div className="faq-answer">
-                  <a href="pdf/razberi/SS32_Data_Sheet.pdf" download>
-                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
-                      Click to Download the SS32X Data Sheet
+                  <a href="pdf/razberi/SS32_Data_Sheet.pdf">
+                    <button style={{ backgroundColor: "rgb(212, 180, 235)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
+                      Click to View the SS32X Data Sheet
                     </button>
                   </a>
                   <p>The <strong>SS32X</strong> is a powerful network video recorder (NVR) designed for large surveillance systems with high storage needs. With up to 88TB of storage, it can store large video archives, ensuring long-term retention of high-resolution footage for security compliance or other needs. It features a 32-port Power over Ethernet Plus (PoE+) switch, which powers and connects IP cameras without extra power sources. This reduces installation time and cable clutter, making it ideal for businesses, campuses, and secure facilities. The SS32X also integrates with a Video Management System (VMS) for seamless operation. </p>
