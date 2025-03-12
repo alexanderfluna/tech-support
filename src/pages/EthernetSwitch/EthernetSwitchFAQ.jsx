@@ -101,8 +101,7 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                                 <li>Parity: None</li>
                                 <li>Flow control: XON/XOFF</li>
                                 <p>[2] Enter the username and password.</p>
-                                <p>[3] Type "enable" and click enter.</p>
-                                <p>[4] Type "show ip interface brief" and click enter.</p>
+                                <p>[3] Type "show ip interface brief" and click enter.</p>
                             </div>
                         )}
                     </div>
