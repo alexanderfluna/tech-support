@@ -67,12 +67,11 @@
 
 .product-button {
   width: 100%;
-  background: linear-gradient(135deg, #e6ccff, #c299ff);
+  background: linear-gradient(135deg, #e6d6f7, #c49efd);
   color: #000;
   border: none;
-  padding: 15px 20px;
-  border-radius: 12px;
-  font-size: 1.5em;
+  padding: 30px;
+  font-size: 1.8em;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

@@ -9,7 +9,7 @@ import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const Wiegand = () => {
-  const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [visibleAnswers, setVisibleAnswers] = useState(new Set());
   const [showTable, setShowTable] = useState(false);
   const [showTroubleshooting, setShowTroubleshooting] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
@@ -24,6 +24,10 @@ const Wiegand = () => {
     { model: "FDW1000M/R", fiber: "Multimode", centralRemote: "Remote" },
     { model: "FDW1000S/C", fiber: "Single mode", centralRemote: "Central" },
     { model: "FDW1000S/R", fiber: "Single mode", centralRemote: "Remote" },
+    { model: "EXP101/C", fiber: "Multimode", centralRemote: "Central"},
+    { model: "EXP101/C", fiber: "Single mode", centralRemote: "Central"},
+    { model: "EXP101/R", fiber: "Multimode", centralRemote: "Remote"},
+    { model: "EXP101/R", fiber: "Single mode", centralRemote: "Remote"},
   ];
 
   const [filters, setFilters] = useState({
@@ -38,8 +42,16 @@ const Wiegand = () => {
   }, []);
 
   const toggleAnswer = (questionId) => {
-    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
-  };
+    setVisibleAnswers(prevAnswers => {
+        const newAnswers = new Set(prevAnswers);
+        if (newAnswers.has(questionId)) {
+            newAnswers.delete(questionId);
+        } else {
+            newAnswers.add(questionId);
+        }
+        return newAnswers;
+    });
+};
 
   const toggleTable = () => {
     setShowTable(!showTable);
@@ -179,68 +191,68 @@ const Wiegand = () => {
         {showFAQ && (
           <>
             <div className="faq-list">
-            {<NoPowerLight />}
               <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> There is no link light. </button>
-                {visibleAnswer === 'no-link-light' && (
-                  <div className="faq-answer">
-                    <p><strong>[1] Swap the transmit and receive fiber strands.</strong></p>
-                  </div>
-                )}
-              </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> The central and remote are not communicating. </button>
-                {visibleAnswer === 'no-communication' && (
-                  <div className="faq-answer">
-                    <p><strong>[1] Default the FDW1000/C.</strong></p>
-                    <p style={{paddingLeft: "40px"}}>[1.1] Remove power and fiber strands.</p>
-                    <p style={{paddingLeft: "40px"}}>[1.2] Flip all dip switches down.</p>
-                    <p style={{paddingLeft: "40px"}}>[1.3] Flip the following dip switches up.</p>
-                    <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, 8 on.</li>
-                    <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, 7 on.</li>
-                    <p style={{paddingLeft: "40px"}}>[1.4] Apply power. (There should be a green status LED)</p>
-                    <p style={{paddingLeft: "40px"}}>[1.5] Remove power.</p>
-                    <p style={{paddingLeft: "40px"}}>[1.6] Flip all dip switches down.</p>
-                    <p><strong>[2] Configure the FDW1000/C.</strong></p>
-                    <img src="photos/FDW/Configure.png"></img>
-                    <p><strong>[3] Configure the EXP101/C expansion modules as needed.</strong></p>
-                    <img src="photos/FDW/Configure2.png"></img>
-                    <p><strong>[4] Default the FDW1000/R.</strong></p>
-                    <p style={{paddingLeft: "40px"}}>[4.1] Remove power and fiber strands.</p>
-                    <p style={{paddingLeft: "40px"}}>[4.2] Flip all dip switches down.</p>
-                    <p style={{paddingLeft: "40px"}}>[4.3] Flip the following dip switches up.</p>
-                    <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, 8 on.</li>
-                    <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, 7 on.</li>
-                    <p style={{paddingLeft: "40px"}}>[4.4] Apply power. (There should be a green status LED)</p>
-                    <p style={{paddingLeft: "40px"}}>[4.5] Remove power.</p>
-                    <p style={{paddingLeft: "40px"}}>[4.6] Flip all dip switches down.</p>
-                    <p><strong>[5] Configure the FDW1000/R.</strong></p>
-                    <img src="photos/FDW/Configure.png"></img>
-                    <p><strong>[6] Configure the EXP101/R expansion modules as needed.</strong></p>
-                    <img src="photos/FDW/Configure2.png"></img>
-                    <p><strong>[7] Ensure the correct wire configuration.</strong></p>
-                    <img src="photos/FDW/FDW.png"></img>
-                    <img></img>
-                  </div>
-                )}
-              </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> What is Wiegand? </button>
-                {visibleAnswer === 'wiegand' && (
-                  <div className="faq-answer">
-                    <p><strong>Wiegand</strong> is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</p>
-                  </div>
-                )}
-              </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('osdp')}> What is OSDP? </button>
-                {visibleAnswer === 'osdp' && (
-                  <div className="faq-answer">
-                    <p><strong>OSDP (Open Supervised Device Protocol)</strong> is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</p>
-                  </div>
-                )}
-              </div>
-              <Fiber />
+                  <button className="faq-question" onClick={() => toggleAnswer('wiegand')}> Learn about Wiegand. </button>
+                  {visibleAnswers.has('wiegand') && (
+                    <div className="faq-answer">
+                      <p><strong>Wiegand</strong> is a communication protocol commonly used in access control systems, where data from a credential (like a card or keypad) is transmitted as binary pulses over two wires (Data 0 and Data 1) to a controller for authentication and authorization.</p>
+                    </div>
+                  )}
+                </div>
+                <div className="faq-item">
+                  <button className="faq-question" onClick={() => toggleAnswer('osdp')}> Learn about OSDP. </button>
+                  {visibleAnswers.has('osdp') && (
+                    <div className="faq-answer">
+                      <p><strong>OSDP (Open Supervised Device Protocol)</strong> is a modern, secure communication protocol for access control systems that enables bidirectional data exchange, device supervision, and advanced encryption over a 2-wire RS-485 serial connection.</p>
+                    </div>
+                  )}
+                </div>
+                <Fiber />
+                <div className="faq-item">
+                  <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> Configuring the Wiegand devices. </button>
+                  {visibleAnswers.has('no-communication') && (
+                    <div className="faq-answer">
+                      <p><strong>[1] Default the FDW1000/C.</strong></p>
+                      <p style={{paddingLeft: "40px"}}>[1.1] Remove power and fiber strands.</p>
+                      <p style={{paddingLeft: "40px"}}>[1.2] Flip all dip switches down.</p>
+                      <p style={{paddingLeft: "40px"}}>[1.3] Flip the following dip switches up.</p>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, 8 on.</li>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, 7 on.</li>
+                      <p style={{paddingLeft: "40px"}}>[1.4] Apply power. (There should be a green status LED)</p>
+                      <p style={{paddingLeft: "40px"}}>[1.5] Remove power.</p>
+                      <p style={{paddingLeft: "40px"}}>[1.6] Flip all dip switches down.</p>
+                      <p><strong>[2] Configure the FDW1000/C.</strong></p>
+                      <img src="photos/FDW/Configure.png"></img>
+                      <p><strong>[3] Configure the EXP101/C expansion modules as needed.</strong></p>
+                      <img src="photos/FDW/Configure2.png"></img>
+                      <p><strong>[4] Default the FDW1000/R.</strong></p>
+                      <p style={{paddingLeft: "40px"}}>[4.1] Remove power and fiber strands.</p>
+                      <p style={{paddingLeft: "40px"}}>[4.2] Flip all dip switches down.</p>
+                      <p style={{paddingLeft: "40px"}}>[4.3] Flip the following dip switches up.</p>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, 8 on.</li>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, 7 on.</li>
+                      <p style={{paddingLeft: "40px"}}>[4.4] Apply power. (There should be a green status LED)</p>
+                      <p style={{paddingLeft: "40px"}}>[4.5] Remove power.</p>
+                      <p style={{paddingLeft: "40px"}}>[4.6] Flip all dip switches down.</p>
+                      <p><strong>[5] Configure the FDW1000/R.</strong></p>
+                      <img src="photos/FDW/Configure.png"></img>
+                      <p><strong>[6] Configure the EXP101/R expansion modules as needed.</strong></p>
+                      <img src="photos/FDW/Configure2.png"></img>
+                      <p><strong>[7] Ensure the correct wire configuration.</strong></p>
+                      <img src="photos/FDW/FDW.png"></img>
+                      <img></img>
+                    </div>
+                  )}
+                </div>
+                {<NoPowerLight />}
+                <div className="faq-item">
+                  <button className="faq-question" onClick={() => toggleAnswer('no-link-light')}> Troubleshooting a unit with no link light. </button>
+                  {visibleAnswers.has('no-link-light') && (
+                    <div className="faq-answer">
+                      <p><strong>[1] Swap the transmit and receive fiber strands.</strong></p>
+                    </div>
+                  )}
+                </div>
             </div>
           </>
         )} 

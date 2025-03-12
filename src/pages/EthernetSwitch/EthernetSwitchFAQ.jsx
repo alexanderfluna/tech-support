@@ -36,7 +36,7 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                 <>
                     <div className="faq-item">
                         <button className="faq-question" onClick={() => toggleAnswer('ethernet-switch')}>
-                            Learn more about Ethernet switches.
+                            Learn about Ethernet switches.
                         </button>
                         {visibleAnswers.has('ethernet-switch') && (
                             <div className="faq-answer">                            
@@ -46,20 +46,6 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                                 <p>Ethernet switches are designed to be flexible in terms of the cabling they support. Most modern switches are equipped with a feature called <strong>auto MDI/MDIX (Medium Dependent Interface/Medium Dependent Interface Crossover)</strong>. This feature automatically detects whether a straight-through or a crossover Ethernet cable is needed for a given connection and adjusts accordingly. This means that regardless of whether you are connecting a device to another device or a device to the switch, the switch can handle both types of cables without the need for manual configuration. This helps simplify network setup and minimizes potential errors when connecting devices.</p>                            
                                 <p>While Ethernet switches operate primarily at <strong>Layer 2,</strong> they are fundamental to the operation of modern Ethernet-based networks. They provide the basic functionality required for devices to communicate with one another within a network. Without switches, a network would be much slower and less efficient because the devices would have to rely on broadcasts to reach each other, causing significant network congestion. Switches enable efficient point-to-point communication, allowing each device to communicate directly with the intended recipient, which improves performance and scalability in networks of all sizes.</p>
                                 </div>
-                        )}
-                    </div>
-                    <div className="faq-item">
-                        <button className="faq-question" onClick={() => toggleAnswer('default-configuration')}>
-                            What are the default configurations on a Comnet Ethernet switch?
-                        </button>
-                        {visibleAnswers.has('default-configuration') && (
-                            <div className="faq-answer">
-                                <p><strong>Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a>.</strong></p>
-                                <p><strong>The typical default configurations of a Comnet Ethernet switch are:</strong></p>
-                                <p style={{paddingLeft: "40px"}}>[1] The default IP address is 192.168.10.1</p>
-                                <p style={{paddingLeft: "40px"}}>[2] The default username is "admin"</p>
-                                <p style={{paddingLeft: "40px"}}>[3] The default password is "admin"</p>
-                            </div>
                         )}
                     </div>
                     <div className="faq-item">
@@ -89,8 +75,40 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                     <PowerOverEthernet />
                     <OSI />
                     <div className="faq-item">
+                        <button className="faq-question" onClick={() => toggleAnswer('default-configuration')}>
+                            What are the default configurations on a Comnet Ethernet switch?
+                        </button>
+                        {visibleAnswers.has('default-configuration') && (
+                            <div className="faq-answer">
+                                <p><strong>Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> and look at the installation manual.</strong></p>
+                                <p><strong>The typical default configurations of a Comnet Ethernet switch are:</strong></p>
+                                <p style={{paddingLeft: "40px"}}>[1] The default IP address is 192.168.10.1</p>
+                                <p style={{paddingLeft: "40px"}}>[2] The default username is "admin"</p>
+                                <p style={{paddingLeft: "40px"}}>[3] The default password is "admin"</p>
+                            </div>
+                        )}
+                    </div>
+                    <div className="faq-item">
+                        <button className="faq-question" onClick={() => toggleAnswer('switch-ip')}>
+                            How to find the switch IP address from the CLI
+                        </button>
+                        {visibleAnswers.has('switch-ip') && (
+                            <div className="faq-answer">
+                                <p>[1] Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
+                                <li>Speed (baud): 115200.</li>
+                                <li>Data bits: 8</li>
+                                <li>Stop bits: 1</li>
+                                <li>Parity: None</li>
+                                <li>Flow control: XON/XOFF</li>
+                                <p>[2] Enter the username and password.</p>
+                                <p>[3] Type "enable" and click enter.</p>
+                                <p>[4] Type "show ip interface brief" and click enter.</p>
+                            </div>
+                        )}
+                    </div>
+                    <div className="faq-item">
                         <button className="faq-question" onClick={() => toggleAnswer('reset-switch')}>
-                            I forgot the IP address of the switch.
+                            How to reset the switch from the CLI.
                         </button>
                         {visibleAnswers.has('reset-switch') && (
                             <div className="faq-answer">

@@ -8,15 +8,23 @@ import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const Razberi = () => {
-  const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [visibleAnswers, setVisibleAnswers] = useState(new Set());
   const [showSelector, setShowSelector] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
   const [selected, setSelected] = useState("");
 
 
   const toggleAnswer = (questionId) => {
-    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
-  };
+    setVisibleAnswers(prevAnswers => {
+        const newAnswers = new Set(prevAnswers);
+        if (newAnswers.has(questionId)) {
+            newAnswers.delete(questionId);
+        } else {
+            newAnswers.add(questionId);
+        }
+        return newAnswers;
+    });
+};
 
   const toggleSelector = () => {
     setShowSelector(!showSelector);
@@ -40,7 +48,7 @@ const Razberi = () => {
 
       <button className="purple-button" onClick={toggleSelector}>
         <h1>Selector Tool</h1>
-        <p>The Razberi Server selector tool is still a work in progress.</p>
+        <p>The Razberi Server selector tool highlights the differences between a server switch and full-performance server.</p>
       </button>
       {showSelector && (
         <div className="selector-placeholder">
@@ -64,14 +72,38 @@ const Razberi = () => {
             <div>
               <p className="selected-text">{selected}</p>
               {selected === "Server Switch" && (
-                <p className="additional-info">
-                  It's great that the server comes with a switch! This integration helps simplify your network setup by allowing your devices to connect seamlessly without the need for additional network equipment.
-                </p>
+                <div className="faq-answer">
+                  <a href="pdf/razberi/SS32_Data_Sheet.pdf" download>
+                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
+                      Click to Download the SS32X Data Sheet
+                    </button>
+                  </a>
+                  <p>The <strong>SS32X</strong> is a powerful network video recorder (NVR) designed for large surveillance systems with high storage needs. With up to 88TB of storage, it can store large video archives, ensuring long-term retention of high-resolution footage for security compliance or other needs. It features a 32-port Power over Ethernet Plus (PoE+) switch, which powers and connects IP cameras without extra power sources. This reduces installation time and cable clutter, making it ideal for businesses, campuses, and secure facilities. The SS32X also integrates with a Video Management System (VMS) for seamless operation. </p>
+                  <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
+                  <p><strong>Appliance Defense (Cylance)</strong> is an  antimalware solution that leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time. Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</p>
+                  <p><strong>The most relevant SS32X server switch specs are:</strong></p>
+                  <li>32-port PoE switch</li>
+                  <li>Intel i5 processor</li>
+                  <li>Two M.2 SSDs with RAID 1</li>
+                  <li>RAM: 16GB, 32 GB</li>
+                  <li>Up to 88TB of storage</li>
+                  <li>GPU: GPU-T400 or GPU-T1000</li>
+                  <li>Operating System: Windows 10, Windows 11, Windows Server 2019, or Windows Server 2022</li>
+                  <li>RAID: 0, 1, 5, 6, or 10</li>
+                  <li>Available in long chassis with 'LX' in the part number</li>
+                  <li>Available as 2U with '2U' in the part number</li>
+                  <p><strong>The default configurations of the SS32X server switch are:</strong></p>
+                  <li>Default switch IP: 192.168.50.1</li>
+                  <li>Default Admin Uplink IP: 192.168.50.19</li>
+                  <li>Default U2 IP: DHCP</li>
+                  <li>Default SFP2 IP: DHCP</li>
+                </div>
               )}
               {selected === "Server" && (
-                <p className="additional-info">
-                  The server provides ample storage space, making it perfect for handling large files, data backups, or running multiple applications with ease. Enjoy better performance and scalability!
-                </p>
+                <div className="faq-answer">
+                   <p>Purchasing a <strong>Razberi recording server</strong> is a smart choice for reliable, scalable, high-performance video storage. Dell PowerEdge servers offer RAID configurations for data protection, critical for continuous recording and long-term storage. With support for large drives and SSDs, they handle large video archives while ensuring fast access. Their compatibility with video management software (VMS) makes them ideal for security applications. Remote management tools like Dell <strong>iDRAC</strong> enable easy monitoring and maintenance, reducing downtime. These servers offer the performance, security, and scalability needed for both small and large surveillance systems. They can also include <strong>10 GbE Ethernet or 10GbE SFP+ ports</strong> for faster data rates.</p>
+                   <p>The <strong>Xeon processor</strong> is perfect for managing camera footage with its 24/7 reliability, multiple cores, and ECC memory for error-free operation. It quickly processes video files and offers fast access to stored footage. Xeon CPUs are built for long-term use, making them ideal for continuous security systems. A <strong>dual Xeon setup</strong> doubles processing power, enabling faster video processing, smoother performance, and better multitasking. This setup enhances redundancy, supports more camera streams, and improves video analytics and AI-driven surveillance, making it ideal for high-performance security systems.</p>
+                </div>
               )}
             </div>
           )}
@@ -87,7 +119,7 @@ const Razberi = () => {
           <>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('terminology')}>  Learn about computing. </button>
-              {visibleAnswer === 'terminology' && (
+              {visibleAnswers.has('terminology') && (
                 <div className="faq-answer">
                   <p><strong>CPU (Central Processing Unit):</strong> The central processing unit (CPU) is the primary component of a computer responsible for executing instructions and performing computations. It acts as the brain of the system, handling everything from running operating system processes to executing user applications. The efficiency of a CPU is determined by factors such as clock speed, core count, cache size, and instruction set architecture.</p>
                   <p><strong>CPU Cache (L1, L2, L3):</strong> The CPU cache is a small amount of high-speed memory located within the processor, designed to store frequently accessed data and instructions. L1 cache is the smallest but fastest, situated closest to the processing cores. L2 cache is slightly larger but slower, while L3 cache is the largest and shared among multiple cores, improving overall efficiency by reducing the need to fetch data from main memory.</p>
@@ -158,61 +190,21 @@ const Razberi = () => {
               )}
             </div>
             <PowerOverEthernet />
-              <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('ss32x')}> Why choose an SS32X server switch? </button>
-              {visibleAnswer === 'ss32x' && (
-                <div className="faq-answer">
-                  <a href="pdf/razberi/SS32_Data_Sheet.pdf" download>
-                    <button style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
-                      Click to Download the SS32X Data Sheet
-                    </button>
-                  </a>
-                  <p>The <strong>SS32X</strong> is a powerful and versatile network video recording (NVR) solution, designed specifically for large-scale surveillance systems that require both high storage capacity and efficient power distribution. It comes equipped with a built-in 32-port Power over Ethernet Plus (PoE+) switch, allowing it to power and connect multiple IP cameras without the need for additional power sources or injectors. This simplifies installation and reduces cable clutter, making it an ideal choice for businesses, campuses, and security-conscious facilities. With a maximum storage capacity of up to 88TB, the SS32X can accommodate extensive video archives, ensuring that high-resolution footage is retained for extended periods. This is particularly beneficial for compliance with security regulations or for organizations that require long-term video retention.</p>
-                  <p><strong>The most relevant SS32X server switch specs are:</strong></p>
-                  <li>32-port PoE switch</li>
-                  <li>Intel i5 processor</li>
-                  <li>Two M.2 SSDs with RAID 1</li>
-                  <li>RAM: 16GB, 32 GB</li>
-                  <li>Up to 88TB of storage</li>
-                  <li>GPU: GPU-T400 or GPU-T1000</li>
-                  <li>Operating System: Windows 10, Windows 11, Windows Server 2019, or Windows Server 2022</li>
-                  <li>RAID: 0, 1, 5, 6, or 10</li>
-                  <li>Available in long chassis with 'LX' in the part number</li>
-                  <li>Available as 2U with '2U' in the part number</li>
-                  <p><strong>The default configurations of the SS32X server switch are:</strong></p>
-                  <li>Default switch IP: 192.168.50.1</li>
-                  <li>Default Admin Uplink IP: 192.168.50.19</li>
-                  <li>Default U2 IP: DHCP</li>
-                  <li>Default SFP2 IP: DHCP</li>
-                  <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
-                  <p><strong>Appliance Defense (Cylance)</strong> is an  antimalware solution that leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time. Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</p>
-                </div>
-              )}
-            </div>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('dell')}>  Why choose a Razberi recording server? </button>
-              {visibleAnswer === 'dell' && (
+              <button className="faq-question" onClick={() => toggleAnswer('RDP')}>  How to Set Up a Remote Desktop Connection to a Server.  </button>
+              {visibleAnswers.has('RDP') && (
                 <div className="faq-answer">
-                  <p>Purchasing a <strong>Razberi recording server</strong> for storing camera footage is a smart investment due to its reliability, scalability, and enterprise-grade features designed for high-performance storage. The Dell PowerEdge servers offer robust RAID configurations, ensuring data redundancy and protection against drive failures, which is crucial for surveillance systems that require continuous recording and long-term storage. With support for large-capacity hard drives and SSDs, the servers can accommodate extensive video archives while maintaining fast access speeds. Additionally, their compatibility with video management software (VMS) makes them an ideal choice for security applications. Advanced remote management tools, such as Dell iDRAC, allow for efficient monitoring and maintenance, reducing downtime and ensuring smooth operation. Whether for small businesses or large-scale surveillance deployments, the servers provides the performance, security, and expandability needed to handle high-resolution camera footage effectively. The core servers have the option of including <strong>10 GbE Ethernet ports or 10GbE SFP+ ports</strong> for greater data rates.</p>
-                  <p>The <strong>Xeon processor</strong> is a great choice for storing and managing camera footage. Built for 24/7 use, it ensures smooth performance even with heavy workloads. With multiple cores and threads, it can process video files quickly, while ECC memory support helps prevent errors, keeping the footage safe and accurate. Its large cache and fast memory speeds allow for quick access to stored video. Unlike regular processors, Xeon CPUs are made for reliability and long-term use, making them perfect for security systems that need to run without interruption. A <strong>dual Xeon processor</strong> setup is ideal for storing and managing camera footage because it doubles the processing power, allowing for faster video processing, smoother performance, and better multitasking. With two CPUs, the server can handle more camera streams at once, ensuring high-quality recording and playback without lag. It also improves redundancy and reliability, so if one processor is overloaded, the other can help manage the workload. Additionally, more CPU cores and threads mean better support for advanced video analytics, AI-driven surveillance, and large-scale data storage, making a dual Xeon setup perfect for high-performance security systems.</p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('RDP')}>  I Wabt to Set Up a Remote Desktop Connection.  </button>
-              {visibleAnswer === 'RDP' && (
-                <div className="faq-answer">
-                  <p><strong>[1] Enable RDP in the server's settings.</strong></p>
-                  <p><strong>[2] Connect a laptop to a NIC on the server.</strong></p>
-                  <p><strong>[3] Open the Remote Desktop Connection software on the laptop.</strong></p>
-                  <p><strong>[4] Enter the IP address of the server's NIC.</strong></p>
-                  <p><strong>[5] Enter the Windows username and password.</strong></p>
+                  <p>[1] Enable Remote Desktop in the server's settings.</p>
+                  <p>[2] Connect a laptop to a NIC on the server.</p>
+                  <p>[3] Open the Remote Desktop Connection software on the laptop.</p>
+                  <p>[4] Enter the IP address of the server's NIC.</p>
+                  <p>[5] Enter the Windows username and password.</p>
                 </div>
               )}
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('lost-windows-password')}> I Forgot the Windows Password. </button>
-              {visibleAnswer === 'lost-windows-password' && (
+              {visibleAnswers.has('lost-windows-password') && (
                 <div className="faq-answer">
                   <p><strong>There is no way to reset the Windows password. A recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</strong></p>
                 </div>
@@ -220,24 +212,45 @@ const Razberi = () => {
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('registration')}> I Want to Skip the Registration on My Server. </button>
-              {visibleAnswer === 'registration' && (
+              {visibleAnswers.has('registration') && (
                 <div className="faq-answer">
                   <p><strong>While on the registration page, hold down: Ctrl + Shift + Alt + F11.</strong></p>
                 </div>
               )}
             </div>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('camera-defense')}> How do I Set Up CameraDefense? </button>
-              {visibleAnswer === 'camera-defense' && (
+              <button className="faq-question" onClick={() => toggleAnswer('camera-defense')}> Setting Up CameraDefense. </button>
+              {visibleAnswers.has('camera-defense') && (
                 <div className="faq-answer">
-                  <p><strong>Attach CameraDefense pictures here...</strong></p>
+                  <p><strong>Device Binding</strong></p>
+                  <li>Master Device Binding: Enable or Disable All</li>
+                  <li>Bind a specific port to the MAC address of the connected device.</li>
+                  <p><strong>Device Groups</strong></p>
+                  <li>A device group is a set of similar devices assigned the same security policies. By default, all active ports are assigned to the "Cameras" device group. If cameras are the only devices connected to the SSIQ then hit "Save" to save the settings, otherwise:</li>
+                  <li>Create a new device group or modify existing device group(s) giving each device group a unique name.</li>
+                  <li>Add or modify the ports to be associated with each device group.</li>
+                  <li>Review all changes and then hit "Save" to save the settings.</li>
+                  <li>Note: Deleting an existing device group removes its firewall and whitelist settings. Changing the name of an existing device group causes that device group to be deleted and a new device group to be created.</li>
+                  <p><strong>Firewall</strong></p>
+                  <li>Use the firewall feature to limit traffic to video services and to disable discovery services. For each device group:</li>
+                  <li>Select HTTP, HTTPS, and RTSP (Real-Time Streaming Protocol) services for device groups with cameras.</li>
+                  <li>Disable discovery services to prevent cyber attackers from finding devices: Ping, DHCP, NTP, Telnet, DNS, FTP, TFTP, SSH, SMTP, Bonjour</li>
+                  <li>Allow additional services as needed providing the name, protocol, and port.</li>
+                  <p><strong>Internet Protection</strong></p>
+                  <li>A whitelist limits traffic to specified networks by device group. The default option of Internet Protection prevents devices from communicating over routable networks such as the Internet.</li>
+                  <li>Use Internet Protection to prevent devices from reaching routable networks, otherwise</li>
+                  <li>Specify the allowed networks using sub-masks and/or individual IP addresses.</li>
+                  <li>Enable alerts for devices that attempt to communicate outside of the whitelist.</li>
+                  <p><strong>Password Protection</strong></p>
+                  <li>Enable Password Monitoring: This feature monitors your devices to ensure they are not using default, user prohibited, or common passwords found on the NIST Bad Password List. By default, Password Protection is enabled.</li>
+                  <li>Device default and common passwords are tested by default. You can optionally add additional prohibited passwords below. (Limit 48)</li>
                 </div>
               )}
             </div>
             <div className="faq-list">
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('no-power-ss32x')}> Troubleshooting power issues on an SS32X. </button>
-              {visibleAnswer === 'no-power-ss32x' && (
+              {visibleAnswers.has('no-power-ss32x') && (
                 <div className="faq-answer">
                   <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
                   <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
@@ -256,7 +269,7 @@ const Razberi = () => {
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('no-power-core')}> Troubleshooting power issues on a Core Server. </button>
-              {visibleAnswer === 'no-power-core' && (
+              {visibleAnswers.has('no-power-core') && (
                 <div className="faq-answer">
                   <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
                   <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
@@ -273,64 +286,76 @@ const Razberi = () => {
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> Troubleshooting PoE switch issues. </button>
-              {visibleAnswer === 'no-poe' && (
+              {visibleAnswers.has('no-poe') && (
                 <div className="faq-answer">
-                  <p><strong>[1] Confirm the powered devices are 802.3af/at compliant.</strong></p>
-                  <p><strong>[2] Ensure the switch is not producing more PoE than the PoE budget allows.</strong></p>
-                  <p><strong>[3] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</strong></p>
-                  <p><strong>[4] In the command prompt on the server, attempt pinging the switch at 192.168.50.1.</strong></p>
+                  <p>[1] Verify the unit is receiving 100-120VAC.</p>
+                  <p>[2] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</p>
+                  <p>[3] Confirm the powered devices are 802.3af/at compliant.</p>
+                  <p>[4] Ensure the switch is not producing more PoE than the PoE budget allows.</p>
+                  <p>[5] Disable and enable PoE on the port.</p>
+                  <p>[6] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</p>
+                  <p>[7] Attempt pinging the switch from the command prompt on the server.</p>
                 </div>
               )}
             </div>
             <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('failed-disk')}> Troubleshooting a failed hard drive. </button>
-              {visibleAnswer === 'failed-disk' && (
+              <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID or HDD issues. </button>
+              {visibleAnswers.has('RAID') && (
                 <div className="faq-answer">
-                  <p><strong>[1] Confirm the hard drive has failed in one of the following:</strong></p>
+                  <p><strong>[1] Confirm that the HDD or RAID has failed and what the current RAID configuration is using one of the following:</strong></p>
+                  <li>Razberi Monitor Cloud</li>
+                  <li>Razberi Monitor: System Info</li>
                   <li>Device Manager</li>
-                  <li>Diskpart</li>
                   <li>Intel Rapid Storage Technology</li>
                   <li>iDRAC</li>
-                  <p><strong>[2] Contact technical support to determine if the unit is under warranty. If so, we can send out a replacement hard drive and provide assistance with reconfiguring the RAID array as needed. If the unit is not under warranty, consider purchasing a new hard drive for replacement, and we can provide assistance with reconfiguring the RAID array as needed.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID issues. </button>
-              {visibleAnswer === 'RAID' && (
-                <div className="faq-answer">
-                  <p><strong>If the RAID array has failed: </strong>Delete the virtual disk, create a new virtual disk, and format the volume as NTFS using one of the following.</p>
+                  <li>Diskpart</li>
+                  <li>BIOS</li>
+                  <p><strong>[2] If a HDD has failed, contact technical support to determine if the unit is under warranty. If so, a replacement HDD can be sent. Otherwise, a new HDD will need to be purchased. Please note:</strong></p>
+                  <li>RAID 0 requires at least 2 drives. One drive failing corrupts the entire RAID.</li>
+                  <li>RAID 1 requires at least 2 drives and allows for the loss of half. Replacing the drive(s) should automatically rebuild the RAID.</li>
+                  <li>RAID 5 requires at least 3 drives and allows for the loss of one. Replacing the drive should automatically rebuild the RAID.</li>
+                  <li>RAID 6 requires at least 4 drives and allows for the loss of two. Replacing the drive(s) should automatically rebuild the RAID.</li>
+                  <li>RAID 10 requires at least 4 drives and allows for the loss of half. Replacing the drive(s) should automatically rebuild the RAID.</li>
+                  <p><strong>[3] If the RAID is corrupted, delete the virtual disk, create a new virtual disk, and format the volume as NTFS using the following: </strong></p>
+                  <li>BIOS</li>
                   <li>Disk Management</li>
                   <li>Intel Rapid Storage Technology</li>
                   <li>iDRAC</li>
-                  <li>BIOS</li>
-                  <p><strong>RAID 0:</strong> Requires at least 2 drives. One drive failing corrupts the entire RAID.</p>
-                  <p><strong>RAID 1:</strong> Requires at least 2 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
-                  <p><strong>RAID 5:</strong> Requires at least 3 drives and allows for the loss of one. Replacing the drive will automatically rebuild the RAID.</p>
-                  <p><strong>RAID 6:</strong> Requires at least 4 drives and allows for the loss of two. Replacing the drive(s) will automatically rebuild the RAID.</p>
-                  <p><strong>RAID 10:</strong> Requires at least 4 drives and allows for the loss of half. Replacing the drive(s) will automatically rebuild the RAID.</p>
                 </div>
               )}
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('NIC')}> Troubleshooting NIC issues. </button>
-              {visibleAnswer === 'NIC' && (
+              {visibleAnswers.has('NIC') && (
                 <div className="faq-answer">
                   <p>[1] Enter "View network status and tasks" in the Windows search box.</p>
-                  <p>[2] Disable and enable the NIC</p>
-                  <p>[3] Diagnose the NIC connection</p>
-                  <p>[4] In Device Manager, verify the NIC has the necessary drivers.</p>
+                  <p>[2] Click "Change adapter settings".</p>
+                  <p>[3] Disable and enable the NIC</p>
+                  <p>[4] Diagnose the NIC connection</p>
+                  <p>[5] In Device Manager, verify the NIC has the necessary drivers.</p>
                 </div>
               )}
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('windows-os')}> Troubleshooting Windows OS issues. </button>
-              {visibleAnswer === 'windows-os' && (
+              {visibleAnswers.has('windows-os') && (
                 <div className="faq-answer">
-                  <li>Event Viewer</li>
-                  <li>Task Manager</li>
-                  <li>Razberi Monitor or iDRAC alert logs</li>
-                  <li>OS recovery</li>
+                  <p>[1] Review the Razberi Monitor Alert Logs.</p>
+                  <p>[2] Review the errors in Event Viewer.</p>
+                  <p>[3] Review the iDRAC alert logs</p>
+                  <p>[4] Review the CPU utilization and processes in Task Manager</p>
+                  <p>[5] Perform a recovery of the operaitng system.</p>
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button className="faq-question" onClick={() => toggleAnswer('switch')}>  Pinging the Switch From a Laptop  </button>
+              {visibleAnswers.has('switch') && (
+                <div className="faq-answer">
+                  <p><strong>On an SSIQ24 unit:</strong></p>
+                  <li>The switch can be pinged from any port on the switch.</li>
+                  <li>The switch can be pinged from the U1 Uplink port.</li>
+                  <li>The switch cannot be pinged from the U2 Uplink port.</li>
                 </div>
               )}
             </div>

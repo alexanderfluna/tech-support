@@ -9,7 +9,7 @@ import '../../styles/Global.css';
 import '../../styles/Pages.css';
 
 const Wireless = () => {
-  const [visibleAnswer, setVisibleAnswer] = useState(null);
+  const [visibleAnswers, setvisibleAnswerss] = useState(new Set());
   const [showTable, setShowTable] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -60,8 +60,16 @@ const Wireless = () => {
   }, []);
 
   const toggleAnswer = (questionId) => {
-    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
-  };
+    setvisibleAnswerss(prevAnswers => {
+        const newAnswers = new Set(prevAnswers);
+        if (newAnswers.has(questionId)) {
+            newAnswers.delete(questionId);
+        } else {
+            newAnswers.add(questionId);
+        }
+        return newAnswers;
+    });
+};
 
   const toggleTable = () => {
     setShowTable(!showTable);
@@ -252,7 +260,7 @@ const Wireless = () => {
             <div className="faq-list">
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('wireless')}> Learn about wireless. </button>
-              {visibleAnswer === 'wireless' && (
+              {visibleAnswers.has('wireless') && (
                 <div className="faq-answer">
                   <p>The <strong>Extended Service Set Identifier (ESSID)</strong> is the broadcast name of a wireless network, allowing devices to identify and connect to the correct access point. It serves as a unique identifier within a wireless network, ensuring seamless roaming between multiple access points when configured correctly.</p>
                   <p>The <strong>Pre-Shared Key (PSK)</strong> is the password required to join a secured wireless network. This key is an essential component of WPA and WPA2 encryption protocols, ensuring that only authorized users can access the network. A strong PSK helps protect against unauthorized access and potential security threats.</p>
@@ -336,7 +344,7 @@ const Wireless = () => {
             {<OSI />}
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('netwave-configurations')}> How do I configure Comnet's wireless radios? </button>
-              {visibleAnswer === 'netwave-configurations' && (
+              {visibleAnswers.has('netwave-configurations') && (
                 <div className="faq-answer">
                   <p><strong>Click the link to <a href="pdf/Wireless/NetWave.pdf" download>download Comnet's wireless configuration documentation</a>.</strong></p>
               </div>
@@ -344,7 +352,7 @@ const Wireless = () => {
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('netwave-specs')}> How do I find the specs of a Comnet wireless radio? </button>
-              {visibleAnswer === 'netwave-specs' && (
+              {visibleAnswers.has('netwave-specs') && (
                 <div className="faq-answer">
                   <p><strong>Enter the radio's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> and view the data sheet.</strong></p>
                 </div>
@@ -352,7 +360,7 @@ const Wireless = () => {
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('security')}> What security features does a Comnet wireless radio provide? </button>
-              {visibleAnswer === 'security' && (
+              {visibleAnswers.has('security') && (
                 <div className="faq-answer">
                   <p><strong>[1] The access point and client(s) are bound together by a shared ESSID and PSK.</strong></p>
                   <p><strong>[2] It is recommended to change the IP addresses, ESSID and PSK of the wireless radios as this information is public.</strong></p>
@@ -363,7 +371,7 @@ const Wireless = () => {
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('no-power-light')}> Troubleshooting a wireless radio that will not power on. </button>
-              {visibleAnswer === 'no-power-light' && (
+              {visibleAnswers.has('no-power-light') && (
                 <div className="faq-answer">
                   <p><strong>[1] Try using a hardened IEEE 802.3af/at compliant PoE injector to power the radio.</strong></p>
                   <p>[1.1] Replace the Ethernet cable to rule it out.</p>
@@ -383,7 +391,7 @@ const Wireless = () => {
             </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('no-communication')}> Troubleshooting a wireless radio that is losing connection. </button>
-              {visibleAnswer === 'no-communication' && (
+              {visibleAnswers.has('no-communication') && (
                 <div className="faq-answer">
                   <p><strong>[1] Default the wireless radio and reconfigure it.</strong></p>
                   <li>Click the link to <a href="pdf/Wireless/NetWave.pdf" download>download Comnet's wireless configuration documentation</a>.</li>   
@@ -404,7 +412,6 @@ const Wireless = () => {
                   <p><strong>[14]If there are two radios mounted on the same pole:</strong></p>
                   <li>If the radios are facing the same direction, ensure there is at least a 3 meter distance between.</li>
                   <li>If the radios are facing opposite directions, ensure there is at least a 3 feet distance between.</li>
-                  <img></img>
                 </div>
               )}
             </div>

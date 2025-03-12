@@ -7,7 +7,6 @@ import '../styles/Global.css';
 import '../styles/Pages.css';
 
 const CardCage = () => {
-  const [visibleAnswer, setVisibleAnswer] = useState(null);
   const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
@@ -35,10 +34,6 @@ const CardCage = () => {
     setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
-
-  const toggleAnswer = (questionId) => {
-    setVisibleAnswer(visibleAnswer === questionId ? null : questionId);
-  };
 
   const toggleTable = () => {
     setShowTable(!showTable);
