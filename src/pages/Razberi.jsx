@@ -78,25 +78,10 @@ const Razberi = () => {
                       Click to View the SS32X Data Sheet
                     </button>
                   </a>
-                  <p>The <strong>SS32X</strong> is a powerful network video recorder (NVR) designed for large surveillance systems with high storage needs. With up to 88TB of storage, it can store large video archives, ensuring long-term retention of high-resolution footage for security compliance or other needs. It features a 32-port Power over Ethernet Plus (PoE+) switch, which powers and connects IP cameras without extra power sources. This reduces installation time and cable clutter, making it ideal for businesses, campuses, and secure facilities. The SS32X also integrates with a Video Management System (VMS) for seamless operation. </p>
+                  <p>The <strong>SS32X server switch</strong> is a high-performance networking device designed for enterprise environments. It features a <strong>32-port PoE switch,</strong> powered by an <strong>Intel I5 processor</strong> for reliable performance. It includes two <strong>M.2 SSDs</strong> in RAID 1 for redundancy, with up to <strong>88TB</strong> of total capacity with <strong>RAID</strong> configurations of 0, 1, 5, 6, or 10 for storage flexibility. Users can choose between <strong>16GB or 32GB of RAM</strong>, and GPU options include the <strong>GPU-T400 or GPU-T1000</strong> for graphical processing. It supports Windows 10, Windows 11, Windows Server 2019, and Windows Server 2022. The SS32X is also available in two form factors: a <strong>long chassis</strong> version, marked with "LX" in the part number, and a <strong>2U rack-mounted</strong> model, identified by "2U."</p>
+                  <p>By default, the SS32X server switch is configured for easy deployment. The <strong>switch IP</strong> is set to 192.168.50.1, with a dedicated <strong>Admin Uplink IP</strong> of 192.168.50.19 for management access. The <strong>U2</strong> port is set to receive IP addresses via DHCP, allowing for seamless integration into dynamic network environments.</p>
                   <p><strong>Camera Defense</strong> allows the binding of ports to the MAC address of connected devices, disabling unused ports to reduce vulnerabilities. The firewall can be configured to allow only essential services or protocols, removing unnecessary ones. Network traffic can be restricted to known networks or approved devices with fixed IP addresses through whitelisting. It enforces secure password policies, disallowing default, prohibited, or common passwords.</p>
                   <p><strong>Appliance Defense (Cylance)</strong> is an  antimalware solution that leverages artificial intelligence and machine learning to build predictive models, enabling it to detect even previously unknown malware in real time. Cylance is fully integrated into Razberi Monitor, providing real-time notifications on malware protection through the dashboard.</p>
-                  <p><strong>The most relevant SS32X server switch specs are:</strong></p>
-                  <li>32-port PoE switch</li>
-                  <li>Intel i5 processor</li>
-                  <li>Two M.2 SSDs with RAID 1</li>
-                  <li>RAM: 16GB, 32 GB</li>
-                  <li>Up to 88TB of storage</li>
-                  <li>GPU: GPU-T400 or GPU-T1000</li>
-                  <li>Operating System: Windows 10, Windows 11, Windows Server 2019, or Windows Server 2022</li>
-                  <li>RAID: 0, 1, 5, 6, or 10</li>
-                  <li>Available in long chassis with 'LX' in the part number</li>
-                  <li>Available as 2U with '2U' in the part number</li>
-                  <p><strong>The default configurations of the SS32X server switch are:</strong></p>
-                  <li>Default switch IP: 192.168.50.1</li>
-                  <li>Default Admin Uplink IP: 192.168.50.19</li>
-                  <li>Default U2 IP: DHCP</li>
-                  <li>Default SFP2 IP: DHCP</li>
                 </div>
               )}
               {selected === "Server" && (
