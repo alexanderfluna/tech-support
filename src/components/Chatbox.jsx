@@ -45,7 +45,7 @@ const Chatbox = () => {
       {isOpen && (
         <div className="chatbox-popup">
           <div className="chatbox-header">
-            <span>Comnet Bot</span>
+            <span>🤖 Comnet Bot</span>
             <button onClick={closeChat} className="close-button">X</button>
           </div>
 
