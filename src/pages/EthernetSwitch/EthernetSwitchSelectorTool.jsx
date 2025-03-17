@@ -143,7 +143,7 @@ const EthernetSwitchSelectorTool = () => {
       {Model: "CNGE24FX12TX12MS/12", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "12x GE", Copper_Ports: "12x GE", Combo_Ports: "0", PoE: "No"},
       {Model: "CNGE24FX12TX12MSPOE", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "12x GE", Copper_Ports: "12x GE", Combo_Ports: "0", PoE: "30W"},
       {Model: "CNGE24FX12TX12MSPOE/48", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "12x GE", Copper_Ports: "12x GE", Combo_Ports: "0", PoE: "30W"},
-      {Model: "CNGE26FX2TX24MSP", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "2x GE", Copper_Ports: "22x GE", Combo_Ports: "2x GE", PoE: "30W"},
+      {Model: "CNGE26FX2TX24MSP", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "2x GE", Copper_Ports: "24x GE", Combo_Ports: "2x GE", PoE: "30W"},
       {Model: "CNGE28FX4TX24MS2", Hardened: "Yes", Managed: "Yes", Fiber_Ports: "4x GE", Copper_Ports: "24x GE", Combo_Ports: "0", PoE: "No"},
       {Model: "CNFE4SMS", Hardened: "Yes", Managed: "No", Fiber_Ports: "0", Copper_Ports: "4x FE", Combo_Ports: "0", PoE: "No"},
       {Model: "CNFE4SMSPOE", Hardened: "Yes", Managed: "No", Fiber_Ports: "0", Copper_Ports: "4x FE", Combo_Ports: "0", PoE: "30W"},
