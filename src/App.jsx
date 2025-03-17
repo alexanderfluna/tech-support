@@ -13,6 +13,7 @@ import Razberi from './pages/Razberi';
 import SFP from './pages/SFP';
 import EthernetSwitch from './pages/EthernetSwitch/EthernetSwitch';
 import Wireless from './pages/Wireless/Wireless';
+import TechSupport from './tech-support/TechSupport';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/tech-support/sfp" element={<SFP />} />
         <Route path="/tech-support/ethernet-switch" element={<EthernetSwitch />} />
         <Route path="/tech-support/wireless-ethernet" element={<Wireless />} />
+        <Route path="/TechSupport" element={<TechSupport />} />
       </Routes>
     </Router>
   );
