@@ -6,31 +6,6 @@
   flex-direction: column;
 }
 
-.purple-button {
-  display: inline-block;
-  width: 75%;
-  padding: 40px;
-  margin: 30px auto;
-  font-size: 1.5rem;
-  color: black;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 10px rgba(106, 13, 173, 0.4);
-  text-align: left;
-}
-
-.purple-button:hover {
-  background: linear-gradient(135deg, #d1a3ff, #b57edc);
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(75, 0, 130, 0.5);
-}
-
-.purple-button:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 8px rgba(75, 0, 130, 0.4);
-}
-
 .table-container {
   margin-top: 20px;
   overflow-x: auto;
@@ -87,8 +62,8 @@
 
 .faq-answer {
   margin-top: 10px;
-  padding: 0 500px;
   text-align: left;
+  padding: 0 50px;
 }
 
 .filter-options {
@@ -186,6 +161,31 @@
   margin-top: 10px;
   font-size: 18px;
   color: black;
+}
+
+.purple-button {
+  display: inline-block;
+  width: 75%;
+  padding: 40px;
+  margin: 30px auto;
+  font-size: 1.5rem;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(106, 13, 173, 0.4);
+  text-align: left;
+}
+
+.purple-button:hover {
+  background: linear-gradient(135deg, #d1a3ff, #b57edc);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(75, 0, 130, 0.5);
+}
+
+.purple-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(75, 0, 130, 0.4);
 }
 
 @media (max-width: 1400px) {

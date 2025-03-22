@@ -15,6 +15,13 @@
   display: flex;
 }
 
+.logo-img {
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+}
+
+
 .nav-left .logo-img {
   cursor: pointer;
   height: 180px;
