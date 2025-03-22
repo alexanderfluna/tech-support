@@ -1,11 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  
   return (
     <nav className="navbar">
       <img 
         className="logo-img" 
-        src="https://acresecurity.com/hubfs/Website/Global/Logos/COMNET%20by%20acre-01.svg" 
+        src="https://www.sourcesecurity.com/img/news/920/comnet-unveils-razberi-monitor-software-for-cyber-attacks-protection-920x533.jpg" 
         alt="COMNET by acre" 
         loading="eager" 
         width="165" 
@@ -13,6 +16,9 @@ const Navbar = () => {
         onClick={() => {window.location.reload()}}
         style={{height: "100px"}}
       />
+      <button onClick={() => {navigate('/TechSupport')}}>
+        CHANGE LAYOUT
+      </button>
     </nav>
   );
 };

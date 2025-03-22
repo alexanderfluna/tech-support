@@ -367,8 +367,6 @@ const EthernetSwitchSelectorTool = () => {
 
   return (
     <div>
-      <h2 className="faq-title">Media Converter</h2>
-      <p style={{fontWeight: "bold"}}>______________________________________</p>
       <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our Media Converter Selector Tool filters Comnet's media converters by multi-rate, data rate, PoE, type of fiber, number of fiber strands, optical connector, tranmission wavelength, Single/Dual/Quad, package, and operating power.</p>

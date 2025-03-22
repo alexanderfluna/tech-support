@@ -165,8 +165,6 @@ const EthernetSwitchSelectorTool = () => {
 
   return (
     <div className="faq-list">
-      <h1 className="faq-title">Ethernet Switch</h1>
-      <p style={{fontWeight: "bold"}}>______________________________________</p>
     <button className="purple-button" onClick={toggleTable}>
         <h1>Selector Tool</h1>
         <p>Our Ethernet Switch Selector Tool filters Comnet's switches by hardened, managed, PoE, number of copper ports, number of fiber ports, and number of combo ports.</p>

@@ -1,28 +1,99 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Chatbox from './components/Chatbox';
+import EthernetSwitch from './pages/EthernetSwitch/EthernetSwitch';
 import EthernetSwitchProducts from "./pages/EthernetSwitch/EthernetSwitchProducts";
-import EthernetSwitchSelectorTool from './pages/EthernetSwitch/EthernetSwitchSelectorTool';
-import EthernetSwitchFAQ from './pages/EthernetSwitch/EthernetSwitchFAQ';
+import MediaConverter from "./pages/MediaConverter/MediaConverter";
 import MediaConverterProducts from "./pages/MediaConverter/MediaConverterProducts";
-import MediaConverterSelectorTool from "./pages/MediaConverter/MediaConverterSelectorTool";
-import MediaConverterFAQ from "./pages/MediaConverter/MediaConverterFAQ";
-import WirelessProducts from "./pages/Wireless/WirelessProducts";
+import SFP from "./pages/SFP/SFP"; 
+import SFPProducts from "./pages/SFP/SFPProducts";
 import Wireless from "./pages/Wireless/Wireless";
+import WirelessProducts from "./pages/Wireless/WirelessProducts";
+import EthernetExtender from "./pages/EthernetExtender/EthernetExtender";
+import EthernetExtenderProducts from "./pages/EthernetExtender/EthernetExtenderProducts";
+import ContactClosure from "./pages/ContactClosure/ContactClosure";
+import ContactClosureProducts from "./pages/ContactClosure/ContactClosureProducts";
+import SerialData from "./pages/SerialData/SerialData";
+import SerialDataProducts from "./pages/SerialData/SerialDataProducts";
+import Wiegand from "./pages/Wiegand/Wiegand";
+import WiegandProducts from "./pages/Wiegand/WiegandProducts";
+import PowerSupply from "./pages/PowerSupply/PowerSupply";
+import PowerSupplyProducts from "./pages/PowerSupply/PowerSupplyProducts";
+import PoeInjector from "./pages/PoeInjector/PoeInjector";
+import PoeInjectorProducts from "./pages/PoeInjector/PoeInjectorProducts";
+import Enclosures from "./pages/Enclosure/Enclosures";
+import EnclosureProducts from "./pages/Enclosure/EnclosureProducts";
+
+const productsConfig = {
+  EthernetSwitch: {
+    products: EthernetSwitchProducts,
+    selectorTool: EthernetSwitch,
+    faq: EthernetSwitch,
+  },
+  MediaConverter: {
+    products: MediaConverterProducts,
+    selectorTool: MediaConverter,
+    faq: MediaConverter,
+  },
+  Wireless: {
+    products: WirelessProducts,
+    selectorTool: Wireless,
+    faq: Wireless,
+  },
+  SFP: {
+    products: SFPProducts,
+    selectorTool: SFP,
+    faq: SFP,
+  },
+  EthernetExtender: {
+    products: EthernetExtenderProducts,
+    selectorTool: EthernetExtender,
+    faq: EthernetExtender,
+  },
+  ContactClosure: {
+    products: ContactClosureProducts,
+    selectorTool: ContactClosure,
+    faq: ContactClosure,
+  },
+  SerialData: {
+    products: SerialDataProducts,
+    selectorTool: SerialData,
+    faq: SerialData,
+  },
+  Wiegand: {
+    products: WiegandProducts,
+    selectorTool: Wiegand,
+    faq: Wiegand,
+  },
+  PowerSupply: {
+    products: PowerSupplyProducts,
+    selectorTool: PowerSupply,
+    faq: PowerSupply,
+  },
+  PoeInjector: {
+    products: PoeInjectorProducts,
+    selectorTool: PoeInjector,
+    faq: PoeInjector,
+  },
+  Enclosure: {
+    products: EnclosureProducts,
+    selectorTool: Enclosures,
+    faq: Enclosures,
+  },
+};
 
 const Home = () => {
   const [modelName, setModelName] = useState(null);
   const [mainContent, setMainContent] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [categoryContent, setCategoryContent] = useState(null);
 
   useEffect(() => {
     setMainContent(
       <>
-        <h1>Technical Support</h1>
-        <h2>Thank you for choosing Comnet. Our technical support page offers part number selector tools, answers to frequently asked questions, and how to troubleshoot common issues.</h2>
-        <a href="">Product Selector Tool</a>
+        <h1 style={{ fontSize: "5rem", marginBottom: "20px" }}>Technical Support</h1>
+        <h2 style={{ fontSize: "1.2rem", marginBottom: "30px" }}>Thank you for choosing Comnet. Our technical support page offers part number selector tools, answers to frequently asked questions, and how to troubleshoot common issues.</h2>
+        <h2>The <a href="" style={{ color: "#1a237e", textDecoration: "none", fontWeight: "bold" }}>Product Selector Tool</a> contains the data sheet and installation manual for each unit.</h2>
       </>
     );
   }, []);
@@ -37,116 +108,65 @@ const Home = () => {
     setSearchTerm(searchValue);
 
     if (searchValue) {
-      const filteredEthernet = EthernetSwitchProducts.filter(product =>
-        product.Model.toLowerCase().includes(searchValue.toLowerCase())
+      const allProducts = Object.values(productsConfig).flatMap(
+        (config) => config.products
       );
-      const filteredMediaConverters = MediaConverterProducts.filter(product =>
-        product.Model.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      const filteredWireless = WirelessProducts.filter(product =>
+
+      const filtered = allProducts.filter((product) =>
         product.Model.toLowerCase().includes(searchValue.toLowerCase())
       );
 
-      // Combine all filtered arrays
-      const combinedFiltered = [
-        ...filteredEthernet,
-        ...filteredMediaConverters,
-        ...filteredWireless
-      ];
-      setFilteredProducts(combinedFiltered.slice(0, 5));
+      setFilteredProducts(filtered.slice(0, 5));
     } else {
       setFilteredProducts([]);
     }
   };
 
   const handleProductSelect = (model) => {
-    const selectedEthernetProduct = EthernetSwitchProducts.find(p => p.Model === model);
-    const selectedMediaConverterProduct = MediaConverterProducts.find(p => p.Model === model);
-    const selectedWirelessProduct = WirelessProducts.find(p => p.Model === model);
-
-    if (selectedEthernetProduct) {
-      displayContent(<EthernetSwitchFAQ />, model);
-    } else if (selectedMediaConverterProduct) {
-      displayContent(<MediaConverterFAQ />, model);
-    } else if (selectedWirelessProduct) {
-      displayContent(<Wireless />, model);
+    for (const [category, config] of Object.entries(productsConfig)) {
+      const product = config.products.find((p) => p.Model === model);
+      if (product) {
+        displayContent(<config.faq />, model);
+        return;
+      }
     }
   };
 
   const handleCategorySelect = (category) => {
-    setCategoryContent(category);
-    if (category === 'Ethernet Switch') {
-      displayContent(
-        <>
-          <EthernetSwitchSelectorTool />
-          <EthernetSwitchFAQ />
-        </>
-      );
-    } else if (category === 'Media Converter') {
-      displayContent(
-        <>
-          <MediaConverterSelectorTool />
-          <MediaConverterFAQ />
-        </>
-      );
-    } else if (category === 'Wireless') {
-      displayContent(
-        <>
-          <Wireless />
-        </>
-      );
+    const config = productsConfig[category];
+    if (config) {
+      displayContent(<config.selectorTool />);
+    } else {
+      displayContent(<h2 style={{ color: "#e74c3c" }}>Category Not Found</h2>);
     }
   };
 
   return (
-    <div>
+    <div style={{ fontFamily: "Arial, sans-serif", minHeight: "100vh" }}>
       <Navbar />
-      <div style={{ display: "flex", flexDirection: "row" }}>
-
-        {/* Sidenav */}
-        <div style={{ display: "flex", flexDirection: "column", width: "25%", padding: "10px", backgroundColor: "#f8f9fa", borderRight: "2px solid #ccc" }}>
-          
-          {/* Search box */}
-          <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+      <div style={{ display: "flex", flexDirection: "row", maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", width: "25%", padding: "20px", backgroundColor: "#ffffff", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}>
+          <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px" }}>
             <input
               value={searchTerm}
               onChange={handleSearch}
               placeholder="Enter product number..."
-              style={{ flex: 1, padding: "8px", border: "1px solid #ccc", borderRadius: "4px", marginRight: "5px" }}
+              style={{ flex: 1, padding: "10px", border: "1px solid #bdc3c7", borderRadius: "4px", marginRight: "10px", fontSize: "1rem" }}
             />
-            <button
-              style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff", border: "none", padding: "8px 12px", borderRadius: "4px", cursor: "pointer" }}
-              onClick={() => {
-                const product = [
-                  ...EthernetSwitchProducts,
-                  ...MediaConverterProducts,
-                  ...WirelessProducts
-                ].find(product => product.Model === searchTerm);
-                if (product) {
-                  displayContent(
-                    product.Model.includes("Ethernet") ? <EthernetSwitchFAQ /> :
-                    product.Model.includes("Media Converter") ? <MediaConverterFAQ /> :
-                    <Wireless />,
-                    product.Model
-                  );
-                }
-              }}
-            >
-              Enter
-            </button>
           </div>
 
           {searchTerm && filteredProducts.length > 0 && (
-            <div style={{ marginTop: "10px", maxHeight: "200px" }}>
+            <div style={{ marginTop: "10px", maxHeight: "200px", overflowY: "auto" }}>
               {filteredProducts.map((product, index) => (
                 <div
                   key={index}
                   style={{
-                    padding: "8px",
+                    padding: "10px",
                     backgroundColor: "#f0f0f0",
                     marginBottom: "5px",
                     cursor: "pointer",
-                    borderRadius: "4px"
+                    borderRadius: "4px",
+                    transition: "background-color 0.3s",
                   }}
                   onClick={() => handleProductSelect(product.Model)}
                 >
@@ -156,35 +176,30 @@ const Home = () => {
             </div>
           )}
 
-          {/* Ethernet Switches */}
-          <button
-            style={{ backgroundColor: "#6a0dad", color: "#fff", border: "none", padding: "10px", marginBottom: "5px", cursor: "pointer", borderRadius: "4px" }}
-            onClick={() => handleCategorySelect('Ethernet Switch')}
-          >
-            Ethernet Switch
-          </button>
-
-          {/* Media Converters */}
-          <button
-            style={{ backgroundColor: "#6a0dad", color: "#fff", border: "none", padding: "10px", marginBottom: "5px", cursor: "pointer", borderRadius: "4px" }}
-            onClick={() => handleCategorySelect('Media Converter')}
-          >
-            Media Converter
-          </button>
-
-          {/* Wireless */}
-          <button
-            style={{ backgroundColor: "#6a0dad", color: "#fff", border: "none", padding: "10px", marginBottom: "5px", cursor: "pointer", borderRadius: "4px" }}
-            onClick={() => handleCategorySelect('Wireless')}
-          >
-            Wireless
-          </button>
-
+          {Object.keys(productsConfig).map((category, index) => (
+            <button
+              key={index}
+              style={{ 
+                backgroundColor: "#1a237e", 
+                color: "#fff", 
+                border: "none", 
+                padding: "12px", 
+                marginBottom: "10px", 
+                cursor: "pointer", 
+                borderRadius: "4px", 
+                fontSize: "1rem", 
+                transition: "background-color 0.3s",
+                background: "linear-gradient(135deg,rgb(35, 87, 150),rgb(158, 158, 158))"
+              }}
+              onClick={() => handleCategorySelect(category)}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
-        {/* Main Content */}
-        <div className="mainContent" style={{ border: "1px solid #ccc", width: "75%", textAlign: "center", backgroundColor: "#fff", borderRadius: "5px" }}>
-          <div style={{ fontSize: "36px", fontWeight: "bold" }}>{modelName}</div>
+        <div className="mainContent" style={{ width: "75%", padding: "20px", backgroundColor: "#ffffff", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", marginLeft: "20px" }}>
+          <div style={{ fontSize: "2rem", fontWeight: "bold", color: "#1a237e", marginBottom: "20px" }}>{modelName}</div>
           {mainContent}
         </div>
       </div>

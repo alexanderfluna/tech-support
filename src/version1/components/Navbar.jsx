@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Global.css';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -54,6 +58,9 @@ const Navbar = () => {
           <div className="line"></div>
           <div className="line"></div>
         </div>
+        <button onClick={() => {navigate('/tech-support')}}>
+          CHANGE LAYOUT
+        </button>
       </div>
     </nav>
   );
