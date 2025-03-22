@@ -35,7 +35,7 @@ const productsConfig = {
     selectorTool: MediaConverter,
     faq: MediaConverter,
   },
-  Wireless: {
+  WirelessEthernet: {
     products: WirelessProducts,
     selectorTool: Wireless,
     faq: Wireless,
@@ -193,9 +193,10 @@ const Home = () => {
               }}
               onClick={() => handleCategorySelect(category)}
             >
-              {category}
+              {category.replace(/([a-z])([A-Z])/g, '$1 $2')}
             </button>
           ))}
+
         </div>
 
         <div className="mainContent" style={{ width: "75%", padding: "20px", backgroundColor: "#ffffff", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", marginLeft: "20px" }}>
