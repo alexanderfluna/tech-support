@@ -97,7 +97,14 @@ const Wiegand = () => {
   return (
     <div>
       <main className="faq-container">
-        <h2 className="faq-title">Wiegand</h2>
+        <h1 style={{
+            fontSize: "3.5rem",
+            fontWeight: "bold",
+            backgroundImage: "linear-gradient(135deg, rgb(54, 126, 208), rgb(77, 77, 77))",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+            textAlign: "center"
+          }}>Wiegand</h1>
         <p style={{fontWeight: "bold"}}>______________________________________</p>        
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>

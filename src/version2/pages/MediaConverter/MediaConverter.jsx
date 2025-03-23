@@ -1,14 +1,22 @@
 import MediaConverterSelectorTool from './MediaConverterSelectorTool';
 import MediaConverterFAQ from './MediaConverterFAQ';
 
+
 const MediaConverter = () => {
   return (
     <div>
       <main className="faq-container">
-        <h2 className="faq-title">Media Converter</h2>
+        <h1 style={{
+            fontSize: "3.5rem",
+            fontWeight: "bold",
+            backgroundImage: "linear-gradient(135deg, rgb(54, 126, 208), rgb(77, 77, 77))",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+            textAlign: "center"
+          }}>Media Converter</h1>
         <p style={{fontWeight: "bold"}}>______________________________________</p>
-        {<MediaConverterSelectorTool />}
-        {<MediaConverterFAQ />}
+        <MediaConverterSelectorTool />
+        <MediaConverterFAQ />
       </main>
     </div>
   );

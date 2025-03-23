@@ -10,6 +10,8 @@ import SFPProducts from "./pages/SFP/SFPProducts";
 import Wireless from "./pages/Wireless/Wireless";
 import WirelessProducts from "./pages/Wireless/WirelessProducts";
 import EthernetExtender from "./pages/EthernetExtender/EthernetExtender";
+import Razberi from "./pages/Razberi/Razberi";
+import RazberiProducts from "./pages/Razberi/RazberiProducts";  // Import Razberi products
 import EthernetExtenderProducts from "./pages/EthernetExtender/EthernetExtenderProducts";
 import ContactClosure from "./pages/ContactClosure/ContactClosure";
 import ContactClosureProducts from "./pages/ContactClosure/ContactClosureProducts";
@@ -44,6 +46,11 @@ const productsConfig = {
     products: SFPProducts,
     selectorTool: SFP,
     faq: SFP,
+  },
+  RazberiServer: { 
+    products: RazberiProducts,
+    selectorTool: Razberi,
+    faq: Razberi,
   },
   EthernetExtender: {
     products: EthernetExtenderProducts,
@@ -91,9 +98,59 @@ const Home = () => {
   useEffect(() => {
     setMainContent(
       <>
-        <h1 style={{ fontSize: "5rem", marginBottom: "20px" }}>Technical Support</h1>
-        <h2 style={{ fontSize: "1.2rem", marginBottom: "30px" }}>Thank you for choosing Comnet. Our technical support page offers part number selector tools, answers to frequently asked questions, and how to troubleshoot common issues.</h2>
-        <h2>The <a href="" style={{ color: "#1a237e", textDecoration: "none", fontWeight: "bold" }}>Product Selector Tool</a> contains the data sheet and installation manual for each unit.</h2>
+      <div style={{
+          backgroundColor: '#f5f5f5', 
+          width: '75%', 
+          margin: '0 auto', 
+          padding: '40px', 
+          borderRadius: '8px', 
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
+          textAlign: 'center'
+        }}>
+        
+        <h1 style={{
+            fontSize: "3.5rem",
+            fontWeight: "bold",
+            backgroundImage: "linear-gradient(135deg, rgb(35, 87, 150), rgb(158, 158, 158))",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+            textAlign: "center"
+          }}>
+            Technical Support
+        </h1>
+
+        <h2 style={{
+          fontSize: "1.1rem", 
+          color: "#555", 
+          marginBottom: "30px", 
+          lineHeight: "1.6", 
+          fontWeight: "500"
+        }}>
+          Our technical support page offers part number selector tools, answers to frequently asked questions, and how to troubleshoot common issues.
+        </h2>
+
+        <div style={{
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          gap: '20px',
+          flexDirection: 'column',
+        }}>
+          <img
+            src='https://acresecurity.com/hs-fs/hubfs/Landing%20pages/Landing%20Page%20Images/comnet%20by%20acre%20full%20product%20range.png?width=2000&height=1333&name=comnet%20by%20acre%20full%20product%20range.png'
+            alt='Product Selector Tool - ComNet by acre'
+            loading="lazy"
+            style={{
+              width: '100%', 
+              maxWidth: '700px', 
+              height: 'auto', 
+              borderRadius: '8px', 
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
+              marginTop: '20px'
+            }} 
+          />
+        </div>
+      </div> 
       </>
     );
   }, []);
@@ -127,6 +184,7 @@ const Home = () => {
       const product = config.products.find((p) => p.Model === model);
       if (product) {
         displayContent(<config.faq />, model);
+        setSearchTerm(''); // Clear the search input field after selection
         return;
       }
     }
@@ -144,7 +202,7 @@ const Home = () => {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", minHeight: "100vh" }}>
       <Navbar />
-      <div style={{ display: "flex", flexDirection: "row", maxWidth: "1200px", margin: "0 auto", padding: "20px" }}>
+      <div style={{ display: "flex", flexDirection: "row", maxWidth: "1500px", margin: "0 auto", padding: "20px 0px", backgroundColor: '#f5f5f5' }}>
         <div style={{ display: "flex", flexDirection: "column", width: "25%", padding: "20px", backgroundColor: "#ffffff", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}>
           <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px" }}>
             <input
@@ -199,8 +257,7 @@ const Home = () => {
 
         </div>
 
-        <div className="mainContent" style={{ width: "75%", padding: "20px", backgroundColor: "#ffffff", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", marginLeft: "20px" }}>
-          <div style={{ fontSize: "2rem", fontWeight: "bold", color: "#1a237e", marginBottom: "20px" }}>{modelName}</div>
+        <div className="mainContent" style={{ width: "75%", backgroundColor: '#f5f5f5', borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", marginLeft: "20px" }}>
           {mainContent}
         </div>
       </div>

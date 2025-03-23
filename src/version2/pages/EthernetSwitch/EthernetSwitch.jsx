@@ -1,13 +1,18 @@
 import EthernetSwitchSelectorTool from './EthernetSwitchSelectorTool'
 import EthernetSwitchFAQ from './EthernetSwitchFAQ'
-import GoBackButton from '../../components/GoBackButton';
 
 const EthernetSwitch = () => {
   return (
     <div>
       <main className="faq-container">
-        <GoBackButton/>
-        <h1 className="faq-title">Ethernet Switch</h1>
+        <h1 style={{
+            fontSize: "3.5rem",
+            fontWeight: "bold",
+            backgroundImage: "linear-gradient(135deg, rgb(54, 126, 208), rgb(77, 77, 77))",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+            textAlign: "center"
+          }}>Ethernet Switch</h1>
         <p style={{fontWeight: "bold"}}>______________________________________</p>
         {<EthernetSwitchSelectorTool />}
         {<EthernetSwitchFAQ />}
