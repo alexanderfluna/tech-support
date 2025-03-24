@@ -187,22 +187,3 @@
   transform: scale(0.95);
   box-shadow: 0 2px 8px rgba(30, 144, 255, 0.4);
 }
-
-@media (max-width: 1400px) {
-  .faq-answer {
-    padding: 0px 50px;
-  }
-  .selector-button {
-    width: 280px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .faq-answer {
-    padding: 0px 2px;
-  }
-
-  .selector-button {
-    width: 150px;
-  }
-}

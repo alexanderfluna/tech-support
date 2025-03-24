@@ -25,6 +25,7 @@ import PoeInjector from "./pages/PoeInjector/PoeInjector";
 import PoeInjectorProducts from "./pages/PoeInjector/PoeInjectorProducts";
 import Enclosures from "./pages/Enclosure/Enclosures";
 import EnclosureProducts from "./pages/Enclosure/EnclosureProducts";
+import "./styles/Home.css"
 
 const productsConfig = {
   EthernetSwitch: {
@@ -90,7 +91,6 @@ const productsConfig = {
 };
 
 const Home = () => {
-  const [modelName, setModelName] = useState(null);
   const [mainContent, setMainContent] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -156,7 +156,6 @@ const Home = () => {
   }, []);
 
   const displayContent = (content, model) => {
-    setModelName(model);
     setMainContent(content);
   };
 
@@ -200,32 +199,25 @@ const Home = () => {
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", minHeight: "100vh" }}>
+    <div  style={{ fontFamily: "Arial, sans-serif", minHeight: "100vh" }}>
       <Navbar />
-      <div style={{ display: "flex", flexDirection: "row", maxWidth: "1500px", margin: "0 auto", padding: "20px 0px", backgroundColor: '#f5f5f5' }}>
-        <div style={{ display: "flex", flexDirection: "column", width: "25%", padding: "20px", backgroundColor: "#ffffff", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}>
-          <div style={{ display: "flex", flexDirection: "row", marginBottom: "20px" }}>
+      <div  className="main">
+        <div className="search-container">
+          <div className="search-input-container">
             <input
               value={searchTerm}
               onChange={handleSearch}
               placeholder="Enter product number..."
-              style={{ flex: 1, padding: "10px", border: "1px solid #bdc3c7", borderRadius: "4px", marginRight: "10px", fontSize: "1rem" }}
+              className="search-input"
             />
           </div>
 
           {searchTerm && filteredProducts.length > 0 && (
-            <div style={{ marginTop: "10px", maxHeight: "200px", overflowY: "auto" }}>
+            <div className="search-results">
               {filteredProducts.map((product, index) => (
                 <div
                   key={index}
-                  style={{
-                    padding: "10px",
-                    backgroundColor: "#f0f0f0",
-                    marginBottom: "5px",
-                    cursor: "pointer",
-                    borderRadius: "4px",
-                    transition: "background-color 0.3s",
-                  }}
+                  className="search-result-item"
                   onClick={() => handleProductSelect(product.Model)}
                 >
                   {product.Model}
@@ -237,26 +229,13 @@ const Home = () => {
           {Object.keys(productsConfig).map((category, index) => (
             <button
               key={index}
-              style={{ 
-                backgroundColor: "#1a237e", 
-                color: "#fff", 
-                border: "none", 
-                padding: "12px", 
-                marginBottom: "10px", 
-                cursor: "pointer", 
-                borderRadius: "4px", 
-                fontSize: "1rem", 
-                transition: "background-color 0.3s",
-                background: "linear-gradient(135deg,rgb(35, 87, 150),rgb(158, 158, 158))"
-              }}
+              className="category-button"
               onClick={() => handleCategorySelect(category)}
             >
-              {category.replace(/([a-z])([A-Z])/g, '$1 $2')}
+              {category.replace(/([a-z])([A-Z])/g, "$1 $2")}
             </button>
           ))}
-
         </div>
-
         <div className="mainContent" style={{ width: "75%", backgroundColor: '#f5f5f5', borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", marginLeft: "20px" }}>
           {mainContent}
         </div>
