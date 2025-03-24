@@ -14,7 +14,6 @@ const MediaConverter = () => {
             color: "transparent",
             textAlign: "center"
           }}>Media Converter</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <MediaConverterSelectorTool />
         <MediaConverterFAQ />
       </main>

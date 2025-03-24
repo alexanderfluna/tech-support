@@ -119,7 +119,6 @@ const ContactClosure = () => {
             color: "transparent",
             textAlign: "center"
           }}>Contact Closure</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our Contact Closure Selector Tool filters Comnet's contact closure devices by the type of fiber, latching or non-latching, input contact supervision, summary fault relay, number of channels, and bidirectional.</p>

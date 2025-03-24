@@ -82,7 +82,6 @@ const CardCage = () => {
             color: "transparent",
             textAlign: "center"
           }}>Enclosure</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our Enclosure Selector Tool filters Comnet's enclosures by the number of slots, input voltage, output voltage, output power, and power supplies.</p>

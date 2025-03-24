@@ -122,7 +122,6 @@ const EthernetExtender = () => {
             color: "transparent",
             textAlign: "center"
           }}>Ethernet Extender</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our Ethernet Extender Selector Tool filters Comnet's Ethernet extenders by position, number of channels, form factor, type of cable, and whether it can inject PoE.</p>

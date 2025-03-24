@@ -92,7 +92,6 @@ const PowerSupply = () => {
             color: "transparent",
             textAlign: "center"
           }}>Power Supply</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our Power Supply Selector Tool filters Comnet's power supplies by voltage and watts.</p>

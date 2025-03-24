@@ -45,7 +45,6 @@ const Razberi = () => {
             color: "transparent",
             textAlign: "center"
           }}>Razberi Server</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
 
       <button className="purple-button" onClick={toggleSelector}>
         <h1>Selector Tool</h1>

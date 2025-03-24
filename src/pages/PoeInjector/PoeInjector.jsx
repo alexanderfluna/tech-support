@@ -102,7 +102,6 @@ const PoEInjector = () => {
             color: "transparent",
             textAlign: "center"
           }}>PoE Injector</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our PoE injector Selector Tool filters Comnet's PoE inejctors by data rate, IEEE compliance, output power, output voltage, and input voltage.</p>

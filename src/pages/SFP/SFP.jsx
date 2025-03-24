@@ -126,7 +126,6 @@ const SFP = () => {
             color: "transparent",
             textAlign: "center"
           }}>SFP</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our SFP Selector Tool filters Comnet's SFP modules by the data rate, transmission medium, number of fiber strands, optical connector, path length, transmission wavelength, and receiving wavelength.</p>

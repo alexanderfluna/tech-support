@@ -122,7 +122,6 @@ const Wireless = () => {
             color: "transparent",
             textAlign: "center"
           }}>Wireless Ethernet</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
         <h1>Selector Tool</h1>
         <p>Our Wireless Ethernet Selector Tool filters Comnet's wireless radios by quantity, size, beamwidth, and continent.</p>

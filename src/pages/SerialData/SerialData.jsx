@@ -125,7 +125,6 @@ const SerialData = () => {
             color: "transparent",
             textAlign: "center"
           }}>Serial Data</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our Serial Data Selector Tool filters Comnet's serial data devices by the number of fiber strands, the type of fiber, the optical connector, and the package.</p>

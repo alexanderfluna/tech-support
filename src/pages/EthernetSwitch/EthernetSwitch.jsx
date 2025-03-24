@@ -14,7 +14,6 @@ const EthernetSwitch = () => {
             color: "transparent",
             textAlign: "center"
           }}>Ethernet Switch</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>
         {<EthernetSwitchSelectorTool />}
         {<EthernetSwitchFAQ />}
       </main>

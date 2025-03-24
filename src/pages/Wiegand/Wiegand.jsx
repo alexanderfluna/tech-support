@@ -106,7 +106,6 @@ const Wiegand = () => {
             color: "transparent",
             textAlign: "center"
           }}>Wiegand</h1>
-        <p style={{fontWeight: "bold"}}>______________________________________</p>        
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
           <p>Our Wiegand Selector Tool filters Comnet's wiegand devices by the type of fiber and whether a central or remote is needed.</p>
