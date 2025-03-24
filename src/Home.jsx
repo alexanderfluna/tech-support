@@ -98,60 +98,26 @@ const Home = () => {
   useEffect(() => {
     setMainContent(
       <>
-      <div style={{
-          backgroundColor: '#f5f5f5', 
-          width: '75%', 
-          margin: '0 auto', 
-          padding: '40px', 
-          borderRadius: '8px', 
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
-          textAlign: 'center'
-        }}>
-        
-        <h1 style={{
-            fontSize: "3.5rem",
-            fontWeight: "bold",
-            backgroundImage: "linear-gradient(135deg, rgb(35, 87, 150), rgb(158, 158, 158))",
-            WebkitBackgroundClip: "text",
-            color: "transparent",
-            textAlign: "center"
-          }}>
+        <div className="container">
+          <h1 className="title">
             Technical Support
-        </h1>
+          </h1>
 
-        <h2 style={{
-          fontSize: "1.1rem", 
-          color: "#555", 
-          marginBottom: "30px", 
-          lineHeight: "1.6", 
-          fontWeight: "500"
-        }}>
-          Our technical support page offers part number selector tools, answers to frequently asked questions, and how to troubleshoot common issues.
-        </h2>
+          <h2 className="subtitle">
+            Our technical support page offers part number selector tools, answers to frequently asked questions, and how to troubleshoot common issues.
+          </h2>
 
-        <div style={{
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          gap: '20px',
-          flexDirection: 'column',
-        }}>
-          <img
-            src='https://acresecurity.com/hs-fs/hubfs/Landing%20pages/Landing%20Page%20Images/comnet%20by%20acre%20full%20product%20range.png?width=2000&height=1333&name=comnet%20by%20acre%20full%20product%20range.png'
-            alt='Product Selector Tool - ComNet by acre'
-            loading="lazy"
-            style={{
-              width: '100%', 
-              maxWidth: '700px', 
-              height: 'auto', 
-              borderRadius: '8px', 
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
-              marginTop: '20px'
-            }} 
-          />
+          <div className="image-container">
+            <img
+              src='https://acresecurity.com/hs-fs/hubfs/Landing%20pages/Landing%20Page%20Images/comnet%20by%20acre%20full%20product%20range.png?width=2000&height=1333&name=comnet%20by%20acre%20full%20product%20range.png'
+              alt='Product Selector Tool - ComNet by acre'
+              loading="lazy"
+              className="image"
+            />
+          </div>
         </div>
-      </div> 
       </>
+
     );
   }, []);
 
