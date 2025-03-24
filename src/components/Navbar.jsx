@@ -10,7 +10,6 @@ const Navbar = () => {
         alt="COMNET by acre" 
         loading="eager" 
         onClick={() => {window.location.reload()}}
-        style={{height: "120px", width: "200px", paddingLeft: "200px"}}
       />
     </nav>
   );

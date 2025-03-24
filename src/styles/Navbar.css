@@ -1,3 +1,8 @@
+.logo-img {
+    height: 120px;
+    width: 200px;
+}
+
 .logo-img:hover {
     cursor: pointer;
 }
