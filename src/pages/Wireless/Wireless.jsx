@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
 import OSI from '../../relevant-information/OSI';
+import products from './WirelessProducts';
 import '../../styles/Pages.css'
 
 const Wireless = () => {
@@ -23,22 +24,6 @@ const Wireless = () => {
     { standard: '802.11n', frequency: '2.4 GHz / 5 GHz', maxDataRate: '600 Mbps', channelBandwidth: '20/40 MHz', date: '2009' },
     { standard: '802.11ac', frequency: '5 GHz', maxDataRate: '1.3 Gbps', channelBandwidth: '20/40/80/160 MHz', date: '2013' },
     { standard: '802.11ax', frequency: '2.4 GHz / 5 GHz / 6 GHz', maxDataRate: '9.6 Gbps', channelBandwidth: '20/40/80/160 MHz', date: '2019' },
-  ];
-
-  const products = [
-    { model: "NW1", quantity: "Single", size: "Full", beamwidth: "17°", continent: "North America" },
-    { model: "NW1/M", quantity: "Single", size: "Mini", beamwidth: "30°", continent: "North America" },
-    { model: "NW1/M/IA870", quantity: "Single", size: "Mini", beamwidth: "30°", continent: "North America" },
-    { model: "NWK1", quantity: "Kit", size: "Full", beamwidth: "17°", continent: "North America" },
-    { model: "NWK1/M", quantity: "Kit", size: "Mini", beamwidth: "30°", continent: "North America" },
-    { model: "NW2", quantity: "Single", size: "Full", beamwidth: "17°", continent: "Europe" },
-    { model: "NW2/M", quantity: "Single", size: "Mini", beamwidth: "30°", continent: "Europe" },
-    { model: "NWK2", quantity: "Kit", size: "Full", beamwidth: "17°", continent: "Europe" },
-    { model: "NWK2/M", quantity: "Kit", size: "Mini", beamwidth: "30°", continent: "Europe" },
-    { model: "NW9", quantity: "Single", size: "Full", beamwidth: "17°", continent: "North America" },
-    { model: "NW9E", quantity: "Single", size: "Full", beamwidth: "17°", continent: "Europe" },
-    { model: "NWK9", quantity: "Kit", size: "Full", beamwidth: "17°", continent: "North America" },
-    { model: "NWK11/M", quantity: "Kit", size: "Mini", beamwidth: "30°", continent: "North America" },
   ];
 
   const [filters, setFilters] = useState({
