@@ -36,52 +36,35 @@ const SFP = () => {
   }, []);
 
   const toggleAnswer = (questionId) => {
-    setVisibleAnswers(prevAnswers => {
-        const newAnswers = new Set(prevAnswers);
-        if (newAnswers.has(questionId)) {
-            newAnswers.delete(questionId);
-        } else {
-            newAnswers.add(questionId);
-        }
-        return newAnswers;
+    setVisibleAnswers((prevAnswers) => {
+      const newAnswers = new Set(prevAnswers);
+      newAnswers.has(questionId) ? newAnswers.delete(questionId) : newAnswers.add(questionId);
+      return newAnswers;
     });
-};
+  };
 
   const toggleTable = () => {
     setShowTable(!showTable);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-    setFilters({
-      dataRate: null,
-      txMedium: null,
-      fibers: null,
-      optics: null,
-      pathLength: null,
-      Tx: null,
-      Rx: null,
-    });
+    resetFilters();
   };
 
   const toggleFAQ = () => {
     setShowFAQ(!showFAQ);
-  }
+  };
 
   const handleFilterChange = (filterType, value) => {
-    const newFilters = { ...filters, [filterType]: value };
+    const newFilters = { ...filters, [filterType]: value || null };
     setFilters(newFilters);
 
     const newFilteredProducts = products.filter((product) =>
-      Object.entries(newFilters).every(
-        ([key, filterValue]) => !filterValue || product[key] === filterValue
-      )
+      Object.entries(newFilters).every(([key, filterValue]) => !filterValue || product[key] === filterValue)
     );
+
     setFilteredProducts(newFilteredProducts);
     updateAvailableOptions(newFilteredProducts);
   };
 
   const clearFilter = (filterType) => {
-    const newFilters = { ...filters, [filterType]: null };
-    setFilters(newFilters);
     handleFilterChange(filterType, null);
   };
 
@@ -100,9 +83,7 @@ const SFP = () => {
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const getUniqueOptions = (key) => {
-      return [...new Set(filteredProducts.map((product) => product[key]))];
-    };
+    const getUniqueOptions = (key) => [...new Set(filteredProducts.map((product) => product[key]))];
 
     setAvailableOptions({
       dataRate: getUniqueOptions('dataRate'),
@@ -131,76 +112,145 @@ const SFP = () => {
           <p>Our SFP Selector Tool filters Comnet's SFP modules by the data rate, transmission medium, number of fiber strands, optical connector, path length, transmission wavelength, and receiving wavelength.</p>
         </button>
         {showTable && (
-          <>
-            <button className="reset-button" onClick={resetFilters}>
-              Reset
-            </button>
-            <div className="filter-options">
-              {['dataRate', 'txMedium', 'fibers', 'optics', 'pathLength', 'Tx', 'Rx'].map((filterKey) => (
-                <div key={filterKey}>
-                  <h3>
-                    {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                    {filters[filterKey] && (
-                      <button
-                        className="clear-filter"
-                        onClick={() => clearFilter(filterKey)}
-                      >
-                        X
-                      </button>
-                    )}
-                  </h3>
-                  {availableOptions[filterKey]?.map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        name={filterKey}
-                        value={option}
-                        checked={filters[filterKey] === option}
-                        onChange={() => handleFilterChange(filterKey, option)}
-                      />
-                      {option}
-                    </label>
-                  ))}
-                </div>
+  <>
+    <div className="filter-options" style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '10px',
+      padding: '20px',
+      backgroundColor: '#f9f9f9',
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      marginBottom: '20px',
+    }}>
+      <button 
+        className="reset-button" 
+        onClick={resetFilters}
+        style={{
+          padding: '8px 15px',
+          backgroundColor: '#ff4d4d',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          transition: 'background-color 0.3s',
+        }}
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
+        onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+      >
+        Reset
+      </button>
+
+      {['dataRate', 'txMedium', 'fibers', 'optics', 'pathLength', 'Tx', 'Rx'].map((filterKey) => (
+        <div key={filterKey} className="dropdown-container" style={{ width: '200px', minWidth: '150px' }}>
+          <h3 style={{
+            fontSize: '1rem',
+            fontWeight: 'bold',
+            color: '#333',
+            marginBottom: '5px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+            {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+            {filters[filterKey] && (
+              <button
+                className="clear-filter"
+                onClick={() => clearFilter(filterKey)}
+                style={{
+                  backgroundColor: '#ff4d4d',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '50%',
+                  padding: '5px 10px',
+                  fontSize: '1rem',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s',
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+              >
+                X
+              </button>
+            )}
+          </h3>
+          <div className="dropdown-group">
+            <select
+              value={filters[filterKey] || ""}
+              onChange={(e) => handleFilterChange(filterKey, e.target.value)}
+              style={{
+                width: '100%',
+                padding: '8px 12px',
+                fontSize: '0.875rem',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                boxSizing: 'border-box',
+                backgroundColor: '#fff',
+                cursor: 'pointer',
+                transition: 'border-color 0.3s ease-in-out',
+              }}
+            >
+              <option value="">All</option>
+              {availableOptions[filterKey]?.map((option) => (
+                <option key={option} value={option}>{option}</option>
               ))}
-            </div>
-            <div className="table-container">
-              <table className="selector-table">
-                <thead>
-                  <tr>
-                    <th>Model</th>
-                    <th>Data Rate</th>
-                    <th>Tx Medium</th>
-                    <th># of Fibers</th>
-                    <th>Optics</th>
-                    <th>Path Length</th>
-                    <th>Tx</th>
-                    <th>Rx</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredProducts.map((product, index) => (
-                    <tr
-                      key={index}
-                      style={{
-                        backgroundColor: index % 2 === 0 ? '#f2f2f2' : '#fff',
-                      }}
-                    >
-                      <td>{product.Model}</td>
-                      <td>{product.dataRate}</td>
-                      <td>{product.txMedium}</td>
-                      <td>{product.fibers}</td>
-                      <td>{product.optics}</td>
-                      <td>{product.pathLength}</td>
-                      <td>{product.Tx}</td>
-                      <td>{product.Rx}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </>
-        )}
+            </select>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="table-container" style={{
+      padding: '20px',
+      backgroundColor: '#fff',
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      overflowX: 'auto',
+    }}>
+      <table className="selector-table" style={{
+        width: '100%',
+        borderCollapse: 'collapse',
+        marginBottom: '20px',
+        textAlign: 'left',
+        borderRadius: '8px',
+        overflow: 'hidden',
+      }}>
+        <thead>
+          <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Model</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Data Rate</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Tx Medium</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}># of Fibers</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Optics</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Path Length</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Tx</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Rx</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredProducts.map((product, index) => (
+            <tr key={index} style={{
+              backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
+              borderBottom: '1px solid #ddd',
+              transition: 'background-color 0.3s ease',
+            }}>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.dataRate}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.txMedium}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.fibers}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.optics}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.pathLength}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Tx}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Rx}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </>
+)}
+
 
         <button className="purple-button" onClick={toggleFAQ}>
           <h1>FAQ</h1>

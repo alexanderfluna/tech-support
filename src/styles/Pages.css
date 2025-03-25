@@ -61,9 +61,10 @@
 }
 
 .faq-answer {
-  margin-top: 10px;
+  margin: 10px auto;
   text-align: left;
   padding: 0 50px;
+  width: 75%;
 }
 
 .filter-options {
@@ -104,7 +105,7 @@
 }
 
 .reset-button {
-  background-color: rgb(134, 134, 134);
+  background-color: rgb(255, 77, 77);
   color: white;
   padding: 8px 16px;
   border: none;
@@ -114,7 +115,7 @@
 }
 
 .reset-button:hover {
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(176, 24, 24);
 }
 
 .selector-placeholder {

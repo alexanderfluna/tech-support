@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import products from "./EthernetExtenderProducts";
 import '../../styles/Pages.css'
 
 const EthernetExtender = () => {
@@ -11,38 +12,15 @@ const EthernetExtender = () => {
     channels: [],
     formFactor: [],
     cable: [],
-    poEInjection: []
+    poeInjection: []
   });
-
-  const products = [
-    { partNumber: "CLFE1EOC", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "Coax",  poEInjection: "No" },
-    { partNumber: "CLFE1EOU", position: "Local/Remote", channels: 1, formFactor: "Small Size", cable: "UTP",  poEInjection: "No" },
-    { partNumber: "CLFE4EOC", position: "Local/Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax",  poEInjection: "No" },
-    { partNumber: "CLFE4EOU", position: "Local/Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP",  poEInjection: "No" },
-    { partNumber: "CLFE8EOC", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "No" },
-    { partNumber: "CLFE8EOU", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "No" },
-    { partNumber: "CLFE16EOC", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "No" },
-    { partNumber: "CLFE16EOU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "No" },
-    { partNumber: "CLLFE1POEC", position: "Local", channels: 1, formFactor: "Small Size", cable: "Coax",  poEInjection: "Yes" },
-    { partNumber: "CLRFE1POEC", position: "Remote", channels: 1, formFactor: "Small Size", cable: "Coax",  poEInjection: "Yes" },
-    { partNumber: "CLLFE1POEU", position: "Local", channels: 1, formFactor: "Small Size", cable: "UTP",  poEInjection: "Yes" },
-    { partNumber: "CLRFE1POEU", position: "Remote", channels: 1, formFactor: "Small Size", cable: "UTP",  poEInjection: "Yes" },
-    { partNumber: "CLLFE4POEC", position: "Local", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax",  poEInjection: "Yes" },
-    { partNumber: "CLRFE4POEC", position: "Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "Coax",  poEInjection: "Yes" },
-    { partNumber: "CLLFE4POEU", position: "Local", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP",  poEInjection: "Yes" },
-    { partNumber: "CLRFE4POEU", position: "Remote", channels: 4, formFactor: "ComFit (1 Slot)", cable: "UTP",  poEInjection: "Yes" },
-    { partNumber: "CLLFE8POEC", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "Yes" },
-    { partNumber: "CLLFE8POEU", position: "Local", channels: 8, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "Yes" },
-    { partNumber: "CLLFE16POEC", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "Coax",  poEInjection: "Yes" },
-    { partNumber: "CLLFE16POEU", position: "Local", channels: 16, formFactor: "1 RU 19” Rack Mount", cable: "UTP",  poEInjection: "Yes" },
-  ];
 
   const [filters, setFilters] = useState({
     position: null,
     channels: null,
     formFactor: null,
     cable: null,
-    poEInjection: null
+    poeInjection: null
   });
 
   useEffect(() => {
@@ -67,7 +45,7 @@ const EthernetExtender = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ position: null, channels: null, formFactor: null, cable: null,  poEInjection: null }); 
+    setFilters({ position: null, channels: null, formFactor: null, cable: null,  poeInjection: null }); 
   };
 
 
@@ -96,7 +74,7 @@ const EthernetExtender = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ position: null, channels: null, formFactor: null, cable: null, poEInjection: null});
+    setFilters({ position: null, channels: null, formFactor: null, cable: null, poeInjection: null});
     setFilteredProducts(products); 
     updateAvailableOptions(products); 
   };
@@ -106,9 +84,9 @@ const EthernetExtender = () => {
     const channels = [...new Set(filteredProducts.map((product) => product.channels))];
     const formFactor = [...new Set(filteredProducts.map((product) => product.formFactor))];
     const cable = [...new Set(filteredProducts.map((product) => product.cable))];
-    const poEInjection = [...new Set(filteredProducts.map((product) => product.poEInjection))];
+    const poeInjection = [...new Set(filteredProducts.map((product) => product.poeInjection))];
  
-    setAvailableOptions({ position, channels, formFactor, cable, poEInjection });
+    setAvailableOptions({ position, channels, formFactor, cable, poeInjection });
   };
 
   return (
@@ -127,155 +105,144 @@ const EthernetExtender = () => {
           <p>Our Ethernet Extender Selector Tool filters Comnet's Ethernet extenders by position, number of channels, form factor, type of cable, and whether it can inject PoE.</p>
         </button>
         {showTable && (
-          <>
-            <button className="reset-button" onClick={resetFilters}>
-              Reset
-            </button>
-            <div className="filter-options">
-              <div>
-                <h3>
-                  Position
-                  {filters.position && (
-                    <button className="clear-filter" onClick={() => clearFilter("position")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.position.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="position"
-                      value={option}
-                      checked={filters.position === option}
-                      onChange={() => handleFilterChange("position", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
+  <>
+    <div className="filter-options" style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '10px',
+      padding: '20px',
+      backgroundColor: '#f9f9f9',
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      marginBottom: '20px',
+    }}>
+      <button 
+        className="reset-button" 
+        onClick={resetFilters}
+        style={{
+          padding: '8px 15px',
+          backgroundColor: '#ff4d4d',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          transition: 'background-color 0.3s',
+        }}
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
+        onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+      >
+        Reset
+      </button>
 
-              <div>
-                <h3>
-                  Channels
-                  {filters.channels && (
-                    <button className="clear-filter" onClick={() => clearFilter("channels")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.channels.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="channels"
-                      value={option}
-                      checked={filters.channels === option}
-                      onChange={() => handleFilterChange("channels", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
+      {['position', 'channels', 'formFactor', 'cable', 'poeInjection'].map((filterKey) => (
+        <div key={filterKey} style={{ width: '200px', minWidth: '150px' }}>
+          <h3 style={{
+            fontSize: '1rem',
+            fontWeight: 'bold',
+            color: '#333',
+            marginBottom: '5px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+            {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+            {filters[filterKey] && (
+              <button
+                className="clear-filter"
+                onClick={() => clearFilter(filterKey)}
+                style={{
+                  backgroundColor: '#ff4d4d',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '50%',
+                  padding: '5px 10px',
+                  fontSize: '1rem',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s',
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+              >
+                X
+              </button>
+            )}
+          </h3>
+          <div className="dropdown-group">
+            <select
+              name={filterKey}
+              value={filters[filterKey] || ""}
+              onChange={(e) => handleFilterChange(filterKey, e.target.value)}
+              style={{
+                width: '100%',
+                padding: '8px 12px',
+                fontSize: '0.875rem',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                boxSizing: 'border-box',
+                backgroundColor: '#fff',
+                cursor: 'pointer',
+                transition: 'border-color 0.3s ease-in-out',
+              }}
+            >
+              <option value="">Select {filterKey.replace(/([A-Z])/g, ' $1').toLowerCase()}</option>
+              {availableOptions[filterKey]?.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      ))}
+    </div>
 
-              <div>
-                <h3>
-                  Form Factor
-                  {filters.formFactor && (
-                    <button className="clear-filter" onClick={() => clearFilter("formFactor")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.formFactor.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="formFactor"
-                      value={option}
-                      checked={filters.formFactor === option}
-                      onChange={() => handleFilterChange("formFactor", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
+    <div className="table-container" style={{
+      padding: '20px',
+      backgroundColor: '#fff',
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      overflowX: 'auto',
+    }}>
+      <table className="selector-table" style={{
+        width: '100%',
+        borderCollapse: 'collapse',
+        marginBottom: '20px',
+        textAlign: 'left',
+        borderRadius: '8px',
+        overflow: 'hidden',
+      }}>
+        <thead>
+          <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Part Number</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Position</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Channels</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Form Factor</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Cable</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Poe Injection</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredProducts.map((product, index) => (
+            <tr key={index} style={{
+              backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
+              borderBottom: '1px solid #ddd',
+              transition: 'background-color 0.3s ease',
+            }}>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.position}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.channels}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.formFactor}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.cable}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.poeInjection}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </>
+)}
 
-              <div>
-                <h3>
-                  Cable
-                  {filters.cable && (
-                    <button className="clear-filter" onClick={() => clearFilter("cable")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.cable.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="cable"
-                      value={option}
-                      checked={filters.cable === option}
-                      onChange={() => handleFilterChange("cable", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
 
-              <div>
-                <h3>
-                  PoE Injection
-                  {filters.poEInjection && (
-                    <button className="clear-filter" onClick={() => clearFilter("poEInjection")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.poEInjection.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="poEInjection"
-                      value={option}
-                      checked={filters.poEInjection === option}
-                      onChange={() => handleFilterChange("poEInjection", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
-            </div>
 
-            <div className="table-container">
-              <table className="selector-table">
-                <thead>
-                  <tr>
-                    <th>Part Number</th>
-                    <th>Position</th>
-                    <th>Channels</th>
-                    <th>Form Factor</th>
-                    <th>Cable</th>
-                    <th>PoE Injection</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredProducts.map((product, index) => (
-                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
-                      <td>{product.partNumber}</td>
-                      <td>{product.position}</td>
-                      <td>{product.channels}</td>
-                      <td>{product.formFactor}</td>
-                      <td>{product.cable}</td>
-                      <td>{product.poEInjection}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </>
-        )}
         <button className="purple-button" onClick={toggleFAQ}>
           <h1>FAQ</h1>
           <p>Our FAQ section contains answers to frequently asked questions and how to troubleshoot common issues regarding Comnet's Ethernet extenders.</p>

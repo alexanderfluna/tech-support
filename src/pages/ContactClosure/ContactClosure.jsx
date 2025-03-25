@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NoPowerLight from '../../relevant-information/NoPowerLight';
 import NoOpticalLink from '../../relevant-information/NoOpticalLink';
 import Fiber from '../../relevant-information/Fiber';
+import products from "./ContactClosureProducts";
 import '../../styles/Pages.css'
 
 const ContactClosure = () => {
@@ -17,20 +18,6 @@ const ContactClosure = () => {
     numberOfChannels: [],
     bidirectional: [],
   });
-
-  const products = [
-    { model: "FDC10M1A + FDC10M1B", fiber: "Multimode", numberOfChannels: 1, bidirectional: "yes", latchingOrNonLatching: "?", inputContactSupervision: "no", summaryFaultRelay: "no", carrierDetect: "yes" },
-    { model: "FDC10S1A + FDC10S1B", fiber: "Single mode", numberOfChannels: 1, bidirectional: "yes", latchingOrNonLatching: "?", inputContactSupervision: "no", summaryFaultRelay: "no", carrierDetect: "yes" },
-    { model: "FDC8TM1 + FDC8NLRM1", fiber: "Multimode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "non-latching", inputContactSupervision: "no", summaryFaultRelay: "no", carrierDetect: "no",  },
-    { model: "FDC8TM1 + FDC8RM1", fiber: "Multimode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "latching", inputContactSupervision: "no", summaryFaultRelay: "no", carrierDetect: "no",  },
-    { model: "FDC8TS1 + FDC8NLRS1", fiber: "Single mode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "non-latching", inputContactSupervision: "no", summaryFaultRelay: "no", carrierDetect: "no",  },
-    { model: "FDC8TS1 + FDC8RS1", fiber: "Single mode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "latching", inputContactSupervision: "no", summaryFaultRelay: "no", carrierDetect: "no",  },
-    { model: "FDC80TM1 + FDC80NLRM1", fiber: "Multimode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "non-latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", carrierDetect: "no"},
-    { model: "FDC80TM1 + FDC80RM1", fiber: "Multimode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", carrierDetect: "no" },
-    { model: "FDC80TS1 + FDC80NLRS1", fiber: "Single mode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "non-latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", carrierDetect: "no",  },
-    { model: "FDC80TS1 + FDC80RS1", fiber: "Single mode", numberOfChannels: 8, bidirectional: "no", latchingOrNonLatching: "latching", inputContactSupervision: "yes", summaryFaultRelay: "yes", carrierDetect: "no",  },
-  ];
-
   const [filters, setFilters] = useState({
     fiber: null,
     latchingOrNonLatching: null,
@@ -124,180 +111,149 @@ const ContactClosure = () => {
           <p>Our Contact Closure Selector Tool filters Comnet's contact closure devices by the type of fiber, latching or non-latching, input contact supervision, summary fault relay, number of channels, and bidirectional.</p>
         </button>
         {showTable && (
-          <>
-            <button className="reset-button" onClick={resetFilters}>
-              Reset
-            </button>
-            <div className="filter-options">
-              <div>
-                <h3>
-                  Fiber
-                  {filters.fiber && (
-                    <button className="clear-filter" onClick={() => clearFilter("fiber")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.fiber.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="fiber"
-                      value={option}
-                      checked={filters.fiber === option}
-                      onChange={() => handleFilterChange("fiber", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
+  <>
+    <div className="filter-options" style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '10px',
+      padding: '20px',
+      backgroundColor: '#f9f9f9',
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      marginBottom: '20px',
+    }}>
+      <button 
+        className="reset-button" 
+        onClick={resetFilters}
+        style={{
+          padding: '8px 15px',
+          backgroundColor: '#ff4d4d',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          transition: 'background-color 0.3s',
+        }}
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
+        onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+      >
+        Reset
+      </button>
 
-              <div>
-                <h3>
-                  Latching or Non-Latching
-                  {filters.latchingOrNonLatching && (
-                    <button className="clear-filter" onClick={() => clearFilter("latchingOrNonLatching")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.latchingOrNonLatching.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="latchingOrNonLatching"
-                      value={option}
-                      checked={filters.latchingOrNonLatching === option}
-                      onChange={() => handleFilterChange("latchingOrNonLatching", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
+      {["fiber", "latchingOrNonLatching", "inputContactSupervision", "summaryFaultRelay", "numberOfChannels", "bidirectional"].map((filterType) => (
+        <div key={filterType} style={{ width: '200px', minWidth: '150px' }}>
+          <h3 style={{
+            fontSize: '1rem',
+            fontWeight: 'bold',
+            color: '#333',
+            marginBottom: '5px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+            {filterType.replace(/([A-Z])/g, ' $1').charAt(0).toUpperCase() + filterType.slice(1)}
+            {filters[filterType] && (
+              <button
+                className="clear-filter"
+                onClick={() => clearFilter(filterType)}
+                style={{
+                  backgroundColor: '#ff4d4d',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '50%',
+                  padding: '5px 10px',
+                  fontSize: '1rem',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s',
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+              >
+                X
+              </button>
+            )}
+          </h3>
+          <div className="dropdown-group">
+            <select
+              name={filterType}
+              value={filters[filterType] || ""}
+              onChange={(e) => handleFilterChange(filterType, e.target.value)}
+              style={{
+                width: '100%',
+                padding: '8px 12px',
+                fontSize: '0.875rem',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                boxSizing: 'border-box',
+                backgroundColor: '#fff',
+                cursor: 'pointer',
+                transition: 'border-color 0.3s ease-in-out',
+              }}
+            >
+              <option value="">Select {filterType.replace(/([A-Z])/g, ' $1').charAt(0).toUpperCase() + filterType.slice(1)}</option>
+              {availableOptions[filterType]?.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      ))}
+    </div>
 
-              <div>
-                <h3>
-                  Input Contact Supervision
-                  {filters.inputContactSupervision && (
-                    <button className="clear-filter" onClick={() => clearFilter("inputContactSupervision")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.inputContactSupervision.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="inputContactSupervision"
-                      value={option}
-                      checked={filters.inputContactSupervision === option}
-                      onChange={() => handleFilterChange("inputContactSupervision", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
+    <div className="table-container" style={{
+      padding: '20px',
+      backgroundColor: '#fff',
+      borderRadius: '8px',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      overflowX: 'auto',
+    }}>
+      <table className="selector-table" style={{
+        width: '100%',
+        borderCollapse: 'collapse',
+        marginBottom: '20px',
+        textAlign: 'left',
+        borderRadius: '8px',
+        overflow: 'hidden',
+      }}>
+        <thead>
+          <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Model</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Fiber</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Latching or Non-Latching</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Input Contact Supervision</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Summary Fault Relay</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Number of Channels</th>
+            <th style={{ padding: '12px', fontSize: '1rem' }}>Bidirectional</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredProducts.map((product, index) => (
+            <tr key={index} style={{
+              backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
+              borderBottom: '1px solid #ddd',
+              transition: 'background-color 0.3s ease',
+            }}>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.fiber}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.latchingOrNonLatching}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.inputContactSupervision}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.summaryFaultRelay}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.numberOfChannels}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.bidirectional}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </>
+)}
 
-              <div>
-                <h3>
-                  Summary Fault Relay
-                  {filters.summaryFaultRelay && (
-                    <button className="clear-filter" onClick={() => clearFilter("summaryFaultRelay")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.summaryFaultRelay.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="summaryFaultRelay"
-                      value={option}
-                      checked={filters.summaryFaultRelay === option}
-                      onChange={() => handleFilterChange("summaryFaultRelay", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
 
-              <div>
-                <h3>
-                  Number of Channels
-                  {filters.numberOfChannels && (
-                    <button className="clear-filter" onClick={() => clearFilter("numberOfChannels")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.numberOfChannels.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="numberOfChannels"
-                      value={option}
-                      checked={filters.numberOfChannels === option}
-                      onChange={() => handleFilterChange("numberOfChannels", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
 
-              <div>
-                <h3>
-                  Bidirectional
-                  {filters.bidirectional && (
-                    <button className="clear-filter" onClick={() => clearFilter("bidirectional")}>
-                      X
-                    </button>
-                  )}
-                </h3>
-                {availableOptions.bidirectional.map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      name="bidirectional"
-                      value={option}
-                      checked={filters.bidirectional === option}
-                      onChange={() => handleFilterChange("bidirectional", option)}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
-            </div>
 
-            <div className="table-container">
-              <table className="selector-table">
-                <thead>
-                  <tr>
-                    <th>Model</th>
-                    <th>Fiber</th>
-                    <th>Latching or Non-Latching</th>
-                    <th>Input Contact Supervision</th>
-                    <th>Summary Fault Relay</th>
-                    <th>Number of Channels</th>
-                    <th>Bidirectional</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredProducts.map((product, index) => (
-                    <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
-                      <td>{product.model}</td>
-                      <td>{product.fiber}</td>
-                      <td>{product.latchingOrNonLatching}</td>
-                      <td>{product.inputContactSupervision}</td>
-                      <td>{product.summaryFaultRelay}</td>
-                      <td>{product.numberOfChannels}</td>
-                      <td>{product.bidirectional}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </>
-        )}
         <button className="purple-button" onClick={toggleFAQ}>
           <h1>FAQ</h1>
           <p>Our FAQ section contains answers to frequently asked questions and how to troubleshoot common issues regarding Comnet's contact closure devices.</p>
