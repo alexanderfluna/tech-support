@@ -103,8 +103,12 @@ const Home = () => {
             Technical Support
           </h1>
 
+          <h1 className="subtitle">
+            Our technical support page offers selector tools, answers to frequently asked questions, and how to troubleshoot common issues. Enter a product number in the search box or click on one of the product categories.
+
+          </h1>
+
           <h2 className="subtitle">
-            Our technical support page offers part number selector tools, answers to frequently asked questions, and how to troubleshoot common issues.
           </h2>
 
           <div className="image-container">
