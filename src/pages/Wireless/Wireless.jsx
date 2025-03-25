@@ -223,7 +223,7 @@ const Wireless = () => {
                 <tbody>
                   {filteredProducts.map((product, index) => (
                     <tr key={index} style={{backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff"}}>
-                      <td>{product.model}</td>
+                      <td>{product.Model}</td>
                       <td>{product.quantity}</td>
                       <td>{product.size}</td>
                       <td>{product.beamwidth}</td>

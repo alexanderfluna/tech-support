@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import products from './SFPProducts'
 import NoOpticalLink from '../../relevant-information/NoOpticalLink';
+import products from './SFPProducts'
 import Fiber from '../../relevant-information/Fiber';
 import '../../styles/Pages.css'
 
@@ -186,7 +186,7 @@ const SFP = () => {
                         backgroundColor: index % 2 === 0 ? '#f2f2f2' : '#fff',
                       }}
                     >
-                      <td>{product.itemNumber}</td>
+                      <td>{product.Model}</td>
                       <td>{product.dataRate}</td>
                       <td>{product.txMedium}</td>
                       <td>{product.fibers}</td>

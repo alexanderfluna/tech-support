@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NoPowerLight from '../../relevant-information/NoPowerLight';
 import Fiber from '../../relevant-information/Fiber';
+import WiegandConfigurationTool from './WiegandConfigurationTool';
 import '../../styles/Pages.css'
 
 const Wiegand = () => {
@@ -46,7 +47,7 @@ const Wiegand = () => {
         }
         return newAnswers;
     });
-};
+  };
 
   const toggleTable = () => {
     setShowTable(!showTable);
@@ -253,6 +254,7 @@ const Wiegand = () => {
                     </div>
                   )}
                 </div>
+                {<WiegandConfigurationTool />}
             </div>
           </>
         )} 

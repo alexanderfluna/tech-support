@@ -51,8 +51,8 @@ const Razberi = () => {
         <p>The Razberi Server selector tool highlights the differences between a server switch and full-performance server.</p>
       </button>
       {showSelector && (
-        <div className="selector-placeholder">
-          <div className="selector-options">
+        <div className="selector-placeholder" >
+          <div className="selector-options" style={{width: "70%"}}>
             <button
               className={`selector-button ${selected === "Server Switch" ? "selected" : ""}`}
               onClick={() => setSelected("Server Switch")}
