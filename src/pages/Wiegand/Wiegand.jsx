@@ -12,23 +12,23 @@ const Wiegand = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     fiber: [],
-    centralRemote: []
+    Central_Remote: []
   });
 
   const products = [
-    { model: "FDW1000M/C", fiber: "Multimode", centralRemote: "Central" },
-    { model: "FDW1000M/R", fiber: "Multimode", centralRemote: "Remote" },
-    { model: "FDW1000S/C", fiber: "Single mode", centralRemote: "Central" },
-    { model: "FDW1000S/R", fiber: "Single mode", centralRemote: "Remote" },
-    { model: "EXP101/C", fiber: "Multimode", centralRemote: "Central"},
-    { model: "EXP101/C", fiber: "Single mode", centralRemote: "Central"},
-    { model: "EXP101/R", fiber: "Multimode", centralRemote: "Remote"},
-    { model: "EXP101/R", fiber: "Single mode", centralRemote: "Remote"},
+    { model: "FDW1000M/C", fiber: "Multimode", Central_Remote: "Central" },
+    { model: "FDW1000M/R", fiber: "Multimode", Central_Remote: "Remote" },
+    { model: "FDW1000S/C", fiber: "Single mode", Central_Remote: "Central" },
+    { model: "FDW1000S/R", fiber: "Single mode", Central_Remote: "Remote" },
+    { model: "EXP101/C", fiber: "Multimode", Central_Remote: "Central"},
+    { model: "EXP101/C", fiber: "Single mode", Central_Remote: "Central"},
+    { model: "EXP101/R", fiber: "Multimode", Central_Remote: "Remote"},
+    { model: "EXP101/R", fiber: "Single mode", Central_Remote: "Remote"},
   ];
 
   const [filters, setFilters] = useState({
     fiber: null,
-    centralRemote: null,
+    Central_Remote: null,
   });
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Wiegand = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ fiber: null, centralRemote: null });
+    setFilters({ fiber: null, Central_Remote: null });
   };
 
   const toggleTroubleshooting = () => {
@@ -85,15 +85,15 @@ const Wiegand = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ fiber: null, centralRemote: null });
+    setFilters({ fiber: null, Central_Remote: null });
     setFilteredProducts(products);
     updateAvailableOptions(products);
   };
 
   const updateAvailableOptions = (filteredProducts) => {
     const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
-    const centralRemote = [...new Set(filteredProducts.map((product) => product.centralRemote))];
-    setAvailableOptions({ fiber, centralRemote });
+    const Central_Remote = [...new Set(filteredProducts.map((product) => product.Central_Remote))];
+    setAvailableOptions({ fiber, Central_Remote });
   };
 
   return (
@@ -142,7 +142,7 @@ const Wiegand = () => {
         Reset
       </button>
 
-      {["fiber", "centralRemote"].map((filterType) => (
+      {["fiber", "Central_Remote"].map((filterType) => (
         <div key={filterType} style={{ width: '200px', minWidth: '150px' }}>
           <h3 style={{
             fontSize: '1rem',
@@ -235,7 +235,7 @@ const Wiegand = () => {
             }}>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.model}</td>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.fiber}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.centralRemote}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Central_Remote}</td>
             </tr>
           ))}
         </tbody>

@@ -8,31 +8,31 @@ const PoEInjector = () => {
   const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
-    dataRate: [],
+    Data_Rate: [],
     IEEE: [],
     power: [],
-    outputVoltage: [],
-    inputVoltage: [],
+    Output_Voltage: [],
+    Input_Voltage: [],
   });
 
   const products = [
-    { model: "CNGE1IPS", dataRate: "GE", IEEE: "802.3at", power: "35W", outputVoltage: "56VDC", inputVoltage: "90-240VAC" },
-    { model: "CNGE1IPS75AC", dataRate: "GE", IEEE: "802.3at", power: "75W", outputVoltage: "56VDC", inputVoltage: "90-240VAC" },
-    { model: "CNGE1IPS95AC", dataRate: "GE", IEEE: "802.3at", power: "95W", outputVoltage: "56VDC", inputVoltage: "90-240VAC" },
-    { model: "CN1IPSBT-DC", dataRate: "GE", IEEE: "802.3bt", power: "90W", outputVoltage: "52-56VDC", inputVoltage: "52-56VDC" },
-    { model: "NWPM1248GE", dataRate: "GE", IEEE: "802.3af", power: "15W", outputVoltage: "48VDC", inputVoltage: "9-36VDC" },
-    { model: "NWPM2448GE", dataRate: "GE", IEEE: "802.3at", power: "35W", outputVoltage: "56VDC", inputVoltage: "18-36VDC" },
-    { model: "NWPM4848GE", dataRate: "GE", IEEE: "802.3at", power: "35W", outputVoltage: "56VDC", inputVoltage: "36-72VDC" },
-    { model: "PIM1", dataRate: "FE", IEEE: "Not required", power: "30W", outputVoltage: "12-48VDC or 24VAC", inputVoltage: "12-48VDC or 24 VAC" },
-    { model: "CWPOEIPS-15", dataRate: "FE", IEEE: "802.3af", power: "15W", outputVoltage: "48VDC", inputVoltage: "90-240VAC" },
+    { model: "CNGE1IPS", Data_Rate: "GE", IEEE: "802.3at", power: "35W", Output_Voltage: "56VDC", Input_Voltage: "90-240VAC" },
+    { model: "CNGE1IPS75AC", Data_Rate: "GE", IEEE: "802.3at", power: "75W", Output_Voltage: "56VDC", Input_Voltage: "90-240VAC" },
+    { model: "CNGE1IPS95AC", Data_Rate: "GE", IEEE: "802.3at", power: "95W", Output_Voltage: "56VDC", Input_Voltage: "90-240VAC" },
+    { model: "CN1IPSBT-DC", Data_Rate: "GE", IEEE: "802.3bt", power: "90W", Output_Voltage: "52-56VDC", Input_Voltage: "52-56VDC" },
+    { model: "NWPM1248GE", Data_Rate: "GE", IEEE: "802.3af", power: "15W", Output_Voltage: "48VDC", Input_Voltage: "9-36VDC" },
+    { model: "NWPM2448GE", Data_Rate: "GE", IEEE: "802.3at", power: "35W", Output_Voltage: "56VDC", Input_Voltage: "18-36VDC" },
+    { model: "NWPM4848GE", Data_Rate: "GE", IEEE: "802.3at", power: "35W", Output_Voltage: "56VDC", Input_Voltage: "36-72VDC" },
+    { model: "PIM1", Data_Rate: "FE", IEEE: "Not required", power: "30W", Output_Voltage: "12-48VDC or 24VAC", Input_Voltage: "12-48VDC or 24 VAC" },
+    { model: "CWPOEIPS-15", Data_Rate: "FE", IEEE: "802.3af", power: "15W", Output_Voltage: "48VDC", Input_Voltage: "90-240VAC" },
   ];
 
   const [filters, setFilters] = useState({
-    dataRate: null,
+    Data_Rate: null,
     IEEE: null,
     power: null,
-    outputVoltage: null,
-    inputVoltage: null,
+    Output_Voltage: null,
+    Input_Voltage: null,
   });
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const PoEInjector = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ dataRate: null, IEEE: null, power: null, outputVoltage: null, inputVoltage: null }); 
+    setFilters({ Data_Rate: null, IEEE: null, power: null, Output_Voltage: null, Input_Voltage: null }); 
   };
 
   const toggleFAQ = () => {
@@ -77,18 +77,18 @@ const PoEInjector = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ dataRate: null, IEEE: null, power: null, outputVoltage: null, inputVoltage: null});
+    setFilters({ Data_Rate: null, IEEE: null, power: null, Output_Voltage: null, Input_Voltage: null});
     setFilteredProducts(products); 
     updateAvailableOptions(products); 
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const dataRate = [...new Set(filteredProducts.map((product) => product.dataRate))];
+    const Data_Rate = [...new Set(filteredProducts.map((product) => product.Data_Rate))];
     const IEEE = [...new Set(filteredProducts.map((product) => product.IEEE))];
     const power = [...new Set(filteredProducts.map((product) => product.power))];
-    const outputVoltage = [...new Set(filteredProducts.map((product) => product.outputVoltage))];
-    const inputVoltage = [...new Set(filteredProducts.map((product) => product.inputVoltage))];
-    setAvailableOptions({ dataRate, IEEE, power, outputVoltage, inputVoltage });
+    const Output_Voltage = [...new Set(filteredProducts.map((product) => product.Output_Voltage))];
+    const Input_Voltage = [...new Set(filteredProducts.map((product) => product.Input_Voltage))];
+    setAvailableOptions({ Data_Rate, IEEE, power, Output_Voltage, Input_Voltage });
   };
 
   return (
@@ -139,7 +139,7 @@ const PoEInjector = () => {
     >
       Reset
     </button>
-      {["dataRate", "IEEE", "power", "outputVoltage", "inputVoltage"].map((filterType) => (
+      {["Data_Rate", "IEEE", "power", "Output_Voltage", "Input_Voltage"].map((filterType) => (
         <div key={filterType} style={{ width: '200px', minWidth: '150px' }}>
           <h3 
             style={{
@@ -240,11 +240,11 @@ const PoEInjector = () => {
               transition: 'background-color 0.3s ease',
             }}>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.model}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.dataRate}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Data_Rate}</td>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.IEEE}</td>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.power}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.outputVoltage}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.inputVoltage}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Output_Voltage}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Input_Voltage}</td>
             </tr>
           ))}
         </tbody>

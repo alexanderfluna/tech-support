@@ -5,8 +5,8 @@ const MediaConverterSelectorTool = () => {
   const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
-    MultiRate: ['No', 'Yes'], 
-    DataRate: ['FE', 'GE'], 
+    Multi_Rate: ['No', 'Yes'], 
+    Data_Rate: ['FE', 'GE'], 
     PoE: ['No', 'PoE', 'PoEHo'], 
     Fiber: ['Multimode', 'Single mode'],
     Number_Of_Fibers: ['1', '2'],
@@ -14,7 +14,7 @@ const MediaConverterSelectorTool = () => {
     Tx: ['850 nm', '1310 nm', '1550 nm'],
     Single_Dual_Quad: ['Single', 'Dual', 'Quad'], 
     Package: ['ComFit', 'Compact', 'DTF', 'Standalone'],
-    OperatingPower: ['12 to 24 VDC', '24 VAC', '48 to 56 VDC', '8 to 15 VDC', '8 to 24 VDC', '8 to 24 VDC, 24 VAC', '9 tp 24 VDC, 24 VAC']
+    Operating_Power: ['12 to 24 VDC', '24 VAC', '48 to 56 VDC', '8 to 15 VDC', '8 to 24 VDC', '8 to 24 VDC, 24 VAC', '9 tp 24 VDC, 24 VAC']
   });
 
   const [filters, setFilters] = useState({});
@@ -52,8 +52,8 @@ const MediaConverterSelectorTool = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ MultiRate: null,
-      DataRate: null,
+    setFilters({ Multi_Rate: null,
+      Data_Rate: null,
       PoE: null,
       Fiber: null,
       Number_Of_Fibers: null,
@@ -61,7 +61,7 @@ const MediaConverterSelectorTool = () => {
       Tx: null,
       Single_Dual_Quad: null, 
       Package: null,
-      OperatingPower: null});
+      Operating_Power: null});
     setFilteredProducts(products);
     updateAvailableOptions(products);
   };
@@ -69,8 +69,8 @@ const MediaConverterSelectorTool = () => {
   const updateAvailableOptions = (filteredProducts) => {
     const getUniqueOrderedValues = (arr) => [...new Set(arr)];
     const newOptions = {
-      MultiRate: getUniqueOrderedValues(filteredProducts.map((product) => product.MultiRate)),
-      DataRate: getUniqueOrderedValues(filteredProducts.map((product) => product.DataRate)),
+      Multi_Rate: getUniqueOrderedValues(filteredProducts.map((product) => product.Multi_Rate)),
+      Data_Rate: getUniqueOrderedValues(filteredProducts.map((product) => product.Data_Rate)),
       PoE: getUniqueOrderedValues(filteredProducts.map((product) => product.PoE)),
       Fiber: getUniqueOrderedValues(filteredProducts.map((product) => product.Fiber)),
       Number_Of_Fibers: getUniqueOrderedValues(filteredProducts.map((product) => product.Number_Of_Fibers)),
@@ -78,7 +78,7 @@ const MediaConverterSelectorTool = () => {
       Tx: getUniqueOrderedValues(filteredProducts.map((product) => product.Tx)),
       Single_Dual_Quad: getUniqueOrderedValues(filteredProducts.map((product) => product.Single_Dual_Quad)),
       Package: getUniqueOrderedValues(filteredProducts.map((product) => product.Package)),
-      OperatingPower: getUniqueOrderedValues(filteredProducts.map((product) => product.OperatingPower))
+      Operating_Power: getUniqueOrderedValues(filteredProducts.map((product) => product.Operating_Power))
     };
     setAvailableOptions(newOptions);
   };

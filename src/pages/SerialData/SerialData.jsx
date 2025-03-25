@@ -11,14 +11,14 @@ const SerialData = () => {
   const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
-    numOfFibers: [],
+    Number_Of_Fibers: [],
     fiber: [],
     optics: [],
     package: [],
   });
 
   const [filters, setFilters] = useState({
-    numOfFibers: null,
+    Number_Of_Fibers: null,
     fiber: null,
     optics: null,
     package: null,
@@ -46,7 +46,7 @@ const SerialData = () => {
     setShowTable(!showTable);
     setFilteredProducts(products);
     updateAvailableOptions(products);
-    setFilters({ numOfFibers: null, fiber: null, optics: null, package: null }); 
+    setFilters({ Number_Of_Fibers: null, fiber: null, optics: null, package: null }); 
   };
 
   const toggleFAQ = () => {
@@ -74,18 +74,18 @@ const SerialData = () => {
   };
 
   const resetFilters = () => {
-    setFilters({ numOfFibers: null, fiber: null, optics: null, package: null});
+    setFilters({ Number_Of_Fibers: null, fiber: null, optics: null, package: null});
     setFilteredProducts(products);
     updateAvailableOptions(products);
   };
 
   const updateAvailableOptions = (filteredProducts) => {
-    const numOfFibers = [...new Set(filteredProducts.map((product) => product.numOfFibers))];
+    const Number_Of_Fibers = [...new Set(filteredProducts.map((product) => product.Number_Of_Fibers))];
     const fiber = [...new Set(filteredProducts.map((product) => product.fiber))];
     const optics = [...new Set(filteredProducts.map((product) => product.optics))];
     const packageOptions = [...new Set(filteredProducts.map((product) => product.package))];
 
-    setAvailableOptions({ numOfFibers, fiber, optics, package: packageOptions });
+    setAvailableOptions({ Number_Of_Fibers, fiber, optics, package: packageOptions });
   };
 
   return (
@@ -134,7 +134,7 @@ const SerialData = () => {
     >
       Reset
     </button>
-      {["numOfFibers", "fiber", "optics", "package"].map((filterType) => (
+      {["Number_Of_Fibers", "fiber", "optics", "package"].map((filterType) => (
         <div key={filterType} style={{ width: '200px', minWidth: '150px' }}>
           <h3 style={{
             fontSize: '1rem',
@@ -226,7 +226,7 @@ const SerialData = () => {
               transition: 'background-color 0.3s ease',
             }}>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.numOfFibers}</td>
+              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Number_Of_Fibers}</td>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.fiber}</td>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.optics}</td>
               <td style={{ padding: '12px', fontSize: '1rem' }}>{product.package}</td>
