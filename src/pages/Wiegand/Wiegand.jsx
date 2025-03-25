@@ -214,33 +214,46 @@ const Wiegand = () => {
                   {visibleAnswers.has('no-communication') && (
                     <div className="faq-answer">
                       <p><strong>[1] Default the FDW1000/C.</strong></p>
-                      <p style={{paddingLeft: "40px"}}>[1.1] Remove power and fiber strands.</p>
+                      <p style={{paddingLeft: "40px"}}>[1.1] Remove power, fiber strands, and the metal housing to expose the DIP switches.</p>
                       <p style={{paddingLeft: "40px"}}>[1.2] Flip all dip switches down.</p>
-                      <p style={{paddingLeft: "40px"}}>[1.3] Flip the following dip switches up.</p>
-                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, 8 on.</li>
-                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, 7 on.</li>
-                      <p style={{paddingLeft: "40px"}}>[1.4] Apply power. (There should be a green status LED)</p>
+                      <p style={{paddingLeft: "40px"}}>[1.3] Flip the following dip switches up accordingly.</p>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, and 8 up.</li>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, and 7 up.</li>
+                      <p style={{paddingLeft: "40px"}}>[1.4] Apply power (There should be a green STATUS LED).</p>
                       <p style={{paddingLeft: "40px"}}>[1.5] Remove power.</p>
                       <p style={{paddingLeft: "40px"}}>[1.6] Flip all dip switches down.</p>
                       <p><strong>[2] Configure the FDW1000/C.</strong></p>
-                      <img src="photos/FDW/Configure.png"></img>
+                      <img src="/photos/FDW/Configure.png" alt="FDW1000" style={{width: "75%"}}/>
                       <p><strong>[3] Configure the EXP101/C expansion modules as needed.</strong></p>
-                      <img src="photos/FDW/Configure2.png"></img>
+                      <p style={{paddingLeft: "40px"}}>[3.1] Remove power, fiber strands, and the metal housing to expose the DIP switches.</p>
+                      <p style={{paddingLeft: "40px"}}>[3.2] Flip all dip switches down.</p>
+                      <p style={{paddingLeft: "40px"}}>[3.3] Flip dip switch 2 up.</p>
+                      <p style={{paddingLeft: "40px"}}>[3.4] Flip the following dip switch up accordingly.</p>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switch 5 on.</li>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switch 4 on.</li>
+                      <p style={{paddingLeft: "40px"}}>[3.5] Flip the following dip switches up accordingly.</p>
+                      <img src="photos/FDW/Configure2.png" alt="EXP101" style={{width: "75%"}}></img>
                       <p><strong>[4] Default the FDW1000/R.</strong></p>
-                      <p style={{paddingLeft: "40px"}}>[4.1] Remove power and fiber strands.</p>
+                      <p style={{paddingLeft: "40px"}}>[4.1] Remove power, fiber strands, and the metal housing to expose the DIP switches.</p>
                       <p style={{paddingLeft: "40px"}}>[4.2] Flip all dip switches down.</p>
-                      <p style={{paddingLeft: "40px"}}>[4.3] Flip the following dip switches up.</p>
-                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, 8 on.</li>
-                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, 7 on.</li>
-                      <p style={{paddingLeft: "40px"}}>[4.4] Apply power. (There should be a green status LED)</p>
+                      <p style={{paddingLeft: "40px"}}>[4.3] Flip the following dip switches up accordingly.</p>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switches 1, 4, and 8 up.</li>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switches 1, 4, and 7 up.</li>
+                      <p style={{paddingLeft: "40px"}}>[4.4] Apply power (There should be a green STATUS LED).</p>
                       <p style={{paddingLeft: "40px"}}>[4.5] Remove power.</p>
                       <p style={{paddingLeft: "40px"}}>[4.6] Flip all dip switches down.</p>
                       <p><strong>[5] Configure the FDW1000/R.</strong></p>
-                      <img src="photos/FDW/Configure.png"></img>
+                      <img src="/photos/FDW/Configure.png" alt="FDW1000" style={{width: "75%"}}/>
                       <p><strong>[6] Configure the EXP101/R expansion modules as needed.</strong></p>
-                      <img src="photos/FDW/Configure2.png"></img>
+                      <p style={{paddingLeft: "40px"}}>[6.1] Remove power, fiber strands, and the metal housing to expose the DIP switches.</p>
+                      <p style={{paddingLeft: "40px"}}>[6.2] Flip all dip switches down.</p>
+                      <p style={{paddingLeft: "40px"}}>[6.3] Flip the following dip switch up accordingly.</p>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader only, flip dip switch 5 on.</li>
+                      <li style={{paddingLeft: "60px"}}>If it is a reader and keypad, flip dip switch 4 on.</li>
+                      <p style={{paddingLeft: "40px"}}>[6.4] Flip the following dip switches up accordingly.</p>
+                      <img src="photos/FDW/Configure2.png" alt="EXP101" style={{width: "75%"}}></img>
                       <p><strong>[7] Ensure the correct wire configuration.</strong></p>
-                      <img src="photos/FDW/FDW.png"></img>
+                      <img src="photos/FDW/FDW.png" alt="FDW1000 wiring"style={{width: "75%"}}></img>
                       <img></img>
                     </div>
                   )}
@@ -254,7 +267,6 @@ const Wiegand = () => {
                     </div>
                   )}
                 </div>
-                {<WiegandConfigurationTool />}
             </div>
           </>
         )} 

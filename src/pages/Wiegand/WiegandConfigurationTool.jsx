@@ -27,7 +27,7 @@ const WiegandConfigurationTool = () => {
 
     return (
         <div className="faq-item">
-            <button className="faq-question" onClick={() => toggleAnswer('wiegand-configuration')}> Wiegand Configuration Tool. </button>
+            <button className="faq-question" onClick={() => toggleAnswer('wiegand-configuration')}> Wiegand Configuration Tool (In Progress...) </button>
             {visibleAnswers.has('wiegand-configuration') && (
                 <div style={{display: "flex", flexDirection: "column", width: "50%", margin: "0px auto"}}>
                     <p>Will relay 3 be used to monitor the status of the optical link?</p>
