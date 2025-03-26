@@ -25,6 +25,11 @@ const WiegandConfigurationTool = () => {
         setSelectedValue(event.target.value);
       };
 
+    // Common ground
+    // Remove images instead make your own table
+    // ON/OFF instead of UP and DOWN
+    // Explain dip switch #4 is for the status of loss of optical link
+
     return (
         <div className="faq-item">
             <button className="faq-question" onClick={() => toggleAnswer('wiegand-configuration')}> Wiegand Configuration Tool (In Progress...) </button>

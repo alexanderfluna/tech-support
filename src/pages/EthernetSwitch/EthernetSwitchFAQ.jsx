@@ -91,10 +91,11 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-question" onClick={() => toggleAnswer('switch-ip')}>
-                            How to find the switch IP address from the CLI
+                            How to find the switch IP address.
                         </button>
                         {visibleAnswers.has('switch-ip') && (
                             <div className="faq-answer">
+                                <p>If the username and password is known:</p>
                                 <p>[1] Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
                                 <li>Speed (baud): 115200.</li>
                                 <li>Data bits: 8</li>
@@ -103,6 +104,8 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                                 <li>Flow control: XON/XOFF</li>
                                 <p>[2] Enter the username and password.</p>
                                 <p>[3] Type "show ip interface brief" and click enter.</p>
+                                <p>If the username or password is not known:</p>
+                                <p>[1] Connect the switch to another switch with LLDP enabled and view the LLDP Remote Device Summary.</p>
                             </div>
                         )}
                     </div>
