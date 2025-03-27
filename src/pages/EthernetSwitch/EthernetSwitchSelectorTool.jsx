@@ -107,7 +107,6 @@ const EthernetSwitchSelectorTool = () => {
     <div className="faq-list">
       <button className="purple-button" onClick={toggleTable}>
         <h1>Selector Tool</h1>
-        <p>Our Ethernet Switch Selector Tool filters Comnet's switches by hardened, managed, PoE, number of copper ports, number of fiber ports, and number of combo ports.</p>
       </button>
       {showTable && (
         <>

@@ -166,16 +166,17 @@
 
 .purple-button {
   display: inline-block;
-  width: 75%;
-  padding: 40px;
+  width: 40%;
+  padding: 10px;
   margin: 30px auto;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: black;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  background: linear-gradient(135deg, rgb(76, 160, 206), rgb(195, 192, 192));
   box-shadow: 0 4px 10px rgba(0, 191, 255, 0.4);
-  text-align: left;
+  text-align: center;
 }
 
 .purple-button:hover {

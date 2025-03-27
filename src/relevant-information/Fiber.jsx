@@ -60,7 +60,7 @@ const Fiber = () => {
                 <p>The table below shows the relationship between <strong>dBm, milliwatts (mW), and microwatts (µW) of power</strong>. This conversion is useful for engineers and technicians working with optical networks to assess signal strength and quality.</p>
 
                 <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                  <thead style={{ backgroundColor: "rgb(106, 13, 173)", color: "white" }}>
+                  <thead style={{ backgroundColor: "rgb(13, 128, 173)", color: "white" }}>
                     <tr>
                       <th style={{ padding: "10px", textAlign: "left" }}>dBm</th>
                       <th style={{ padding: "10px", textAlign: "left" }}>Power (mW)</th>
@@ -82,7 +82,7 @@ const Fiber = () => {
 
                 <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "18px", textAlign: "left" }}>
                   <thead>
-                    <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                    <tr style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff" }}>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Standard</th>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Wavelength</th>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Distance</th>

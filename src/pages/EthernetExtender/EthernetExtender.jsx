@@ -6,6 +6,7 @@ const EthernetExtender = () => {
   const [visibleAnswers, setVisibleAnswers] = useState(new Set());
   const [showTable, setShowTable] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
+  const [showTroubleshooting, setShowTroubleshooting] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     position: [],
@@ -53,6 +54,10 @@ const EthernetExtender = () => {
     setShowFAQ(!showFAQ);
   }
 
+  const toggleTroubleshooting = () => {
+    setShowTroubleshooting(!showTroubleshooting);
+  }
+
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
     setFilters(newFilters);
@@ -93,159 +98,218 @@ const EthernetExtender = () => {
     <div>
       <main className="faq-container">
         <h1 style={{
-            fontSize: "3.5rem",
+            fontSize: "5rem",
             fontWeight: "bold",
             backgroundImage: "linear-gradient(135deg, rgb(54, 126, 208), rgb(77, 77, 77))",
             WebkitBackgroundClip: "text",
             color: "transparent",
             textAlign: "center"
           }}>Ethernet Extender</h1>
+
+        <button className="purple-button" onClick={toggleTroubleshooting}>
+          <h1>Troubleshooting</h1>
+        </button>
+        {showTroubleshooting && (
+          <>
+            <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)')}> Troubleshooting CLFE(X)EO(U/C) to CLFE(X)EO(U/C) </button>
+                {visibleAnswers.has('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)') && (
+                  <div className="faq-answer">
+                    <p><strong>Local vs. Remote:</strong> The units with 1 or 4 channels can be set as local or remote via the dip switch. The units with 8 or 16 channels can only be set as local.</p>
+                    <p><strong>PoE:</strong> The devices cannot inject 48VDC. Instead, they support pass-through PoE at the 802.3af standard. There is no pass-through PoE when using one pair of UTP.</p>
+                    <p><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</p>
+                    <p><strong>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</strong></p>
+                    <li>Page 2: CLFE1EOC and CLFE1EOU images and dip switches.</li>
+                    <li>Page 3: CLFE4EOC images and dip switches.</li>
+                    <li>Page 4: CLFE4EOU images and dip switches.</li>
+                    <li>Page 5: CLFE8EOC and CLFE8EOU images and dip switches.</li>
+                    <li>Page 6: CLFE16EOC images and dip switches.</li>
+                    <li>Page 7: CLFE16EOU images and dip switches.</li>
+                    <li>Page 8: Application diagrams.</li>
+                    <li>Page 9: Installation instructions, power table and LED table.</li>
+                    <li>Page 10: Application notes, extended distance table, troubleshooting guide.</li>
+                    <p><strong>The tables below shows the maximum distances Comnet's devices can extend Ethernet over coax, a single pair of UTP, or four pairs of UTP.</strong></p>
+                    <li><strong>CLFE(X)EO(U/C) to CLFE(X)EO(U/C)</strong></li>
+                    <img src="photos/CopperLine/Distance1.png" alt="CopperLine distance chart 1"></img>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)')}> Troubleshooting CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) </button>
+                {visibleAnswers.has('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)') && (
+                  <div className="faq-answer">
+                    <p><strong>Local (CLL) vs. Remote (CLR):</strong> The devices with 1, 4, 8, or 16 channels that begin with <strong>CLL</strong> are the local units. The devices with 1 or 4 channels that begin with <strong>CLR</strong> are the remote units.</p>
+                    <p><strong>PoE:</strong> The local or remote device can inject 48VDC at the 802.3at standard. There is no pass-through PoE when using one pair of UTP.</p>
+                    <p><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</p>
+                    <p><strong>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</strong></p>
+                    <li>Page 2: CLLFE1POEC and CLRFE1POEC images and dip switch.</li>
+                    <li>Page 3: CLLFE1POEU and CLRFE1PEOU images and dip switches.</li>
+                    <li>Page 4: CLLFE4POEC and CLRFE4PEOU images and dip switch.</li>
+                    <li>Page 5: CLLFE4POEU and CLRFE4POEU images and dip switches.</li>
+                    <li>Page 6: CLLFE8EOC images and dip switches.</li>
+                    <li>Page 7: CLLFE8EOU images and dip switches.</li>
+                    <li>Page 8: CLLFE16EOC images and dip switches.</li>
+                    <li>Page 9: CLLFE16EOU images and dip switches.</li>
+                    <li>Page 10: Application diagrams.</li>
+                    <li>Page 11: Installation instructions, power table, LED table, and application notes.</li>
+                    <li>Page 12: Extended distance table and troubleshooting guide</li>
+                    <li>Page 13: Ferrite core</li>
+                    <p><strong>The tables below shows the maximum distances Comnet's devices can extend Ethernet over coax, a single pair of UTP, or four pairs of UTP.</strong></p>
+                    <li><strong>CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)</strong></li>
+                    <img src="photos/CopperLine/Distance2.png" alt="CopperLine distance chart 2"></img>
+                  </div>
+                )}
+            </div>
+          </>
+        )}
+
+
+
+
         <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
-          <p>Our Ethernet Extender Selector Tool filters Comnet's Ethernet extenders by position, number of channels, form factor, type of cable, and whether it can inject PoE.</p>
         </button>
         {showTable && (
-  <>
-    <div className="filter-options" style={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '10px',
-      padding: '20px',
-      backgroundColor: '#f9f9f9',
-      borderRadius: '8px',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-      marginBottom: '20px',
-    }}>
-      <button 
-        className="reset-button" 
-        onClick={resetFilters}
-        style={{
-          padding: '8px 15px',
-          backgroundColor: '#ff4d4d',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          fontWeight: 'bold',
-          transition: 'background-color 0.3s',
-        }}
-        onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
-        onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
-      >
-        Reset
-      </button>
-
-      {['position', 'channels', 'formFactor', 'cable', 'poeInjection'].map((filterKey) => (
-        <div key={filterKey} style={{ width: '200px', minWidth: '150px' }}>
-          <h3 style={{
-            fontSize: '1rem',
-            fontWeight: 'bold',
-            color: '#333',
-            marginBottom: '5px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-            {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-            {filters[filterKey] && (
-              <button
-                className="clear-filter"
-                onClick={() => clearFilter(filterKey)}
+          <>
+            <div className="filter-options" style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '10px',
+              padding: '20px',
+              backgroundColor: '#f9f9f9',
+              borderRadius: '8px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              marginBottom: '20px',
+            }}>
+              <button 
+                className="reset-button" 
+                onClick={resetFilters}
                 style={{
+                  padding: '8px 15px',
                   backgroundColor: '#ff4d4d',
                   color: '#fff',
                   border: 'none',
-                  borderRadius: '50%',
-                  padding: '5px 10px',
-                  fontSize: '1rem',
+                  borderRadius: '5px',
                   cursor: 'pointer',
+                  fontWeight: 'bold',
                   transition: 'background-color 0.3s',
                 }}
                 onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
                 onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
               >
-                X
+                Reset
               </button>
-            )}
-          </h3>
-          <div className="dropdown-group">
-            <select
-              name={filterKey}
-              value={filters[filterKey] || ""}
-              onChange={(e) => handleFilterChange(filterKey, e.target.value)}
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                fontSize: '0.875rem',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                boxSizing: 'border-box',
-                backgroundColor: '#fff',
-                cursor: 'pointer',
-                transition: 'border-color 0.3s ease-in-out',
-              }}
-            >
-              <option value="">Select {filterKey.replace(/([A-Z])/g, ' $1').toLowerCase()}</option>
-              {availableOptions[filterKey]?.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-      ))}
-    </div>
 
-    <div className="table-container" style={{
-      padding: '20px',
-      backgroundColor: '#fff',
-      borderRadius: '8px',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-      overflowX: 'auto',
-    }}>
-      <table className="selector-table" style={{
-        width: '100%',
-        borderCollapse: 'collapse',
-        marginBottom: '20px',
-        textAlign: 'left',
-        borderRadius: '8px',
-        overflow: 'hidden',
-      }}>
-        <thead>
-          <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
-            <th style={{ padding: '12px', fontSize: '1rem' }}>Part Number</th>
-            <th style={{ padding: '12px', fontSize: '1rem' }}>Position</th>
-            <th style={{ padding: '12px', fontSize: '1rem' }}>Channels</th>
-            <th style={{ padding: '12px', fontSize: '1rem' }}>Form Factor</th>
-            <th style={{ padding: '12px', fontSize: '1rem' }}>Cable</th>
-            <th style={{ padding: '12px', fontSize: '1rem' }}>Poe Injection</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredProducts.map((product, index) => (
-            <tr key={index} style={{
-              backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
-              borderBottom: '1px solid #ddd',
-              transition: 'background-color 0.3s ease',
+              {['position', 'channels', 'formFactor', 'cable', 'poeInjection'].map((filterKey) => (
+                <div key={filterKey} style={{ width: '200px', minWidth: '150px' }}>
+                  <h3 style={{
+                    fontSize: '1rem',
+                    fontWeight: 'bold',
+                    color: '#333',
+                    marginBottom: '5px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}>
+                    {filterKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                    {filters[filterKey] && (
+                      <button
+                        className="clear-filter"
+                        onClick={() => clearFilter(filterKey)}
+                        style={{
+                          backgroundColor: '#ff4d4d',
+                          color: '#fff',
+                          border: 'none',
+                          borderRadius: '50%',
+                          padding: '5px 10px',
+                          fontSize: '1rem',
+                          cursor: 'pointer',
+                          transition: 'background-color 0.3s',
+                        }}
+                        onMouseEnter={(e) => e.target.style.backgroundColor = '#e60000'}
+                        onMouseLeave={(e) => e.target.style.backgroundColor = '#ff4d4d'}
+                      >
+                        X
+                      </button>
+                    )}
+                  </h3>
+                  <div className="dropdown-group">
+                    <select
+                      name={filterKey}
+                      value={filters[filterKey] || ""}
+                      onChange={(e) => handleFilterChange(filterKey, e.target.value)}
+                      style={{
+                        width: '100%',
+                        padding: '8px 12px',
+                        fontSize: '0.875rem',
+                        border: '1px solid #ccc',
+                        borderRadius: '5px',
+                        boxSizing: 'border-box',
+                        backgroundColor: '#fff',
+                        cursor: 'pointer',
+                        transition: 'border-color 0.3s ease-in-out',
+                      }}
+                    >
+                      <option value="">Select {filterKey.replace(/([A-Z])/g, ' $1').toLowerCase()}</option>
+                      {availableOptions[filterKey]?.map((option) => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="table-container" style={{
+              padding: '20px',
+              backgroundColor: '#fff',
+              borderRadius: '8px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              overflowX: 'auto',
             }}>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.position}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.channels}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.formFactor}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.cable}</td>
-              <td style={{ padding: '12px', fontSize: '1rem' }}>{product.poeInjection}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </>
-)}
+              <table className="selector-table" style={{
+                width: '100%',
+                borderCollapse: 'collapse',
+                marginBottom: '20px',
+                textAlign: 'left',
+                borderRadius: '8px',
+                overflow: 'hidden',
+              }}>
+                <thead>
+                  <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
+                    <th style={{ padding: '12px', fontSize: '1rem' }}>Part Number</th>
+                    <th style={{ padding: '12px', fontSize: '1rem' }}>Position</th>
+                    <th style={{ padding: '12px', fontSize: '1rem' }}>Channels</th>
+                    <th style={{ padding: '12px', fontSize: '1rem' }}>Form Factor</th>
+                    <th style={{ padding: '12px', fontSize: '1rem' }}>Cable</th>
+                    <th style={{ padding: '12px', fontSize: '1rem' }}>Poe Injection</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProducts.map((product, index) => (
+                    <tr key={index} style={{
+                      backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff",
+                      borderBottom: '1px solid #ddd',
+                      transition: 'background-color 0.3s ease',
+                    }}>
+                      <td style={{ padding: '12px', fontSize: '1rem' }}>{product.Model}</td>
+                      <td style={{ padding: '12px', fontSize: '1rem' }}>{product.position}</td>
+                      <td style={{ padding: '12px', fontSize: '1rem' }}>{product.channels}</td>
+                      <td style={{ padding: '12px', fontSize: '1rem' }}>{product.formFactor}</td>
+                      <td style={{ padding: '12px', fontSize: '1rem' }}>{product.cable}</td>
+                      <td style={{ padding: '12px', fontSize: '1rem' }}>{product.poeInjection}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
 
 
 
         <button className="purple-button" onClick={toggleFAQ}>
-          <h1>FAQ</h1>
-          <p>Our FAQ section contains answers to frequently asked questions and how to troubleshoot common issues regarding Comnet's Ethernet extenders.</p>
+          <h1>Relevant Information</h1>
         </button>
         {showFAQ && (
           <>
@@ -311,55 +375,6 @@ const EthernetExtender = () => {
                   </div>
                 )}
               </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)')}> CLFE(X)EO(U/C) to CLFE(X)EO(U/C) </button>
-                {visibleAnswers.has('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)') && (
-                  <div className="faq-answer">
-                    <p><strong>Local vs. Remote:</strong> The units with 1 or 4 channels can be set as local or remote via the dip switch. The units with 8 or 16 channels can only be set as local.</p>
-                    <p><strong>PoE:</strong> The devices cannot inject 48VDC. Instead, they support pass-through PoE at the 802.3af standard. There is no pass-through PoE when using one pair of UTP.</p>
-                    <p><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</p>
-                    <p><strong>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</strong></p>
-                    <li>Page 2: CLFE1EOC and CLFE1EOU images and dip switches.</li>
-                    <li>Page 3: CLFE4EOC images and dip switches.</li>
-                    <li>Page 4: CLFE4EOU images and dip switches.</li>
-                    <li>Page 5: CLFE8EOC and CLFE8EOU images and dip switches.</li>
-                    <li>Page 6: CLFE16EOC images and dip switches.</li>
-                    <li>Page 7: CLFE16EOU images and dip switches.</li>
-                    <li>Page 8: Application diagrams.</li>
-                    <li>Page 9: Installation instructions, power table and LED table.</li>
-                    <li>Page 10: Application notes, extended distance table, troubleshooting guide.</li>
-                    <p><strong>The tables below shows the maximum distances Comnet's devices can extend Ethernet over coax, a single pair of UTP, or four pairs of UTP.</strong></p>
-                    <li><strong>CLFE(X)EO(U/C) to CLFE(X)EO(U/C)</strong></li>
-                    <img src="photos/CopperLine/Distance1.png" alt="CopperLine distance chart 1"></img>
-                  </div>
-                )}
-              </div>
-              <div className="faq-item">
-                <button className="faq-question" onClick={() => toggleAnswer('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)')}> CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) </button>
-                {visibleAnswers.has('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)') && (
-                  <div className="faq-answer">
-                    <p><strong>Local (CLL) vs. Remote (CLR):</strong> The devices with 1, 4, 8, or 16 channels that begin with <strong>CLL</strong> are the local units. The devices with 1 or 4 channels that begin with <strong>CLR</strong> are the remote units.</p>
-                    <p><strong>PoE:</strong> The local or remote device can inject 48VDC at the 802.3at standard. There is no pass-through PoE when using one pair of UTP.</p>
-                    <p><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</p>
-                    <p><strong>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</strong></p>
-                    <li>Page 2: CLLFE1POEC and CLRFE1POEC images and dip switch.</li>
-                    <li>Page 3: CLLFE1POEU and CLRFE1PEOU images and dip switches.</li>
-                    <li>Page 4: CLLFE4POEC and CLRFE4PEOU images and dip switch.</li>
-                    <li>Page 5: CLLFE4POEU and CLRFE4POEU images and dip switches.</li>
-                    <li>Page 6: CLLFE8EOC images and dip switches.</li>
-                    <li>Page 7: CLLFE8EOU images and dip switches.</li>
-                    <li>Page 8: CLLFE16EOC images and dip switches.</li>
-                    <li>Page 9: CLLFE16EOU images and dip switches.</li>
-                    <li>Page 10: Application diagrams.</li>
-                    <li>Page 11: Installation instructions, power table, LED table, and application notes.</li>
-                    <li>Page 12: Extended distance table and troubleshooting guide</li>
-                    <li>Page 13: Ferrite core</li>
-                    <p><strong>The tables below shows the maximum distances Comnet's devices can extend Ethernet over coax, a single pair of UTP, or four pairs of UTP.</strong></p>
-                    <li><strong>CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)</strong></li>
-                    <img src="photos/CopperLine/Distance2.png" alt="CopperLine distance chart 2"></img>
-                  </div>
-                )}
-            </div>
           </div>
           </>
         )}

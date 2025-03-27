@@ -88,7 +88,6 @@ const MediaConverterSelectorTool = () => {
     <div>
       <button className="purple-button" onClick={toggleTable}>
           <h1>Selector Tool</h1>
-          <p>Our Media Converter Selector Tool filters Comnet's media converters by multi-rate, data rate, PoE, type of fiber, number of fiber strands, optical connector, tranmission wavelength, Single/Dual/Quad, package, and operating power.</p>
       </button>
       {showTable && (
   <>

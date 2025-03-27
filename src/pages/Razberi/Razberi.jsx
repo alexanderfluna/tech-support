@@ -6,6 +6,7 @@ const Razberi = () => {
   const [visibleAnswers, setVisibleAnswers] = useState(new Set());
   const [showSelector, setShowSelector] = useState(false);
   const [showFAQ, setShowFAQ] = useState(false);
+  const [showTroubleshooting, setShowTroubleshooting] = useState(false);
   const [selected, setSelected] = useState("");
 
 
@@ -30,6 +31,10 @@ const Razberi = () => {
     setShowFAQ(!showFAQ);
   }
 
+  const toggleTroubleshooting = () => {
+    setShowTroubleshooting(!showTroubleshooting);
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0); 
   }, []);
@@ -38,7 +43,7 @@ const Razberi = () => {
     <div>
       <main className="faq-container">
         <h1 style={{
-            fontSize: "3.5rem",
+            fontSize: "5rem",
             fontWeight: "bold",
             backgroundImage: "linear-gradient(135deg, rgb(54, 126, 208), rgb(77, 77, 77))",
             WebkitBackgroundClip: "text",
@@ -46,9 +51,117 @@ const Razberi = () => {
             textAlign: "center"
           }}>Razberi Server</h1>
 
+        <button className="purple-button" onClick={toggleTroubleshooting}>
+          <h1>Troubleshooting</h1>
+        </button>
+        {showTroubleshooting && (
+          <>
+            <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('no-power-ss32x')}> Troubleshooting power issues on an SS32X. </button>
+                {visibleAnswers.has('no-power-ss32x') && (
+                  <div className="faq-answer">
+                    <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
+                    <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
+                    <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
+                    <p><strong>[4] Verify a healthy OS, RAID, and switch.</strong></p>
+                    <p><strong>[5] Confirm the following settings in BIOS.</strong></p>
+                    <li>Check that the boot order is correct. Windows Boot Manager should be option #1.</li>
+                    <li>In "Advanced" -- "ACPI Settings", make sure "Enable Hibernation" is disabled.</li>
+                    <li>In "Advanced" -- "ACPI Settings", make sure "ACPI Sleep State" is set to "Suspend Disabled"</li>
+                    <li>In "Chipset" -- "PCH-IO Configuration" -- "SATA and RST Configuration", make sure all the hard drives are detected. There should be 4 of them (but it will show up as 0, 1, 2, and 3).</li>
+                    <li>In "Chipset" -- "Board Configuration", make sure "PWR-On After PWR-Fail" is set to "Last state" or "On".</li>
+                    <p><strong>[6] Perform a recovery of the OS.</strong></p>
+                    <p><strong>[7] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('no-power-core')}> Troubleshooting power issues on a Core Server. </button>
+                {visibleAnswers.has('no-power-core') && (
+                  <div className="faq-answer">
+                    <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
+                    <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
+                    <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
+                    <p><strong>[4] Verify a healthy OS and RAID.</strong></p>
+                    <p><strong>[5] Enter the System Setup when booting into the server.</strong></p>
+                    <li>Change the <strong>Thermal Profile</strong> to <strong>Minimum Power (Performance per Watt Optimized).</strong></li>
+                    <li>The power of the server can be capped by specifing the watts, BTU/hr, and by a percentage. A lower power consumption typically means lower heat output, which can reduce cooling requirements. The fans may run at a lower speed, making the server quieter. Lower power usage can also reduce the thermal stress, potentially extending the life of components like CPUs and power supplies. However, if the server is power capped too aggressively, the CPU and memory performance may be throttled to stay within the limit.</li>
+                    <p><strong>[6] Perform a recovery of the OS.</strong></p>
+                    <p><strong>[7] Perform a hardware diagnostic on the server. This can be done in the <strong>Lifecycle Controller</strong> under the <strong>Hardware Diagnostics</strong> tab and <strong>Run Hardware Diagnostics</strong> button.</strong></p>
+                    <p><strong>[8] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> Troubleshooting PoE switch issues. </button>
+                {visibleAnswers.has('no-poe') && (
+                  <div className="faq-answer">
+                    <p>[1] Verify the unit is receiving 100-120VAC.</p>
+                    <p>[2] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</p>
+                    <p>[3] Confirm the powered devices are 802.3af/at compliant.</p>
+                    <p>[4] Ensure the switch is not producing more PoE than the PoE budget allows.</p>
+                    <p>[5] Disable and enable PoE on the port.</p>
+                    <p>[6] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</p>
+                    <p>[7] Attempt pinging the switch from the command prompt on the server.</p>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID or HDD issues. </button>
+                {visibleAnswers.has('RAID') && (
+                  <div className="faq-answer">
+                    <p><strong>[1] Confirm that the HDD or RAID has failed and what the current RAID configuration is using one of the following:</strong></p>
+                    <li>Razberi Monitor Cloud</li>
+                    <li>Razberi Monitor: System Info</li>
+                    <li>Device Manager</li>
+                    <li>Intel Rapid Storage Technology</li>
+                    <li>iDRAC</li>
+                    <li>Diskpart</li>
+                    <li>BIOS</li>
+                    <p><strong>[2] If a HDD has failed, contact technical support to determine if the unit is under warranty. If so, a replacement HDD can be sent. Otherwise, a new HDD will need to be purchased. Please note:</strong></p>
+                    <li>RAID 0 requires at least 2 drives. One drive failing corrupts the entire RAID.</li>
+                    <li>RAID 1 requires at least 2 drives and allows for the loss of half. Replacing the drive(s) should automatically rebuild the RAID.</li>
+                    <li>RAID 5 requires at least 3 drives and allows for the loss of one. Replacing the drive should automatically rebuild the RAID.</li>
+                    <li>RAID 6 requires at least 4 drives and allows for the loss of two. Replacing the drive(s) should automatically rebuild the RAID.</li>
+                    <li>RAID 10 requires at least 4 drives and allows for the loss of half. Replacing the drive(s) should automatically rebuild the RAID.</li>
+                    <p><strong>[3] If the RAID is corrupted, delete the virtual disk, create a new virtual disk, and format the volume as NTFS using the following: </strong></p>
+                    <li>BIOS</li>
+                    <li>Disk Management</li>
+                    <li>Intel Rapid Storage Technology</li>
+                    <li>iDRAC</li>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('NIC')}> Troubleshooting NIC issues. </button>
+                {visibleAnswers.has('NIC') && (
+                  <div className="faq-answer">
+                    <p>[1] Enter "View network status and tasks" in the Windows search box.</p>
+                    <p>[2] Click "Change adapter settings".</p>
+                    <p>[3] Disable and enable the NIC</p>
+                    <p>[4] Diagnose the NIC connection</p>
+                    <p>[5] In Device Manager, verify the NIC has the necessary drivers.</p>
+                  </div>
+                )}
+              </div>
+              <div className="faq-item">
+                <button className="faq-question" onClick={() => toggleAnswer('windows-os')}> Troubleshooting Windows OS issues. </button>
+                {visibleAnswers.has('windows-os') && (
+                  <div className="faq-answer">
+                    <p>[1] Review the Razberi Monitor Alert Logs.</p>
+                    <p>[2] Review the errors in Event Viewer.</p>
+                    <p>[3] Review the iDRAC alert logs</p>
+                    <p>[4] Review the CPU utilization and processes in Task Manager</p>
+                    <p>[5] Perform a recovery of the operaitng system.</p>
+                  </div>
+                )}
+              </div>
+          </>
+        )}
+            
+
       <button className="purple-button" onClick={toggleSelector}>
         <h1>Selector Tool</h1>
-        <p>The Razberi Server selector tool highlights the differences between a server switch and full-performance server.</p>
       </button>
       {showSelector && (
         <div className="selector-placeholder" >
@@ -74,7 +187,7 @@ const Razberi = () => {
               {selected === "Server Switch" && (
                 <div className="faq-answer">
                   <a href="pdf/razberi/SS32_Data_Sheet.pdf">
-                    <button style={{ backgroundColor: "rgb(212, 180, 235)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
+                    <button style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px", marginBottom: "20px" }}>
                       Click to View the SS32X Data Sheet
                     </button>
                   </a>
@@ -97,8 +210,7 @@ const Razberi = () => {
       )}
 
         <button className="purple-button" onClick={toggleFAQ}>
-          <h1>FAQ</h1>
-          <p>Our FAQ section contains answers to frequently asked questions and how to troubleshoot common issues regarding Comnet's Razberi servers.</p>
+          <h1>Relevant Information</h1>
         </button>
         {showFAQ && (
           <>
@@ -109,7 +221,7 @@ const Razberi = () => {
                   <p><strong>CPU (Central Processing Unit):</strong> The central processing unit (CPU) is the primary component of a computer responsible for executing instructions and performing computations. It acts as the brain of the system, handling everything from running operating system processes to executing user applications. The efficiency of a CPU is determined by factors such as clock speed, core count, cache size, and instruction set architecture.</p>
                   <p><strong>CPU Cache (L1, L2, L3):</strong> The CPU cache is a small amount of high-speed memory located within the processor, designed to store frequently accessed data and instructions. L1 cache is the smallest but fastest, situated closest to the processing cores. L2 cache is slightly larger but slower, while L3 cache is the largest and shared among multiple cores, improving overall efficiency by reducing the need to fetch data from main memory.</p>
                   <p><strong>CPU Cores:</strong> Modern processors contain multiple cores, each functioning as an independent processing unit capable of executing its own set of instructions. A dual-core processor has two cores, a quad-core has four, etc. More cores enable better multitasking and improved performance in multi-threaded applications.</p>
-                  <p><strong>CPU Threads:</strong> A CPU thread represents a sequence of instructions that a core can execute. Some modern CPUs support simultaneous multithreading (SMT), commonly referred to as hyper-threading in Intel processors. This allows a single core to handle multiple threads at once, improving efficiency by maximizing core utilization.</p>
+                  <p><strong>CPU Threads:</strong> A CPU thread represents a sequence of instructions that a core can execu modern CPUs support simultaneous multithreading (SMT), commonly referred to as hyper-threading in Intel processors. This allows a single core to handle multiple threads at once, improving efficiency by maximizing core utilization.</p>
                   <p><strong>(CPU Example #1) Intel Core i9-14900K:</strong> This high-performance Intel processor features 24 cores and 32 threads, using a hybrid architecture that combines performance and efficiency cores. It is designed for demanding tasks like gaming, video editing, and software development.</p>
                   <p><strong>(CPU Example #2) AMD Ryzen 9 7950X:</strong> A powerful AMD processor with 16 cores and 32 threads, optimized for high-performance computing, gaming, and content creation. It features a high clock speed and advanced power management for energy efficiency.</p>
                   <p><strong>GPU (Graphical Processing Unit):</strong> A GPU is a specialized processor designed for parallel processing, making it ideal for handling complex graphics rendering and compute-intensive tasks. Unlike CPUs, which focus on sequential task execution, GPUs excel at processing multiple data streams simultaneously. This makes them essential for gaming, 3D rendering, AI training, and scientific simulations. Modern GPUs are equipped with dedicated hardware for video decoding and encoding, allowing them to compress and decompress video files efficiently. This reduces the load on the CPU, improving overall system performance. Popular video codecs, such as H.264 and H.265, are commonly supported by GPUs for smooth playback of high-definition and ultra-high-definition (UHD) content.</p>
@@ -137,7 +249,7 @@ const Razberi = () => {
                     }}
                   >
                     <thead>
-                      <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                      <tr style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff" }}>
                         <th style={{ padding: "10px", border: "1px solid #ddd" }}>RAID Level</th>
                         <th style={{ padding: "10px", border: "1px solid #ddd" }}>Minimum Required Drives</th>
                         <th style={{ padding: "10px", border: "1px solid #ddd" }}>Total Storage</th>
@@ -199,7 +311,7 @@ const Razberi = () => {
               <button className="faq-question" onClick={() => toggleAnswer('registration')}> I Want to Skip the Registration on My Server. </button>
               {visibleAnswers.has('registration') && (
                 <div className="faq-answer">
-                  <p><strong>While on the registration page, hold down: Ctrl + Shift + Alt + F11.</strong></p>
+                  <p><strong>While on the registrate. Sometion page, hold down: Ctrl + Shift + Alt + F11.</strong></p>
                 </div>
               )}
             </div>
@@ -233,106 +345,6 @@ const Razberi = () => {
               )}
             </div>
             <div className="faq-list">
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-power-ss32x')}> Troubleshooting power issues on an SS32X. </button>
-              {visibleAnswers.has('no-power-ss32x') && (
-                <div className="faq-answer">
-                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
-                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
-                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
-                  <p><strong>[4] Verify a healthy OS, RAID, and switch.</strong></p>
-                  <p><strong>[5] Confirm the following settings in BIOS.</strong></p>
-                  <li>Check that the boot order is correct. Windows Boot Manager should be option #1.</li>
-                  <li>In "Advanced" -- "ACPI Settings", make sure "Enable Hibernation" is disabled.</li>
-                  <li>In "Advanced" -- "ACPI Settings", make sure "ACPI Sleep State" is set to "Suspend Disabled"</li>
-                  <li>In "Chipset" -- "PCH-IO Configuration" -- "SATA and RST Configuration", make sure all the hard drives are detected. There should be 4 of them (but it will show up as 0, 1, 2, and 3).</li>
-                  <li>In "Chipset" -- "Board Configuration", make sure "PWR-On After PWR-Fail" is set to "Last state" or "On".</li>
-                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
-                  <p><strong>[7] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-power-core')}> Troubleshooting power issues on a Core Server. </button>
-              {visibleAnswers.has('no-power-core') && (
-                <div className="faq-answer">
-                  <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
-                  <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
-                  <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
-                  <p><strong>[4] Verify a healthy OS and RAID.</strong></p>
-                  <p><strong>[5] Enter the System Setup when booting into the server.</strong></p>
-                  <li>Change the <strong>Thermal Profile</strong> to <strong>Minimum Power (Performance per Watt Optimized).</strong></li>
-                  <li>The power of the server can be capped by specifing the watts, BTU/hr, and by a percentage. A lower power consumption typically means lower heat output, which can reduce cooling requirements. The fans may run at a lower speed, making the server quieter. Lower power usage can also reduce the thermal stress, potentially extending the life of components like CPUs and power supplies. However, if the server is power capped too aggressively, the CPU and memory performance may be throttled to stay within the limit.</li>
-                  <p><strong>[6] Perform a recovery of the OS.</strong></p>
-                  <p><strong>[7] Perform a hardware diagnostic on the server. This can be done in the <strong>Lifecycle Controller</strong> under the <strong>Hardware Diagnostics</strong> tab and <strong>Run Hardware Diagnostics</strong> button.</strong></p>
-                  <p><strong>[8] If the issue persists, there may be an issue with the power supply or CPU board. Please contact technical support for further assistance.</strong></p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('no-poe')}> Troubleshooting PoE switch issues. </button>
-              {visibleAnswers.has('no-poe') && (
-                <div className="faq-answer">
-                  <p>[1] Verify the unit is receiving 100-120VAC.</p>
-                  <p>[2] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</p>
-                  <p>[3] Confirm the powered devices are 802.3af/at compliant.</p>
-                  <p>[4] Ensure the switch is not producing more PoE than the PoE budget allows.</p>
-                  <p>[5] Disable and enable PoE on the port.</p>
-                  <p>[6] While the server is powered on, default the switch by placing a jumper between ports 1 and 2.</p>
-                  <p>[7] Attempt pinging the switch from the command prompt on the server.</p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('RAID')}> Troubleshooting RAID or HDD issues. </button>
-              {visibleAnswers.has('RAID') && (
-                <div className="faq-answer">
-                  <p><strong>[1] Confirm that the HDD or RAID has failed and what the current RAID configuration is using one of the following:</strong></p>
-                  <li>Razberi Monitor Cloud</li>
-                  <li>Razberi Monitor: System Info</li>
-                  <li>Device Manager</li>
-                  <li>Intel Rapid Storage Technology</li>
-                  <li>iDRAC</li>
-                  <li>Diskpart</li>
-                  <li>BIOS</li>
-                  <p><strong>[2] If a HDD has failed, contact technical support to determine if the unit is under warranty. If so, a replacement HDD can be sent. Otherwise, a new HDD will need to be purchased. Please note:</strong></p>
-                  <li>RAID 0 requires at least 2 drives. One drive failing corrupts the entire RAID.</li>
-                  <li>RAID 1 requires at least 2 drives and allows for the loss of half. Replacing the drive(s) should automatically rebuild the RAID.</li>
-                  <li>RAID 5 requires at least 3 drives and allows for the loss of one. Replacing the drive should automatically rebuild the RAID.</li>
-                  <li>RAID 6 requires at least 4 drives and allows for the loss of two. Replacing the drive(s) should automatically rebuild the RAID.</li>
-                  <li>RAID 10 requires at least 4 drives and allows for the loss of half. Replacing the drive(s) should automatically rebuild the RAID.</li>
-                  <p><strong>[3] If the RAID is corrupted, delete the virtual disk, create a new virtual disk, and format the volume as NTFS using the following: </strong></p>
-                  <li>BIOS</li>
-                  <li>Disk Management</li>
-                  <li>Intel Rapid Storage Technology</li>
-                  <li>iDRAC</li>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('NIC')}> Troubleshooting NIC issues. </button>
-              {visibleAnswers.has('NIC') && (
-                <div className="faq-answer">
-                  <p>[1] Enter "View network status and tasks" in the Windows search box.</p>
-                  <p>[2] Click "Change adapter settings".</p>
-                  <p>[3] Disable and enable the NIC</p>
-                  <p>[4] Diagnose the NIC connection</p>
-                  <p>[5] In Device Manager, verify the NIC has the necessary drivers.</p>
-                </div>
-              )}
-            </div>
-            <div className="faq-item">
-              <button className="faq-question" onClick={() => toggleAnswer('windows-os')}> Troubleshooting Windows OS issues. </button>
-              {visibleAnswers.has('windows-os') && (
-                <div className="faq-answer">
-                  <p>[1] Review the Razberi Monitor Alert Logs.</p>
-                  <p>[2] Review the errors in Event Viewer.</p>
-                  <p>[3] Review the iDRAC alert logs</p>
-                  <p>[4] Review the CPU utilization and processes in Task Manager</p>
-                  <p>[5] Perform a recovery of the operaitng system.</p>
-                </div>
-              )}
-            </div>
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleAnswer('switch')}>  Pinging the Switch From a Laptop  </button>
               {visibleAnswers.has('switch') && (

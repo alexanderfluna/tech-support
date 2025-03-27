@@ -44,7 +44,7 @@ const PowerOverEthernet = () => {
                   textAlign: "left",
                 }}>
                   <thead>
-                    <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                    <tr style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff" }}>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Standard</th>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Type</th>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Power (W)</th>
@@ -76,7 +76,7 @@ const PowerOverEthernet = () => {
                   textAlign: "left",
                 }}>
                   <thead>
-                    <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                    <tr style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff" }}>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>PoE Class</th>
                       <th style={{ padding: "10px", border: "1px solid #ddd" }}>Power Range</th>
                     </tr>
