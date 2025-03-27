@@ -107,7 +107,7 @@ const EthernetExtender = () => {
           }}>Ethernet Extender</h1>
 
         <button className="purple-button" onClick={toggleTroubleshooting}>
-          <h1>Troubleshooting</h1>
+          <h1>Troubleshoot</h1>
         </button>
         {showTroubleshooting && (
           <>
@@ -115,10 +115,7 @@ const EthernetExtender = () => {
                 <button className="faq-question" onClick={() => toggleAnswer('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)')}> Troubleshooting CLFE(X)EO(U/C) to CLFE(X)EO(U/C) </button>
                 {visibleAnswers.has('CLFE(X)EO(U/C) to CLFE(X)EO(U/C)') && (
                   <div className="faq-answer">
-                    <p><strong>Local vs. Remote:</strong> The units with 1 or 4 channels can be set as local or remote via the dip switch. The units with 8 or 16 channels can only be set as local.</p>
-                    <p><strong>PoE:</strong> The devices cannot inject 48VDC. Instead, they support pass-through PoE at the 802.3af standard. There is no pass-through PoE when using one pair of UTP.</p>
-                    <p><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</p>
-                    <p><strong>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</strong></p>
+                    <p><strong>[1] View the <a href="pdf/EthernetExtender/CLFE_X_EO_C-U.pdf" >installation manual</a>.</strong></p>
                     <li>Page 2: CLFE1EOC and CLFE1EOU images and dip switches.</li>
                     <li>Page 3: CLFE4EOC images and dip switches.</li>
                     <li>Page 4: CLFE4EOU images and dip switches.</li>
@@ -128,9 +125,10 @@ const EthernetExtender = () => {
                     <li>Page 8: Application diagrams.</li>
                     <li>Page 9: Installation instructions, power table and LED table.</li>
                     <li>Page 10: Application notes, extended distance table, troubleshooting guide.</li>
-                    <p><strong>The tables below shows the maximum distances Comnet's devices can extend Ethernet over coax, a single pair of UTP, or four pairs of UTP.</strong></p>
-                    <li><strong>CLFE(X)EO(U/C) to CLFE(X)EO(U/C)</strong></li>
-                    <img src="photos/CopperLine/Distance1.png" alt="CopperLine distance chart 1"></img>
+                    <p><strong>[2] Note the following:</strong></p>
+                    <li><strong>Local (CLL) vs. Remote (CLR):</strong> The devices with 1, 4, 8, or 16 channels that begin with <strong>CLL</strong> are the local units. The devices with 1 or 4 channels that begin with <strong>CLR</strong> are the remote units.</li>
+                    <li><strong>PoE:</strong> The local or remote device can inject 48VDC at the 802.3at standard. There is no pass-through PoE when using one pair of UTP.</li>
+                    <li><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</li>
                   </div>
                 )}
               </div>
@@ -138,10 +136,7 @@ const EthernetExtender = () => {
                 <button className="faq-question" onClick={() => toggleAnswer('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)')}> Troubleshooting CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) </button>
                 {visibleAnswers.has('CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)') && (
                   <div className="faq-answer">
-                    <p><strong>Local (CLL) vs. Remote (CLR):</strong> The devices with 1, 4, 8, or 16 channels that begin with <strong>CLL</strong> are the local units. The devices with 1 or 4 channels that begin with <strong>CLR</strong> are the remote units.</p>
-                    <p><strong>PoE:</strong> The local or remote device can inject 48VDC at the 802.3at standard. There is no pass-through PoE when using one pair of UTP.</p>
-                    <p><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</p>
-                    <p><strong>Type the model number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to view the installation manual.</strong></p>
+                    <p><strong>[1] View the <a href="pdf/EthernetExtender/CL_L-R_FE_X_POE_C-U.pdf" >installation manual</a>.</strong></p>
                     <li>Page 2: CLLFE1POEC and CLRFE1POEC images and dip switch.</li>
                     <li>Page 3: CLLFE1POEU and CLRFE1PEOU images and dip switches.</li>
                     <li>Page 4: CLLFE4POEC and CLRFE4PEOU images and dip switch.</li>
@@ -154,9 +149,10 @@ const EthernetExtender = () => {
                     <li>Page 11: Installation instructions, power table, LED table, and application notes.</li>
                     <li>Page 12: Extended distance table and troubleshooting guide</li>
                     <li>Page 13: Ferrite core</li>
-                    <p><strong>The tables below shows the maximum distances Comnet's devices can extend Ethernet over coax, a single pair of UTP, or four pairs of UTP.</strong></p>
-                    <li><strong>CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)</strong></li>
-                    <img src="photos/CopperLine/Distance2.png" alt="CopperLine distance chart 2"></img>
+                    <p><strong>[2] Note the following:</strong></p>
+                    <li><strong>Local (CLL) vs. Remote (CLR):</strong> The devices with 1, 4, 8, or 16 channels that begin with <strong>CLL</strong> are the local units. The devices with 1 or 4 channels that begin with <strong>CLR</strong> are the remote units.</li>
+                    <li><strong>PoE:</strong> The local or remote device can inject 48VDC at the 802.3at standard. There is no pass-through PoE when using one pair of UTP.</li>
+                    <li><strong>LEDs:</strong> The entire setup must be connected for LEDs to be illuminated.</li>
                   </div>
                 )}
             </div>
@@ -340,7 +336,7 @@ const EthernetExtender = () => {
                       }}
                     >
                       <thead>
-                        <tr style={{ backgroundColor: "rgb(106, 13, 173)", color: "#fff" }}>
+                        <tr style={{ backgroundColor: "rgb(13, 128, 173)", color: "#fff" }}>
                           <th style={{ padding: "10px", border: "1px solid #ddd" }}>Cable Type</th>
                           <th style={{ padding: "10px", border: "1px solid #ddd" }}>Applications</th>
                           <th style={{ padding: "10px", border: "1px solid #ddd" }}>Impedance</th>

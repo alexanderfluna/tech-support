@@ -27,7 +27,7 @@ function EthernetSwitchFrequentlyAskedQuestions() {
         
         <div className="faq-list">
             <button className="purple-button" onClick={toggleFAQ}>
-                <h1>Relevant Information</h1>
+                <h1 style={{width: "100%"}}>Relevant Information</h1>
             </button>
             {FAQ && (
                 <>

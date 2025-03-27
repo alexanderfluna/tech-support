@@ -114,7 +114,7 @@ const Wireless = () => {
           }}>Wireless Ethernet</h1>
 
         <button className="purple-button" onClick={toggleTroubleshooting}>
-            <h1>Troubleshooting</h1>
+            <h1>Troubleshoot</h1>
           </button>
           {showTroubleshooting && (
             <>

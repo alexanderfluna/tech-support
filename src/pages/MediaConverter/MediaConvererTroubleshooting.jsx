@@ -31,7 +31,7 @@ function MediaConverterTroubleshooting() {
     
         <div className="faq-list">
             <button className="purple-button" onClick={toggleFAQ}>
-                <h1>Troubleshooting</h1>
+                <h1>Troubleshoot</h1>
             </button>
         {FAQ && (
             <>

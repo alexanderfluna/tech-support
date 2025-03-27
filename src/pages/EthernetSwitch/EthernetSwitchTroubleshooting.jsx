@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import Fiber from '../../relevant-information/Fiber';
-import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
-import OSI from '../../relevant-information/OSI';
 import NoPowerLight from '../../relevant-information/NoPowerLight';
 import NoOpticalLink from '../../relevant-information/NoOpticalLink';
 import NoPoE from '../../relevant-information/NoPoe';
@@ -30,7 +27,7 @@ function EthernetSwitchTroubleshooting() {
         
         <div className="faq-list">
             <button className="purple-button" onClick={toggleFAQ}>
-                <h1>Troubleshooting</h1>
+                <h1>Troubleshoot</h1>
             </button>
             {FAQ && (
                 <>
