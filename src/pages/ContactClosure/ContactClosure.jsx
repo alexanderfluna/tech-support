@@ -188,7 +188,7 @@ const ContactClosure = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                   }}>
-                    {filterType.replace(/([A-Z])/g, ' $1').toUpperCase()}
+                    {filterType.replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, char => char.toUpperCase())}
                     {filters[filterType] && (
                       <button
                         className="clear-filter"
@@ -286,10 +286,7 @@ const ContactClosure = () => {
             </div>
           </>
         )}
-
-
-
-
+        
         <button className="purple-button" onClick={toggleFAQ}>
           <h1>Relevant Information</h1>
         </button>
