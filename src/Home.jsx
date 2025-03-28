@@ -1,28 +1,77 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Chatbox from './components/Chatbox';
+
+// Ethernet Switch
 import EthernetSwitch from './pages/EthernetSwitch/EthernetSwitch';
 import EthernetSwitchProducts from "./pages/EthernetSwitch/EthernetSwitchProducts";
+import EthernetSwitchTroubleshooting from './pages/EthernetSwitch/EthernetSwitchTroubleshooting';
+import EthernetSwitchSelectorTool from './pages/EthernetSwitch/EthernetSwitchSelectorTool';
+import EthernetSwitchFAQ from './pages/EthernetSwitch/EthernetSwitchFAQ';
+
+// Media Converter
 import MediaConverter from "./pages/MediaConverter/MediaConverter";
 import MediaConverterProducts from "./pages/MediaConverter/MediaConverterProducts";
-import SFP from "./pages/SFP/SFP"; 
-import SFPProducts from "./pages/SFP/SFPProducts";
+import MediaConverterTroubleshooting from './pages/MediaConverter/MediaConvererTroubleshooting';
+import MediaConverterSelectorTool from './pages/MediaConverter/MediaConverterSelectorTool';
+import MediaConverterFAQ from './pages/MediaConverter/MediaConverterFAQ';
+
+// Wireless
 import Wireless from "./pages/Wireless/Wireless";
 import WirelessProducts from "./pages/Wireless/WirelessProducts";
-import EthernetExtender from "./pages/EthernetExtender/EthernetExtender";
+import WirelessTroubleshooting from './pages/Wireless/WirelessTroubleshooting';
+import WirelessSelectorTool from './pages/Wireless/WirelessSelectorTool';
+import WirelessFAQ from './pages/Wireless/WirelessFAQ';
+
+// SFP
+import SFP from "./pages/SFP/SFP"; 
+import SFPProducts from "./pages/SFP/SFPProducts";
+import SFPSelectorTool from './pages/SFP/SFPSelectorTool';
+import SFPFAQ from './pages/SFP/SFPFAQ';
+
+// Razberi
 import Razberi from "./pages/Razberi/Razberi";
-import RazberiProducts from "./pages/Razberi/RazberiProducts";  // Import Razberi products
+import RazberiProducts from "./pages/Razberi/RazberiProducts";
+import RazberiTroubleshooting from './pages/Razberi/RazberiTroubleshooting';
+import RazberiSelectorTool from './pages/Razberi/RazberiSelectorTool';
+import RazberiFAQ from './pages/Razberi/RazberiFAQ';
+
+// Ethernet Extender
+import EthernetExtender from "./pages/EthernetExtender/EthernetExtender";
 import EthernetExtenderProducts from "./pages/EthernetExtender/EthernetExtenderProducts";
+import EthernetExtenderTroubleshooting from './pages/EthernetExtender/EthernetExtenderTroubleshooting';
+import EthernetExtenderSelectorTool from './pages/EthernetExtender/EthernetExtenderSelectorTool';
+import EthernetExtenderFAQ from './pages/EthernetExtender/EthernetExtenderFAQ';
+
+// Contact Closure
 import ContactClosure from "./pages/ContactClosure/ContactClosure";
 import ContactClosureProducts from "./pages/ContactClosure/ContactClosureProducts";
+import ContactClosureTroubleshooting from './pages/ContactClosure/ContactClosureTroubleshooting';
+import ContactClosureSelectorTool from './pages/ContactClosure/ContactClosureSelectorTool';
+import ContactClosureFAQ from './pages/ContactClosure/ContactClosureFAQ';
+
+// Serial Data
 import SerialData from "./pages/SerialData/SerialData";
 import SerialDataProducts from "./pages/SerialData/SerialDataProducts";
+import SerialDataTroubleshooting from './pages/SerialData/SerialDataTroubleshooting';
+import SerialDataSelectorTool from './pages/SerialData/SerialDataSelectorTool';
+import SerialDataFAQ from './pages/SerialData/SerialDataFAQ';
+
+// Wiegand
 import Wiegand from "./pages/Wiegand/Wiegand";
 import WiegandProducts from "./pages/Wiegand/WiegandProducts";
+import WiegandSelectorTool from './pages/Wiegand/WiegandSelectorTool';
+import WiegandFAQ from './pages/Wiegand/WiegandFAQ';
+
+// Power Supply
 import PowerSupply from "./pages/PowerSupply/PowerSupply";
 import PowerSupplyProducts from "./pages/PowerSupply/PowerSupplyProducts";
+
+// PoE Injector
 import PoeInjector from "./pages/PoeInjector/PoeInjector";
 import PoeInjectorProducts from "./pages/PoeInjector/PoeInjectorProducts";
+
+// Enclosure
 import Enclosures from "./pages/Enclosure/Enclosures";
 import EnclosureProducts from "./pages/Enclosure/EnclosureProducts";
 import "./styles/Home.css"

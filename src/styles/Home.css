@@ -100,7 +100,7 @@
   border-radius: 4px;
   font-size: 1rem;
   transition: background-color 0.3s;
-  background: linear-gradient(135deg, rgb(35, 87, 150), rgb(158, 158, 158));
+  background: linear-gradient(135deg, rgb(19, 67, 126), rgb(213, 210, 210));
 }
 
 .category-button:hover {
