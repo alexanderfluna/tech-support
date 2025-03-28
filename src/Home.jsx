@@ -79,48 +79,55 @@ import "./styles/Home.css"
 const productsConfig = {
   EthernetSwitch: {
     products: EthernetSwitchProducts,
-    selectorTool: EthernetSwitch,
-    faq: EthernetSwitch,
+    troubleshooting: EthernetSwitchTroubleshooting,
+    selectorTool: EthernetSwitchSelectorTool,
+    faq: EthernetSwitchFAQ,
   },
   MediaConverter: {
     products: MediaConverterProducts,
-    selectorTool: MediaConverter,
-    faq: MediaConverter,
+    troubleshooting: MediaConverterTroubleshooting,
+    selectorTool: MediaConverterSelectorTool,
+    faq: MediaConverterFAQ,
   },
   WirelessEthernet: {
     products: WirelessProducts,
-    selectorTool: Wireless,
-    faq: Wireless,
+    troubleshooting: WirelessTroubleshooting,
+    selectorTool: WirelessSelectorTool,
+    faq: WirelessFAQ,
   },
   SFP: {
     products: SFPProducts,
-    selectorTool: SFP,
-    faq: SFP,
+    selectorTool: SFPSelectorTool,
+    faq: SFPFAQ,
   },
   RazberiServer: { 
     products: RazberiProducts,
-    selectorTool: Razberi,
-    faq: Razberi,
+    troubleshooting: RazberiTroubleshooting,
+    selectorTool: RazberiSelectorTool,
+    faq: RazberiFAQ,
   },
   EthernetExtender: {
     products: EthernetExtenderProducts,
-    selectorTool: EthernetExtender,
-    faq: EthernetExtender,
+    troubleshooting: EthernetExtenderTroubleshooting,
+    selectorTool: EthernetExtenderSelectorTool,
+    faq: EthernetExtenderFAQ,
   },
   ContactClosure: {
     products: ContactClosureProducts,
-    selectorTool: ContactClosure,
-    faq: ContactClosure,
+    troubleshooting: ContactClosureTroubleshooting,
+    selectorTool: ContactClosureSelectorTool,
+    faq: ContactClosureFAQ,
   },
   SerialData: {
     products: SerialDataProducts,
-    selectorTool: SerialData,
-    faq: SerialData,
+    troubleshooting: SerialDataTroubleshooting,
+    selectorTool: SerialDataSelectorTool,
+    faq: SerialDataFAQ,
   },
   Wiegand: {
     products: WiegandProducts,
-    selectorTool: Wiegand,
-    faq: Wiegand,
+    selectorTool: WiegandSelectorTool,
+    faq: WiegandFAQ,
   },
   PowerSupply: {
     products: PowerSupplyProducts,
@@ -139,10 +146,12 @@ const productsConfig = {
   },
 };
 
+
 const Home = () => {
   const [mainContent, setMainContent] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
 
   useEffect(() => {
     setMainContent(
@@ -202,7 +211,7 @@ const Home = () => {
       const product = config.products.find((p) => p.Model === model);
       if (product) {
         displayContent(<config.faq />, model);
-        setSearchTerm(''); // Clear the search input field after selection
+        setSearchTerm('');
         return;
       }
     }
@@ -211,9 +220,29 @@ const Home = () => {
   const handleCategorySelect = (category) => {
     const config = productsConfig[category];
     if (config) {
+      setActiveCategory(category); // Set the active category when a button is clicked
       displayContent(<config.selectorTool />);
     } else {
       displayContent(<h2 style={{ color: "#e74c3c" }}>Category Not Found</h2>);
+    }
+  };
+
+  const handleLinkClick = (linkType) => {
+    const config = productsConfig[activeCategory];
+    if (config) {
+      switch (linkType) {
+        case 'troubleshooting':
+          displayContent(<config.troubleshooting />);
+          break;
+        case 'selectorTool':
+          displayContent(<config.selectorTool />);
+          break;
+        case 'faq':
+          displayContent(<config.faq />);
+          break;
+        default:
+          displayContent(<h2 style={{ color: "#e74c3c" }}>Link Not Found</h2>);
+      }
     }
   };
 
@@ -245,15 +274,42 @@ const Home = () => {
             </div>
           )}
 
-          {Object.keys(productsConfig).map((category, index) => (
+{Object.keys(productsConfig).map((category, index) => (
+          <div key={index}>
             <button
-              key={index}
               className="category-button"
-              onClick={() => handleCategorySelect(category)}
             >
               {category.replace(/([a-z])([A-Z])/g, "$1 $2")}
             </button>
-          ))}
+
+            {activeCategory === category && (
+              <div style={{ marginTop: "10px" }}>
+                <a
+                  href="#"
+                  onClick={() => handleLinkClick('troubleshooting')}
+                  style={{ display: "block", color: "#3498db", margin: "5px 0" }}
+                >
+                  Troubleshooting
+                </a>
+                <a
+                  href="#"
+                  onClick={() => handleLinkClick('selectorTool')}
+                  style={{ display: "block", color: "#3498db", margin: "5px 0" }}
+                >
+                  Selector Tool
+                </a>
+                <a
+                  href="#"
+                  onClick={() => handleLinkClick('faq')}
+                  style={{ display: "block", color: "#3498db", margin: "5px 0" }}
+                >
+                  FAQ
+                </a>
+              </div>
+            )}
+          </div>
+        ))}
+
         </div>
         <div className="mainContent" style={{ width: "75%", backgroundColor: '#f5f5f5', borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", marginLeft: "20px" }}>
           {mainContent}
