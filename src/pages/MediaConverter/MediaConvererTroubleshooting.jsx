@@ -6,41 +6,34 @@ import NoPoE from '../../relevant-information/NoPoe';
 function MediaConverterTroubleshooting() {
     return (
         <div className="faq-list">
-            <h1 style={{
-                fontSize: "4.5rem",
-                fontWeight: "bold",
-                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textAlign: "center"
-            }}>Media Converter Troubleshooting</h1>
+            <h1 className="faq-title">Media Converter Troubleshooting</h1>
 
             <div className="table-of-contents">
-                <h1>Content</h1>
-                <a href="#no-power-light">Troubleshooting a media converter with no power.</a>
-                <a href="#no-optical-link">Troubleshooting a media converter with no optical link.</a>
-                <a href="#no-poe">Troubleshooting a media converter with no PoE.</a>
-                <a href="#no-communication">Troubleshooting a unit with no Ethernet port activity.</a>
-                <a href="#cnfe2mc2c">Configuring contacts on a CNFE2MC2C.</a>
+                <h1>Table of Contents</h1>
+                <li><a href="#no-power-light">Troubleshooting a media converter that will not power on</a></li>
+                <li><a href="#no-optical-link">Troubleshooting a media converter that will not link optically</a></li>
+                <li><a href="#no-poe">Troubleshooting a media converter that will not produce PoE</a></li>
+                <li><a href="#no-communication">Troubleshooting a media converter with no Ethernet port activity</a></li>
+                <li><a href="#cnfe2mc2c">How to configure the contacts on a CNFE2MC2C</a></li>
             </div>
 
             <div className="faq-answer" id="no-power-light">
-                <h1>Troubleshooting a media converter with no power.</h1>
+                <h1>Troubleshooting a media converter that will not power on</h1>
                 <NoPowerLight />
             </div>
-            
+
             <div className="faq-answer" id="no-optical-link">
-                <h1>Troubleshooting a media converter with no optical link.</h1>
+                <h1>Troubleshooting a media converter that will not link optically</h1>
                 <NoOpticalLink />
             </div>
 
             <div className="faq-answer" id="no-poe">
-                <h1>Troubleshooting a media converter with no PoE.</h1>
+                <h1>Troubleshooting a media converter that will not produce PoE</h1>
                 <NoPoE />
             </div>
 
             <div className="faq-answer" id="no-communication">
-                <h1>Troubleshooting a unit with no Ethernet port activity.</h1>
+                <h1>Troubleshooting a media converter with no Ethernet port activity.</h1>
                 <p><strong>[1] Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a>.</strong></p>
                 <p><strong>[2] Open the device's data sheet and locate its required input/operating voltage range (e.g. 8 - 24VDC, 48 - 56VDC).</strong></p>
                 <p><strong>[3] Use a voltmeter to verify the correct polarity and voltage while under load.</strong></p>
@@ -56,7 +49,7 @@ function MediaConverterTroubleshooting() {
             </div>
 
             <div className="faq-answer" id="cnfe2mc2c">
-                <h1>Configuring contacts on a CNFE2MC2C.</h1>
+                <h1>How to configure the contacts on a CNFE2MC2C.</h1>
                 <a href="pdf/MediaConverter/CNFE2MC2C.pdf">Click the link to view the configuration manual.</a>
             </div>
         </div>

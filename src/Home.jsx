@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Chatbox from './components/Chatbox';
+import BackToTop from './components/BackToTop';
 
 // Ethernet Switch
 import EthernetSwitch from './pages/EthernetSwitch/EthernetSwitch';
@@ -297,6 +298,7 @@ const Home = () => {
         </div>
       </div>
       <Chatbox />
+      <BackToTop/>
     </div>
   );
 };

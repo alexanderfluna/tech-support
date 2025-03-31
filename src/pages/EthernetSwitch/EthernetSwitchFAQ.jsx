@@ -10,16 +10,14 @@ function EthernetSwitchFrequentlyAskedQuestions() {
 
             <div className="table-of-contents">
                 <h1>Table of Contents</h1>
-                <li><a href="#switch">Ethernet Switch Protocols</a></li>
-                <li><a href="#switch-ip-address">How to Find the IP address of a Switch</a></li>
-                <li><a href="#switch-default">How to Factory Default A Switch</a></li>
+                <li><a href="#switch">Ethernet Switches</a></li>
                 <li><a href="#fiber">Fiber Optics</a></li>
                 <li><a href="#poe">Power Over Ethernet</a></li>
                 <li><a href="#osi">The OSI Model</a></li>
             </div>
 
             <div id="switch" className="faq-answer">
-                <h1>Ethernet Switch Protocols</h1>
+                <h1>Ethernet Switches</h1>
                 <p>Ethernet switches are used to connect end devices like PCs, printers, servers, and other networking devices within a <strong>local area network (LAN)</strong>. Their role is to switch packets of data from one device to another. This is achieved by examining the destination <strong>MAC address</strong> in the Ethernet frame and forwarding the packet to the appropriate port on the switch that is connected to the destination device.</p>
                 <p><strong>ARP (Address Resolution Protocol)</strong> is used to map an IP address to a MAC address. It allows devices on the same local network to find each other and communicate effectively by resolving IP addresses to their corresponding physical hardware addresses.</p>
                 <p><strong>LLDP (Link Layer Discovery Protocol)</strong> is a protocol used by network devices to discover and exchange information about each other on a local network. It helps network administrators manage their network by providing details about connected devices and their capabilities.</p>
@@ -35,41 +33,6 @@ function EthernetSwitchFrequentlyAskedQuestions() {
                 <p><strong>VLAN (Virtual Local Area Network)</strong> using 802.1Q is a protocol that allows network administrators to create virtual networks within a physical network. VLANs help segment traffic, improve network performance, and enhance security by isolating different groups of devices.</p>
                 <p><strong>RADIUS (Remote Authentication Dial-In User Service)</strong> and <strong>TACACS+ (Terminal Access Controller Access-Control System Plus)</strong> are network protocols used for authentication, authorization, and accounting. They help secure network access by ensuring only authorized users can connect and that their activities are monitored.</p>
                 <p><strong>LACP (Link Aggregation Control Protocol)</strong> is a protocol used to combine multiple network links into a single logical link. This increases the bandwidth and provides redundancy in case of a link failure, improving network reliability and performance.</p>
-            </div>
-
-            <div className="faq-answer" id="ip-address">
-                <h1>How to Find the IP address of a Switch</h1>
-                <p><strong>[1] Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to find the default IP address in the installation manual.</strong></p>
-                <p>The typical default configurations of a Comnet Ethernet switch are:</p>
-                <p style={{paddingLeft: "40px"}}>[1] Default IP address: 192.168.10.1</p>
-                <p style={{paddingLeft: "40px"}}>[2] Default username: "admin"</p>
-                <p style={{paddingLeft: "40px"}}>[3] Default password: "admin"</p>
-                <p><strong>[2] If the default IP address does not work, but the username and password are known:</strong></p>
-                <p style={{paddingLeft: "40px"}}>[2.1] Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
-                <li style={{paddingLeft: "60px"}}>Speed (baud): 115200</li>
-                <li style={{paddingLeft: "60px"}}>Data bits: 8</li>
-                <li style={{paddingLeft: "60px"}}>Stop bits: 1</li>
-                <li style={{paddingLeft: "60px"}}>Parity: None</li>
-                <li style={{paddingLeft: "60px"}}>Flow control: None</li>
-                <p style={{paddingLeft: "40px"}}>[2.2] Enter the username and password.</p>
-                <p style={{paddingLeft: "40px"}}>[2.3] Type "show ip interface brief" and click enter.</p>
-                <p><strong>[3] If the username or password is not known:</strong></p>
-                <p style={{paddingLeft: "40px"}}>[3.1] Connect the switch to another switch with LLDP enabled and view the LLDP Remote Device Summary.</p>
-                <p><strong>[4] Use Advanced IP Scanner to scan through the possible IP ranges that the switch is under.</strong></p>
-            </div>
-
-            <div className="faq-answer" id="cli-default">
-                <h1>How to Factory Default A Switch</h1>
-                <p>[1] Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
-                <li>Speed (baud): 115200.</li>
-                <li>Data bits: 8</li>
-                <li>Stop bits: 1</li>
-                <li>Parity: None</li>
-                <li>Flow control: None</li>
-                <p>[2] Enter the username and password.</p>
-                <p>[3] Type "enable" and click enter.</p>
-                <p>[4] Type "reload defaults" and click enter.</p>
-                <p>[5] Enter the IP address 192.168.10.1 in a web browser.</p>
             </div>
 
             <div id="fiber" className="faq-answer">
