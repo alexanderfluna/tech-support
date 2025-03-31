@@ -72,12 +72,15 @@ const WiegandSelectorTool = () => {
 
 
   return (
-    <div>
-       <button className="purple-button" onClick={toggleTable}>
-          <h1>Selector Tool</h1>
-        </button>
-        {showTable && (
-          <>
+    <div className="faq-list">
+      <h1 style={{
+                fontSize: "3rem",
+                fontWeight: "bold",
+                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                textAlign: "center"
+            }}>Wiegand| Selector Tool</h1>
             <div className="filter-options" style={{
               display: 'flex',
               flexWrap: 'wrap',
@@ -206,8 +209,6 @@ const WiegandSelectorTool = () => {
                 </tbody>
               </table>
             </div>
-          </>
-        )}
     </div>
   )
 }

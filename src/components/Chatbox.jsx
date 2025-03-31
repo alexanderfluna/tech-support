@@ -17,7 +17,6 @@ const Chatbox = () => {
       rma: 'To request an RMA, please contact Comnet\'s technical support with the product model, a description of the issue, and the troubleshooting that has been performed.',
       firmware: 'You will need to request this from Comnet\'s technical support and provide the current firmware version of the device.',
       warranty: 'The warranty information is listed in the product\'s data sheet on the bottom of the first page.',
-      onsite: 'Yes, please contact technical support to arrange this.'
     };
 
     setResponses(prevResponses => {
@@ -90,13 +89,6 @@ const Chatbox = () => {
             </button>
             {responses.warranty && (
               <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.warranty }} />
-            )}
-
-            <button onClick={() => handleButtonClick('onsite')}>
-              Does Comnet's technical support go on-site?
-            </button>
-            {responses.onsite && (
-              <div className="chat-message bot" dangerouslySetInnerHTML={{ __html: responses.onsite }} />
             )}
           </div>
         </div>

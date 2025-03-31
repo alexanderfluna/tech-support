@@ -10,13 +10,17 @@ const RazberiSelectorTool = () => {
   };
 
   return (
-    <div>
-      <button className="purple-button" onClick={toggleSelector}>
-        <h1>Selector Tool</h1>
-      </button>
-      {showSelector && (
+    <div className="faq-list">
+      <h1 style={{
+                fontSize: "3rem",
+                fontWeight: "bold",
+                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                textAlign: "center"
+            }}>Razberi Server| Selector Tool</h1>
         <div className="selector-placeholder" >
-          <div className="selector-options" style={{width: "70%"}}>
+          <div className="selector-options" style={{width: "50%"}}>
             <button
               className={`selector-button ${selected === "Server Switch" ? "selected" : ""}`}
               onClick={() => setSelected("Server Switch")}
@@ -58,7 +62,6 @@ const RazberiSelectorTool = () => {
           )}
           {!selected && <p className="placeholder-text"></p>}
         </div>
-      )}
     </div>
   )
 }

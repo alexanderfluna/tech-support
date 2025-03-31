@@ -79,68 +79,85 @@ import "./styles/Home.css"
 const productsConfig = {
   EthernetSwitch: {
     products: EthernetSwitchProducts,
+    page: EthernetSwitch,
     troubleshooting: EthernetSwitchTroubleshooting,
     selectorTool: EthernetSwitchSelectorTool,
     faq: EthernetSwitchFAQ,
   },
   MediaConverter: {
     products: MediaConverterProducts,
+    page: MediaConverter,
     troubleshooting: MediaConverterTroubleshooting,
     selectorTool: MediaConverterSelectorTool,
     faq: MediaConverterFAQ,
   },
   WirelessEthernet: {
     products: WirelessProducts,
+    page: Wireless,
     troubleshooting: WirelessTroubleshooting,
     selectorTool: WirelessSelectorTool,
     faq: WirelessFAQ,
   },
   SFP: {
     products: SFPProducts,
+    page: SFP,
+    troubleshooting: SFPFAQ,
     selectorTool: SFPSelectorTool,
     faq: SFPFAQ,
   },
   RazberiServer: { 
     products: RazberiProducts,
+    page: Razberi,
     troubleshooting: RazberiTroubleshooting,
     selectorTool: RazberiSelectorTool,
     faq: RazberiFAQ,
   },
   EthernetExtender: {
     products: EthernetExtenderProducts,
+    page: EthernetExtender,
     troubleshooting: EthernetExtenderTroubleshooting,
     selectorTool: EthernetExtenderSelectorTool,
     faq: EthernetExtenderFAQ,
   },
   ContactClosure: {
     products: ContactClosureProducts,
+    page: ContactClosure,
     troubleshooting: ContactClosureTroubleshooting,
     selectorTool: ContactClosureSelectorTool,
     faq: ContactClosureFAQ,
   },
   SerialData: {
     products: SerialDataProducts,
+    page: SerialData,
     troubleshooting: SerialDataTroubleshooting,
     selectorTool: SerialDataSelectorTool,
     faq: SerialDataFAQ,
   },
   Wiegand: {
     products: WiegandProducts,
+    page: Wiegand,
+    troubleshooting: WiegandFAQ,
     selectorTool: WiegandSelectorTool,
     faq: WiegandFAQ,
   },
   PowerSupply: {
     products: PowerSupplyProducts,
+    page: PowerSupply,
+    troubleshooting: PowerSupply,
     selectorTool: PowerSupply,
     faq: PowerSupply,
   },
   PoeInjector: {
     products: PoeInjectorProducts,
+    page: PoeInjector,
+    troubleshooting: PoeInjector,
     selectorTool: PoeInjector,
     faq: PoeInjector,
   },
   Enclosure: {
     products: EnclosureProducts,
+    page: Enclosures,
+    troubleshooting: Enclosures,
     selectorTool: Enclosures,
     faq: Enclosures,
   },
@@ -155,37 +172,21 @@ const Home = () => {
 
   useEffect(() => {
     setMainContent(
-      <>
-        <div className="container">
-          <h1 className="title">
-            Technical Support
-          </h1>
-
-          <h1 className="subtitle">
-            Our technical support page offers selector tools, answers to frequently asked questions, and how to troubleshoot common issues. Enter a product number in the search box or click on one of the product categories.
-
-          </h1>
-
-          <h2 className="subtitle">
-          </h2>
-
-          <div className="image-container">
-            <img
-              src='https://acresecurity.com/hs-fs/hubfs/Landing%20pages/Landing%20Page%20Images/comnet%20by%20acre%20full%20product%20range.png?width=2000&height=1333&name=comnet%20by%20acre%20full%20product%20range.png'
-              alt='Product Selector Tool - ComNet by acre'
-              loading="lazy"
-              className="image"
-            />
-          </div>
+      <div className="container">
+        <h1 className="title">Technical Support</h1>
+        <h1 className="subtitle">Thank you for visiting Comnet's technical support page. Our page provides assistance with troubleshooting common product issues, identifying the correct part number for your application, and contains relevant product information.</h1>
+        <h1 className="subtitle">To get started, enter a product number into the search box or select on one of the product categories.</h1>
+        <div className="image-container">
+          <img
+            src='https://acresecurity.com/hs-fs/hubfs/Landing%20pages/Landing%20Page%20Images/comnet%20by%20acre%20full%20product%20range.png?width=2000&height=1333&name=comnet%20by%20acre%20full%20product%20range.png'
+            alt='Product Selector Tool - ComNet by acre'
+            loading="lazy"
+            className="image"
+          />
         </div>
-      </>
-
+      </div>
     );
   }, []);
-
-  const displayContent = (content, model) => {
-    setMainContent(content);
-  };
 
   const handleSearch = (event) => {
     const searchValue = event.target.value;
@@ -200,7 +201,7 @@ const Home = () => {
         product.Model.toLowerCase().includes(searchValue.toLowerCase())
       );
 
-      setFilteredProducts(filtered.slice(0, 5));
+      setFilteredProducts(filtered.slice(0, 1000));
     } else {
       setFilteredProducts([]);
     }
@@ -210,7 +211,7 @@ const Home = () => {
     for (const [category, config] of Object.entries(productsConfig)) {
       const product = config.products.find((p) => p.Model === model);
       if (product) {
-        displayContent(<config.faq />, model);
+        setMainContent(<config.page />);
         setSearchTerm('');
         return;
       }
@@ -218,13 +219,7 @@ const Home = () => {
   };
 
   const handleCategorySelect = (category) => {
-    const config = productsConfig[category];
-    if (config) {
-      setActiveCategory(category); // Set the active category when a button is clicked
-      displayContent(<config.selectorTool />);
-    } else {
-      displayContent(<h2 style={{ color: "#e74c3c" }}>Category Not Found</h2>);
-    }
+    setActiveCategory(activeCategory === category ? null : category);
   };
 
   const handleLinkClick = (linkType) => {
@@ -232,24 +227,24 @@ const Home = () => {
     if (config) {
       switch (linkType) {
         case 'troubleshooting':
-          displayContent(<config.troubleshooting />);
+          setMainContent(<config.troubleshooting />);
           break;
         case 'selectorTool':
-          displayContent(<config.selectorTool />);
+          setMainContent(<config.selectorTool />);
           break;
         case 'faq':
-          displayContent(<config.faq />);
+          setMainContent(<config.faq />);
           break;
         default:
-          displayContent(<h2 style={{ color: "#e74c3c" }}>Link Not Found</h2>);
+          setMainContent(<h2 style={{ color: "#e74c3c" }}>Link Not Found</h2>);
       }
     }
   };
 
   return (
-    <div  style={{ fontFamily: "Arial, sans-serif", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "Arial, sans-serif", minHeight: "100vh" }}>
       <Navbar />
-      <div  className="main">
+      <div className="main">
         <div className="search-container">
           <div className="search-input-container">
             <input
@@ -274,44 +269,30 @@ const Home = () => {
             </div>
           )}
 
-{Object.keys(productsConfig).map((category, index) => (
-          <div key={index}>
-            <button
-              className="category-button"
-            >
-              {category.replace(/([a-z])([A-Z])/g, "$1 $2")}
-            </button>
-
-            {activeCategory === category && (
-              <div style={{ marginTop: "10px" }}>
-                <a
-                  href="#"
-                  onClick={() => handleLinkClick('troubleshooting')}
-                  style={{ display: "block", color: "#3498db", margin: "5px 0" }}
-                >
-                  Troubleshooting
-                </a>
-                <a
-                  href="#"
-                  onClick={() => handleLinkClick('selectorTool')}
-                  style={{ display: "block", color: "#3498db", margin: "5px 0" }}
-                >
-                  Selector Tool
-                </a>
-                <a
-                  href="#"
-                  onClick={() => handleLinkClick('faq')}
-                  style={{ display: "block", color: "#3498db", margin: "5px 0" }}
-                >
-                  FAQ
-                </a>
-              </div>
-            )}
-          </div>
-        ))}
-
+          {Object.keys(productsConfig).map((category, index) => (
+            <div key={index} className="category-section">
+              <button className="category-button" onClick={() => handleCategorySelect(category)}>
+                {category.replace(/([a-z])([A-Z])/g, "$1 $2")}
+              </button>
+              
+              {activeCategory === category && (
+                <div className="radio-options">
+                  <a className="option" onClick={() => handleLinkClick('troubleshooting')}>
+                    Troubleshooting
+                  </a>
+                  <a className="option" onClick={() => handleLinkClick('faq')}>
+                    Relevant Information
+                  </a>
+                  <a className="option" onClick={() => handleLinkClick('selectorTool')}>
+                    Selector Tool
+                  </a>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-        <div className="mainContent" style={{ width: "75%", backgroundColor: '#f5f5f5', borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", marginLeft: "20px" }}>
+
+        <div className="mainContent" style={{ width: "100%", backgroundColor: '#f5f5f5', borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}>
           {mainContent}
         </div>
       </div>
