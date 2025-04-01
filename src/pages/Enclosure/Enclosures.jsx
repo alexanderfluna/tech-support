@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/Pages.css'
 
 const CardCage = () => {
-  const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     slots: [],
@@ -29,13 +28,6 @@ const CardCage = () => {
     setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
-
-  const toggleTable = () => {
-    setShowTable(!showTable);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-    setFilters({ slots: null, voltage: null, PSU: null, power: null });
-  };
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -73,14 +65,7 @@ const CardCage = () => {
 
   return (
     <div className="faq-list">
-      <h1 style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textAlign: "center"
-            }}>Enclosure| Selector Tool</h1>
+      <h1 className="faq-title">Enclosure</h1>
       <div className="filter-options" style={{
         display: 'flex',
         flexWrap: 'wrap',

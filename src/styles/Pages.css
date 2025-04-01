@@ -22,7 +22,7 @@ a:hover {
     margin: 20px auto;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 30px;
 }
 
 .faq-title {
@@ -91,7 +91,7 @@ a:hover {
 }
 
 .table-container {
-    margin-top: 20px;
+    margin: 20px auto;
     overflow-x: auto;
   }
   

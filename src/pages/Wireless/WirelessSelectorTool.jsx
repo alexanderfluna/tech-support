@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import products from './WirelessProducts';
 
 const WirelessSelectorTool = () => {
-  const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     quantity: [],
@@ -24,12 +23,6 @@ const WirelessSelectorTool = () => {
     updateAvailableOptions(products);
   }, []);
 
-  const toggleTable = () => {
-    setShowTable(!showTable);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-    setFilters({ quantity: null, size: null, beamwidth: null, continent: null }); 
-  };
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -68,14 +61,7 @@ const WirelessSelectorTool = () => {
 
   return (
       <div className="faq-list">
-        <h1 style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textAlign: "center"
-            }}>Wireless Ethernet| Selector Tool</h1>
+        <h1 className="faq-title">Wireless Ethernet Selector Tool</h1>
         <div className="filter-options" style={{
           display: 'flex',
           flexWrap: 'wrap',

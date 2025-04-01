@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import products from "./EthernetExtenderProducts";
 
 const EthernetExtenderSelectorTool = () => {
-  const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     position: [],
@@ -24,13 +23,6 @@ const EthernetExtenderSelectorTool = () => {
     setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
-
-  const toggleTable = () => {
-    setShowTable(!showTable);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-    setFilters({ position: null, channels: null, formFactor: null, cable: null,  poeInjection: null }); 
-  };
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -70,14 +62,7 @@ const EthernetExtenderSelectorTool = () => {
 
   return (
     <div className="faq-list">
-      <h1 style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textAlign: "center"
-            }}>Ethernet Extender| Selector Tool</h1>
+      <h1 className="faq-title">Ethernet Extender Selector Tool</h1>
       <div className="filter-options" style={{
         display: 'flex',
         flexWrap: 'wrap',

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import products from './EthernetSwitchProducts';
 
 const EthernetSwitchSelectorTool = () => {
-  const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     Hardened: [],
@@ -36,20 +35,6 @@ const EthernetSwitchSelectorTool = () => {
     setFilteredProducts(products);
     updateAvailableOptions(products);
   }, []);
-
-  const toggleTable = () => {
-    setShowTable(!showTable);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-    setFilters({
-      Hardened: null,
-      Managed: null,
-      PoE: null,
-      Copper_Ports: null,
-      Fiber_Ports: null,
-      Combo_Ports: null,
-    });
-  };
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };

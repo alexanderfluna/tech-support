@@ -55,7 +55,7 @@ function EthernetSwitchTroubleshooting() {
                 <p><strong>[12] Replace the switch with a known-working one to determine if the same issue persists with the new switch.</strong></p>
             </div>
 
-            <div className="faq-answer" id="ip-address">
+            <div className="faq-answer" id="switch-ip-address">
                 <h1>How to find the IP address of a switch</h1>
                 <p><strong>[1] Enter the device's part number into the <a href="https://acresecurity.com/secure-communications-networking-and-server-solutions/product-selector-tool">Product Selector Tool</a> to find the default IP address in the installation manual.</strong></p>
                 <p>The typical default configurations of a Comnet Ethernet switch are:</p>
@@ -76,7 +76,7 @@ function EthernetSwitchTroubleshooting() {
                 <p><strong>[4] Use Advanced IP Scanner to scan through the possible IP ranges that the switch is under.</strong></p>
             </div>
 
-            <div className="faq-answer" id="cli-default">
+            <div className="faq-answer" id="switch-default">
                 <h1>How to factory default a switch</h1>
                 <p>[1] Open PuTTY or Tera Term and start a serial connection using the following configurations.</p>
                 <li>Speed (baud): 115200.</li>

@@ -4,7 +4,7 @@ const NoOpticalLink = () => {
   return (
     <div>
       <p><strong>[1] For devices requiring an 'A' and 'B' pair, ensure there is an 'A' unit on one side of the fiber and a 'B' unit on the other side of the fiber.</strong> </p>
-      <li>The data must be transmitted and received over the one strand of fiber. Using wavelength division multiplexing (WDM), the 'A' and 'B' units transmit and receive data at different wavelengths.</li>
+      <li style={{paddingLeft: "40px"}}>The data must be transmitted and received over the one strand of fiber. Using wavelength division multiplexing (WDM), the 'A' and 'B' units transmit and receive data at different wavelengths.</li>
       <p><strong>[2] Confirm the compatability of the devices on both ends of the fiber.</strong></p>
       <li style={{paddingLeft: "40px"}}>Ensure the data rates match (Fast Ethernet vs. Gigabit Ethernet).</li>
       <li style={{paddingLeft: "40px"}}>Ensure the expected fiber types match (Multimode vs Single mode).</li>

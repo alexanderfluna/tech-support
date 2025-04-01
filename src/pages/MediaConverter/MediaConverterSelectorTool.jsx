@@ -86,14 +86,7 @@ const MediaConverterSelectorTool = () => {
 
   return (
     <div className="faq-list">
-      <h1 style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textAlign: "center"
-            }}>Media Converter| Selector Tool</h1>
+      <h1 className="faq-title">Media Converter Selector Tool</h1>
       <div className="filter-options" style={{
         display: 'flex',
         flexWrap: 'wrap',

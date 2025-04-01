@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import PowerOverEthernet from '../../relevant-information/PowerOverEthernet';
 import '../../styles/Pages.css'
 
 const PoEInjector = () => {
-  const [visibleAnswer, setVisibleAnswer] = useState(null);
-  const [showTable, setShowTable] = useState(false);
-  const [showFAQ, setShowFAQ] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     Data_Rate: [],
@@ -78,14 +74,7 @@ const PoEInjector = () => {
 
   return (
     <div className="faq-list">
-        <h1 style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textAlign: "center"
-            }}>PoE Injector| Selector Tool</h1>
+        <h1 className="faq-title">PoE Injector</h1>
         <div 
           className="filter-options" 
           style={{
@@ -227,7 +216,6 @@ const PoEInjector = () => {
               ))}
             </tbody>
           </table>
-          <PowerOverEthernet />
         </div>
     </div>
   );

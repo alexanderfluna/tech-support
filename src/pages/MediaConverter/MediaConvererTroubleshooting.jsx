@@ -6,7 +6,7 @@ import NoPoE from '../../relevant-information/NoPoe';
 function MediaConverterTroubleshooting() {
     return (
         <div className="faq-list">
-            <h1 className="faq-title">Media Converter Troubleshooting</h1>
+            <h1 className="faq-title">Troubleshooting Media Converters</h1>
 
             <div className="table-of-contents">
                 <h1>Table of Contents</h1>

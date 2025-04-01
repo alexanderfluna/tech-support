@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import products from './SerialDataProducts';
 
 const SerialDataSelectorTool = () => {
-  const [showTable, setShowTable] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [availableOptions, setAvailableOptions] = useState({
     Number_Of_Fibers: [],
@@ -22,13 +21,6 @@ const SerialDataSelectorTool = () => {
     setFilteredProducts(products); 
     updateAvailableOptions(products);
   }, []);
-
-  const toggleTable = () => {
-    setShowTable(!showTable);
-    setFilteredProducts(products);
-    updateAvailableOptions(products);
-    setFilters({ Number_Of_Fibers: null, fiber: null, optics: null, package: null }); 
-  };
 
   const handleFilterChange = (filterType, value) => {
     const newFilters = { ...filters, [filterType]: value };
@@ -67,14 +59,7 @@ const SerialDataSelectorTool = () => {
 
   return (
     <div className="faq-list">
-      <h1 style={{
-                fontSize: "3rem",
-                fontWeight: "bold",
-                backgroundImage: "linear-gradient(135deg, rgb(49, 105, 169), rgb(165, 167, 173))",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textAlign: "center"
-            }}>Serial Data| Selector Tool</h1>
+      <h1 className="faq-title">Serial Data Selector Tool</h1>
       <div className="filter-options" style={{
         display: 'flex',
         flexWrap: 'wrap',

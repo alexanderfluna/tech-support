@@ -1,8 +1,17 @@
 .logo-img {
     height: 120px;
     width: 200px;
+    margin-left: 50px
 }
 
 .logo-img:hover {
     cursor: pointer;
+}
+
+@media (max-width: 800px){
+    .logo-img {
+        height: 120px;
+        width: 200px;
+        margin: 0;
+    }
 }
