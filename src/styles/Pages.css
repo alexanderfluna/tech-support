@@ -34,15 +34,14 @@ a:hover {
   }
 
 .table-of-contents {
-    padding: 10px;
+    padding: 40px 10px 100px 10px;
     border-radius: 8px;
     margin-top: 50px;
-    margin-bottom: 200px;
 }
 
 .table-of-contents h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .table-of-contents ul {
