@@ -7,13 +7,13 @@ const WirelessTroubleshooting = () => {
 
       <div className="table-of-contents">
         <h1>Table of Contents</h1>
-        <li><a href="#netwave-configurations">How to configure Comnet's wireless radios</a></li>
+        <li><a href="#netwave-configurations">How to Configure Comnet's Wireless Radios</a></li>
         <li><a href="#radio-not-powering-on">How to Troubleshoot a Wireless Radio with Power Issues</a></li>
         <li><a href="#radio-losing-connection">How to Troubleshoot a Wireless Radio that Drops Out</a></li>
       </div>
 
       <div className="faq-answer" id="netwave-configurations">
-        <h1>How to configure Comnet's wireless radios</h1>
+        <h1>How to Configure Comnet's Wireless Radios</h1>
         <p>Click the link to <a href="pdf/Wireless/NetWave.pdf">view Comnet's wireless configuration documentation</a>.</p>
       </div>
 
