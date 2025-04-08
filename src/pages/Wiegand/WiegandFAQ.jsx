@@ -16,8 +16,6 @@ const WiegandFAQ = () => {
         <li><a href="#fiber">Optical Fiber</a></li>
       </div>
 
-      
-
       <div id="no-power" className="faq-answer">
         <h1>How to Troubleshoot a Unit with Power Issues</h1>
         {<NoPowerLight />}
