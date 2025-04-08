@@ -1,3 +1,7 @@
+.navbar {
+    border-bottom: 1px solid black;
+}
+
 .logo-img {
     height: 120px;
     width: 200px;

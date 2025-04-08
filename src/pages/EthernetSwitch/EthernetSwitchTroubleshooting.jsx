@@ -8,19 +8,9 @@ function EthernetSwitchTroubleshooting() {
         <div className="faq-list">
             <h1 className="faq-title">Troubleshooting Ethernet Switches</h1>
 
-            <div className="faq-answer" id="switch-diagnose">
-                <h1>Diagnose the Issues with the Ethernet Switch</h1>
-                <p><strong>Document the following information:</strong></p>
-                <p><strong>[1]</strong> Has the Ethernet switch ever operated correctly? If so, for how long before the issue occurred?</p>
-                <p><strong>[2]</strong> Does the Ethernet switch power on and remain powered?</p>
-                <p><strong>[3]</strong> Can the Ethernet switch be reached via a ping test?</p>
-                <p><strong>[4]</strong> Do all ports successfully forward network traffic?</p>
-                <p><strong>[5]</strong> If this is a PoE switch, are connected devices receiving power as expected?</p>
-                <p><strong>[6]</strong> If none of the above issues apply, could the issue be related to the switch's configuration?</p>
-            </div>
-
             <div className="table-of-contents">
                 <h1>Table of Contents</h1>
+                <p><a href="#switch-no-power-light">Diagnose the Issues of the Ethernet Switch</a></p>
                 <p><a href="#switch-no-power-light">1) How to Troubleshoot an Ethernet Switch with Power Issues</a></p>
                 <p><a href="#switch-no-optical-link">2) How to Troubleshoot an Ethernet Switch with Optical Link Issues</a></p>
                 <p><a href="#switch-not-communicating">3) How to Troubleshoot an Ethernet Switch with Network Issues</a></p>
@@ -29,6 +19,17 @@ function EthernetSwitchTroubleshooting() {
                 <p><a href="#switch-default">6) How to Factory Default an Ethernet Switch</a></p>
                 <p><a href="#switch-default">7) How to Set Up VLANs on an Ethernet Switch</a></p>
                 <p><a href="#switch-default">8) How to Set Up a Ring on an Ethernet Switch</a></p>
+            </div>
+
+            <div className="faq-answer" id="switch-diagnose">
+                <h1>Diagnose the Issues of the Ethernet Switch</h1>
+                <p><strong>Document the following information:</strong></p>
+                <p><strong>[1]</strong> Has the Ethernet switch ever operated correctly? If so, for how long before the issue occurred?</p>
+                <p><strong>[2]</strong> Does the Ethernet switch power on and remain powered?</p>
+                <p><strong>[3]</strong> Can the Ethernet switch be reached via a ping test?</p>
+                <p><strong>[4]</strong> Do all ports successfully forward network traffic?</p>
+                <p><strong>[5]</strong> If this is a PoE switch, are connected devices receiving power as expected?</p>
+                <p><strong>[6]</strong> If none of the above issues apply, could the issue be related to the switch's configuration?</p>
             </div>
 
             <div className="faq-answer" id="switch-no-power-light">
