@@ -9,23 +9,23 @@ const ContactClosureTroubleshooting = () => {
 
         <div className="table-of-contents">
           <h1>Table of Contents</h1>
-          <li><a href="#no-power">Troubleshooting a unit that will not power on</a></li>
-          <li><a href="#no-optical-link">Troubleshooting a unit that will not link optically</a></li>
-          <li><a href="#no-contacts">Troubleshooting a unit that is not properly sending or receiving the status of the contact</a></li>
+          <li><a href="#no-power">How to Troubleshoot a Unit with Power Issues</a></li>
+          <li><a href="#no-optical-link">How to Troubleshoot a Unit with Optical Link Issues</a></li>
+          <li><a href="#no-contacts">How to Troubleshoot a Unit That is Not Sending or Receiving the Status of a Contact</a></li>
         </div>
 
         <div id="no-power" className="faq-answer">
-          <h1>Troubleshooting a unit that will not power on</h1>
+          <h1>How to Troubleshoot a Contact Closure Device with Power Issues</h1>
           {<NoPowerLight />}
           </div>
 
         <div id="no-optical-link" className="faq-answer">
-          <h1>Troubleshooting a unit that will not link optically</h1>
+          <h1>How to Troubleshoot a Unit with Optical Link Issues</h1>
           {<NoOpticalLink />}
         </div>
 
           <div id="no-contacts" className="faq-answer">
-            <h1>Troubleshooting a unit that is not properly sending or receiving the status of the contact</h1>
+            <h1>How to Troubleshoot a Unit That is Not Sending or Receiving the Status of a Contact</h1>
             <p><strong>[1] Ensure the wires are connected properly.</strong></p>
             <p><strong>FDC10:</strong></p>
             <img src="photos/FDC/fdc10.jpg" style={{"padding-right": "100px"}}></img>

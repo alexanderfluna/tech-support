@@ -9,20 +9,20 @@ const SFPFAQ = () => {
 
       <div className="table-of-contents">
         <h1>Table of Contents</h1>
-          <li><a href="#no-optical-link">Troubleshooting an SFP module that will not link optically</a></li>
-          <li><a href="#ddi">How to view the status of an SFP module</a></li>
+          <li><a href="#no-optical-link">How to Troubleshoot an SFP module with Optical Link Issues</a></li>
+          <li><a href="#ddi">How to View the Status of an SFP Module</a></li>
           <li><a href="#cisco">Will Comnet SFPs work with Cisco devices?</a></li>
           <li><a href="#sfp-chart">Comnet's SFP Chart</a></li>
           <li><a href="#fiber">Fiber Optics</a></li>
       </div>
 
       <div id="no-optical-link" className="faq-answer">
-        <h1>Troubleshooting an SFP module that will not link optically</h1>
+        <h1>How to Troubleshoot an SFP module with Optical Link Issues</h1>
         <NoOpticalLink />
       </div>
 
       <div id="ddi" className="faq-answer">
-        <h1>How can I view the status of an SFP module?</h1>
+        <h1>How to View the Status of an SFP Module</h1>
         <p>It is possible to view the status of the SFP in an Ethernet switch via the DDMI section or the SFP Status section.</p>
       </div>
 

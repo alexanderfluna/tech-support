@@ -9,15 +9,27 @@ const WiegandFAQ = () => {
 
       <div className="table-of-contents">
         <h1>Table of Contents</h1>
-        <li><a href="#fdw100">Troubleshooting FDW1000 and EXP101 devices</a></li>
-        <li><a href="#no-power">Troubleshooting a unit that will not power on</a></li>
-        <li><a href="#no-optical-link">Troubleshooting a unit that will not link optically</a></li>
+        <li><a href="#no-power">How to Troubleshoot a Unit with Power Issues</a></li>
+        <li><a href="#no-optical-link">How to Troubleshoot a Unit with Optical Link Issues</a></li>
+        <li><a href="#fdw100">How to Troubleshoot FDW1000 and EXP101 Devices</a></li>
         <li><a href="#Wiegand vs. OSDP">Wiegand vs. OSDP</a></li>
         <li><a href="#fiber">Optical Fiber</a></li>
       </div>
 
+      
+
+      <div id="no-power" className="faq-answer">
+        <h1>How to Troubleshoot a Unit with Power Issues</h1>
+        {<NoPowerLight />}
+      </div>
+
+      <div id="no-link-light" className="faq-answer">
+        <h1>How to Troubleshoot a Unit with Optical Link Issues</h1>
+        <p>Swap the transmit and receive fiber strands.</p>
+      </div>
+
       <div id="fdw1000" className="faq-answer">
-        <h1>Troubleshooting FDW1000 and EXP101 devices</h1>
+        <h1>How to Troubleshoot FDW1000 and EXP101 Devices</h1>
         <p><strong>[1] Default the FDW1000/C.</strong></p>
         <p style={{paddingLeft: "40px"}}>[1.1] Remove the power, fiber strands, and metal housing to expose the DIP switches.</p>
         <p style={{paddingLeft: "40px"}}>[1.2] Flip all dip switches OFF.</p>
@@ -65,16 +77,6 @@ const WiegandFAQ = () => {
         <p><strong>[7] Ensure the correct wire configuration.</strong></p>
         <p style={{color: "red"}}><strong>Please note there must be a common ground between the central unit(s) and the panel and there must be a common ground between the remote unit(s) and reader(s)!</strong></p>
         <img src="photos/FDW/FDW.png" alt="FDW1000 wiring"style={{width: "75%"}}></img>
-      </div>
-
-      <div id="no-power" className="faq-answer">
-        <h1>Troubleshooting a unit that will not power on</h1>
-        {<NoPowerLight />}
-      </div>
-
-      <div id="no-link-light" className="faq-answer">
-        <h1>Troubleshooting a unit that will not link optically</h1>
-        <p><strong>[1] Swap the transmit and receive fiber strands.</strong></p>
       </div>
 
       <div id="Wiegand vs. OSDP" className="faq-answer">

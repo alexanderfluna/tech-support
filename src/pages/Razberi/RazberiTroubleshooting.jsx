@@ -7,21 +7,21 @@ const RazberiTroubleshooting = () => {
 
       <div className="table-of-contents">
         <h1>Table of Contents</h1>
-        <li><a href="#power-ss32x">Troubleshooting power issues on an SS32X server</a></li>
-        <li><a href="#power-core">Troubleshooting power issues on an Core server</a></li>
-        <li><a href="#no-poe">Troubleshooting a switch that is not producing PoE</a></li>
-        <li><a href="#raid">Troubleshooting RAID issues</a></li>
-        <li><a href="#nic">Troubleshooting NIC issues</a></li>
-        <li><a href="#os">Troubleshooting OS issues</a></li>
-        <li><a href="#rdp">How to set up a Remote Desktop Connection</a></li>
-        <li><a href="#registration">How to skip the Razberi Monitor registration</a></li>
-        <li><a href="#camera-defense">How to set up Camera Defense</a></li>
-        <li><a href="#password">I forgot the Windows password</a></li>
-        <li><a href="#ping-ssiq24">Pinging the embedded switch from an SSIQ24 server switch</a></li>
+        <li><a href="#power-ss32x">How to Troubleshoot Power Issues on a Server Switch</a></li>
+        <li><a href="#power-core">How to Troubleshoot Power Issues on a Core Server</a></li>
+        <li><a href="#no-poe">How to Troubleshoot a Server Switch with PoE Issues</a></li>
+        <li><a href="#raid">How to Troubleshoot Issues with the RAID</a></li>
+        <li><a href="#nic">How to Troubleshoot Issues with the NIC</a></li>
+        <li><a href="#os">How to Troubleshoot Issues with the OS</a></li>
+        <li><a href="#rdp">How to Set Up a Remote Desktop Connection</a></li>
+        <li><a href="#registration">How to Skip the Razberi Monitor Registration</a></li>
+        <li><a href="#camera-defense">How to Set Up Camera Defense</a></li>
+        <li><a href="#password">What to do if the Windows Password is Fogotten</a></li>
+        <li><a href="#ping-ssiq24">Pinging the Server Switch</a></li>
       </div>
 
       <div id="power-ss23x" className="faq-answer">
-        <h1>Troubleshooting power issues on an SS32X</h1>
+        <h1>How to Troubleshoot Power Issues on a Server Switch</h1>
         <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
         <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
         <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
@@ -37,7 +37,7 @@ const RazberiTroubleshooting = () => {
       </div>
 
         <div id="power-core" className="faq-answer">
-          <h1>Troubleshooting power issues on an Core server</h1>
+          <h1>How to Troubleshoot Power Issues on a Core Server</h1>
           <p><strong>[1] Determine if the unit boots up at all or how frequently the unit powers off.</strong></p>
           <p><strong>[2] Verify the unit is receiving 100-120VAC.</strong></p>
           <p><strong>[3] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</strong></p>
@@ -51,7 +51,7 @@ const RazberiTroubleshooting = () => {
         </div>
 
         <div id="no-poe" className="faq-answer">
-          <h1>Troubleshooting a switch that is not producing PoE</h1>
+          <h1>How to Troubleshoot a Server Switch with PoE Issues</h1>
           <p>[1] Verify the unit is receiving 100-120VAC.</p>
           <p>[2] If a UPS is in use, consider removing it to see if the issue persists and try replacing the power cable to rule it out.</p>
           <p>[3] Confirm the powered devices are 802.3af/at compliant.</p>
@@ -62,7 +62,7 @@ const RazberiTroubleshooting = () => {
         </div>
 
         <div id="raid" className="faq-answer">
-          <h1>Troubleshooting RAID issues</h1>
+          <h1>How to Troubleshoot Issues with the RAID</h1>
           <p><strong>[1] Confirm that the HDD or RAID has failed and what the current RAID configuration is using one of the following:</strong></p>
           <li>Razberi Monitor Cloud</li>
           <li>Razberi Monitor: System Info</li>
@@ -85,7 +85,7 @@ const RazberiTroubleshooting = () => {
         </div>
 
         <div id="nic" className="faq-answer">
-          <h1>Troubleshooting NIC issues</h1>
+          <h1>How to Troubleshoot Issues with the NIC</h1>
           <p>[1] Enter "View network status and tasks" in the Windows search box.</p>
           <p>[2] Click "Change adapter settings".</p>
           <p>[3] Disable and enable the NIC</p>
@@ -94,7 +94,7 @@ const RazberiTroubleshooting = () => {
         </div>
 
         <div id="os" className="faq-answer">
-          <h1>Troubleshooting OS issues</h1>
+          <h1>How to Troubleshoot Issues with the OS</h1>
           <p>[1] Review the Razberi Monitor Alert Logs.</p>
           <p>[2] Review the errors in Event Viewer.</p>
           <p>[3] Review the iDRAC alert logs</p>
@@ -103,7 +103,7 @@ const RazberiTroubleshooting = () => {
         </div>
 
         <div id="RDP" className="faq-answer">
-          <h1>How to set up a Remote Desktop Connection</h1>
+          <h1>How to Set Up a Remote Desktop Connection</h1>
           <p>[1] Enable Remote Desktop in the server's settings.</p>
           <p>[2] Connect a laptop to a NIC on the server.</p>
           <p>[3] Open the Remote Desktop Connection software on the laptop.</p>
@@ -112,12 +112,12 @@ const RazberiTroubleshooting = () => {
        </div>
 
       <div id="registration" className="faq-answer">
-          <h1>How to skip the Razberi Monitor registration</h1>
+          <h1>How to Skip the Razberi Monitor Registration</h1>
           <p><strong>While on the registration page, hold down: Ctrl + Shift + Alt + F11.</strong></p>
       </div>
 
       <div id="camera-defense" className="faq-answer">
-        <h1>How to set up Camera Defense</h1>
+        <h1>How to Set Up Camera Defense</h1>
         <p><strong>Device Binding</strong></p>
         <li>Master Device Binding: Enable or Disable All</li>
         <li>Bind a specific port to the MAC address of the connected device.</li>
@@ -143,12 +143,12 @@ const RazberiTroubleshooting = () => {
       </div>
 
       <div id="password "className="faq-answer">
-        <h1>I forgot the Windows password</h1>
+        <h1>What to do if the Windows Password is Fogotten</h1>
         <p><strong>There is no way to reset the Windows password. A recovery of the operating system will need to be performed. Contact technical support for the Windows recovery procedure.</strong></p>
       </div>
 
       <div id="ping-ssiq24" className="faq-answer">
-        <h1>Pinging the embedded switch from an SSIQ24 server switch</h1>
+        <h1>Pinging the Server Switch</h1>
         <li>The switch can be pinged from any port on the switch.</li>
         <li>The switch can be pinged from the U1 Uplink port.</li>
         <li>The switch cannot be pinged from the U2 Uplink port.</li>

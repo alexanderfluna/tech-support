@@ -7,12 +7,12 @@ const EthernetExtenderTroubleshooting = () => {
 
       <div className="table-of-contents">
         <h1>Table of Contents</h1>
-        <li><a href="#CLFE(X)EO(U/C) to CLFE(X)EO(U/C)">Troubleshooting CLFE(X)EO(U/C) to CLFE(X)EO(U/C) devices</a></li>
-        <li><a href="#CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)">Troubleshooting CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) devices</a></li>
+        <li><a href="#CLFE(X)EO(U/C) to CLFE(X)EO(U/C)">How to Troubleshoot CLFE(X)EO(U/C) to CLFE(X)EO(U/C) Devices</a></li>
+        <li><a href="#CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)">How to Troubleshoot CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) Devices</a></li>
       </div>
 
       <div className="faq-answer">
-        <h1>Troubleshooting CLFE(X)EO(U/C) to CLFE(X)EO(U/C) devices</h1>
+        <h1>How to Troubleshoot CLFE(X)EO(U/C) to CLFE(X)EO(U/C) Devices</h1>
         <p><strong>[1] View the <a href="pdf/EthernetExtender/CLFE_X_EO_C-U.pdf" >installation manual</a>.</strong></p>
         <li style={{paddingLeft: "40px"}}>Page 2: CLFE1EOC and CLFE1EOU images and dip switches.</li>
         <li style={{paddingLeft: "40px"}}>Page 3: CLFE4EOC images and dip switches.</li>
@@ -30,7 +30,7 @@ const EthernetExtenderTroubleshooting = () => {
       </div>
 
         <div id="CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C)" className="faq-answer">
-          <h1>Troubleshooting CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) devices</h1>
+          <h1>How to Troubleshoot CLLFE(X)POE(U/C) to CLRFE(X)POE(U/C) Devices</h1>
           <p><strong>[1] View the <a href="pdf/EthernetExtender/CL_L-R_FE_X_POE_C-U.pdf" >installation manual</a>.</strong></p>
           <li style={{paddingLeft: "40px"}}>Page 2: CLLFE1POEC and CLRFE1POEC images and dip switch.</li>
           <li style={{paddingLeft: "40px"}}>Page 3: CLLFE1POEU and CLRFE1PEOU images and dip switches.</li>
