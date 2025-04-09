@@ -22,7 +22,7 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.robot-icon {
+.conversation-icon {
   font-size: 24px;
   color: white;
 }
@@ -33,8 +33,8 @@
   height: 500px;
   max-height: 500px;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 95px;
+  right: 60px;
   background: white;
   border-radius: 15px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);

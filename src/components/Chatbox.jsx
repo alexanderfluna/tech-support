@@ -38,7 +38,7 @@ const Chatbox = () => {
   return (
     <div className="chatbox-container">
       <div className="chatbox-button" onClick={toggleChat}>
-        <span className="robot-icon">🤖</span>
+        <span className="conversation-icon">💬</span>
       </div>
 
       {isOpen && (
